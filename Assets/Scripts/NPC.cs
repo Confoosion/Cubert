@@ -4,12 +4,18 @@ using System.Collections.Generic;
 
 public class NPC : MonoBehaviour
 {
+    [SerializeField] private Dialogue dialogue;
+
     [SerializeField] private NPCSO _data;
     public NPCSO Data => _data;
     [SerializeField] private Sprite npcSprite;
     public Sprite GetSprite() { return npcSprite; }
 
-    public bool interacted;
+    private bool interacted;
+    public bool Interacted => interacted;
+    public void SetInteracted(bool interact) { interacted = interact; }
+
+    [SerializeField] private Animator npcAnimator;
 
     public void StartIntroDialogue(Dialogue dialogue)
     {
@@ -28,8 +34,12 @@ public class NPC : MonoBehaviour
 
     void OnMouseDown()
     {
-        if(!interacted)
+        AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
+
+        if(!interacted && !dialogue.IsDialogueOpen && animInfo.normalizedTime >= 1.0f)
             interacted = true;
+        else if(dialogue.IsDialogueOpen)
+            dialogue.DisplayNextSentence();
     }
 
     public void SetData(NPCSO data)
@@ -37,29 +47,13 @@ public class NPC : MonoBehaviour
         _data = data;
     }
 
-    public void EnterDaycare()
+    public void NPCEnter()
     {
-        
+        npcAnimator.SetBool("Enter", true);
     }
 
-    public void ExitDaycare()
+    public void NPCLeave()
     {
-        
+        npcAnimator.SetBool("Enter", false);
     }
-
-    // IEnumerator NPCAnimation(bool enter)
-    // {
-    //     float t = 0f;
-    //     while(t < scaleInDuration)
-    //     {
-    //         t += Time.deltaTime;
-    //         float normalized = Mathf.Clamp01(t / scaleInDuration);
-    //         float eval = scaleCurve.Evaluate(normalized);
-    //         transform.localScale = Vector3.LerpUnclamped(Vector3.zero, targetScale, eval);
-    //         yield return null;
-    //     }
-    //     transform.localScale = targetScale;
-
-    //     float 
-    // }
 }

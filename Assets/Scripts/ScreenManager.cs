@@ -20,6 +20,7 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private GameObject rightButton;
 
     private Transform currentScreen;
+    public Transform CurrentScreen => currentScreen;
     private int currentScreenIndex = 0;
 
     void Awake()
@@ -75,9 +76,10 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
-    public void AddCubert()
+    public void AddCubert(GameObject cubert)
     {
         GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);
+        newCubert.name = cubert.name;
         screens.Insert(1, newCubert.transform);
     }
 

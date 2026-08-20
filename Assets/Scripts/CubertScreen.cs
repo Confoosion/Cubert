@@ -8,6 +8,8 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private GameObject foodParticle;
     [SerializeField] private Transform foodTransform;
 
+    [SerializeField] private GameObject foodButton;
+
     [SerializeField] private Transform cubert;
 
     private float feedCooldown = 1f;
@@ -18,6 +20,19 @@ public class CubertScreen : MonoBehaviour
         if(timer > 0f)
         {
             timer -= Time.deltaTime;
+        }
+    }
+
+    public void PlaceCubert(GameObject _cubert)
+    {
+        if(_cubert.name == gameObject.name)
+        {
+            _cubert.transform.SetParent(transform);
+            _cubert.transform.localPosition = Vector3.zero;
+            _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+
+            foodButton.SetActive(true);
+            cubert = _cubert.transform;
         }
     }
 

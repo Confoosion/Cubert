@@ -17,39 +17,38 @@ public class DaycareScreen : MonoBehaviour
 
     [SerializeField] private Transform cubertHolder;
 
-    [SerializeField] private Animator npcAnimator;
-
     void Start()
     {
         if(npcsToday.Count < 1) return;
         npcSkin.color = npcsToday[0].skinColor;
         npcShirt.color = npcsToday[0].shirtColor;
         npc.SetData(npcsToday[0]);
-        NPCEnter();
+        npc.NPCEnter();
     }
 
     void Update()
     {
-        if(npc.interacted)
+        if(npc.Interacted)
         {
-            npc.interacted = false;
+            npc.SetInteracted(false);
             npc.StartIntroDialogue(dialogue);
         }
     }
 
     public void SpawnCubert()
     {
-        Instantiate(npc.Data.cubert, cubertHolder.position, Quaternion.identity);
-        ScreenManager.Singleton.AddCubert();
+        GameObject cubert = Instantiate(npc.Data.cubert, cubertHolder.position, Quaternion.identity);
+        cubert.name = npc.Data.cubert.name;
+        ScreenManager.Singleton.AddCubert(npc.Data.cubert);
     }
 
     public void NPCEnter()
     {
-        npcAnimator.SetBool("Enter", true);
+        npc.NPCEnter();
     }
 
     public void NPCLeave()
     {
-        npcAnimator.SetBool("Enter", false);
+        npc.NPCLeave();
     }
 }

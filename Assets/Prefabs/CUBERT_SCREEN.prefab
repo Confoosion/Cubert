@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8965794077055375397}
   - component: {fileID: 5007029015339175749}
   m_Layer: 0
-  m_Name: CUBERT
+  m_Name: CUBERT_SCREEN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   foodPrefab: {fileID: 1934265701119099975, guid: c4defdd8aa0ea684c900170fc442bdae, type: 3}
   foodParticle: {fileID: 5069234839064301390, guid: 8b1fd610cf57a314d828db13cf27e468, type: 3}
   foodTransform: {fileID: 9174077075797328246}
+  foodButton: {fileID: 4433860277750751646}
   cubert: {fileID: 0}
 --- !u!1 &4433860277750751646
 GameObject:
@@ -170,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7609869147693509368
 RectTransform:
   m_ObjectHideFlags: 0

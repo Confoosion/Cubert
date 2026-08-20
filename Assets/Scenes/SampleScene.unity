@@ -718,9 +718,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1422937782ac9794f9f9ab9951e7b61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
+  dialogue: {fileID: 1662512812}
   _data: {fileID: 0}
   npcSprite: {fileID: 0}
-  interacted: 0
+  npcAnimator: {fileID: 212438948}
 --- !u!111 &212438947
 Animation:
   m_ObjectHideFlags: 0
@@ -2245,10 +2246,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 212438943}
   - {fileID: 2090333343}
   - {fileID: 721229367}
   - {fileID: 1992541435}
-  - {fileID: 212438943}
   - {fileID: 717377487}
   - {fileID: 41016206}
   m_Father: {fileID: 0}
@@ -2268,11 +2269,10 @@ MonoBehaviour:
   npcSkin: {fileID: 212438944}
   npcShirt: {fileID: 957380877}
   npcsToday:
-  - {fileID: 11400000, guid: b510883f079b97341b95f003bf13972d, type: 2}
+  - {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
   dialogue: {fileID: 1662512812}
   npc: {fileID: 212438946}
   cubertHolder: {fileID: 717377487}
-  npcAnimator: {fileID: 212438948}
 --- !u!1 &1240737306
 GameObject:
   m_ObjectHideFlags: 0

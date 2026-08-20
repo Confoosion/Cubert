@@ -6,7 +6,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private float typingInterval = 0.1f;
+    [SerializeField] private float typingInterval = 0.25f;
 
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _sentenceText;
@@ -19,6 +19,8 @@ public class Dialogue : MonoBehaviour
 
     private int INTRO_CUBERT_INDEX = 1;
     private int sentenceIndex = 0;
+
+    public bool IsDialogueOpen => dialogueObject.activeSelf;
 
     void Awake()
     {
