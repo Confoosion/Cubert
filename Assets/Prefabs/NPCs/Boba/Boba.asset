@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0423738f8e188064787dda3c695c9d0c, type: 3}
+  m_Name: Boba
+  m_EditorClassIdentifier: Assembly-CSharp::NPCSO
+  npcName: Boba
+  skinColor: {r: 1, g: 0.95685816, b: 0.5235849, a: 1}
+  shirtColor: {r: 0.9150943, g: 0.16834284, b: 0.16834284, a: 1}
+  cubert: {fileID: 5765617993210803279, guid: c8997b87562a0a04ba630a1caed8d756, type: 3}
+  introDialogue: {fileID: 11400000, guid: a60973bc795128540a869dfe0be537df, type: 2}
+  pickUpDialogue: {fileID: 11400000, guid: fda9fd21d9c1eec4e88c1396b950afd5, type: 2}
+  cubertDialogue: {fileID: 11400000, guid: 48488f8619fa7aa4dbb2734bd2f1ab66, type: 2}
