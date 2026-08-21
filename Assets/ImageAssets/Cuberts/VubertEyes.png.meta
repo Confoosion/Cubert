@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7d52c3334c8978e4aa7b3f7d3b08973d
+guid: f71e92f10c803b04582f58c8b1e896a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5192060161631555048
-    second: HappyCubert_0
+      213: -3394920065024653024
+    second: Layer 9_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HappyCubert_0
+      name: Layer 9_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 79
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8127e7daac812f7b0800000000000000
-      internalID: -5192060161631555048
+      spriteID: 0290c5b1032d2e0d0800000000000000
+      internalID: -3394920065024653024
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HappyCubert_0: -5192060161631555048
+      Layer 9_0: -3394920065024653024
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

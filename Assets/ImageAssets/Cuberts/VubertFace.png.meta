@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e2031ca7ee1eca344909367461cb7bd5
+guid: 8753f132e9a66dd4092e18fb0e54d225
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 314453596479826891
-    second: Hubert_0
+      213: 642146194206879159
+    second: Layer 8_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hubert_0
+      name: Layer 8_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bcb268441e92d5400800000000000000
-      internalID: 314453596479826891
+      spriteID: 7bde197bf8c59e800800000000000000
+      internalID: 642146194206879159
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Hubert_0: 314453596479826891
+      Layer 8_0: 642146194206879159
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
