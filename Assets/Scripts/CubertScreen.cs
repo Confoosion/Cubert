@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public class CubertScreen : MonoBehaviour
 {
@@ -9,11 +11,19 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private Transform foodTransform;
 
     [SerializeField] private GameObject foodButton;
+    [SerializeField] private TextMeshProUGUI roomText;
+
+    [SerializeField] private Transform cubertNest;
 
     [SerializeField] private Transform cubert;
 
     private float feedCooldown = 1f;
     private float timer = 0f;
+
+    void Start()
+    {
+        roomText.SetText(gameObject.name + "'s Room");
+    }
 
     void Update()
     {
@@ -28,7 +38,7 @@ public class CubertScreen : MonoBehaviour
         if(_cubert.name == gameObject.name)
         {
             _cubert.transform.SetParent(transform);
-            _cubert.transform.localPosition = Vector3.zero;
+            _cubert.transform.localPosition = cubertNest.localPosition;
             _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
 
             foodButton.SetActive(true);
