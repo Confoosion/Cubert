@@ -28,8 +28,32 @@ public class HoldCubert : MonoBehaviour
 
     public void DropCubertInRoom()
     {
-        ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubert(heldCubert.gameObject);
-        heldCubert = null;
+        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubert(heldCubert.gameObject))
+            heldCubert = null;
+    }
+
+    public void DropCubertInLitterBox()
+    {
+        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubertInLitterBox(heldCubert.gameObject))
+            heldCubert = null;
+    }
+
+    public void DropCubertInBed()
+    {
+        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubertInBed(heldCubert.gameObject))
+            heldCubert = null;
+    }
+
+    public void DropCubertInBathtub()
+    {
+        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubertInBathtub(heldCubert.gameObject))
+            heldCubert = null;
+    }
+
+    public void DropCubertInPlayArea()
+    {
+        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubertInPlayArea(heldCubert.gameObject))
+            heldCubert = null;
     }
 
     public void DropCubertInDaycare()

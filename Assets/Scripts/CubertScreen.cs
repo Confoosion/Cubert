@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 
-public class CubertScreen : MonoBehaviour
+public class CubertScreen : MonoBehaviour, ITickable
 {
     [SerializeField] private GameObject foodPrefab;
     [SerializeField] private GameObject foodParticle;
@@ -12,17 +12,40 @@ public class CubertScreen : MonoBehaviour
 
     [SerializeField] private GameObject foodButton;
     [SerializeField] private TextMeshProUGUI roomText;
+    [SerializeField] private TextMeshProUGUI statusText;
 
-    [SerializeField] private Transform cubertNest;
+    [Header("Cubert Room Spots")]
+    [SerializeField] private Transform nest;
+    [SerializeField] private Transform litterBox;
+    [SerializeField] private Transform bed;
+    [SerializeField] private Transform bathtub;
+    [SerializeField] private Transform playArea;
 
-    [SerializeField] private Transform cubert;
+    private Transform cubertTransform;
+    private Cubert cubert;
 
     private float feedCooldown = 1f;
     private float timer = 0f;
 
+    [System.Serializable]
+    public class Need
+    {
+        public NeedsSO need;
+        public float needChance;
+    }
+
+    [SerializeField] private Need[] needs;
+    private Need currentNeed;
+
+    private int foodAte = 0;
+
+    private void OnEnable() => TimeManager.Register(this);
+    private void OnDisable() => TimeManager.Unregister(this);
+
     void Start()
     {
         roomText.SetText(gameObject.name + "'s Room");
+        statusText.SetText("");
     }
 
     void Update()
@@ -33,17 +56,92 @@ public class CubertScreen : MonoBehaviour
         }
     }
 
-    public void PlaceCubert(GameObject _cubert)
+    public void Tick(float deltaTime)
+    {
+        if(currentNeed == null && cubert != null)
+        {
+            currentNeed = GetRandomNeed();
+            UpdateNeedStatus();
+        }
+    }
+
+    public bool PlaceCubert(GameObject _cubert)
     {
         if(_cubert.name == gameObject.name)
         {
             _cubert.transform.SetParent(transform);
-            _cubert.transform.localPosition = cubertNest.localPosition;
+            _cubert.transform.localPosition = nest.localPosition;
             _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
 
             foodButton.SetActive(true);
-            cubert = _cubert.transform;
+
+            if(cubert == null)
+            {
+                cubertTransform = _cubert.transform;
+                cubert = _cubert.GetComponent<Cubert>();
+                needs = cubert.Needs;
+            }
+
+            return true;
         }
+
+        return false;
+    }
+
+    public bool PlaceCubertInLitterBox(GameObject _cubert)
+    {
+        Debug.Log("Litter box");
+        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Potty")
+        {
+            _cubert.transform.localPosition = litterBox.localPosition;
+            _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    public bool PlaceCubertInBed(GameObject _cubert)
+    {
+        Debug.Log("Bed");
+        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Tired")
+        {
+            _cubert.transform.localPosition = bed.localPosition;
+            _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    public bool PlaceCubertInBathtub(GameObject _cubert)
+    {
+        Debug.Log("Bathtub");
+        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Dirty")
+        {
+            _cubert.transform.localPosition = bathtub.localPosition;
+            _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    public bool PlaceCubertInPlayArea(GameObject _cubert)
+    {
+        Debug.Log("Play area");
+        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Bored")
+        {
+            _cubert.transform.localPosition = playArea.localPosition;
+            _cubert.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+
+            return true;
+        }
+
+        return false;
     }
 
     public void FeedCubert()
@@ -64,7 +162,7 @@ public class CubertScreen : MonoBehaviour
         food.GetComponent<Rigidbody2D>().simulated = false;
         food.GetComponent<CircleCollider2D>().enabled = false;
 
-        Transform target = cubert;
+        Transform target = cubertTransform;
         
         Vector3 startPos = food.transform.position;
         Vector3 startScale = food.transform.localScale;
@@ -88,6 +186,60 @@ public class CubertScreen : MonoBehaviour
         food.transform.localScale = startScale * 0.3f;
 
         Destroy(food.gameObject);
-        Instantiate(foodParticle, new Vector3(cubert.position.x, cubert.position.y, -2f), Quaternion.identity);
+        Instantiate(foodParticle, new Vector3(cubertTransform.position.x, cubertTransform.position.y, -2f), Quaternion.identity);
+
+        foodAte += 1;
+        if(foodAte >= cubert.FeedAmount)
+        {
+            SatisfyNeed();
+        }
+    }
+
+    private Need GetRandomNeed()
+    {
+        float totalProbability = 0f;
+        for(int i = 0; i < needs.Length; i++)
+        {
+            totalProbability += needs[i].needChance;
+        }
+        
+        float roll = Random.value * totalProbability;
+        float cumulative = 0f;
+        for(int i = 0; i < needs.Length; i++)
+        {
+            cumulative += needs[i].needChance;
+            if(roll <= cumulative)
+            {
+                return needs[i];
+            }
+        }
+
+        return(null);
+    }
+
+    private void UpdateNeedStatus()
+    {
+        if(currentNeed == null)
+        {
+            statusText.text = "";
+            return;    
+        }
+
+        switch(currentNeed.need.needName)
+        {
+            case "Hungry":
+                {
+                    foodAte = 0;
+                    break;
+                }
+        }
+
+        statusText.SetText(cubert.gameObject.name + " " + currentNeed.need.description);
+    }
+
+    private void SatisfyNeed()
+    {
+        currentNeed = null;
+        UpdateNeedStatus();
     }
 }
