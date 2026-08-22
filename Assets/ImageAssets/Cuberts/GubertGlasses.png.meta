@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 9ec72d0b403a236489751407e1cc0917
+guid: 7b12ccb94b8929840a46e4ca13404ad9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7168932118057325882
-    second: Layer 11 Copy_0
-  - first:
-      213: -8348538140411901921
-    second: Layer 11 Copy_1
-  - first:
-      213: -7497938553306586180
-    second: Layer 11 Copy_2
+      213: -166670798515508620
+    second: Layer 16 Copy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,57 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Layer 11 Copy_0
+      name: Layer 16 Copy_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 85
-        width: 420
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a3512bb57c92d7360800000000000000
-      internalID: 7168932118057325882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Layer 11 Copy_1
-      rect:
-        serializedVersion: 2
-        x: 117
-        y: 13
-        width: 186
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f18c2f23bc8042c80800000000000000
-      internalID: -8348538140411901921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Layer 11 Copy_2
-      rect:
-        serializedVersion: 2
-        x: 205
         y: 0
-        width: 10
-        height: 5
+        width: 512
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb3647e8c98f1f790800000000000000
-      internalID: -7497938553306586180
+      spriteID: 47a6d04bacddfadf0800000000000000
+      internalID: -166670798515508620
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Layer 11 Copy_0: 7168932118057325882
-      Layer 11 Copy_1: -8348538140411901921
-      Layer 11 Copy_2: -7497938553306586180
+      Layer 16 Copy_0: -166670798515508620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

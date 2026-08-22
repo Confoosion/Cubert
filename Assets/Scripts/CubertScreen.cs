@@ -93,6 +93,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Litter box");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Potty")
         {
+            _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = litterBox.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
             
@@ -107,6 +108,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Bed");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Tired")
         {
+            _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bed.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
             
@@ -121,6 +123,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Bathtub");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Dirty")
         {
+            _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bathtub.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
             
@@ -135,6 +138,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Play area");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Bored")
         {
+            _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = playArea.localPosition;
             _cubert.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
 
