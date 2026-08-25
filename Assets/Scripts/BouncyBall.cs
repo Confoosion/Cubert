@@ -3,13 +3,19 @@ using UnityEngine;
 public class BouncyBall : MonoBehaviour
 {
     [Header("Drag Settings")]
+    [SerializeField] private float dragTimeRequired = 0.15f;
+    [SerializeField] private float dragDistanceRequired = 0.1f;
     [SerializeField] private float followSpeed = 20f;
     [SerializeField] private float launchMultiplier = 1f;
     [SerializeField] private float maxLaunchSpeed = 15f;
 
+    private bool isPressed = false;
     private bool isDragging = false;
+    private float pressTime = 0f;
+    private Vector2 pressStartPos;
     private Vector2 previousPosition;
     private Vector2 currentVelocityEstimate;
+    private Vector3 ballScale;
 
     [Header("Color Settings")]
     [SerializeField] private float cycleSpeed = 1f;
@@ -28,11 +34,23 @@ public class BouncyBall : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        ballScale = transform.localScale;
     }
 
     void Update()
     {
         if(isDragging) return;
+
+        if(isPressed && pressTime <= dragTimeRequired)
+        {
+            pressTime += Time.deltaTime;
+            float movedDist = Vector2.Distance(GetMouseWorldPosition(), pressStartPos);
+
+            if(pressTime > dragTimeRequired || movedDist > dragDistanceRequired)
+            {
+                BeginDrag();
+            }
+        }
 
         float speed = rb.linearVelocity.magnitude;
 
@@ -58,16 +76,30 @@ public class BouncyBall : MonoBehaviour
         rb.MovePosition(newPos);
     }
 
-    private void OnMouseDown()
+    private void BeginDrag()
     {
+        HoldCubert.Singleton.DropBall();
+        transform.localScale = ballScale;
+
         isDragging = true;
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
         previousPosition = rb.position;
     }
 
+    private void OnMouseDown()
+    {
+        isPressed = true;
+        isDragging = false;
+        pressTime = 0f;
+        pressStartPos = GetMouseWorldPosition();
+        previousPosition = rb.position;
+    }
+
     private void OnMouseUp()
     {
+        isPressed = false;
+
         if(isDragging)
         {
             isDragging = false;
@@ -76,6 +108,10 @@ public class BouncyBall : MonoBehaviour
             Vector2 launchVelocity = currentVelocityEstimate * launchMultiplier;
             launchVelocity = Vector2.ClampMagnitude(launchVelocity, maxLaunchSpeed);
             rb.linearVelocity = launchVelocity;
+        }
+        else
+        {
+            HoldCubert.Singleton.GrabBall(gameObject);
         }
     }
 

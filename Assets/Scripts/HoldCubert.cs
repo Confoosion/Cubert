@@ -5,8 +5,12 @@ public class HoldCubert : MonoBehaviour
     public static HoldCubert Singleton;
 
     [SerializeField] private Cubert heldCubert;
+    [SerializeField] private GameObject heldBall;
+
     public Cubert HeldCubert => heldCubert;
     public bool HoldingCubert => heldCubert != null;
+    public GameObject HeldBall => heldBall;
+    public bool HoldingBall => heldBall != null;
 
     [SerializeField] private Vector3 holdPosition;
     [SerializeField] private Vector3 holdScale;
@@ -18,7 +22,7 @@ public class HoldCubert : MonoBehaviour
 
     public void GrabCubert(Cubert cubert)
     {
-        if(heldCubert != null) return;
+        if(heldCubert != null || heldBall != null) return;
 
         heldCubert = cubert;
         cubert.transform.SetParent(transform);
@@ -59,5 +63,27 @@ public class HoldCubert : MonoBehaviour
     public void DropCubertInDaycare()
     {
         
+    }
+
+    public void GrabBall(GameObject ball)
+    {
+        if(heldCubert != null || heldBall != null) return;
+
+        heldBall = ball;
+        Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
+        ballRb.linearVelocity = Vector2.zero;
+        ballRb.bodyType = RigidbodyType2D.Kinematic;
+
+        ball.transform.SetParent(transform);
+        ball.transform.localPosition = holdPosition;
+        ball.transform.localScale = holdScale;
+    }
+
+    public void DropBall()
+    {
+        if(heldBall == null) return;
+        
+        heldBall.transform.SetParent(ScreenManager.Singleton.CurrentScreen);
+        heldBall = null;
     }
 }
