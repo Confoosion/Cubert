@@ -11,6 +11,7 @@ public class BouncyBall : MonoBehaviour
 
     private bool isPressed = false;
     private bool isDragging = false;
+    public bool IsDragging => isDragging;
     private float pressTime = 0f;
     private Vector2 pressStartPos;
     private Vector2 previousPosition;

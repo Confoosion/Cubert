@@ -36,6 +36,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     [SerializeField] private Need[] needs;
     private Need currentNeed;
+    public Need CurrentNeed => currentNeed;
 
     private int foodAte = 0;
 
@@ -79,6 +80,7 @@ public class CubertScreen : MonoBehaviour, ITickable
             {
                 cubertTransform = _cubert.transform;
                 cubert = _cubert.GetComponent<Cubert>();
+                cubert.SetHome(this);
                 needs = cubert.Needs;
             }
 
@@ -199,6 +201,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         }
     }
 
+    // NEEDS
     private Need GetRandomNeed()
     {
         float totalProbability = 0f;
@@ -241,7 +244,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         statusText.SetText(cubert.gameObject.name + " " + currentNeed.need.description);
     }
 
-    private void SatisfyNeed()
+    public void SatisfyNeed()
     {
         currentNeed = null;
         UpdateNeedStatus();
