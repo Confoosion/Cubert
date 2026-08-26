@@ -10,6 +10,7 @@ public class ScreenManager : MonoBehaviour
 
     [Header("Screens")]
     [SerializeField] private List<Transform> screens = new List<Transform>();
+    [SerializeField] private ScreenMap screenMap;
 
     [Header("Cuberts")]
     [SerializeField] private GameObject cubertScreenPrefab;
@@ -37,6 +38,7 @@ public class ScreenManager : MonoBehaviour
         currentScreen = screen;
 
         CheckArrowUI();
+        screenMap.SetSelectedRoom(screens.IndexOf(screen));
     }
 
     public void SwitchScreenLeft()
@@ -81,6 +83,7 @@ public class ScreenManager : MonoBehaviour
         GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);
         newCubert.name = cubert.name;
         screens.Insert(1, newCubert.transform);
+        screenMap.AddScreenToMap();
     }
 
     public void RemoveCubert()
