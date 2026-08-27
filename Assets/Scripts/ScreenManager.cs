@@ -90,4 +90,22 @@ public class ScreenManager : MonoBehaviour
     {
         
     }
+
+    public void SetNeedScreen(Transform screen)
+    {
+        int index = screens.IndexOf(screen);
+        if(index != -1)
+        {
+            screenMap.SetNeedRoom(index);
+        }
+    }
+
+    public void RemoveNeedScreen(Transform screen)
+    {
+        int index = screens.IndexOf(screen);
+        if(index != -1)
+        {
+            screenMap.RemoveNeedRoom(index);
+        }
+    }
 }

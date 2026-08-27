@@ -229,6 +229,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         if(currentNeed == null)
         {
             statusText.text = "";
+            ScreenManager.Singleton.RemoveNeedScreen(transform);
             return;    
         }
 
@@ -241,6 +242,7 @@ public class CubertScreen : MonoBehaviour, ITickable
                 }
         }
 
+        ScreenManager.Singleton.SetNeedScreen(transform);
         statusText.SetText(cubert.gameObject.name + " " + currentNeed.need.description);
     }
 

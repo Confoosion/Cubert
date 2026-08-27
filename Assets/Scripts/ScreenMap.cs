@@ -7,10 +7,11 @@ public class ScreenMap : MonoBehaviour
 {
     [SerializeField] private GameObject roomObj;
     [SerializeField] private List<Image> map = new List<Image>();
+    [SerializeField] private List<Image> needMap = new List<Image>();
 
     [SerializeField] private Color chillRoomColor;
-    [SerializeField] private Color SelectedRoomColor;
-    [SerializeField] private Color NeedRoomColor;
+    [SerializeField] private Color selectedRoomColor;
+    [SerializeField] private Color needRoomColor;
 
     [SerializeField] private int selectedRoom;
 
@@ -24,7 +25,8 @@ public class ScreenMap : MonoBehaviour
     {
         GameObject room = Instantiate(roomObj, transform);
     
-        map.Insert(1, room.GetComponent<Image>());
+        // map.Insert(1, room.GetComponent<Image>());
+        map.Add(room.GetComponent<Image>());
     }
 
     public void RemoveScreenFromMap(Image roomToRemove)
@@ -39,9 +41,42 @@ public class ScreenMap : MonoBehaviour
     
     public void SetSelectedRoom(int roomNumber)
     {
-        map[selectedRoom].color = chillRoomColor;
-
+        Debug.Log("Selected " + roomNumber);
+        int oldRoom = selectedRoom;
         selectedRoom = roomNumber;
-        map[roomNumber].color = SelectedRoomColor;
+        
+        SetChillRoom(oldRoom);
+        map[roomNumber].color = selectedRoomColor;
+    }
+
+    public void SetNeedRoom(int roomNumber)
+    {
+        Debug.Log("Need " + roomNumber);
+
+        if(selectedRoom != roomNumber)
+            map[roomNumber].color = needRoomColor;
+
+        if(!needMap.Contains(map[roomNumber]))
+            needMap.Add(map[roomNumber]);
+    }
+    
+    public void RemoveNeedRoom(int roomNumber)
+    {
+        if(needMap.Contains(map[roomNumber]))
+        {
+            needMap.Remove(map[roomNumber]);
+        }
+    }
+
+    public void SetChillRoom(int roomNumber)
+    {
+        if(needMap.Contains(map[roomNumber]))
+        {
+            SetNeedRoom(roomNumber);
+            return;
+        }
+
+        Debug.Log("Chill " + roomNumber);
+        map[roomNumber].color = chillRoomColor;
     }
 }
