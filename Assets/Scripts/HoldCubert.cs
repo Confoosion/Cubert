@@ -25,6 +25,7 @@ public class HoldCubert : MonoBehaviour
         if(heldCubert != null || heldBall != null) return;
 
         heldCubert = cubert;
+        cubert.GetComponent<BoxCollider2D>().enabled = false;
         cubert.transform.SetParent(transform);
         cubert.transform.localPosition = holdPosition;
         cubert.transform.localScale = holdScale;

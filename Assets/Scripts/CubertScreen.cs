@@ -70,6 +70,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     {
         if(_cubert.name == gameObject.name)
         {
+            _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = nest.localPosition;
             _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
@@ -95,6 +96,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Litter box");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Potty")
         {
+            _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = litterBox.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
@@ -110,6 +112,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Bed");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Tired")
         {
+            _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bed.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
@@ -125,6 +128,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Bathtub");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Dirty")
         {
+            _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bathtub.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
@@ -140,6 +144,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Play area");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Bored")
         {
+            _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = playArea.localPosition;
             _cubert.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
