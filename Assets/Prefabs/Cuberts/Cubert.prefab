@@ -128,7 +128,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a5621968a4e9fd047a2fffcb366a9278, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -219,7 +219,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9ec72d0b403a236489751407e1cc0917, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -310,7 +310,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a5621968a4e9fd047a2fffcb366a9278, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -406,7 +406,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.9960785, g: 0.97647065, b: 0.87843144, a: 1}
@@ -488,6 +488,8 @@ MonoBehaviour:
   - need: {fileID: 11400000, guid: 0ab03603dec40464683b3e9ffd088a51, type: 2}
     needChance: 0.2
   feedAmount: 3
+  hitAmount: 3
+  showerAmount: 20
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0
