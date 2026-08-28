@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 68309125}
   - component: {fileID: 68309124}
   - component: {fileID: 68309123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FoodBorder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 163678009}
   - component: {fileID: 163678011}
   - component: {fileID: 163678010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1155,7 @@ GameObject:
   - component: {fileID: 272869778}
   - component: {fileID: 272869780}
   - component: {fileID: 272869779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2139,7 +2139,7 @@ GameObject:
   - component: {fileID: 719061925}
   - component: {fileID: 719061924}
   - component: {fileID: 719061926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FoodBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3717,7 +3717,7 @@ GameObject:
   - component: {fileID: 1847255061}
   - component: {fileID: 1847255063}
   - component: {fileID: 1847255062}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3855,7 +3855,7 @@ GameObject:
   - component: {fileID: 1905350681}
   - component: {fileID: 1905350683}
   - component: {fileID: 1905350682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FoodBorder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3993,7 +3993,7 @@ GameObject:
   - component: {fileID: 1960921160}
   - component: {fileID: 1960921162}
   - component: {fileID: 1960921161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4356,7 +4356,7 @@ GameObject:
   - component: {fileID: 2056386092}
   - component: {fileID: 2056386091}
   - component: {fileID: 2056386090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FoodBorder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
