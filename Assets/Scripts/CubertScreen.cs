@@ -18,14 +18,16 @@ public class CubertScreen : MonoBehaviour, ITickable
     [SerializeField] private Transform nest;
     [SerializeField] private Transform litterBox;
     [SerializeField] private Transform bed;
-    [SerializeField] private Transform bathtub;
-    [SerializeField] private Transform playArea;
+    private Transform currentSpot;
 
     private Transform cubertTransform;
     private Cubert cubert;
 
+    private float sleepTime = 7f;
+    private float pottyTime = 4f;
     private float feedCooldown = 1f;
     private float timer = 0f;
+    private float timeInSpot = 0f;
 
     [System.Serializable]
     public class Need
@@ -55,6 +57,23 @@ public class CubertScreen : MonoBehaviour, ITickable
         {
             timer -= Time.deltaTime;
         }
+
+        if(currentNeed != null)
+        {
+            if(currentNeed.need.needName == "Tired" || currentNeed.need.needName == "Potty")
+            {
+                timeInSpot += Time.deltaTime;
+
+                if(timeInSpot >= sleepTime && currentSpot == bed)
+                {
+                    SatisfyNeed();
+                }
+                else if(timeInSpot >= pottyTime && currentSpot == litterBox)
+                {
+                    SatisfyNeed();
+                }
+            }
+        }
     }
 
     public void Tick(float deltaTime)
@@ -74,6 +93,8 @@ public class CubertScreen : MonoBehaviour, ITickable
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = nest.localPosition;
             _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+
+            currentSpot = nest;
 
             foodButton.SetActive(true);
 
@@ -96,11 +117,14 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Litter box");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Potty")
         {
+            timeInSpot = 0f;
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = litterBox.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
             
+            currentSpot = litterBox;
+
             return true;
         }
         
@@ -112,46 +136,17 @@ public class CubertScreen : MonoBehaviour, ITickable
         Debug.Log("Bed");
         if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Tired")
         {
+            timeInSpot = 0f;
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bed.localPosition;
             _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
             
+            currentSpot = bed;
+
             return true;
         }
         
-        return false;
-    }
-
-    public bool PlaceCubertInBathtub(GameObject _cubert)
-    {
-        Debug.Log("Bathtub");
-        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Dirty")
-        {
-            _cubert.GetComponent<BoxCollider2D>().enabled = true;
-            _cubert.transform.SetParent(transform);
-            _cubert.transform.localPosition = bathtub.localPosition;
-            _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
-            
-            return true;
-        }
-        
-        return false;
-    }
-
-    public bool PlaceCubertInPlayArea(GameObject _cubert)
-    {
-        Debug.Log("Play area");
-        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Bored")
-        {
-            _cubert.GetComponent<BoxCollider2D>().enabled = true;
-            _cubert.transform.SetParent(transform);
-            _cubert.transform.localPosition = playArea.localPosition;
-            _cubert.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-
-            return true;
-        }
-
         return false;
     }
 

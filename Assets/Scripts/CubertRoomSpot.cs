@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum CubertSpots { Center, LitterBox, Bed, Bathtub, PlayArea, FrontDesk }
+public enum CubertSpots { Center, LitterBox, Bed, FrontDesk }
 
 public class CubertRoomSpot : MonoBehaviour
 {
@@ -53,16 +53,6 @@ public class CubertRoomSpot : MonoBehaviour
                     case CubertSpots.Bed:
                         {
                             holdCubert.DropCubertInBed();
-                            break;
-                        }
-                    case CubertSpots.Bathtub:
-                        {
-                            holdCubert.DropCubertInBathtub();
-                            break;
-                        }
-                    case CubertSpots.PlayArea:
-                        {
-                            holdCubert.DropCubertInPlayArea();
                             break;
                         }
                 }

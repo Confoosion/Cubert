@@ -9,6 +9,7 @@ public class ShowerHead : MonoBehaviour
 
     [SerializeField] private ParticleSystem waterParticles;
     private bool isHolding = false;
+    private Vector2 homePosition;
 
     private Rigidbody2D rb;
     private Camera cam;
@@ -17,6 +18,7 @@ public class ShowerHead : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        homePosition = transform.localPosition;
     }
 
     private void OnMouseDown()
@@ -29,13 +31,9 @@ public class ShowerHead : MonoBehaviour
     {
         isHolding = false;
         waterParticles.Stop();
+        transform.localPosition = homePosition;
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     void FixedUpdate()
     {
         if(!isHolding) return;
