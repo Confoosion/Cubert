@@ -24,6 +24,9 @@ public class BouncyBall : MonoBehaviour
     [SerializeField] private float value = 1f;
     [SerializeField] private float minSpeedRequirement = 0.5f;
 
+    [Header("Sound Settings")]
+    [SerializeField] private AudioClip bounceSound;
+
     private float hue;
 
     private SpriteRenderer spriteRenderer;
@@ -121,5 +124,12 @@ public class BouncyBall : MonoBehaviour
         Vector3 screenPos = Input.mousePosition;
         screenPos.z = -cam.transform.position.z;
         return cam.ScreenToWorldPoint(screenPos);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Transform parent = transform.parent;
+        if(ScreenManager.Singleton.CurrentScreen == parent)
+            SoundManager.Singleton.PlaySFX(bounceSound);
     }
 }
