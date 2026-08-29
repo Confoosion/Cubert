@@ -299,6 +299,10 @@ MonoBehaviour:
   foodParticle: {fileID: 5069234839064301390, guid: 8b1fd610cf57a314d828db13cf27e468, type: 3}
   foodTransform: {fileID: 9174077075797328246}
   foodButton: {fileID: 4433860277750751646}
+  eatingSounds:
+  - {fileID: 8300000, guid: 3b6ef45e5d361794aad0a05c863e1b57, type: 3}
+  - {fileID: 8300000, guid: 245c54866aa54fc45ab242f25899d8db, type: 3}
+  - {fileID: 8300000, guid: 96fd9170a7bd20f4db5928f83eb7aa48, type: 3}
   roomText: {fileID: 3920159831524612164}
   statusText: {fileID: 8807570512578435541}
   nest: {fileID: 5154761595648282645}

@@ -8,22 +8,8 @@ public class Fridge : MonoBehaviour
     [SerializeField] private float minAngle = -60f;
     [SerializeField] private float maxAngle = -120f;
 
-    private float foodCooldown = 0.5f;
-    private float timer;
-
-    void Update()
-    {
-        if(timer > 0f)
-        {
-            timer -= Time.deltaTime;
-        }
-    }
-
     public void SpawnFood()
     {
-        if(timer > 0f) return;
-
-        timer = foodCooldown;
         GameObject food = Instantiate(foodPrefab, transform.position, Quaternion.identity);
 
         Rigidbody2D rb = food.GetComponent<Rigidbody2D>();

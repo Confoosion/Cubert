@@ -9,12 +9,32 @@ AudioMixerGroupController:
   m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 755100597b01f6a4ba3c6de2be273f8d
-  m_Children: []
+  m_Children:
+  - {fileID: -1662641852556383484}
   m_Volume: 6f3483a15c85b6645a9feefe7bdd08ad
   m_Pitch: 833745df6544a814882e56a04f2d2ea2
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 3630077444794564101}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &-1662641852556383484
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fridge
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e8877d3e35010344a80b2ec4479c8c98
+  m_Children: []
+  m_Volume: 19fc8d87c1aceda4a9d5b4ced97c1d49
+  m_Pitch: 36841c87291184149a638a825e952bf8
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 1097357959853162977}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -58,6 +78,7 @@ AudioMixerController:
     - 727e8bccbde2d384c88da952e486ac41
     - 755100597b01f6a4ba3c6de2be273f8d
     - bf5f393290f102045acaf0b589bffbce
+    - e8877d3e35010344a80b2ec4479c8c98
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -107,6 +128,20 @@ AudioMixerSnapshotController:
   m_SnapshotID: aed8a553c3900fa41a07f99e6a7ec8d5
   m_FloatValues: {}
   m_TransitionOverrides: {}
+--- !u!244 &1097357959853162977
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 747ee732c419ce243adc9f6e04fc5de9
+  m_EffectName: Attenuation
+  m_MixLevel: afe412a32368e6a4fac46f4409a4d7d1
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &1330721709534775998
 AudioMixerGroupController:
   m_ObjectHideFlags: 0

@@ -9,8 +9,9 @@ public class CubertScreen : MonoBehaviour, ITickable
     [SerializeField] private GameObject foodPrefab;
     [SerializeField] private GameObject foodParticle;
     [SerializeField] private Transform foodTransform;
-
     [SerializeField] private GameObject foodButton;
+    [SerializeField] private AudioClip[] eatingSounds;
+
     [SerializeField] private TextMeshProUGUI roomText;
     [SerializeField] private TextMeshProUGUI statusText;
 
@@ -194,10 +195,20 @@ public class CubertScreen : MonoBehaviour, ITickable
         Destroy(food.gameObject);
         Instantiate(foodParticle, new Vector3(cubertTransform.position.x, cubertTransform.position.y, -2f), Quaternion.identity);
 
-        foodAte += 1;
+        if(transform == ScreenManager.Singleton.CurrentScreen)
+        {
+            SoundManager.Singleton.PlaySFX(eatingSounds[Random.Range(0, eatingSounds.Length - 1)]);
+        }
+
+        if(currentNeed.need.needName == "Hungry")
+        {
+            foodAte += 1;
+        }
+        
         if(foodAte >= cubert.FeedAmount)
         {
             SatisfyNeed();
+            foodAte = 0;
         }
     }
 
