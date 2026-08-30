@@ -10,7 +10,6 @@ public class CubertScreen : MonoBehaviour, ITickable
     [SerializeField] private GameObject foodParticle;
     [SerializeField] private Transform foodTransform;
     [SerializeField] private GameObject foodButton;
-    [SerializeField] private AudioClip[] eatingSounds;
 
     [SerializeField] private TextMeshProUGUI roomText;
     [SerializeField] private TextMeshProUGUI statusText;
@@ -23,12 +22,17 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     private Transform cubertTransform;
     private Cubert cubert;
+    public Cubert _Cubert => cubert;
 
     private float sleepTime = 7f;
     private float pottyTime = 4f;
     private float feedCooldown = 1f;
     private float timer = 0f;
     private float timeInSpot = 0f;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] eatingSounds;
+    [SerializeField] private AudioClip fartSound;
 
     [System.Serializable]
     public class Need
@@ -67,10 +71,16 @@ public class CubertScreen : MonoBehaviour, ITickable
 
                 if(timeInSpot >= sleepTime && currentSpot == bed)
                 {
+                    cubert.DisplaySleepParticles(false);
                     SatisfyNeed();
                 }
                 else if(timeInSpot >= pottyTime && currentSpot == litterBox)
                 {
+                    if(transform == ScreenManager.Singleton.CurrentScreen)
+                    {
+                        SoundManager.Singleton.PlaySFX(fartSound);
+                    }
+
                     SatisfyNeed();
                 }
             }
@@ -97,7 +107,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
             currentSpot = nest;
 
-            foodButton.SetActive(true);
+            DisplayFeedButton(true);
 
             if(cubert == null)
             {
@@ -145,10 +155,17 @@ public class CubertScreen : MonoBehaviour, ITickable
             
             currentSpot = bed;
 
+            _cubert.GetComponent<Cubert>()?.DisplaySleepParticles(true);
+
             return true;
         }
         
         return false;
+    }
+
+    public void DisplayFeedButton(bool show)
+    {
+        foodButton.SetActive(show);
     }
 
     public void FeedCubert()
@@ -259,6 +276,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     public void SatisfyNeed()
     {
+        timeInSpot = 0f;
         currentNeed = null;
         UpdateNeedStatus();
     }

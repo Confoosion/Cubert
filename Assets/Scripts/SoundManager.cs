@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioSource SFXSource;
     [SerializeField] private AudioSource fridgeSource;
+    [SerializeField] private AudioSource switchRoomSource;
 
     [Header("Music")]
     [SerializeField] private AudioSource musicSource;
@@ -37,6 +38,11 @@ public class SoundManager : MonoBehaviour
         {
             fridgeSource.Stop();
         }
+    }
+
+    public void PlaySwitchRoom(AudioClip audio)
+    {
+        switchRoomSource.PlayOneShot(audio);
     }
 
     public void PlayMusic(AudioClip audio)

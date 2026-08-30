@@ -29,6 +29,13 @@ public class HoldCubert : MonoBehaviour
         cubert.transform.SetParent(transform);
         cubert.transform.localPosition = holdPosition;
         cubert.transform.localScale = holdScale;
+
+        cubert.DisplaySleepParticles(false);
+
+        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?._Cubert == cubert)
+        {
+            ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?.DisplayFeedButton(false);
+        }
     }
 
     public void DropCubertInRoom()

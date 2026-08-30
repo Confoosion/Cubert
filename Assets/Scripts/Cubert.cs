@@ -7,6 +7,8 @@ public class Cubert : MonoBehaviour
     [SerializeField] private int hitAmount = 3;
     [SerializeField] private int showerAmount = 20;
 
+    [SerializeField] private GameObject sleepParticles;
+
     public CubertScreen.Need[] Needs => needs;
     public int FeedAmount => feedAmount;
     public int HitAmount => hitAmount;
@@ -67,6 +69,24 @@ public class Cubert : MonoBehaviour
             {
                 homeScreen.SatisfyNeed();
                 timesHitWithShower = 0;
+            }
+        }
+    }
+
+    public void DisplaySleepParticles(bool show)
+    {
+        if(show)
+        {
+            GameObject particles = Instantiate(sleepParticles, this.transform);
+            particles.transform.localPosition = new Vector3(0f, 0.5f, -0.25f);
+        }
+        else
+        {
+            ParticleSystem particles = GetComponentInChildren<ParticleSystem>();
+            if(particles != null)
+            {
+                particles.Stop();
+                Destroy(particles.gameObject);
             }
         }
     }

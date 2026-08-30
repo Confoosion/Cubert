@@ -4,10 +4,14 @@ public class ShowerHead : MonoBehaviour
 {
     [Header("Drag Settings")]
     [SerializeField] private float followSpeed = 20f;
+    [SerializeField] private ParticleSystem waterParticles;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip showerSound;
 
     private Vector2 previousPosition;
 
-    [SerializeField] private ParticleSystem waterParticles;
     private bool isHolding = false;
     private Vector2 homePosition;
 
@@ -19,12 +23,16 @@ public class ShowerHead : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         homePosition = transform.localPosition;
+
+        audioSource.clip = showerSound;
+        audioSource.loop = true;
     }
 
     private void OnMouseDown()
     {
         isHolding = true;
         waterParticles.Play();
+        audioSource.Play();
     }
 
     private void OnMouseUp()
@@ -32,6 +40,7 @@ public class ShowerHead : MonoBehaviour
         isHolding = false;
         waterParticles.Stop();
         transform.localPosition = homePosition;
+        audioSource.Stop();
     }
     
     void FixedUpdate()

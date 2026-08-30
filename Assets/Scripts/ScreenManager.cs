@@ -20,6 +20,9 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private GameObject leftButton;
     [SerializeField] private GameObject rightButton;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip switchRoomAudio;
+
     private Transform currentScreen;
     public Transform CurrentScreen => currentScreen;
     private int currentScreenIndex = 0;
@@ -47,6 +50,7 @@ public class ScreenManager : MonoBehaviour
         if(index < 0) index = 0;
 
         currentScreenIndex = index;
+        SoundManager.Singleton.PlaySwitchRoom(switchRoomAudio);
         SetScreen(screens[index]);
     }
 
@@ -56,6 +60,7 @@ public class ScreenManager : MonoBehaviour
         if(index >= screens.Count) index = screens.Count - 1;
 
         currentScreenIndex = index;
+        SoundManager.Singleton.PlaySwitchRoom(switchRoomAudio);
         SetScreen(screens[index]);
     }
 
