@@ -2924,10 +2924,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   npcSkin: {fileID: 212438944}
   npcShirt: {fileID: 957380877}
-  npcsToday:
-  - {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
+  npcsToday: []
   npc: {fileID: 212438946}
   cubertHolder: {fileID: 717377487}
+  NPCEnterSound: {fileID: 8300000, guid: 12fee0e56a233ee47b5ec951ab318e8f, type: 3}
 --- !u!114 &1052014040
 MonoBehaviour:
   m_ObjectHideFlags: 0

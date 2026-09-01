@@ -121,6 +121,8 @@ public class CubertScreen : MonoBehaviour, ITickable
                 cubert = _cubert.GetComponent<Cubert>();
                 cubert.SetHome(this);
                 needs = cubert.Needs;
+
+                DaycareScreen.Singleton.GetNextNPC();
             }
 
             return true;

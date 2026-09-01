@@ -18,10 +18,15 @@ public class DaycareScreen : MonoBehaviour
 
     [SerializeField] private Transform cubertHolder;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip NPCEnterSound;
+
     void Start()
     {
         TimeManager.Singleton.FreezeTime(true);
-        
+        npcQueue.Clear();
+        npcsToday.Clear();
+
         for(int i = 0; i < Random.Range(1, 6); i++)
         {
             NPCSO newNPC = NPCManager.Singleton.GetRandomNPC();
@@ -30,20 +35,7 @@ public class DaycareScreen : MonoBehaviour
         }
 
         // if(npcsToday.Count < 1) return;
-        currentNPC = npcQueue.Dequeue();
-        
-        npcSkin.color = currentNPC.skinColor;
-        npcShirt.color = currentNPC.shirtColor;
-        npc.SetData(currentNPC);
-        npc.NPCEnter();
-    }
-
-    void Update()
-    {
-        // if(npc.Interacted)
-        // {
-        //     npc.StartIntroDialogue();
-        // }
+        GetNextNPC();
     }
 
     public void SpawnCubert()
@@ -53,10 +45,24 @@ public class DaycareScreen : MonoBehaviour
         ScreenManager.Singleton.AddCubert(npc.Data.cubert);
     }
 
+    public void GetNextNPC()
+    {
+        if(npcQueue.Count > 0)
+        {
+            currentNPC = npcQueue.Dequeue();
+
+            npcSkin.color = currentNPC.skinColor;
+            npcShirt.color = currentNPC.shirtColor;
+            npc.SetData(currentNPC);
+            NPCEnter();
+        }
+    }
+
     public void NPCEnter()
     {
         npc.SetInteracted(false);
         npc.NPCEnter();
+        SoundManager.Singleton?.PlaySFX(NPCEnterSound);
     }
 
     public void NPCLeave()
