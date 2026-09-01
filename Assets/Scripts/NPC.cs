@@ -17,17 +17,29 @@ public class NPC : MonoBehaviour
 
     [SerializeField] private Animator npcAnimator;
 
-    public void StartIntroDialogue(Dialogue dialogue)
+    private void DisplayDialogue()
+    {
+        if(NPCManager.Singleton.IsNewNPC(_data))
+        {
+            StartIntroDialogue();
+        }
+        else
+        {
+            StartPickUpDialogue();
+        }
+    }
+
+    public void StartIntroDialogue()
     {
         dialogue.StartDialogue(_data.npcName, _data.introDialogue);
     }
 
-    public void StartPickUpDialogue(Dialogue dialogue)
+    public void StartPickUpDialogue()
     {
         dialogue.StartDialogue(_data.npcName, _data.pickUpDialogue);
     }
 
-    public void StartCubertDialogue(Dialogue dialogue)
+    public void StartCubertDialogue()
     {
         dialogue.StartDialogue(_data.npcName, _data.cubertDialogue);
     }
@@ -37,7 +49,10 @@ public class NPC : MonoBehaviour
         AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
 
         if(!interacted && !dialogue.IsDialogueOpen && animInfo.normalizedTime >= 1.0f)
+        {
             interacted = true;
+            DisplayDialogue();
+        }
         else if(dialogue.IsDialogueOpen)
             dialogue.DisplayNextSentence();
     }

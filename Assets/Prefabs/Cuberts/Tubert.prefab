@@ -140,6 +140,7 @@ MonoBehaviour:
   eyeCenter: {fileID: 8774067055429708737}
   xRadius: 0.1
   yRadius: 0.2
+  inverseEyes: 0
 --- !u!1 &3046195685179859516
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +582,8 @@ MonoBehaviour:
     needChance: 0.2
   feedAmount: 3
   hitAmount: 3
+  showerAmount: 20
+  sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,3 +633,4 @@ MonoBehaviour:
   eyeCenter: {fileID: 3973108724289125869}
   xRadius: 0.1
   yRadius: 0.2
+  inverseEyes: 0

@@ -49,6 +49,7 @@ MonoBehaviour:
   eyeCenter: {fileID: 8774067055429708737}
   xRadius: 0.2
   yRadius: 0.2
+  inverseEyes: 0
 --- !u!1 &973326405963028431
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,3 +479,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
   needs: []
   feedAmount: 3
+  hitAmount: 3
+  showerAmount: 20
+  sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}

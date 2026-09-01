@@ -583,7 +583,7 @@ MonoBehaviour:
   feedAmount: 3
   hitAmount: 3
   showerAmount: 20
-  sleepParticles: {fileID: 0}
+  sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0

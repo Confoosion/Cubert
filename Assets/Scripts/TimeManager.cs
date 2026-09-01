@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public interface ITickable
 {
@@ -9,13 +11,20 @@ public interface ITickable
 
 public class TimeManager : MonoBehaviour
 {
-    private static TimeManager Singleton;
+    public static TimeManager Singleton;
     private readonly List<ITickable> tickables = new List<ITickable>();
     private readonly List<ITickable> pendingAdds = new List<ITickable>();
     private readonly List<ITickable> pendingRemoves = new List<ITickable>();
 
     private float tickInterval = 5f;
     private float timer = 0f;
+
+    [SerializeField] private TextMeshProUGUI timeText;
+    private int hours;
+    private int minutes;
+    private bool isAM = true;
+
+    [SerializeField] private bool timeFrozen = false;
 
     void Awake() { if(Singleton == null) Singleton = this; }
 
@@ -24,6 +33,8 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
+        if(timeFrozen) return;
+
         if(pendingAdds.Count > 0)
         {
             tickables.AddRange(pendingAdds);
@@ -43,8 +54,14 @@ public class TimeManager : MonoBehaviour
             {
                 tickables[i].Tick(dt);
             }
+            Debug.Log("Tick");
         }
 
         timer += Time.deltaTime;
+    }
+
+    public void FreezeTime(bool freeze)
+    {
+        timeFrozen = freeze;
     }
 }

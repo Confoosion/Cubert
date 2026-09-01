@@ -49,6 +49,7 @@ MonoBehaviour:
   eyeCenter: {fileID: 8774067055429708737}
   xRadius: 0.225
   yRadius: 0.2
+  inverseEyes: 0
 --- !u!1 &3046195685179859516
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,3 +541,4 @@ MonoBehaviour:
   eyeCenter: {fileID: 3973108724289125869}
   xRadius: 0.225
   yRadius: 0.2
+  inverseEyes: 0

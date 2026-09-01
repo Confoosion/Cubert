@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   pupil: {fileID: 4546095913385466550}
   eyeCenter: {fileID: 8774067055429708737}
-  radius: 0.1
   xRadius: 0.2
   yRadius: 0.7
+  inverseEyes: 0
 --- !u!1 &3046195685179859516
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77423623d7c52b44b47722de72aa504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
+  needs: []
+  feedAmount: 3
+  hitAmount: 3
+  showerAmount: 20
+  sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EyeLook
   pupil: {fileID: 8997365364637785779}
   eyeCenter: {fileID: 3973108724289125869}
-  radius: 0.1
   xRadius: 0.2
   yRadius: 0.7
+  inverseEyes: 0

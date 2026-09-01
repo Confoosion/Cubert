@@ -41,9 +41,15 @@ public class CubertScreen : MonoBehaviour, ITickable
         public float needChance;
     }
 
+    [SerializeField] private Need currentNeed;
     [SerializeField] private Need[] needs;
-    private Need currentNeed;
+    private Queue<Need> needQueue = new Queue<Need>();
     public Need CurrentNeed => currentNeed;
+    
+    private int minNeeds = 1;
+    private int maxNeeds = 3;
+    public int MinNeeds => minNeeds;
+    public int MaxNeeds => maxNeeds;
 
     private int foodAte = 0;
 
@@ -63,7 +69,7 @@ public class CubertScreen : MonoBehaviour, ITickable
             timer -= Time.deltaTime;
         }
 
-        if(currentNeed != null)
+        if(currentNeed.need != null)
         {
             if(currentNeed.need.needName == "Tired" || currentNeed.need.needName == "Potty")
             {
@@ -91,7 +97,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     {
         if(currentNeed == null && cubert != null)
         {
-            currentNeed = GetRandomNeed();
+            currentNeed = needQueue.Dequeue();
             UpdateNeedStatus();
         }
     }
@@ -230,6 +236,11 @@ public class CubertScreen : MonoBehaviour, ITickable
     }
 
     // NEEDS
+    public void QueueNeed()
+    {
+        needQueue.Enqueue(GetRandomNeed());
+    }
+
     private Need GetRandomNeed()
     {
         float totalProbability = 0f;

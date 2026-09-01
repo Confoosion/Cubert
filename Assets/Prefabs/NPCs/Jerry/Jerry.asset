@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0423738f8e188064787dda3c695c9d0c, type: 3}
   m_Name: Jerry
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
-  npcName: 
-  skinColor: {r: 0, g: 0, b: 0, a: 0}
-  shirtColor: {r: 0, g: 0, b: 0, a: 0}
-  cubert: {fileID: 0}
+  npcName: Jerry
+  skinColor: {r: 0.990566, g: 0.8729153, b: 0.5747152, a: 1}
+  shirtColor: {r: 0.14698015, g: 0.509434, b: 0.026432898, a: 1}
+  cubert: {fileID: 5765617993210803279, guid: 06cdc9d2a2d6920448a48bd4af2e769f, type: 3}
   introDialogue: {fileID: 0}
   pickUpDialogue: {fileID: 0}
   cubertDialogue: {fileID: 0}

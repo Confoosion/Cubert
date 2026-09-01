@@ -11,28 +11,39 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private SpriteRenderer npcShirt;
 
     [SerializeField] private List<NPCSO> npcsToday = new List<NPCSO>();
+    private Queue<NPCSO> npcQueue = new Queue<NPCSO>();
+    private NPCSO currentNPC;
 
-    [SerializeField] private Dialogue dialogue;
     [SerializeField] private NPC npc;
 
     [SerializeField] private Transform cubertHolder;
 
     void Start()
     {
-        if(npcsToday.Count < 1) return;
-        npcSkin.color = npcsToday[0].skinColor;
-        npcShirt.color = npcsToday[0].shirtColor;
-        npc.SetData(npcsToday[0]);
+        TimeManager.Singleton.FreezeTime(true);
+        
+        for(int i = 0; i < Random.Range(1, 6); i++)
+        {
+            NPCSO newNPC = NPCManager.Singleton.GetRandomNPC();
+            npcQueue.Enqueue(newNPC);
+            npcsToday.Add(newNPC);
+        }
+
+        // if(npcsToday.Count < 1) return;
+        currentNPC = npcQueue.Dequeue();
+        
+        npcSkin.color = currentNPC.skinColor;
+        npcShirt.color = currentNPC.shirtColor;
+        npc.SetData(currentNPC);
         npc.NPCEnter();
     }
 
     void Update()
     {
-        if(npc.Interacted)
-        {
-            npc.SetInteracted(false);
-            npc.StartIntroDialogue(dialogue);
-        }
+        // if(npc.Interacted)
+        // {
+        //     npc.StartIntroDialogue();
+        // }
     }
 
     public void SpawnCubert()
@@ -44,11 +55,27 @@ public class DaycareScreen : MonoBehaviour
 
     public void NPCEnter()
     {
+        npc.SetInteracted(false);
         npc.NPCEnter();
     }
 
     public void NPCLeave()
     {
         npc.NPCLeave();
+    }
+
+    public void StartMorning()
+    {
+        List<CubertScreen> cubertScreens = ScreenManager.Singleton.GetCubertScreens();
+
+        foreach(CubertScreen screen in cubertScreens)
+        {
+            for(int i = 0; i < Random.Range(screen.MinNeeds, screen.MaxNeeds + 1); i++)
+            {
+                screen.QueueNeed();
+            }
+        }
+
+        TimeManager.Singleton.FreezeTime(false);
     }
 }

@@ -50,7 +50,7 @@ public class ScreenManager : MonoBehaviour
         if(index < 0) index = 0;
 
         currentScreenIndex = index;
-        SoundManager.Singleton.PlaySwitchRoom(switchRoomAudio);
+        SoundManager.Singleton?.PlaySwitchRoom(switchRoomAudio);
         SetScreen(screens[index]);
     }
 
@@ -60,7 +60,7 @@ public class ScreenManager : MonoBehaviour
         if(index >= screens.Count) index = screens.Count - 1;
 
         currentScreenIndex = index;
-        SoundManager.Singleton.PlaySwitchRoom(switchRoomAudio);
+        SoundManager.Singleton?.PlaySwitchRoom(switchRoomAudio);
         SetScreen(screens[index]);
     }
 
@@ -112,5 +112,19 @@ public class ScreenManager : MonoBehaviour
         {
             screenMap.RemoveNeedRoom(index);
         }
+    }
+
+    public List<CubertScreen> GetCubertScreens()
+    {
+        List<CubertScreen> cubertScreens = new List<CubertScreen>();
+        foreach(Transform scrn in screens)
+        {
+            if(scrn.TryGetComponent(out CubertScreen cbScrn))
+            {
+                cubertScreens.Add(cbScrn);
+            }
+        }
+
+        return(cubertScreens);
     }
 }
