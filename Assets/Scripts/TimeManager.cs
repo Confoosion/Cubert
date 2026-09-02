@@ -20,10 +20,14 @@ public class TimeManager : MonoBehaviour
     private float timer = 0f;
 
     [SerializeField] private TextMeshProUGUI timeText;
+    private int START_HOURS = 9;
+    private int START_MINUTES = 0;
     private int hours;
-    private int minutes;
+    private float minutes;
     private bool isAM = true;
     public bool IsAM => isAM;
+
+    private float timeInterval;
 
     [SerializeField] private bool timeFrozen = false;
 
@@ -64,5 +68,56 @@ public class TimeManager : MonoBehaviour
     public void FreezeTime(bool freeze)
     {
         timeFrozen = freeze;
+    }
+
+    public void ResetTime()
+    {
+        isAM = true;
+        string mins = "";
+        mins += (START_MINUTES < 10) ? "0" + START_MINUTES.ToString() : START_MINUTES.ToString();
+
+        string ampm = isAM ? " AM" : " PM";
+
+        timeText.SetText(START_HOURS.ToString() + ":" + mins + ampm);
+
+        hours = START_HOURS;
+        minutes = (float)START_MINUTES;
+    }
+
+    public void UpdateTime()
+    {
+        string mins = "";
+        mins += (int)minutes < 10 ? "0" + ((int)minutes).ToString() : ((int)minutes).ToString();
+
+        string ampm = isAM ? " AM" : " PM";
+
+        timeText.SetText(hours.ToString() + ":" + mins + ampm);
+    }
+
+    public void MoveTimeForward()
+    {
+        minutes += timeInterval;
+        
+        int hoursToAdd = (int)minutes / 60;
+        minutes -= 60f * hoursToAdd;
+        hours += hoursToAdd;
+
+        if(hours > 12)
+        {
+            hours = 1;
+            isAM = false;
+        }
+        else if(hours > 11)
+        {
+            isAM = false;
+        }
+
+
+        UpdateTime();
+    }
+
+    public void CalculateTimeInterval(int totalNeeds)
+    {
+        timeInterval = 480f / (float)totalNeeds;
     }
 }

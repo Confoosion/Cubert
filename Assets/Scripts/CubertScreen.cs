@@ -84,7 +84,7 @@ public class CubertScreen : MonoBehaviour, ITickable
                 {
                     if(transform == ScreenManager.Singleton.CurrentScreen)
                     {
-                        SoundManager.Singleton.PlaySFX(fartSound);
+                        SoundManager.Singleton?.PlaySFX(fartSound);
                     }
 
                     SatisfyNeed();
@@ -293,5 +293,6 @@ public class CubertScreen : MonoBehaviour, ITickable
         timeInSpot = 0f;
         currentNeed = null;
         UpdateNeedStatus();
+        TimeManager.Singleton?.MoveTimeForward();
     }
 }

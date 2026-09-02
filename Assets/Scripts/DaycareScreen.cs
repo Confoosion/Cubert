@@ -23,18 +23,18 @@ public class DaycareScreen : MonoBehaviour
 
     void Start()
     {
+        TimeManager.Singleton.ResetTime();
         TimeManager.Singleton.FreezeTime(true);
         npcQueue.Clear();
         npcsToday.Clear();
 
-        for(int i = 0; i < Random.Range(1, 6); i++)
+        for(int i = 0; i < Random.Range(1, 4); i++)
         {
             NPCSO newNPC = NPCManager.Singleton.GetRandomNPC();
             npcQueue.Enqueue(newNPC);
             npcsToday.Add(newNPC);
         }
 
-        // if(npcsToday.Count < 1) return;
         GetNextNPC();
     }
 
@@ -78,15 +78,18 @@ public class DaycareScreen : MonoBehaviour
     {
         Debug.Log("Morning Starting!");
         List<CubertScreen> cubertScreens = ScreenManager.Singleton.GetCubertScreens();
+        int needs = 0;
 
         foreach(CubertScreen screen in cubertScreens)
         {
             for(int i = 0; i < Random.Range(screen.MinNeeds, screen.MaxNeeds + 1); i++)
             {
                 screen.QueueNeed();
+                needs++;
             }
         }
 
+        TimeManager.Singleton.CalculateTimeInterval(needs);
         TimeManager.Singleton.FreezeTime(false);
     }
 }
