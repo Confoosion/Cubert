@@ -6,13 +6,19 @@ using TMPro;
 
 public class CubertScreen : MonoBehaviour, ITickable
 {
+    [Header("Food")]
     [SerializeField] private GameObject foodPrefab;
     [SerializeField] private GameObject foodParticle;
     [SerializeField] private Transform foodTransform;
     [SerializeField] private GameObject foodButton;
 
+    [Header("Room Identity")]
     [SerializeField] private TextMeshProUGUI roomText;
     [SerializeField] private TextMeshProUGUI statusText;
+
+    [Header("Lights")]
+    [SerializeField] private Image darkness;
+    private bool lightsOn = true;
 
     [Header("Cubert Room Spots")]
     [SerializeField] private Transform nest;
@@ -58,6 +64,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     void Start()
     {
+        lightsOn = true;
         roomText.SetText(gameObject.name + "'s Room");
         statusText.SetText("");
     }
@@ -235,6 +242,24 @@ public class CubertScreen : MonoBehaviour, ITickable
         {
             SatisfyNeed();
             foodAte = 0;
+        }
+    }
+
+    public void ToggleLightSwitch()
+    {
+        lightsOn = !lightsOn;
+        darkness.enabled = !lightsOn;
+
+        if(cubert != null)
+        {
+            if(!lightsOn)
+            {
+                cubert.HideCubert();
+            }
+            else
+            {
+                cubert.ShowCubert();
+            }
         }
     }
 

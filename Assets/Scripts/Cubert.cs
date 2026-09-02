@@ -43,7 +43,7 @@ public class Cubert : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         BouncyBall ball = collision.gameObject.GetComponent<BouncyBall>();
-        if(ball != null && homeScreen.CurrentNeed?.need.needName == "Bored")
+        if(ball != null && homeScreen?.CurrentNeed?.need?.needName == "Bored")
         {
             if(!ball.IsDragging)
             {
@@ -89,5 +89,15 @@ public class Cubert : MonoBehaviour
                 Destroy(particles.gameObject);
             }
         }
+    }
+
+    public void HideCubert()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void ShowCubert()
+    {
+        gameObject.SetActive(true);
     }
 }
