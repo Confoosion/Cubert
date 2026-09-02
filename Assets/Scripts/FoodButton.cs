@@ -69,7 +69,7 @@ public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
         isClicked = true;
 
-        SoundManager.Singleton.PlayFridgeAmbience(true, vendingSound);
+        SoundManager.Singleton?.PlayFridgeAmbience(true, vendingSound);
     }
 
     private void ButtonLetGo()
@@ -79,6 +79,6 @@ public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
         isClicked = false;
 
-        SoundManager.Singleton.PlayFridgeAmbience(false);
+        SoundManager.Singleton?.PlayFridgeAmbience(false);
     }
 }

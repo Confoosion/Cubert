@@ -69,7 +69,7 @@ public class CubertScreen : MonoBehaviour, ITickable
             timer -= Time.deltaTime;
         }
 
-        if(currentNeed.need != null)
+        if(currentNeed?.need != null)
         {
             if(currentNeed.need.needName == "Tired" || currentNeed.need.needName == "Potty")
             {
@@ -95,9 +95,10 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     public void Tick(float deltaTime)
     {
-        if(currentNeed == null && cubert != null)
+        if(currentNeed?.need == null && cubert != null && needQueue.Count > 0)
         {
             currentNeed = needQueue.Dequeue();
+            Debug.Log(currentNeed.need);
             UpdateNeedStatus();
         }
     }
@@ -222,7 +223,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
         if(transform == ScreenManager.Singleton.CurrentScreen)
         {
-            SoundManager.Singleton.PlaySFX(eatingSounds[Random.Range(0, eatingSounds.Length - 1)]);
+            SoundManager.Singleton?.PlaySFX(eatingSounds[Random.Range(0, eatingSounds.Length - 1)]);
         }
 
         if(currentNeed.need.needName == "Hungry")

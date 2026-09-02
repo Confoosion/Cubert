@@ -19,7 +19,6 @@ public class NPCManager : MonoBehaviour
     {
         if(npcsVisited.Contains(npc) || npcsFinished.Contains(npc)) return;
 
-        npcList.Remove(npc);
         npcsVisited.Add(npc);
     }
 
@@ -33,12 +32,14 @@ public class NPCManager : MonoBehaviour
 
     public NPCSO GetRandomNPC()
     {
-        return(npcList[Random.Range(0, npcList.Count)]);
+        NPCSO random = npcList[Random.Range(0, npcList.Count)];
+        npcList.Remove(random);
+        return(random);
     }
 
     public bool IsNewNPC(NPCSO npc)
     {
-        return(npcList.Contains(npc));
+        return(!npcsVisited.Contains(npc));
     }
 
     // public bool IsVisitedNPC(NPCSO npc)

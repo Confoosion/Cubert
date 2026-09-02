@@ -22,6 +22,7 @@ public class NPC : MonoBehaviour
         if(NPCManager.Singleton.IsNewNPC(_data))
         {
             StartIntroDialogue();
+            NPCManager.Singleton.AddVisitor(_data);
         }
         else
         {

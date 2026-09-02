@@ -23,6 +23,7 @@ public class TimeManager : MonoBehaviour
     private int hours;
     private int minutes;
     private bool isAM = true;
+    public bool IsAM => isAM;
 
     [SerializeField] private bool timeFrozen = false;
 

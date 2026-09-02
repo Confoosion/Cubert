@@ -56,6 +56,10 @@ public class DaycareScreen : MonoBehaviour
             npc.SetData(currentNPC);
             NPCEnter();
         }
+        else if(TimeManager.Singleton.IsAM)
+        {
+            StartMorning();
+        }
     }
 
     public void NPCEnter()
@@ -72,6 +76,7 @@ public class DaycareScreen : MonoBehaviour
 
     public void StartMorning()
     {
+        Debug.Log("Morning Starting!");
         List<CubertScreen> cubertScreens = ScreenManager.Singleton.GetCubertScreens();
 
         foreach(CubertScreen screen in cubertScreens)

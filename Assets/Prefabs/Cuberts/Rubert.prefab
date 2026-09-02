@@ -432,7 +432,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77423623d7c52b44b47722de72aa504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
-  needs: []
+  needs:
+  - need: {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
+    needChance: 0.2
+  - need: {fileID: 11400000, guid: 04264c10f6c55c9498bdc04cbe42809d, type: 2}
+    needChance: 0.2
+  - need: {fileID: 11400000, guid: b2309262bfd9028488e3ba8fd3120e49, type: 2}
+    needChance: 0.2
+  - need: {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}
+    needChance: 0.2
+  - need: {fileID: 11400000, guid: 0ab03603dec40464683b3e9ffd088a51, type: 2}
+    needChance: 0.2
   feedAmount: 3
   hitAmount: 3
   showerAmount: 20
