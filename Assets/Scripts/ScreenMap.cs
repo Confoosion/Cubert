@@ -12,8 +12,10 @@ public class ScreenMap : MonoBehaviour
     [SerializeField] private Color chillRoomColor;
     [SerializeField] private Color selectedRoomColor;
     [SerializeField] private Color needRoomColor;
+    [SerializeField] private Color npcInRoomColor;
 
-    [SerializeField] private int selectedRoom;
+    private int selectedRoom;
+    private bool npcInRoom = false;
 
 
     void Start()
@@ -41,7 +43,7 @@ public class ScreenMap : MonoBehaviour
     
     public void SetSelectedRoom(int roomNumber)
     {
-        Debug.Log("Selected " + roomNumber);
+        // Debug.Log("Selected " + roomNumber);
         int oldRoom = selectedRoom;
         selectedRoom = roomNumber;
         
@@ -51,7 +53,7 @@ public class ScreenMap : MonoBehaviour
 
     public void SetNeedRoom(int roomNumber)
     {
-        Debug.Log("Need " + roomNumber);
+        // Debug.Log("Need " + roomNumber);
 
         if(selectedRoom != roomNumber)
             map[roomNumber].color = needRoomColor;
@@ -65,6 +67,29 @@ public class ScreenMap : MonoBehaviour
         if(needMap.Contains(map[roomNumber]))
         {
             needMap.Remove(map[roomNumber]);
+
+            if(selectedRoom != roomNumber)
+            {
+                map[roomNumber].color = chillRoomColor;
+            }
+        }
+    }
+
+    public void AddNPCInRoom()
+    {
+        npcInRoom = true;
+        if(selectedRoom != 0)
+        {
+            map[0].color = npcInRoomColor;
+        }
+    }
+
+    public void RemoveNPCInRoom()
+    {
+        npcInRoom = false;
+        if(selectedRoom != 0)
+        {
+            map[0].color = chillRoomColor;
         }
     }
 
@@ -76,7 +101,13 @@ public class ScreenMap : MonoBehaviour
             return;
         }
 
-        Debug.Log("Chill " + roomNumber);
+        if(roomNumber == 0 && npcInRoom)
+        {
+            AddNPCInRoom();
+            return;
+        }
+
+        // Debug.Log("Chill " + roomNumber);
         map[roomNumber].color = chillRoomColor;
     }
 }

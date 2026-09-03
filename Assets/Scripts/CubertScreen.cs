@@ -293,7 +293,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     private void UpdateNeedStatus()
     {
-        if(currentNeed == null)
+        if(currentNeed == null || currentNeed.need == null)
         {
             statusText.text = "";
             ScreenManager.Singleton.RemoveNeedScreen(transform);

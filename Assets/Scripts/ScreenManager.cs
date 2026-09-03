@@ -87,7 +87,7 @@ public class ScreenManager : MonoBehaviour
     {
         GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);
         newCubert.name = cubert.name;
-        screens.Insert(1, newCubert.transform);
+        screens.Insert((screens.Count > 1) ? screens.Count - 1 : 1, newCubert.transform);
         screenMap.AddScreenToMap();
     }
 
@@ -111,6 +111,18 @@ public class ScreenManager : MonoBehaviour
         if(index != -1)
         {
             screenMap.RemoveNeedRoom(index);
+        }
+    }
+
+    public void SetNPCScreen(bool show)
+    {
+        if(show)
+        {
+            screenMap.AddNPCInRoom();
+        }
+        else
+        {
+            screenMap.RemoveNPCInRoom();
         }
     }
 

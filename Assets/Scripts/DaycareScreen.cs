@@ -67,11 +67,13 @@ public class DaycareScreen : MonoBehaviour
         npc.SetInteracted(false);
         npc.NPCEnter();
         SoundManager.Singleton?.PlaySFX(NPCEnterSound);
+        ScreenManager.Singleton.SetNPCScreen(true);
     }
 
     public void NPCLeave()
     {
         npc.NPCLeave();
+        ScreenManager.Singleton.SetNPCScreen(false);
     }
 
     public void StartMorning()

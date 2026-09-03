@@ -2866,7 +2866,7 @@ MonoBehaviour:
   chillRoomColor: {r: 1, g: 1, b: 1, a: 1}
   selectedRoomColor: {r: 1, g: 0.22798398, b: 0, a: 1}
   needRoomColor: {r: 0.96397984, g: 0.9716981, b: 0.068752214, a: 1}
-  selectedRoom: 0
+  npcInRoomColor: {r: 0.2696244, g: 0.7830189, b: 0.2696244, a: 1}
 --- !u!1 &1052014037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2927,7 +2927,7 @@ MonoBehaviour:
   npcsToday: []
   npc: {fileID: 212438946}
   cubertHolder: {fileID: 717377487}
-  NPCEnterSound: {fileID: 8300000, guid: 12fee0e56a233ee47b5ec951ab318e8f, type: 3}
+  NPCEnterSound: {fileID: 8300000, guid: 413675f65b9b0a3448231c7691c8d8ba, type: 3}
 --- !u!114 &1052014040
 MonoBehaviour:
   m_ObjectHideFlags: 0
