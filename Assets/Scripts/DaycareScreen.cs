@@ -10,7 +10,9 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private SpriteRenderer npcSkin;
     [SerializeField] private SpriteRenderer npcShirt;
 
-    [SerializeField] private List<NPCSO> npcsToday = new List<NPCSO>();
+    [SerializeField] private List<NPCSO> npcsInMorning = new List<NPCSO>();
+    [SerializeField] private List<NPCSO> npcsInEvening = new List<NPCSO>();
+
     private Queue<NPCSO> npcQueue = new Queue<NPCSO>();
     private NPCSO currentNPC;
 
@@ -26,13 +28,17 @@ public class DaycareScreen : MonoBehaviour
         TimeManager.Singleton.ResetTime();
         TimeManager.Singleton.FreezeTime(true);
         npcQueue.Clear();
-        npcsToday.Clear();
+        npcsInMorning.Clear();
 
         for(int i = 0; i < Random.Range(1, 4); i++)
         {
             NPCSO newNPC = NPCManager.Singleton.GetRandomNPC();
             npcQueue.Enqueue(newNPC);
-            npcsToday.Add(newNPC);
+            npcsInMorning.Add(newNPC);
+            if(newNPC.pickupSameDay)
+            {
+                npcsInEvening.Add(newNPC);
+            }
         }
 
         GetNextNPC();

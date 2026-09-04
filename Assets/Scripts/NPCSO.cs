@@ -9,6 +9,9 @@ public class NPCSO : ScriptableObject
     public Color shirtColor;
 
     public GameObject cubert;
+    
+    public bool pickupSameDay = false;
+    public int pickupDay = 0;
 
     public DialogueSO introDialogue;
     public DialogueSO pickUpDialogue;

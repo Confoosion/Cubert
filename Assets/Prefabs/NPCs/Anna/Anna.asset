@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Anna
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Anna
-  skinColor: {r: 0.990566, g: 0.88671315, b: 0.5186454, a: 1}
-  shirtColor: {r: 0.53266287, g: 0.8490566, b: 0.78372943, a: 1}
+  skinColor: {r: 1, g: 0.95579517, b: 0.8066038, a: 1}
+  shirtColor: {r: 0.7924528, g: 0, b: 0.037616674, a: 1}
   cubert: {fileID: 5765617993210803279, guid: 38f1a5da11c188d49ba7ff85f6a8292f, type: 3}
-  introDialogue: {fileID: 0}
-  pickUpDialogue: {fileID: 0}
-  cubertDialogue: {fileID: 0}
+  pickupSameDay: 1
+  pickupDay: 0
+  introDialogue: {fileID: 11400000, guid: 3af61b5897045504d8bf4dab9bae70d3, type: 2}
+  pickUpDialogue: {fileID: 11400000, guid: e93699239fa7a414db3c0cc7f82dbbab, type: 2}
+  cubertDialogue: {fileID: 11400000, guid: a85ca1c1b1d4b4f4791d78f4a515b270, type: 2}
