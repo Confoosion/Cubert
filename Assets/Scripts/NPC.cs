@@ -1,6 +1,9 @@
 using UnityEngine;
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
@@ -17,6 +20,17 @@ public class NPC : MonoBehaviour
 
     [SerializeField] private Animator npcAnimator;
 
+    private NPCSO.NPCDialogue GetCurrentDayDialogue()
+    {
+        if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
+        {
+            var entry = _data.npcDialogue.FirstOrDefault(d => d.day == currentDay);
+            return entry;
+        }
+
+        return null;
+    }
+
     private void DisplayDialogue()
     {
         if(NPCManager.Singleton.IsNewNPC(_data))
@@ -32,17 +46,20 @@ public class NPC : MonoBehaviour
 
     public void StartIntroDialogue()
     {
-        dialogue.StartDialogue(_data.npcName, _data.introDialogue);
+        var todaysDialogue = GetCurrentDayDialogue();
+        dialogue.StartDialogue(_data.npcName, todaysDialogue?.introDialogue);
     }
 
     public void StartPickUpDialogue()
     {
-        dialogue.StartDialogue(_data.npcName, _data.pickUpDialogue);
+        var todaysDialogue = GetCurrentDayDialogue();
+        dialogue.StartDialogue(_data.npcName, todaysDialogue?.pickUpDialogue);
     }
 
     public void StartCubertDialogue()
     {
-        dialogue.StartDialogue(_data.npcName, _data.cubertDialogue);
+        var todaysDialogue = GetCurrentDayDialogue();
+        dialogue.StartDialogue(_data.npcName, todaysDialogue?.cubertDialogue);
     }
 
     void OnMouseDown()

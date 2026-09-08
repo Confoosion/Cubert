@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Cubert : MonoBehaviour
 {
-    [SerializeField] private CubertScreen.Need[] needs;
+    [SerializeField] private CubertNeedsSO cubertNeeds;
     [SerializeField] private int feedAmount = 3;
     [SerializeField] private int hitAmount = 3;
     [SerializeField] private int showerAmount = 20;
 
     [SerializeField] private GameObject sleepParticles;
 
-    public CubertScreen.Need[] Needs => needs;
+    public CubertNeedsSO CubertNeeds => cubertNeeds;
     public int FeedAmount => feedAmount;
     public int HitAmount => hitAmount;
     public int ShowerAmount => showerAmount;
@@ -22,6 +22,8 @@ public class Cubert : MonoBehaviour
 
     private HoldCubert holdCubert;
     private CubertScreen homeScreen;
+
+    private int needsCompleted = 0;
 
 
     void Start()
@@ -43,7 +45,7 @@ public class Cubert : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         BouncyBall ball = collision.gameObject.GetComponent<BouncyBall>();
-        if(ball != null && homeScreen?.CurrentNeed?.need?.needName == "Bored")
+        if(ball != null && homeScreen?.CurrentNeed?.needName == "Bored")
         {
             if(!ball.IsDragging)
             {
@@ -61,7 +63,7 @@ public class Cubert : MonoBehaviour
 
     void OnParticleCollision(GameObject particle)
     {
-        if(homeScreen.CurrentNeed?.need.needName == "Dirty")
+        if(homeScreen.CurrentNeed?.needName == "Dirty")
         {
             timesHitWithShower++;
 

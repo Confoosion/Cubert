@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 965908137278877476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.175, y: 0.069, z: 0}
+  m_LocalPosition: {x: -0.175, y: 0.151, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   pupil: {fileID: 4546095913385466550}
   eyeCenter: {fileID: 8774067055429708737}
-  xRadius: 0.225
-  yRadius: 0.2
+  xRadius: 0.1
+  yRadius: 0.1
   inverseEyes: 0
 --- !u!1 &3046195685179859516
 GameObject:
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a5621968a4e9fd047a2fffcb366a9278, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40d9cdbf1c7e8de4d8b6ab3021de86e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 3353202878016831181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.173, z: 0}
   m_LocalScale: {x: 0.1925, y: 0.1925, z: 0.1925}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -220,9 +220,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 9ec72d0b403a236489751407e1cc0917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f55a26136873da044872ab85750b889f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -313,7 +313,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a5621968a4e9fd047a2fffcb366a9278, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40d9cdbf1c7e8de4d8b6ab3021de86e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: -8735857784653412221}
   - component: {fileID: 3119972181629399162}
   m_Layer: 0
-  m_Name: Cubert
+  m_Name: Aubert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,7 +410,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9960785, g: 0.97647065, b: 0.87843144, a: 1}
+  m_Color: {r: 1, g: 0.9237421, b: 0.5424528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -477,17 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77423623d7c52b44b47722de72aa504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
-  needs:
-  - need: {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
-    needChance: 0.2
-  - need: {fileID: 11400000, guid: 04264c10f6c55c9498bdc04cbe42809d, type: 2}
-    needChance: 0.2
-  - need: {fileID: 11400000, guid: b2309262bfd9028488e3ba8fd3120e49, type: 2}
-    needChance: 0.2
-  - need: {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}
-    needChance: 0.2
-  - need: {fileID: 11400000, guid: 0ab03603dec40464683b3e9ffd088a51, type: 2}
-    needChance: 0.2
+  cubertNeeds: {fileID: 11400000, guid: 99517f40b6298fd49a7013083e743f5e, type: 2}
   feedAmount: 3
   hitAmount: 3
   showerAmount: 20
@@ -518,7 +508,7 @@ Transform:
   m_GameObject: {fileID: 7676113761510381703}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.175, y: 0.069, z: 0}
+  m_LocalPosition: {x: 0.175, y: 0.151, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -539,6 +529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EyeLook
   pupil: {fileID: 8997365364637785779}
   eyeCenter: {fileID: 3973108724289125869}
-  xRadius: 0.225
-  yRadius: 0.2
+  xRadius: 0.1
+  yRadius: 0.1
   inverseEyes: 0

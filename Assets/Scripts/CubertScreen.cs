@@ -1,7 +1,9 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CubertScreen : MonoBehaviour, ITickable
@@ -40,17 +42,10 @@ public class CubertScreen : MonoBehaviour, ITickable
     [SerializeField] private AudioClip[] eatingSounds;
     [SerializeField] private AudioClip fartSound;
 
-    [System.Serializable]
-    public class Need
-    {
-        public NeedsSO need;
-        public float needChance;
-    }
-
-    [SerializeField] private Need currentNeed;
-    [SerializeField] private Need[] needs;
-    private Queue<Need> needQueue = new Queue<Need>();
-    public Need CurrentNeed => currentNeed;
+    [SerializeField] private NeedsSO currentNeed;
+    [SerializeField] private NeedsSO[] needs;
+    private Queue<NeedsSO> needQueue = new Queue<NeedsSO>();
+    public NeedsSO CurrentNeed => currentNeed;
     
     private int minNeeds = 1;
     private int maxNeeds = 3;
@@ -76,9 +71,9 @@ public class CubertScreen : MonoBehaviour, ITickable
             timer -= Time.deltaTime;
         }
 
-        if(currentNeed?.need != null)
+        if(currentNeed != null)
         {
-            if(currentNeed.need.needName == "Tired" || currentNeed.need.needName == "Potty")
+            if(currentNeed.needName == "Tired" || currentNeed.needName == "Potty")
             {
                 timeInSpot += Time.deltaTime;
 
@@ -102,10 +97,10 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     public void Tick(float deltaTime)
     {
-        if(currentNeed?.need == null && cubert != null && needQueue.Count > 0)
+        if(currentNeed == null && cubert != null && needQueue.Count > 0)
         {
             currentNeed = needQueue.Dequeue();
-            Debug.Log(currentNeed.need);
+            Debug.Log(currentNeed);
             UpdateNeedStatus();
         }
     }
@@ -128,7 +123,7 @@ public class CubertScreen : MonoBehaviour, ITickable
                 cubertTransform = _cubert.transform;
                 cubert = _cubert.GetComponent<Cubert>();
                 cubert.SetHome(this);
-                needs = cubert.Needs;
+                // needs = cubert.Needs;
 
                 DaycareScreen.Singleton.GetNextNPC();
             }
@@ -142,7 +137,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     public bool PlaceCubertInLitterBox(GameObject _cubert)
     {
         Debug.Log("Litter box");
-        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Potty")
+        if(_cubert.name == gameObject.name && currentNeed?.needName == "Potty")
         {
             timeInSpot = 0f;
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
@@ -161,7 +156,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     public bool PlaceCubertInBed(GameObject _cubert)
     {
         Debug.Log("Bed");
-        if(_cubert.name == gameObject.name && currentNeed?.need.needName == "Tired")
+        if(_cubert.name == gameObject.name && currentNeed?.needName == "Tired")
         {
             timeInSpot = 0f;
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
@@ -230,10 +225,10 @@ public class CubertScreen : MonoBehaviour, ITickable
 
         if(transform == ScreenManager.Singleton.CurrentScreen)
         {
-            SoundManager.Singleton?.PlaySFX(eatingSounds[Random.Range(0, eatingSounds.Length - 1)]);
+            SoundManager.Singleton?.PlaySFX(eatingSounds[UnityEngine.Random.Range(0, eatingSounds.Length - 1)]);
         }
 
-        if(currentNeed.need.needName == "Hungry")
+        if(currentNeed.needName == "Hungry")
         {
             foodAte += 1;
         }
@@ -264,43 +259,34 @@ public class CubertScreen : MonoBehaviour, ITickable
     }
 
     // NEEDS
-    public void QueueNeed()
+    public void QueueNeeds()
     {
-        needQueue.Enqueue(GetRandomNeed());
-    }
-
-    private Need GetRandomNeed()
-    {
-        float totalProbability = 0f;
-        for(int i = 0; i < needs.Length; i++)
+        CubertNeedsSO cubertNeeds = cubert.CubertNeeds;
+        if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
         {
-            totalProbability += needs[i].needChance;
-        }
-        
-        float roll = Random.value * totalProbability;
-        float cumulative = 0f;
-        for(int i = 0; i < needs.Length; i++)
-        {
-            cumulative += needs[i].needChance;
-            if(roll <= cumulative)
+            foreach(var entry in cubertNeeds.cubertNeeds)
             {
-                return needs[i];
+                if(entry.day == currentDay)
+                {
+                    foreach(NeedsSO need in entry.needs)
+                    {
+                        needQueue.Enqueue(need);
+                    }
+                }
             }
         }
-
-        return(null);
     }
 
     private void UpdateNeedStatus()
     {
-        if(currentNeed == null || currentNeed.need == null)
+        if(currentNeed == null)
         {
             statusText.text = "";
             ScreenManager.Singleton.RemoveNeedScreen(transform);
             return;    
         }
 
-        switch(currentNeed.need.needName)
+        switch(currentNeed.needName)
         {
             case "Hungry":
                 {
@@ -310,7 +296,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         }
 
         ScreenManager.Singleton.SetNeedScreen(transform);
-        statusText.SetText(cubert.gameObject.name + " " + currentNeed.need.description);
+        statusText.SetText(cubert.gameObject.name + " " + currentNeed.description);
     }
 
     public void SatisfyNeed()

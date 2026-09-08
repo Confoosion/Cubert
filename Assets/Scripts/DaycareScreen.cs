@@ -27,18 +27,22 @@ public class DaycareScreen : MonoBehaviour
     {
         TimeManager.Singleton.ResetTime();
         TimeManager.Singleton.FreezeTime(true);
-        npcQueue.Clear();
-        npcsInMorning.Clear();
+        // npcQueue.Clear();
+        // npcsInMorning.Clear();
 
-        for(int i = 0; i < Random.Range(1, 4); i++)
+        // for(int i = 0; i < Random.Range(1, 4); i++)
+        // {
+        //     NPCSO newNPC = NPCManager.Singleton.GetRandomNPC();
+        //     npcQueue.Enqueue(newNPC);
+        //     npcsInMorning.Add(newNPC);
+        //     if(newNPC.pickupSameDay)
+        //     {
+        //         npcsInEvening.Add(newNPC);
+        //     }
+        // }
+        for(int i = 0; i < npcsInMorning.Count; i++)
         {
-            NPCSO newNPC = NPCManager.Singleton.GetRandomNPC();
-            npcQueue.Enqueue(newNPC);
-            npcsInMorning.Add(newNPC);
-            if(newNPC.pickupSameDay)
-            {
-                npcsInEvening.Add(newNPC);
-            }
+            npcQueue.Enqueue(npcsInMorning[i]);
         }
 
         GetNextNPC();
@@ -64,7 +68,7 @@ public class DaycareScreen : MonoBehaviour
         }
         else if(TimeManager.Singleton.IsAM)
         {
-            StartMorning();
+            StartDay();
         }
     }
 
@@ -82,22 +86,28 @@ public class DaycareScreen : MonoBehaviour
         ScreenManager.Singleton.SetNPCScreen(false);
     }
 
-    public void StartMorning()
+    public void StartDay()
     {
-        Debug.Log("Morning Starting!");
+        Debug.Log("Day Starting!");
         List<CubertScreen> cubertScreens = ScreenManager.Singleton.GetCubertScreens();
         int needs = 0;
 
         foreach(CubertScreen screen in cubertScreens)
         {
-            for(int i = 0; i < Random.Range(screen.MinNeeds, screen.MaxNeeds + 1); i++)
-            {
-                screen.QueueNeed();
-                needs++;
-            }
+            screen.QueueNeeds();
         }
 
         TimeManager.Singleton.CalculateTimeInterval(needs);
         TimeManager.Singleton.FreezeTime(false);
+    }
+
+    public void StartEvening()
+    {
+        Debug.Log("Evening Starting!");
+
+        for(int i = 0; i < npcsInEvening.Count; i++)
+        {
+            npcQueue.Enqueue(npcsInEvening[i]);
+        }
     }
 }

@@ -16,6 +16,8 @@ MonoBehaviour:
   skinColor: {r: 0.9433962, g: 0.9256157, b: 0.752047, a: 1}
   shirtColor: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
   cubert: {fileID: 5765617993210803279, guid: 604127690bd6bc244bda7f6a81815c1c, type: 3}
-  introDialogue: {fileID: 0}
-  pickUpDialogue: {fileID: 0}
-  cubertDialogue: {fileID: 0}
+  npcDialogue:
+  - day: 0
+    introDialogue: {fileID: 11400000, guid: c2a619d9b3ff6004fa16e0af77b70793, type: 2}
+    pickUpDialogue: {fileID: 11400000, guid: d58fbd408ffbcca4094c2be5966f71a1, type: 2}
+    cubertDialogue: {fileID: 11400000, guid: df2b353a308d69c42bea46b2f08cdd4b, type: 2}
