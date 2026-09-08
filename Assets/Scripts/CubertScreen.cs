@@ -123,7 +123,6 @@ public class CubertScreen : MonoBehaviour, ITickable
                 cubertTransform = _cubert.transform;
                 cubert = _cubert.GetComponent<Cubert>();
                 cubert.SetHome(this);
-                // needs = cubert.Needs;
 
                 DaycareScreen.Singleton.GetNextNPC();
             }
@@ -259,9 +258,11 @@ public class CubertScreen : MonoBehaviour, ITickable
     }
 
     // NEEDS
-    public void QueueNeeds()
+    public int QueueNeeds()
     {
         CubertNeedsSO cubertNeeds = cubert.CubertNeeds;
+        int needs = 0;
+
         if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
         {
             foreach(var entry in cubertNeeds.cubertNeeds)
@@ -271,10 +272,13 @@ public class CubertScreen : MonoBehaviour, ITickable
                     foreach(NeedsSO need in entry.needs)
                     {
                         needQueue.Enqueue(need);
+                        needs++;
                     }
                 }
             }
         }
+
+        return needs;
     }
 
     private void UpdateNeedStatus()
@@ -304,6 +308,6 @@ public class CubertScreen : MonoBehaviour, ITickable
         timeInSpot = 0f;
         currentNeed = null;
         UpdateNeedStatus();
-        TimeManager.Singleton?.MoveTimeForward();
+        DaycareScreen.Singleton.NeedSatisfied();
     }
 }

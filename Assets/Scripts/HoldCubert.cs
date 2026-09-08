@@ -36,29 +36,69 @@ public class HoldCubert : MonoBehaviour
         {
             ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?.DisplayFeedButton(false);
         }
+
+        SetSortingLayer("PickedUp");
+    }
+
+    private void SetSortingLayer(string sortingName)
+    {
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sr in renderers)
+        {
+            sr.sortingLayerName = sortingName;
+        }
     }
 
     public void DropCubertInRoom()
     {
+        SetSortingLayer("Default");
         if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubert(heldCubert.gameObject))
+        {
             heldCubert = null;
+        }
+        else
+        {
+            SetSortingLayer("PickedUp");
+        }
     }
 
     public void DropCubertInLitterBox()
     {
+        SetSortingLayer("Default");
         if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubertInLitterBox(heldCubert.gameObject))
+        {
             heldCubert = null;
+        }
+        else
+        {
+            SetSortingLayer("PickedUp");
+        }
     }
 
     public void DropCubertInBed()
     {
+        SetSortingLayer("Default");
         if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>().PlaceCubertInBed(heldCubert.gameObject))
+        {
             heldCubert = null;
+        }
+        else
+        {
+            SetSortingLayer("PickedUp");
+        }
     }
 
     public void DropCubertInDaycare()
     {
-        
+        SetSortingLayer("Default");
+        if(DaycareScreen.Singleton.PlaceCubertOnFrontDesk(heldCubert.gameObject))
+        {
+            heldCubert = null;
+        }
+        else
+        {
+            SetSortingLayer("PickedUp");
+        }
     }
 
     public void GrabBall(GameObject ball)

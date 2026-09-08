@@ -11,6 +11,7 @@ public class NPC : MonoBehaviour
 
     [SerializeField] private NPCSO _data;
     public NPCSO Data => _data;
+    [SerializeField] private Purpose _purpose;
     [SerializeField] private Sprite npcSprite;
     public Sprite GetSprite() { return npcSprite; }
 
@@ -33,10 +34,9 @@ public class NPC : MonoBehaviour
 
     private void DisplayDialogue()
     {
-        if(NPCManager.Singleton.IsNewNPC(_data))
+        if(_purpose is Purpose.DropOff)
         {
             StartIntroDialogue();
-            NPCManager.Singleton.AddVisitor(_data);
         }
         else
         {
@@ -75,9 +75,10 @@ public class NPC : MonoBehaviour
             dialogue.DisplayNextSentence();
     }
 
-    public void SetData(NPCSO data)
+    public void SetData(NPCSO data, Purpose purpose)
     {
         _data = data;
+        _purpose = purpose;
     }
 
     public void NPCEnter()

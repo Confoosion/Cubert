@@ -93,7 +93,19 @@ public class ScreenManager : MonoBehaviour
 
     public void RemoveCubert()
     {
-        
+        GameObject cbrt = DaycareScreen.Singleton.GetCubertOnFrontDesk();
+        foreach(Transform t in screens)
+        {
+            if(t.name == cbrt.name)
+            {
+                screenMap.RemoveScreenFromMap();
+                GameObject toRemove = t.gameObject;
+                screens.Remove(t);
+                Destroy(toRemove);
+                Destroy(cbrt);
+                break;
+            }
+        }
     }
 
     public void SetNeedScreen(Transform screen)

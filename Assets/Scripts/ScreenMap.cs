@@ -31,14 +31,18 @@ public class ScreenMap : MonoBehaviour
         map.Add(room.GetComponent<Image>());
     }
 
-    public void RemoveScreenFromMap(Image roomToRemove)
+    public void RemoveScreenFromMap()
     {
-        Image room = map.Find(r => r.GetComponent<Image>() == roomToRemove);
-        if(room != null)
-        {
-            map.Remove(room);
-            Destroy(room.gameObject);
-        }
+        Image roomToRemove = map[map.Count - 1];
+        map.Remove(roomToRemove);
+        Destroy(roomToRemove.gameObject);
+
+        // Image room = map.Find(r => r.GetComponent<Image>() == roomToRemove);
+        // if(room != null)
+        // {
+        //     map.Remove(room);
+        //     Destroy(room.gameObject);
+        // }
     }
     
     public void SetSelectedRoom(int roomNumber)

@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour
     private float tickInterval = 5f;
     private float timer = 0f;
 
-    [SerializeField] private TextMeshProUGUI timeText;
+    // [SerializeField] private TextMeshProUGUI timeText;
     private int START_HOURS = 9;
     private int START_MINUTES = 0;
     private int hours;
@@ -30,6 +30,9 @@ public class TimeManager : MonoBehaviour
     private float timeInterval;
 
     [SerializeField] private bool timeFrozen = false;
+
+    [SerializeField] private bool isMorning = true;
+    public bool IsMorning => isMorning;
 
     void Awake() { if(Singleton == null) Singleton = this; }
 
@@ -78,7 +81,7 @@ public class TimeManager : MonoBehaviour
 
         string ampm = isAM ? " AM" : " PM";
 
-        timeText.SetText(START_HOURS.ToString() + ":" + mins + ampm);
+        // timeText.SetText(START_HOURS.ToString() + ":" + mins + ampm);
 
         hours = START_HOURS;
         minutes = (float)START_MINUTES;
@@ -91,7 +94,7 @@ public class TimeManager : MonoBehaviour
 
         string ampm = isAM ? " AM" : " PM";
 
-        timeText.SetText(hours.ToString() + ":" + mins + ampm);
+        // timeText.SetText(hours.ToString() + ":" + mins + ampm);
     }
 
     public void MoveTimeForward()
@@ -119,5 +122,10 @@ public class TimeManager : MonoBehaviour
     public void CalculateTimeInterval(int totalNeeds)
     {
         timeInterval = 480f / (float)totalNeeds;
+    }
+
+    public void SetNight()
+    {
+        isMorning = false;
     }
 }

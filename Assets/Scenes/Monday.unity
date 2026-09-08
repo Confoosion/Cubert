@@ -971,6 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   dialogue: {fileID: 1662512812}
   _data: {fileID: 0}
+  _purpose: 0
   npcSprite: {fileID: 0}
   npcAnimator: {fileID: 212438948}
 --- !u!111 &212438947
@@ -1424,7 +1425,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 445318228}
-  - component: {fileID: 445318229}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -1452,20 +1452,6 @@ RectTransform:
   m_AnchoredPosition: {x: -365, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &445318229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445318227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09b6e01c3c0a69499ef7fb7ca25f3fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  timeText: {fileID: 1600425332}
-  timeFrozen: 0
 --- !u!1 &518527519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2097,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000e753541d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2167,6 +2153,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 717377487}
+  - component: {fileID: 717377488}
+  - component: {fileID: 717377489}
   m_Layer: 0
   m_Name: CubertLocation
   m_TagString: Untagged
@@ -2189,6 +2177,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1052014038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &717377488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717377486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab755f762f3d3af448c9afe0b5cf3ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CubertRoomSpot
+  cubertSpot: 3
+--- !u!61 &717377489
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717377486}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0
 --- !u!1 &719061923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,7 +2858,7 @@ Transform:
   m_GameObject: {fileID: 961136421}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.19611733, w: 0.98058045}
-  m_LocalPosition: {x: -3.18, y: -2.48, z: 0}
+  m_LocalPosition: {x: 1.66, y: -2.48, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3029,7 +3076,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1052014038}
   - component: {fileID: 1052014039}
-  - component: {fileID: 1052014040}
   m_Layer: 0
   m_Name: DAYCARE
   m_TagString: Untagged
@@ -3078,35 +3124,20 @@ MonoBehaviour:
   npcSkin: {fileID: 212438944}
   npcShirt: {fileID: 957380877}
   npcsInMorning:
-  - {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
-  - {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
-  - {fileID: 11400000, guid: 49b0ffd1b6e3ecc439533037d85bcd23, type: 2}
+  - npcSO: {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
+    purpose: 0
+  - npcSO: {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
+    purpose: 0
+  - npcSO: {fileID: 11400000, guid: 49b0ffd1b6e3ecc439533037d85bcd23, type: 2}
+    purpose: 0
   npcsInEvening:
-  - {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
-  - {fileID: 11400000, guid: 49b0ffd1b6e3ecc439533037d85bcd23, type: 2}
+  - npcSO: {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
+    purpose: 1
+  - npcSO: {fileID: 11400000, guid: 49b0ffd1b6e3ecc439533037d85bcd23, type: 2}
+    purpose: 1
   npc: {fileID: 212438946}
   cubertHolder: {fileID: 717377487}
   NPCEnterSound: {fileID: 8300000, guid: 413675f65b9b0a3448231c7691c8d8ba, type: 3}
---- !u!114 &1052014040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052014037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9152382236a5d874689504514883550c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  npcList:
-  - {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
-  - {fileID: 11400000, guid: b510883f079b97341b95f003bf13972d, type: 2}
-  - {fileID: 11400000, guid: caa61048e1a92c440bee89d6f0ded7cf, type: 2}
-  - {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
-  - {fileID: 11400000, guid: 1e85350fba1ab6a4f8b991dd2761f5fa, type: 2}
-  npcsVisited: []
-  npcsFinished: []
 --- !u!1 &1240737306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4952,6 +4983,7 @@ GameObject:
   - component: {fileID: 2053452461}
   - component: {fileID: 2053452460}
   - component: {fileID: 2053452464}
+  - component: {fileID: 2053452465}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5062,6 +5094,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   foodHolder: {fileID: 1527414824}
   foodAmountText: {fileID: 2068370525}
+--- !u!114 &2053452465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053452459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09b6e01c3c0a69499ef7fb7ca25f3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeManager
+  timeFrozen: 0
+  isMorning: 1
 --- !u!1 &2056386089
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,6 +93,11 @@ public class Dialogue : MonoBehaviour
         if(currentDialogueType is DialogueType.Intro or DialogueType.Cubert)
         {
             DaycareScreen.Singleton.NPCLeave();
+            
+            if(currentDialogueType is DialogueType.Cubert)
+            {
+                ScreenManager.Singleton.RemoveCubert();    
+            }
         }
     }
 
