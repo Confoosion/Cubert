@@ -55,6 +55,8 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     private int foodAte = 0;
 
+    private bool isEnhanced = false;
+
     private void OnEnable() => TimeManager.Register(this);
     private void OnDisable() => TimeManager.Unregister(this);
 
@@ -67,6 +69,12 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     void Update()
     {
+        if(isEnhanced && ScreenManager.Singleton.CurrentScreen == transform)
+        {
+            isEnhanced = false;
+            EnhancedScare();
+        }
+
         if(timer > 0f)
         {
             timer -= Time.deltaTime;
@@ -105,11 +113,21 @@ public class CubertScreen : MonoBehaviour, ITickable
             UpdateNeedStatus();
         }
 
-        if(cubert.name == "Mubert")
+        if(ScreenManager.Singleton.CurrentScreen != transform)
         {
-            if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
+            if(cubert.name == "Mubert")
             {
-                TurnLightsOff();
+                if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
+                {
+                    TurnLightsOff();
+                }
+            }
+            else if(cubert.name == "Cubert")
+            {
+                if(UnityEngine.Random.Range(0f, 1f) <= 0.25f)
+                {
+                    EnhanceCubert();
+                }
             }
         }
     }
@@ -119,7 +137,7 @@ public class CubertScreen : MonoBehaviour, ITickable
         _cubert.GetComponent<BoxCollider2D>().enabled = true;
         _cubert.transform.SetParent(transform);
         _cubert.transform.localPosition = nest.localPosition;
-        _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+        _cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
 
         currentSpot = nest;
 
@@ -348,5 +366,16 @@ public class CubertScreen : MonoBehaviour, ITickable
         currentNeed = null;
         UpdateNeedStatus();
         DaycareScreen.Singleton.NeedSatisfied();
+    }
+
+    private void EnhanceCubert()
+    {
+        isEnhanced = true;
+        cubertTransform.localScale = new Vector3(17f, 17f, 17f);
+    }
+
+    public void EnhancedScare()
+    {
+        Debug.Log("Enhanced Jumpscare SFX!");
     }
 }

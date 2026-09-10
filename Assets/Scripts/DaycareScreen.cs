@@ -23,8 +23,10 @@ public class DaycareScreen : MonoBehaviour
 
     private Queue<NPCPerson> npcQueue = new Queue<NPCPerson>();
     private NPCPerson currentNPC;
+    public NPCPerson CurrentNPC => currentNPC;
 
     [SerializeField] private NPC npc;
+    public NPC Npc => npc;
 
     [SerializeField] private Transform cubertHolder;
 

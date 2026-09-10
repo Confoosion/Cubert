@@ -24,6 +24,9 @@ public class HoldCubert : MonoBehaviour
     {
         if(heldCubert != null || heldBall != null) return;
 
+        if(ScreenManager.Singleton.CurrentScreen == DaycareScreen.Singleton.transform
+           && (DaycareScreen.Singleton.Npc.Interacted && DaycareScreen.Singleton.CurrentNPC != null)) return;
+
         heldCubert = cubert;
         cubert.GetComponent<BoxCollider2D>().enabled = false;
         cubert.transform.SetParent(transform);
