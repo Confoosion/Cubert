@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public enum Purpose { DropOff, PickUp }
 
@@ -157,6 +158,11 @@ public class DaycareScreen : MonoBehaviour
             npcQueue.Enqueue(npcsInEvening[i]);
         }
         GetNextNPC();
+
+        if(SceneManager.GetActiveScene().name == "Tuesday")
+        {
+            GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
+        }
     }
 
     public bool PlaceCubertOnFrontDesk(GameObject cubert)

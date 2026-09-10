@@ -11,6 +11,7 @@ public class ScreenManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private List<Transform> screens = new List<Transform>();
     [SerializeField] private ScreenMap screenMap;
+    public List<Transform> Screens => screens;
 
     [Header("Cuberts")]
     [SerializeField] private GameObject cubertScreenPrefab;
