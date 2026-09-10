@@ -41,6 +41,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     [Header("Sounds")]
     [SerializeField] private AudioClip[] eatingSounds;
     [SerializeField] private AudioClip fartSound;
+    [SerializeField] private AudioSource lightSwitchSource;
 
     [SerializeField] private NeedsSO currentNeed;
     [SerializeField] private NeedsSO[] needs;
@@ -102,6 +103,14 @@ public class CubertScreen : MonoBehaviour, ITickable
             currentNeed = needQueue.Dequeue();
             Debug.Log(currentNeed);
             UpdateNeedStatus();
+        }
+
+        if(cubert.name == "Mubert")
+        {
+            if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
+            {
+                TurnLightsOff();
+            }
         }
     }
 
@@ -271,6 +280,14 @@ public class CubertScreen : MonoBehaviour, ITickable
                 cubert.ShowCubert();
             }
         }
+
+        lightSwitchSource.Play();
+    }
+
+    public void TurnLightsOff()
+    {
+        if(!lightsOn) return;
+        ToggleLightSwitch();
     }
 
     // NEEDS
@@ -281,6 +298,12 @@ public class CubertScreen : MonoBehaviour, ITickable
 
         if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
         {
+            if(cubertNeeds == null)
+            {
+                Debug.LogWarning(cubert + " has no Needs variable assigned!");
+                return 0;
+            }
+
             foreach(var entry in cubertNeeds.cubertNeeds)
             {
                 if(entry.day == currentDay)

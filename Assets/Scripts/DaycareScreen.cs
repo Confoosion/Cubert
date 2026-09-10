@@ -81,7 +81,6 @@ public class DaycareScreen : MonoBehaviour
     {
         npc.NPCLeave();
         ScreenManager.Singleton.SetNPCScreen(false);
-        currentNPC = null;
 
         if(!TimeManager.Singleton.IsMorning)
         {
@@ -91,6 +90,8 @@ public class DaycareScreen : MonoBehaviour
         {
             StartCoroutine(SpawnMorningNPC());
         }
+
+        currentNPC = null;
     }
 
     IEnumerator SpawnMorningNPC()

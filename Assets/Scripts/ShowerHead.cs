@@ -6,6 +6,11 @@ public class ShowerHead : MonoBehaviour
     [SerializeField] private float followSpeed = 20f;
     [SerializeField] private ParticleSystem waterParticles;
 
+    [Header("Wire Line")]
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Transform wireTransform;
+    private Vector2 lineBasePos;
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip showerSound;
@@ -28,11 +33,18 @@ public class ShowerHead : MonoBehaviour
         audioSource.loop = true;
     }
 
+    void Start()
+    {
+        lineRenderer.positionCount = 2;
+        lineBasePos = lineRenderer.transform.localPosition;
+    }
+
     private void OnMouseDown()
     {
         isHolding = true;
         waterParticles.Play();
         audioSource.Play();
+        Cursor.visible = false;
     }
 
     private void OnMouseUp()
@@ -41,8 +53,18 @@ public class ShowerHead : MonoBehaviour
         waterParticles.Stop();
         transform.localPosition = homePosition;
         audioSource.Stop();
+        Cursor.visible = true;
     }
-    
+
+    // void Update()
+    // {
+    //     if(isHolding)
+    //     {
+    //         lineRenderer.SetPosition(0, lineBasePos);
+    //         lineRenderer.SetPosition(1, wireTransform.position);
+    //     }
+    // }
+
     void FixedUpdate()
     {
         if(!isHolding) return;

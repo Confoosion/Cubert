@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-6804803025877429711
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bdcf40e3b9d71684885138335ba59bd3
+  m_EffectName: Attenuation
+  m_MixLevel: 967350aefcda7f94a90fb30461258a4c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4029901389264486087
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -27,6 +41,7 @@ AudioMixerGroupController:
   - {fileID: -1662641852556383484}
   - {fileID: -1805971035051644297}
   - {fileID: -1659222280661278578}
+  - {fileID: -1111726084571929903}
   m_Volume: 6f3483a15c85b6645a9feefe7bdd08ad
   m_Pitch: 833745df6544a814882e56a04f2d2ea2
   m_Send: 00000000000000000000000000000000
@@ -93,6 +108,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &-1111726084571929903
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LightSwitch
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 678a82bc6e509504d879939fe293c239
+  m_Children: []
+  m_Volume: d7a4826b644c4ac45bf7fabdfde617eb
+  m_Pitch: bb796210845e7c7488e6d1bff93a9ad4
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -6804803025877429711}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-1006099233914862779
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -135,6 +169,7 @@ AudioMixerController:
     - e8877d3e35010344a80b2ec4479c8c98
     - 3de689420e79eec428200c4fb50f167e
     - 8ab1723e21da83a419dd91b8fdd1ddfa
+    - 678a82bc6e509504d879939fe293c239
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
