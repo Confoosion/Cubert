@@ -29,7 +29,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     private Transform currentSpot;
 
     private Transform cubertTransform;
-    [SerializeField] private Cubert cubert;
+    private Cubert cubert;
     public Cubert _Cubert => cubert;
 
     private float sleepTime = 7f;
@@ -42,6 +42,9 @@ public class CubertScreen : MonoBehaviour, ITickable
     [SerializeField] private AudioClip[] eatingSounds;
     [SerializeField] private AudioClip fartSound;
     [SerializeField] private AudioSource lightSwitchSource;
+
+    [Header("Misc")]
+    [SerializeField] private SpriteRenderer bedRenderer;
 
     [SerializeField] private NeedsSO currentNeed;
     [SerializeField] private NeedsSO[] needs;
@@ -132,6 +135,11 @@ public class CubertScreen : MonoBehaviour, ITickable
         }
     }
 
+    public void SetBedSprite(Sprite bed)
+    {
+        bedRenderer.sprite = bed;
+    }
+
     public void SetCubert(GameObject _cubert)
     {
         _cubert.GetComponent<BoxCollider2D>().enabled = true;
@@ -155,7 +163,7 @@ public class CubertScreen : MonoBehaviour, ITickable
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = nest.localPosition;
-            _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+            _cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
 
             currentSpot = nest;
 

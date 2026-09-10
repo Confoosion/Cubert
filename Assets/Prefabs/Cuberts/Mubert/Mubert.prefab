@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   cubertNeeds: {fileID: 11400000, guid: df02c3e283328e041965dc7dd722e231, type: 2}
+  preferredBed: {fileID: 21300000, guid: ac9981e49c0796145aa78aaeecb74d46, type: 3}
   feedAmount: 3
   hitAmount: 3
   showerAmount: 20

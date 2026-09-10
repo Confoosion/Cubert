@@ -538,13 +538,13 @@ MonoBehaviour:
   nest: {fileID: 5154761595648282645}
   litterBox: {fileID: 942197335267469156}
   bed: {fileID: 7265217338823174394}
-  cubert: {fileID: 0}
   eatingSounds:
   - {fileID: 8300000, guid: 3b6ef45e5d361794aad0a05c863e1b57, type: 3}
   - {fileID: 8300000, guid: 245c54866aa54fc45ab242f25899d8db, type: 3}
   - {fileID: 8300000, guid: 96fd9170a7bd20f4db5928f83eb7aa48, type: 3}
   fartSound: {fileID: 8300000, guid: 0e12065d3b342fa4d8aa278f2f8c28aa, type: 3}
   lightSwitchSource: {fileID: 5991295524048838202}
+  bedRenderer: {fileID: 1225274456209040458}
   currentNeed: {fileID: 0}
   needs: []
 --- !u!1 &2176227764573786321
@@ -6223,7 +6223,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.5, y: 1.5}
+  m_Size: {x: 4, y: 2}
   m_EdgeRadius: 0
 --- !u!212 &1225274456209040458
 SpriteRenderer:

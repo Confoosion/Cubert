@@ -16,4 +16,8 @@ MonoBehaviour:
   npcFrontSprite: {fileID: 21300000, guid: 659f851ffe4bf834b8d44059cefb3fd9, type: 3}
   npcBackSprite: {fileID: 21300000, guid: 7d645f6f81e3ea24c8e3201f77c4f233, type: 3}
   cubert: {fileID: 5765617993210803279, guid: 38f1a5da11c188d49ba7ff85f6a8292f, type: 3}
-  npcDialogue: []
+  npcDialogue:
+  - day: 2
+    introDialogue: {fileID: 11400000, guid: 3af61b5897045504d8bf4dab9bae70d3, type: 2}
+    pickUpDialogue: {fileID: 0}
+    cubertDialogue: {fileID: 0}

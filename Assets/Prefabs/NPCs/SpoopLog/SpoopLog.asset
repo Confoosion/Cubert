@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0423738f8e188064787dda3c695c9d0c, type: 3}
-  m_Name: TimothyO
+  m_Name: SpoopLog
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
-  npcName: Timothy
-  npcFrontSprite: {fileID: 21300000, guid: 94752b1635f4d324bb50d86c33d9164e, type: 3}
-  npcBackSprite: {fileID: 21300000, guid: ad05373755da84e4f9b3125953d77a1e, type: 3}
-  cubert: {fileID: 5765617993210803279, guid: 44f127204ff22dd47b047aad68f73740, type: 3}
+  npcName: Spoop Log
+  npcFrontSprite: {fileID: 0}
+  npcBackSprite: {fileID: 0}
+  cubert: {fileID: 0}
   npcDialogue:
   - day: 2
-    introDialogue: {fileID: 11400000, guid: 843151b0721ec2e4195575bd78f76aa3, type: 2}
+    introDialogue: {fileID: 11400000, guid: ef1e66b9a023ee7478079b3df671c986, type: 2}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}

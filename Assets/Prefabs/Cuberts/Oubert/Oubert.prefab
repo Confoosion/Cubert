@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 965908137278877476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.179, y: -0.038, z: 0}
+  m_LocalPosition: {x: -0.19, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -48,7 +48,7 @@ MonoBehaviour:
   pupil: {fileID: 4546095913385466550}
   eyeCenter: {fileID: 8774067055429708737}
   xRadius: 0.05
-  yRadius: 0.005
+  yRadius: 0.025
   inverseEyes: 0
 --- !u!1 &3046195685179859516
 GameObject:
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 49abe3330ac4a6044ac5434f048f3ab1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3724b2db951d2624daea7ed35ed9e85d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 3353202878016831181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.03, z: 0}
   m_LocalScale: {x: 0.1925, y: 0.1925, z: 0.1925}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -222,7 +222,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: ffa000c8cfda0c645bb4e13081535a4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 940c25e307de81344a72cabae1e334ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -313,7 +313,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 49abe3330ac4a6044ac5434f048f3ab1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3724b2db951d2624daea7ed35ed9e85d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: -8735857784653412221}
   - component: {fileID: 3119972181629399162}
   m_Layer: 0
-  m_Name: Xubert
+  m_Name: Oubert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4518135845187022705}
-  - {fileID: 137176292443686669}
+  - {fileID: 3351159922612169220}
   - {fileID: 8774067055429708737}
   - {fileID: 3973108724289125869}
   m_Father: {fileID: 0}
@@ -411,7 +411,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27450982, g: 0.38823533, b: 0.08235294, a: 1}
+  m_Color: {r: 0.18039216, g: 0.4039216, b: 0.8352942, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -478,12 +478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77423623d7c52b44b47722de72aa504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
-  cubertNeeds: {fileID: 0}
+  cubertNeeds: {fileID: 11400000, guid: b24a0ca80b690094cbaad5546a9e510b, type: 2}
+  preferredBed: {fileID: 21300000, guid: f0393dea1f8d7514f9658fd8d827ef56, type: 3}
   feedAmount: 3
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
---- !u!1 &7676113761510381703
+--- !u!1 &7439525668827412569
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,58 +492,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3973108724289125869}
-  - component: {fileID: 5139098511028863699}
-  m_Layer: 0
-  m_Name: RightEye
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3973108724289125869
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7676113761510381703}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.179, y: -0.038, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8997365364637785779}
-  m_Father: {fileID: 761800779217759851}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5139098511028863699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7676113761510381703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8dec9e9958ec649ac4de14c3d58bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EyeLook
-  pupil: {fileID: 8997365364637785779}
-  eyeCenter: {fileID: 3973108724289125869}
-  xRadius: 0.05
-  yRadius: 0.005
-  inverseEyes: 0
---- !u!1 &7829175741858179706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 137176292443686669}
-  - component: {fileID: 3225747252528466897}
+  - component: {fileID: 3351159922612169220}
+  - component: {fileID: 6338302294819430285}
   m_Layer: 0
   m_Name: Eyeballs
   m_TagString: Untagged
@@ -550,29 +501,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &137176292443686669
+--- !u!4 &3351159922612169220
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7829175741858179706}
+  m_GameObject: {fileID: 7439525668827412569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.003, z: 0}
+  m_LocalPosition: {x: 0, y: 0.107, z: 0}
   m_LocalScale: {x: 0.1925, y: 0.1925, z: 0.1925}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 761800779217759851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3225747252528466897
+--- !u!212 &6338302294819430285
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7829175741858179706}
+  m_GameObject: {fileID: 7439525668827412569}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -614,7 +565,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 583e02534386073439f176b84f58bf92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95c927911f67ffc44a391598859c3003, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -624,3 +575,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &7676113761510381703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3973108724289125869}
+  - component: {fileID: 5139098511028863699}
+  m_Layer: 0
+  m_Name: RightEye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3973108724289125869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676113761510381703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.19, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8997365364637785779}
+  m_Father: {fileID: 761800779217759851}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5139098511028863699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676113761510381703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8dec9e9958ec649ac4de14c3d58bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EyeLook
+  pupil: {fileID: 8997365364637785779}
+  eyeCenter: {fileID: 3973108724289125869}
+  xRadius: 0.05
+  yRadius: 0.025
+  inverseEyes: 0
