@@ -144,8 +144,13 @@ public class DaycareScreen : MonoBehaviour
             todaysNeeds += screen.QueueNeeds();
         }
 
-        TimeManager.Singleton.CalculateTimeInterval(todaysNeeds);
+        // TimeManager.Singleton.CalculateTimeInterval(todaysNeeds);
         TimeManager.Singleton.FreezeTime(false);
+    }
+
+    public void AddNeed()
+    {
+        todaysNeeds++;
     }
 
     public void StartEvening()

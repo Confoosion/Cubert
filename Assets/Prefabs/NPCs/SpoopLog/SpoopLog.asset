@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Spoop Log
   npcFrontSprite: {fileID: 0}
   npcBackSprite: {fileID: 0}
-  cubert: {fileID: 0}
+  cubert: {fileID: 5765617993210803279, guid: 6d140b711d6b5854faa68b891c80d086, type: 3}
   npcDialogue:
   - day: 2
     introDialogue: {fileID: 11400000, guid: ef1e66b9a023ee7478079b3df671c986, type: 2}

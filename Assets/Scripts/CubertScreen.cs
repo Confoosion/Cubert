@@ -47,8 +47,9 @@ public class CubertScreen : MonoBehaviour, ITickable
     [SerializeField] private SpriteRenderer bedRenderer;
 
     [SerializeField] private NeedsSO currentNeed;
-    [SerializeField] private NeedsSO[] needs;
-    private Queue<NeedsSO> needQueue = new Queue<NeedsSO>();
+    [SerializeField] private NeedsSO[] basicNeeds;
+    // private Queue<NeedsSO> needQueue = new Queue<NeedsSO>();
+    private LinkedList<NeedsSO> needList = new LinkedList<NeedsSO>();
     public NeedsSO CurrentNeed => currentNeed;
     
     private int minNeeds = 1;
@@ -109,10 +110,10 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     public void Tick(float deltaTime)
     {
-        if(currentNeed == null && cubert != null && needQueue.Count > 0)
+        if(currentNeed == null && cubert != null && needList.Count > 0)
         {
-            currentNeed = needQueue.Dequeue();
-            Debug.Log(currentNeed);
+            currentNeed = needList.First.Value;
+            // Debug.Log(currentNeed);
             UpdateNeedStatus();
         }
 
@@ -124,12 +125,25 @@ public class CubertScreen : MonoBehaviour, ITickable
                 {
                     TurnLightsOff();
                 }
+                if(UnityEngine.Random.Range(0f, 1f) <= 0.75f && currentNeed?.needName != "Dirty")
+                {
+                    ForceCubertInLitterBox();
+                    cubert.DisplaySleepParticles(true);
+                    ForceAddNeed(basicNeeds[1]);
+                }
             }
             else if(cubert.name == "Cubert" && !TimeManager.Singleton.IsNight)
             {
                 if(UnityEngine.Random.Range(0f, 1f) <= 0.25f)
                 {
                     EnhanceCubert();
+                }
+            }
+            else if(cubert.name == "Xubert" && !TimeManager.Singleton.IsNight)
+            {
+                if(UnityEngine.Random.Range(0f, 1f) <= 0.34f)
+                {
+                    TurnLightsOff();
                 }
             }
         }
@@ -181,7 +195,7 @@ public class CubertScreen : MonoBehaviour, ITickable
             GameObject dayFind = GameObject.Find("TuesdayStuff");
             if(cubert.gameObject.name == "Mubert" && dayFind != null && TimeManager.Singleton.IsNight)
             {
-                dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(false);
+                dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(true);
             }
 
             return true;
@@ -207,6 +221,17 @@ public class CubertScreen : MonoBehaviour, ITickable
         }
         
         return false;
+    }
+
+    public void ForceCubertInLitterBox()
+    {
+        timeInSpot = 0f;
+        cubert.transform.SetParent(transform);
+        cubert.transform.localPosition = litterBox.localPosition;
+        cubert.transform.localScale = new Vector3(3f, 3f, 3f);
+
+        currentSpot = litterBox;
+        DisplayFeedButton(false);
     }
 
     public bool PlaceCubertInBed(GameObject _cubert)
@@ -342,7 +367,7 @@ public class CubertScreen : MonoBehaviour, ITickable
                 {
                     foreach(NeedsSO need in entry.needs)
                     {
-                        needQueue.Enqueue(need);
+                        needList.AddLast(need);
                         needs++;
                     }
                 }
@@ -350,6 +375,14 @@ public class CubertScreen : MonoBehaviour, ITickable
         }
 
         return needs;
+    }
+
+    private void ForceAddNeed(NeedsSO need)
+    {
+        needList.AddFirst(need);
+        DaycareScreen.Singleton.AddNeed();
+        currentNeed = needList.First.Value;
+        UpdateNeedStatus();
     }
 
     private void UpdateNeedStatus()
@@ -376,6 +409,7 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     public void SatisfyNeed()
     {
+        needList.RemoveFirst();
         timeInSpot = 0f;
         currentNeed = null;
         UpdateNeedStatus();

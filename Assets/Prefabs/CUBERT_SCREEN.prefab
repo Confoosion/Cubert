@@ -546,7 +546,12 @@ MonoBehaviour:
   lightSwitchSource: {fileID: 5991295524048838202}
   bedRenderer: {fileID: 1225274456209040458}
   currentNeed: {fileID: 0}
-  needs: []
+  basicNeeds:
+  - {fileID: 11400000, guid: 04264c10f6c55c9498bdc04cbe42809d, type: 2}
+  - {fileID: 11400000, guid: b2309262bfd9028488e3ba8fd3120e49, type: 2}
+  - {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
+  - {fileID: 11400000, guid: 0ab03603dec40464683b3e9ffd088a51, type: 2}
+  - {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}
 --- !u!1 &2176227764573786321
 GameObject:
   m_ObjectHideFlags: 0
