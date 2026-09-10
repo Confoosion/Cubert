@@ -39,8 +39,27 @@ public class HoldCubert : MonoBehaviour
         {
             ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?.DisplayFeedButton(false);
         }
+        else if(TimeManager.Singleton.IsNight)
+        {
+            foreach(var screen in ScreenManager.Singleton.Screens)
+            {
+                CubertScreen cbrtScreen = screen.GetComponent<CubertScreen>();
+                if(cbrtScreen == null) continue;
+
+                if(cbrtScreen._Cubert == cubert)
+                {
+                    cbrtScreen.DisplayFeedButton(false);
+                }
+            }
+        }
 
         SetSortingLayer("PickedUp");
+
+        GameObject dayFind = GameObject.Find("TuesdayStuff");
+        if(cubert.gameObject.name == "Mubert" && dayFind != null)
+        {
+            dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(false);
+        }
     }
 
     private void SetSortingLayer(string sortingName)

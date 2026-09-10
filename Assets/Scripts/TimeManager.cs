@@ -33,6 +33,8 @@ public class TimeManager : MonoBehaviour
 
     [SerializeField] private bool isMorning = true;
     public bool IsMorning => isMorning;
+    [SerializeField] private bool isNight = false;
+    public bool IsNight => isNight;
 
     void Awake() { if(Singleton == null) Singleton = this; }
 
@@ -127,5 +129,6 @@ public class TimeManager : MonoBehaviour
     public void SetNight()
     {
         isMorning = false;
+        isNight = true;
     }
 }

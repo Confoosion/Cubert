@@ -3686,7 +3686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa14ca1877caf443aa440fe88245313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  mubertHiddenPosition: {x: -22, y: 0.83}
+  mubertPrefab: {fileID: 5765617993210803279, guid: 33185b08f49439b4d8060aa89fb91b2e, type: 3}
+  mubertHiddenPosition: {x: -4, y: 0.83}
+  mubertHiddenScale: {x: 1.75, y: 1.75, z: 1.75}
   hiddenMuberts: []
 --- !u!4 &1453273423
 Transform:

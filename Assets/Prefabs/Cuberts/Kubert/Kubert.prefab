@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   pupil: {fileID: 4546095913385466550}
   eyeCenter: {fileID: 8774067055429708737}
-  xRadius: 0.2
-  yRadius: 0.04
+  xRadius: 0.05
+  yRadius: 0.01
   inverseEyes: 0
 --- !u!1 &3046195685179859516
 GameObject:
@@ -529,6 +529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EyeLook
   pupil: {fileID: 8997365364637785779}
   eyeCenter: {fileID: 3973108724289125869}
-  xRadius: 0.2
-  yRadius: 0.04
+  xRadius: 0.05
+  yRadius: 0.01
   inverseEyes: 0

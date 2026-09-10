@@ -9,6 +9,31 @@ public class HiddenMubert : MonoBehaviour
         hidingInRoom = room;
     }
 
+    void OnMouseDown()
+    {
+        Cubert mubert = null;
+
+        foreach(var screen in ScreenManager.Singleton.Screens)
+        {
+            CubertScreen cbrtScreen = screen.GetComponent<CubertScreen>();
+            if(cbrtScreen == null) continue;
+
+            Cubert cubert = cbrtScreen._Cubert;
+
+            if(cubert.gameObject.name == "Mubert")
+            {
+                mubert = cubert;
+                break;
+            }
+        }
+
+        if(mubert != null)
+        {
+            HoldCubert.Singleton.GrabCubert(mubert);
+            GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().DisplayHiddenMuberts(false);
+        }
+    }
+
     void Update()
     {
         if(hidingInRoom == null)

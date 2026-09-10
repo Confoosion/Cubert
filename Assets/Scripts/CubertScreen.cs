@@ -115,14 +115,14 @@ public class CubertScreen : MonoBehaviour, ITickable
 
         if(ScreenManager.Singleton.CurrentScreen != transform)
         {
-            if(cubert.name == "Mubert")
+            if(cubert.name == "Mubert" && !TimeManager.Singleton.IsNight)
             {
                 if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
                 {
                     TurnLightsOff();
                 }
             }
-            else if(cubert.name == "Cubert")
+            else if(cubert.name == "Cubert" && !TimeManager.Singleton.IsNight)
             {
                 if(UnityEngine.Random.Range(0f, 1f) <= 0.25f)
                 {
@@ -168,6 +168,12 @@ public class CubertScreen : MonoBehaviour, ITickable
                 cubert.SetHome(this);
 
                 DaycareScreen.Singleton.GetNextNPC();
+            }
+
+            GameObject dayFind = GameObject.Find("TuesdayStuff");
+            if(cubert.gameObject.name == "Mubert" && dayFind != null && TimeManager.Singleton.IsNight)
+            {
+                dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(false);
             }
 
             return true;
@@ -370,6 +376,9 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     private void EnhanceCubert()
     {
+        currentSpot = null;
+        timeInSpot = 0f;
+        cubertTransform.localPosition = nest.localPosition;
         isEnhanced = true;
         cubertTransform.localScale = new Vector3(17f, 17f, 17f);
     }
