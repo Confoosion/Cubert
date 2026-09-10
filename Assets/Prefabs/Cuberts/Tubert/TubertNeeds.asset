@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5e4c87ee616fd47a8978a4b2e61735, type: 3}
+  m_Name: TubertNeeds
+  m_EditorClassIdentifier: Assembly-CSharp::CubertNeedsSO
+  cubertNeeds:
+  - day: 1
+    needs:
+    - {fileID: 11400000, guid: 04264c10f6c55c9498bdc04cbe42809d, type: 2}
+    - {fileID: 11400000, guid: b2309262bfd9028488e3ba8fd3120e49, type: 2}
+    - {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
+    - {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}

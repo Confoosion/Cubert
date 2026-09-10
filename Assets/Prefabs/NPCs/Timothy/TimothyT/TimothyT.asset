@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0423738f8e188064787dda3c695c9d0c, type: 3}
-  m_Name: Timothy
+  m_Name: TimothyT
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Timothy
-  skinColor: {r: 0.9622642, g: 0.925321, b: 0.76708794, a: 1}
-  shirtColor: {r: 0.383811, g: 0.59952533, b: 0.7075472, a: 1}
+  npcFrontSprite: {fileID: 21300000, guid: 94752b1635f4d324bb50d86c33d9164e, type: 3}
+  npcBackSprite: {fileID: 21300000, guid: ad05373755da84e4f9b3125953d77a1e, type: 3}
   cubert: {fileID: 5765617993210803279, guid: d40791c4ad9fb144596c197c6f959610, type: 3}
-  introDialogue: {fileID: 0}
-  pickUpDialogue: {fileID: 0}
-  cubertDialogue: {fileID: 0}
+  npcDialogue:
+  - day: 1
+    introDialogue: {fileID: 11400000, guid: 0358e01a88d606f4f8e0e5192b88167d, type: 2}
+    pickUpDialogue: {fileID: 11400000, guid: 27fa3e65e7636df4f8b23634383f8a5c, type: 2}
+    cubertDialogue: {fileID: 11400000, guid: e4d927e3abbf72340beb1681c4c9f3fd, type: 2}

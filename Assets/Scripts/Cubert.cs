@@ -23,9 +23,6 @@ public class Cubert : MonoBehaviour
     private HoldCubert holdCubert;
     private CubertScreen homeScreen;
 
-    private int needsCompleted = 0;
-
-
     void Start()
     {
         holdCubert = HoldCubert.Singleton;

@@ -29,7 +29,7 @@ public class CubertScreen : MonoBehaviour, ITickable
     private Transform currentSpot;
 
     private Transform cubertTransform;
-    private Cubert cubert;
+    [SerializeField] private Cubert cubert;
     public Cubert _Cubert => cubert;
 
     private float sleepTime = 7f;
@@ -103,6 +103,22 @@ public class CubertScreen : MonoBehaviour, ITickable
             Debug.Log(currentNeed);
             UpdateNeedStatus();
         }
+    }
+
+    public void SetCubert(GameObject _cubert)
+    {
+        _cubert.GetComponent<BoxCollider2D>().enabled = true;
+        _cubert.transform.SetParent(transform);
+        _cubert.transform.localPosition = nest.localPosition;
+        _cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+
+        currentSpot = nest;
+
+        DisplayFeedButton(true);
+
+        cubertTransform = _cubert.transform;
+        cubert = _cubert.GetComponent<Cubert>();
+        cubert.SetHome(this);
     }
 
     public bool PlaceCubert(GameObject _cubert)

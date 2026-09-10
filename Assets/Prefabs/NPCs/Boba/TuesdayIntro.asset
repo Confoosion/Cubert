@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
+  m_Name: TuesdayIntro
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  dialogueType: 0
+  sentences:
+  - Hello.
+  - Here is my Mubert.
+  - He is kind of stupid, so please take good care of him!
+  - Also, he likes to sleep on the litter box, so please move him away from it whenever
+    you see him doing it.
+  - "I\u2019m gonna be at my boyfriend\u2019s place, so I will be back on Friday.
+    Bye bye!"

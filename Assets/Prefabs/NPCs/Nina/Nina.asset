@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Nina
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Nina
-  skinColor: {r: 1, g: 0.87860245, b: 0.6556604, a: 1}
-  shirtColor: {r: 0.35493353, g: 0.2488875, b: 0.4433962, a: 1}
+  npcFrontSprite: {fileID: 21300000, guid: 793dfa67c3de1d945b4b93effb317a0a, type: 3}
+  npcBackSprite: {fileID: 21300000, guid: 03eb0bcc5eff07a45b9e0ab68f26f32e, type: 3}
   cubert: {fileID: 5765617993210803279, guid: 35ca8856d6872f14ba023ca33847b733, type: 3}
-  introDialogue: {fileID: 0}
-  pickUpDialogue: {fileID: 0}
-  cubertDialogue: {fileID: 0}
+  npcDialogue:
+  - day: 1
+    introDialogue: {fileID: 11400000, guid: 1311cd1bfdecaba47988acec711a8e42, type: 2}
+    pickUpDialogue: {fileID: 0}
+    cubertDialogue: {fileID: 0}

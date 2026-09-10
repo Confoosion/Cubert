@@ -12,8 +12,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private NPCSO _data;
     public NPCSO Data => _data;
     [SerializeField] private Purpose _purpose;
-    [SerializeField] private Sprite npcSprite;
-    public Sprite GetSprite() { return npcSprite; }
+    [SerializeField] private SpriteRenderer npcRenderer;
 
     private bool interacted;
     public bool Interacted => interacted;
@@ -84,10 +83,12 @@ public class NPC : MonoBehaviour
     public void NPCEnter()
     {
         npcAnimator.SetBool("Enter", true);
+        npcRenderer.sprite = _data.npcFrontSprite;
     }
 
     public void NPCLeave()
     {
         npcAnimator.SetBool("Enter", false);
+        npcRenderer.sprite = _data.npcBackSprite;
     }
 }

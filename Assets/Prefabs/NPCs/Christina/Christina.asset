@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Christina
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Christina
-  skinColor: {r: 0.8773585, g: 0.73112416, b: 0.48420256, a: 1}
-  shirtColor: {r: 0.8018868, g: 0.508108, b: 0.2004717, a: 1}
+  npcFrontSprite: {fileID: 21300000, guid: 41dcfee32115b2f42b1b7881471e1978, type: 3}
+  npcBackSprite: {fileID: 21300000, guid: 1e78fa03d05658a4d8eaf8ae9e32e6e7, type: 3}
   cubert: {fileID: 5765617993210803279, guid: b1dcaa427c5c03641bcc854bcb29a46b, type: 3}
   npcDialogue:
   - day: 0
@@ -23,5 +23,5 @@ MonoBehaviour:
     cubertDialogue: {fileID: 0}
   - day: 1
     introDialogue: {fileID: 0}
-    pickUpDialogue: {fileID: 0}
-    cubertDialogue: {fileID: 0}
+    pickUpDialogue: {fileID: 11400000, guid: 2d8005f2368d39f4996f5cc52c6e5517, type: 2}
+    cubertDialogue: {fileID: 11400000, guid: 92589dfb7c6499a49a448bdc2ee6b586, type: 2}

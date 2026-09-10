@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Kathy
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Kathy
-  skinColor: {r: 0.4245283, g: 0.31721634, b: 0.19424173, a: 1}
-  shirtColor: {r: 0.34861448, g: 0.15619439, b: 0.509434, a: 1}
+  npcFrontSprite: {fileID: 21300000, guid: 926b457f8cdf2434bb2d158bffde573d, type: 3}
+  npcBackSprite: {fileID: 21300000, guid: 4c6c90484dfbc724a974af142774892d, type: 3}
   cubert: {fileID: 5765617993210803279, guid: a8dc974d3e3e8b7478d7b24c881b644e, type: 3}
-  introDialogue: {fileID: 11400000, guid: 70603a566965e2e4785c504c98789727, type: 2}
-  pickUpDialogue: {fileID: 0}
-  cubertDialogue: {fileID: 0}
+  npcDialogue: []

@@ -5,8 +5,8 @@ public class NPCSO : ScriptableObject
 {
     public string npcName;
 
-    public Color skinColor;
-    public Color shirtColor;
+    public Sprite npcFrontSprite;
+    public Sprite npcBackSprite;
 
     public GameObject cubert;
 

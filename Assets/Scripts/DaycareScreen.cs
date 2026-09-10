@@ -9,9 +9,6 @@ public class DaycareScreen : MonoBehaviour
     public static DaycareScreen Singleton;
     void Awake() { if(Singleton == null) Singleton = this; }
 
-    [SerializeField] private SpriteRenderer npcSkin;
-    [SerializeField] private SpriteRenderer npcShirt;
-
     [System.Serializable]
     public class NPCPerson
     {
@@ -63,8 +60,6 @@ public class DaycareScreen : MonoBehaviour
         {
             currentNPC = npcQueue.Dequeue();
 
-            npcSkin.color = currentNPC.npcSO.skinColor;
-            npcShirt.color = currentNPC.npcSO.shirtColor;
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
             NPCEnter();
         }
@@ -86,16 +81,35 @@ public class DaycareScreen : MonoBehaviour
     {
         npc.NPCLeave();
         ScreenManager.Singleton.SetNPCScreen(false);
+        currentNPC = null;
 
         if(!TimeManager.Singleton.IsMorning)
         {
             StartCoroutine(SpawnNightNPC());
         }
+        else if(currentNPC.purpose is Purpose.PickUp)
+        {
+            StartCoroutine(SpawnMorningNPC());
+        }
+    }
+
+    IEnumerator SpawnMorningNPC()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        if(npcQueue.Count > 0)
+        {
+            GetNextNPC();
+        }
+        else
+        {
+            StartDay();
+        }
     }
 
     IEnumerator SpawnNightNPC()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         
         if(npcQueue.Count > 0)
         {
@@ -145,6 +159,15 @@ public class DaycareScreen : MonoBehaviour
     public bool PlaceCubertOnFrontDesk(GameObject cubert)
     {
         Debug.Log("Front Desk");
+        if(currentNPC == null)
+        {
+            cubert.GetComponent<BoxCollider2D>().enabled = true;
+            cubert.transform.SetParent(cubertHolder);
+            cubert.transform.localPosition = Vector3.zero;
+            cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+            return true;    
+        }
+
         if(currentNPC.npcSO.cubert.name == cubert.name)
         {
             cubert.GetComponent<BoxCollider2D>().enabled = true;

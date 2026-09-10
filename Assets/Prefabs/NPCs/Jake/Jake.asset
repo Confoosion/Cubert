@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Jake
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Jake
-  skinColor: {r: 0.8301887, g: 0.73428404, b: 0.5991456, a: 1}
-  shirtColor: {r: 0.20024922, g: 0.44098693, b: 0.9433962, a: 1}
+  npcFrontSprite: {fileID: 21300000, guid: 7c2f460391f11da44b772f2e2bd89c55, type: 3}
+  npcBackSprite: {fileID: 21300000, guid: 66df3ca3faaabc14bb258616f3deb369, type: 3}
   cubert: {fileID: 5765617993210803279, guid: 9b5a4ecf1c3c2bc4f95de4e86167f00b, type: 3}
   npcDialogue:
   - day: 0
@@ -22,6 +22,6 @@ MonoBehaviour:
     pickUpDialogue: {fileID: 11400000, guid: 1e5229c9fce512f47a4b32cb50abde82, type: 2}
     cubertDialogue: {fileID: 11400000, guid: 9c794ef4fc794c348ba67379c7bdc2f7, type: 2}
   - day: 1
-    introDialogue: {fileID: 0}
+    introDialogue: {fileID: 11400000, guid: 9398802d879a1aa44883bc7ae802a670, type: 2}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}

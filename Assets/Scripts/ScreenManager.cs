@@ -83,6 +83,18 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
+    public void SetCubert(GameObject cubert)
+    {
+        GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);
+        newCubert.name = cubert.name;
+        screens.Insert((screens.Count > 1) ? screens.Count - 1 : 1, newCubert.transform);
+        screenMap.AddScreenToMap();
+
+        GameObject spawned = Instantiate(cubert, Vector3.zero, Quaternion.identity);
+        spawned.name = cubert.name;
+        newCubert.GetComponent<CubertScreen>().SetCubert(spawned);
+    }
+
     public void AddCubert(GameObject cubert)
     {
         GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);
