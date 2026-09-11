@@ -477,6 +477,7 @@ public class CubertScreen : MonoBehaviour
                 }
             case Habit.MubertLeave:
                 {
+                    TurnLightsOff();
                     break;
                 }
             case Habit.HubertLeave:
