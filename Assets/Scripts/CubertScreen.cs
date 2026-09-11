@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class CubertScreen : MonoBehaviour, ITickable
+public class CubertScreen : MonoBehaviour
 {
     [Header("Food")]
     [SerializeField] private GameObject foodPrefab;
@@ -32,11 +32,15 @@ public class CubertScreen : MonoBehaviour, ITickable
     private Cubert cubert;
     public Cubert _Cubert => cubert;
 
+    // Time Variables
     private float sleepTime = 7f;
     private float pottyTime = 4f;
-    private float feedCooldown = 1f;
-    private float timer = 0f;
+    private float feedCooldown = 0.5f;
+    private float feedTimer = 0f;
     private float timeInSpot = 0f;
+    private float timeAway = 0f;
+    private float needCooldown = 1.5f;
+    private float needTimer = 0f;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip[] eatingSounds;
@@ -48,7 +52,6 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     [SerializeField] private NeedsSO currentNeed;
     [SerializeField] private NeedsSO[] basicNeeds;
-    // private Queue<NeedsSO> needQueue = new Queue<NeedsSO>();
     private LinkedList<NeedsSO> needList = new LinkedList<NeedsSO>();
     public NeedsSO CurrentNeed => currentNeed;
     
@@ -61,93 +64,137 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     private bool isEnhanced = false;
 
-    private void OnEnable() => TimeManager.Register(this);
-    private void OnDisable() => TimeManager.Unregister(this);
-
     void Start()
     {
         lightsOn = true;
         roomText.SetText(gameObject.name + "'s Room");
         statusText.SetText("");
+        needTimer = needCooldown;
     }
 
     void Update()
     {
+        TickTime();
+
         if(isEnhanced && ScreenManager.Singleton.CurrentScreen == transform)
         {
             isEnhanced = false;
             EnhancedScare();
         }
 
-        if(timer > 0f)
+        // if(currentNeed != null)
+        // {
+        //     if(currentNeed.needName == "Tired" || currentNeed.needName == "Potty")
+        //     {
+        //         timeInSpot += Time.deltaTime;
+
+        //         if(timeInSpot >= sleepTime && currentSpot == bed)
+        //         {
+        //             cubert.DisplaySleepParticles(false);
+        //             SatisfyNeed();
+        //         }
+        //         else if(timeInSpot >= pottyTime && currentSpot == litterBox)
+        //         {
+        //             if(transform == ScreenManager.Singleton.CurrentScreen)
+        //             {
+        //                 SoundManager.Singleton?.PlaySFX(fartSound);
+        //             }
+
+        //             SatisfyNeed();
+        //         }
+        //     }
+        // }
+    }
+
+    private void TickTime()
+    {
+        if(!TimeManager.Singleton.IsTimeFrozen) return;
+
+        if(feedTimer > 0f)
         {
-            timer -= Time.deltaTime;
+            feedTimer -= Time.deltaTime;
         }
 
+        if(currentNeed == null && cubert != null && needList.Count > 0)
+        {
+            if(needTimer >= 0f)
+            {
+                needTimer -= Time.deltaTime;
+            }
+            else
+            {
+                currentNeed = needList.First.Value;
+                needTimer = needCooldown;
+                UpdateNeedStatus();
+            }
+        }
+        
         if(currentNeed != null)
         {
-            if(currentNeed.needName == "Tired" || currentNeed.needName == "Potty")
+            if(currentNeed.needName == "Tired" && currentSpot == bed)
             {
                 timeInSpot += Time.deltaTime;
-
-                if(timeInSpot >= sleepTime && currentSpot == bed)
+                if(timeInSpot >= sleepTime)
                 {
                     cubert.DisplaySleepParticles(false);
                     SatisfyNeed();
                 }
-                else if(timeInSpot >= pottyTime && currentSpot == litterBox)
+            }
+            else if(currentNeed.needName == "Potty" && currentSpot == litterBox)
+            {
+                timeInSpot += Time.deltaTime;
+                if(timeInSpot >= pottyTime)
                 {
                     if(transform == ScreenManager.Singleton.CurrentScreen)
                     {
                         SoundManager.Singleton?.PlaySFX(fartSound);
                     }
-
                     SatisfyNeed();
                 }
             }
         }
     }
 
-    public void Tick(float deltaTime)
-    {
-        if(currentNeed == null && cubert != null && needList.Count > 0)
-        {
-            currentNeed = needList.First.Value;
-            // Debug.Log(currentNeed);
-            UpdateNeedStatus();
-        }
+    // public void Tick(float deltaTime)
+    // {
+    //     if(currentNeed == null && cubert != null && needList.Count > 0)
+    //     {
+    //         currentNeed = needList.First.Value;
+    //         // Debug.Log(currentNeed);
+    //         UpdateNeedStatus();
+    //     }
 
-        if(ScreenManager.Singleton.CurrentScreen != transform)
-        {
-            if(cubert.name == "Mubert" && !TimeManager.Singleton.IsNight)
-            {
-                if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
-                {
-                    TurnLightsOff();
-                }
-                if(UnityEngine.Random.Range(0f, 1f) <= 0.75f && currentNeed?.needName != "Dirty")
-                {
-                    ForceCubertInLitterBox();
-                    cubert.DisplaySleepParticles(true);
-                    ForceAddNeed(basicNeeds[1]);
-                }
-            }
-            else if(cubert.name == "Cubert" && !TimeManager.Singleton.IsNight)
-            {
-                if(UnityEngine.Random.Range(0f, 1f) <= 0.25f)
-                {
-                    EnhanceCubert();
-                }
-            }
-            else if(cubert.name == "Xubert" && !TimeManager.Singleton.IsNight)
-            {
-                if(UnityEngine.Random.Range(0f, 1f) <= 0.34f)
-                {
-                    TurnLightsOff();
-                }
-            }
-        }
-    }
+    //     if(ScreenManager.Singleton.CurrentScreen != transform)
+    //     {
+    //         if(cubert.name == "Mubert" && !TimeManager.Singleton.IsNight)
+    //         {
+    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
+    //             {
+    //                 TurnLightsOff();
+    //             }
+    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.75f && currentNeed?.needName != "Dirty")
+    //             {
+    //                 ForceCubertInLitterBox();
+    //                 cubert.DisplaySleepParticles(true);
+    //                 ForceAddNeed(basicNeeds[1]);
+    //             }
+    //         }
+    //         else if(cubert.name == "Cubert" && !TimeManager.Singleton.IsNight)
+    //         {
+    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.25f)
+    //             {
+    //                 EnhanceCubert();
+    //             }
+    //         }
+    //         else if(cubert.name == "Xubert" && !TimeManager.Singleton.IsNight)
+    //         {
+    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.34f)
+    //             {
+    //                 TurnLightsOff();
+    //             }
+    //         }
+    //     }
+    // }
 
     public void SetBedSprite(Sprite bed)
     {
@@ -262,10 +309,10 @@ public class CubertScreen : MonoBehaviour, ITickable
 
     public void FeedCubert()
     {
-        if(timer > 0f) return;
+        if(feedTimer > 0f) return;
         if(FoodManager.Singleton.FoodAmount < 1) return;
 
-        timer = feedCooldown;
+        feedTimer = feedCooldown;
         FoodManager.Singleton.UseFood(1);
 
         StartCoroutine(Feeding());

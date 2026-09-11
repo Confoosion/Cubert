@@ -30,7 +30,7 @@ public class TimeManager : MonoBehaviour
     private float timeInterval;
 
     [SerializeField] private bool timeFrozen = false;
-
+    public bool IsTimeFrozen => timeFrozen;
     [SerializeField] private bool isMorning = true;
     public bool IsMorning => isMorning;
     [SerializeField] private bool isNight = false;

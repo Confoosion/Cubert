@@ -10,5 +10,14 @@ public class CubertNeedsSO : ScriptableObject
         public NeedsSO[] needs;
     }
 
+    [System.Serializable]
+    public class CubertHabits
+    {
+        public Day day;
+        public float timeNeeded;
+        public Habit[] habits;
+    }
+
     public CubertNeeds[] cubertNeeds;
+    public CubertHabits[] cubertHabits;
 }
