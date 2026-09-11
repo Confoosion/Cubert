@@ -33,6 +33,12 @@ public class HoldCubert : MonoBehaviour
         cubert.transform.localPosition = holdPosition;
         cubert.transform.localScale = holdScale;
 
+        if(cubert.gameObject.name == "Mubert")
+        {
+            cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
+            cubert.UnlockEyes();
+        }
+
         cubert.DisplaySleepParticles(false);
 
         if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?._Cubert == cubert)

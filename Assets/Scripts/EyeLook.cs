@@ -12,6 +12,8 @@ public class EyeLook : MonoBehaviour
     private Camera cam;
 
     private Vector3 cubertScale;
+    private bool lookAtMouse = true;
+    private Transform lookAtTarget;
 
     private void Awake()
     {
@@ -30,7 +32,11 @@ public class EyeLook : MonoBehaviour
         float scaledXRadius = xRadius * cubertScale.x;
         float scaledYRadius = yRadius * cubertScale.y;
 
-        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = Vector3.zero;
+        if(lookAtMouse)
+            mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+        else if(lookAtTarget != null)
+            mouseWorldPos = lookAtTarget.position;
         mouseWorldPos.z = eyeCenter.position.z;
 
         Vector2 direction = (Vector2)mouseWorldPos - (Vector2)eyeCenter.position;
@@ -61,5 +67,16 @@ public class EyeLook : MonoBehaviour
             Gizmos.DrawLine(prevPoint, point);
             prevPoint = point;
         }
+    }
+
+    public void LookAtTarget(Transform target)
+    {
+        lookAtTarget = target;
+        lookAtMouse = false;
+    }
+
+    public void LookAtMouse()
+    {
+        lookAtMouse = true;
     }
 }

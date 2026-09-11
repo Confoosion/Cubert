@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 1014711263395244869}
   - component: {fileID: 3328310011826498386}
   - component: {fileID: 5120118826720189233}
+  - component: {fileID: 1174111831556339715}
   m_Layer: 0
   m_Name: Mubert
   m_TagString: Untagged
@@ -483,6 +484,23 @@ MonoBehaviour:
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
+  eyes:
+  - {fileID: 5425960068998378541}
+  - {fileID: 5139098511028863699}
+--- !u!114 &1174111831556339715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765617993210803279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df357b272922d54990b15c18d7a7853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  normalColor: {r: 0.9960785, g: 0.80392164, b: 0.93725497, a: 1}
+  hidingColor: {r: 0.6132076, g: 0.47147563, b: 0.5689163, a: 1}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0

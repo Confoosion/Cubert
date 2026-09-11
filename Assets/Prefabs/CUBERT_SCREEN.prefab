@@ -556,6 +556,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
   - {fileID: 11400000, guid: 0ab03603dec40464683b3e9ffd088a51, type: 2}
   - {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}
+  specialNeeds:
+  - {fileID: 11400000, guid: 6fa188d221b76134a835cfd87304ca05, type: 2}
 --- !u!1 &2176227764573786321
 GameObject:
   m_ObjectHideFlags: 0
@@ -5960,7 +5962,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -654422533
   m_SortingLayer: -1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 61880d737d73d5744b1182f0bf03870e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

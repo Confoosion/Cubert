@@ -29,6 +29,7 @@ public class CubertScreen : MonoBehaviour
     private Transform currentSpot;
 
     private Transform cubertTransform;
+    public Transform CubertTransform => cubertTransform;
     private Cubert cubert;
     public Cubert _Cubert => cubert;
 
@@ -54,6 +55,7 @@ public class CubertScreen : MonoBehaviour
 
     [SerializeField] private NeedsSO currentNeed = null;
     [SerializeField] private NeedsSO[] basicNeeds;
+    [SerializeField] private NeedsSO[] specialNeeds;
     private LinkedList<NeedsSO> needList = new LinkedList<NeedsSO>();
     public NeedsSO CurrentNeed => currentNeed;
     
@@ -140,11 +142,14 @@ public class CubertScreen : MonoBehaviour
         {
             if(habits == null) return;
             if(HoldCubert.Singleton.HoldingCubert && HoldCubert.Singleton.HeldCubert == cubert) return;
+            if(cubert.gameObject.name == "Cubert" && transform.Find("Mubert")) return;
+            if(habitPerformed) return;
 
             timeAway += Time.deltaTime;
 
             if(timeAway >= timeNeededBeforeHabit && !habitPerformed)
             {
+                timeAway = 0f;
                 habitPerformed = true;
                 Habit habitToDo;
                 if(habits.Length > 1)
@@ -158,11 +163,6 @@ public class CubertScreen : MonoBehaviour
 
                 PerformHabit(habitToDo);
             }
-        }
-        else
-        {
-            timeAway = 0f;
-            habitPerformed = false;
         }
     }
 
@@ -236,6 +236,11 @@ public class CubertScreen : MonoBehaviour
             if(cubert.gameObject.name == "Mubert" && dayFind != null && TimeManager.Singleton.IsNight)
             {
                 dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(true);
+            }
+
+            if(currentNeed?.name == "Missing")
+            {
+                SatisfyNeed();
             }
 
             return true;
@@ -441,6 +446,22 @@ public class CubertScreen : MonoBehaviour
                     foodAte = 0;
                     break;
                 }
+            case "Dirty":
+                {
+                    if(cubert.gameObject.name == "Lubert")
+                    {
+                        cubert.GetComponent<LubertSounds>().PlayStinkySound();
+                    }
+                    break;
+                }
+            case "Potty":
+                {
+                    if(cubert.gameObject.name == "Lubert")
+                    {
+                        cubert.GetComponent<LubertSounds>().PlayChopChopSound();
+                    }
+                    break;
+                }
         }
 
         ScreenManager.Singleton.SetNeedScreen(transform);
@@ -449,11 +470,17 @@ public class CubertScreen : MonoBehaviour
 
     public void SatisfyNeed()
     {
+        if(cubert.gameObject.name == "Lubert" && currentNeed.name == "Hungry")
+        {
+            cubert.GetComponent<LubertSounds>().PlayBlandSound();
+        }
+
         needList.RemoveFirst();
         timeInSpot = 0f;
         currentNeed = null;
         UpdateNeedStatus();
         DaycareScreen.Singleton.NeedSatisfied();
+        habitPerformed = false;
     }
 
     private void PerformHabit(Habit habit)
@@ -480,6 +507,8 @@ public class CubertScreen : MonoBehaviour
             case Habit.MubertLeave:
                 {
                     TurnLightsOff();
+                    cubert.GetComponent<MubertStuff>().HideInCubertsRoom(this);
+                    ForceAddNeed(specialNeeds[0]);
                     break;
                 }
             case Habit.HubertLeave:
@@ -506,6 +535,7 @@ public class CubertScreen : MonoBehaviour
 
     public void PlayLubertSound()
     {
-        SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
+        if(cubert != null && HoldCubert.Singleton.HeldCubert != cubert)
+            SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
     }
 }

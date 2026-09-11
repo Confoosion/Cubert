@@ -9,6 +9,7 @@ public class Cubert : MonoBehaviour
     [SerializeField] private int showerAmount = 20;
 
     [SerializeField] private GameObject sleepParticles;
+    [SerializeField] private EyeLook[] eyes;
 
     public CubertNeedsSO CubertNeeds => cubertNeeds;
     public Sprite PreferredBed => preferredBed;
@@ -100,5 +101,21 @@ public class Cubert : MonoBehaviour
     public void ShowCubert()
     {
         gameObject.SetActive(true);
+    }
+
+    public void SetLookTarget(Transform target)
+    {
+        foreach(EyeLook eye in eyes)
+        {
+            eye.LookAtTarget(target);
+        }
+    }
+
+    public void UnlockEyes()
+    {
+        foreach(EyeLook eye in eyes)
+        {
+            eye.LookAtMouse();
+        }
     }
 }

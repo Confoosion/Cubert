@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 1014711263395244869}
   - component: {fileID: -8735857784653412221}
   - component: {fileID: 3119972181629399162}
+  - component: {fileID: -7108409034692244717}
   m_Layer: 0
   m_Name: Lubert
   m_TagString: Untagged
@@ -483,6 +484,21 @@ MonoBehaviour:
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
+--- !u!114 &-7108409034692244717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765617993210803279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f74dd4dfdaddba4688d6c0c2b718023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  bland: {fileID: 8300000, guid: ffcfee17d28843645875e00a49ccbf77, type: 3}
+  stinky: {fileID: 8300000, guid: 703a7d8b22f11e44dbe50ef0512a288b, type: 3}
+  chopChop: {fileID: 8300000, guid: 53801a1f596e33746bd97917bd1f5250, type: 3}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0
