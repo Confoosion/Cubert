@@ -38,6 +38,7 @@ public class CubertScreen : MonoBehaviour
     private float feedCooldown = 0.5f;
     private float feedTimer = 0f;
     private float timeInSpot = 0f;
+    private float timeNeededBeforeHabit = 0f;
     private float timeAway = 0f;
     private float needCooldown = 1.5f;
     private float needTimer = 0f;
@@ -50,7 +51,7 @@ public class CubertScreen : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private SpriteRenderer bedRenderer;
 
-    [SerializeField] private NeedsSO currentNeed;
+    [SerializeField] private NeedsSO currentNeed = null;
     [SerializeField] private NeedsSO[] basicNeeds;
     private LinkedList<NeedsSO> needList = new LinkedList<NeedsSO>();
     public NeedsSO CurrentNeed => currentNeed;
@@ -59,6 +60,9 @@ public class CubertScreen : MonoBehaviour
     private int maxNeeds = 3;
     public int MinNeeds => minNeeds;
     public int MaxNeeds => maxNeeds;
+
+    private Habit[] habits;
+    private bool habitPerformed;
 
     private int foodAte = 0;
 
@@ -81,34 +85,11 @@ public class CubertScreen : MonoBehaviour
             isEnhanced = false;
             EnhancedScare();
         }
-
-        // if(currentNeed != null)
-        // {
-        //     if(currentNeed.needName == "Tired" || currentNeed.needName == "Potty")
-        //     {
-        //         timeInSpot += Time.deltaTime;
-
-        //         if(timeInSpot >= sleepTime && currentSpot == bed)
-        //         {
-        //             cubert.DisplaySleepParticles(false);
-        //             SatisfyNeed();
-        //         }
-        //         else if(timeInSpot >= pottyTime && currentSpot == litterBox)
-        //         {
-        //             if(transform == ScreenManager.Singleton.CurrentScreen)
-        //             {
-        //                 SoundManager.Singleton?.PlaySFX(fartSound);
-        //             }
-
-        //             SatisfyNeed();
-        //         }
-        //     }
-        // }
     }
 
     private void TickTime()
     {
-        if(!TimeManager.Singleton.IsTimeFrozen) return;
+        if(TimeManager.Singleton.IsTimeFrozen) return;
 
         if(feedTimer > 0f)
         {
@@ -153,48 +134,36 @@ public class CubertScreen : MonoBehaviour
                 }
             }
         }
+
+        if(ScreenManager.Singleton.CurrentScreen != transform)
+        {
+            if(habits == null) return;
+            if(HoldCubert.Singleton.HoldingCubert && HoldCubert.Singleton.HeldCubert == cubert) return;
+
+            timeAway += Time.deltaTime;
+
+            if(timeAway >= timeNeededBeforeHabit && !habitPerformed)
+            {
+                habitPerformed = true;
+                Habit habitToDo;
+                if(habits.Length > 1)
+                {
+                    habitToDo = habits[UnityEngine.Random.Range(0, habits.Length)];
+                }
+                else
+                {
+                    habitToDo = habits[0];
+                }
+
+                PerformHabit(habitToDo);
+            }
+        }
+        else
+        {
+            timeAway = 0f;
+            habitPerformed = false;
+        }
     }
-
-    // public void Tick(float deltaTime)
-    // {
-    //     if(currentNeed == null && cubert != null && needList.Count > 0)
-    //     {
-    //         currentNeed = needList.First.Value;
-    //         // Debug.Log(currentNeed);
-    //         UpdateNeedStatus();
-    //     }
-
-    //     if(ScreenManager.Singleton.CurrentScreen != transform)
-    //     {
-    //         if(cubert.name == "Mubert" && !TimeManager.Singleton.IsNight)
-    //         {
-    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.5f)
-    //             {
-    //                 TurnLightsOff();
-    //             }
-    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.75f && currentNeed?.needName != "Dirty")
-    //             {
-    //                 ForceCubertInLitterBox();
-    //                 cubert.DisplaySleepParticles(true);
-    //                 ForceAddNeed(basicNeeds[1]);
-    //             }
-    //         }
-    //         else if(cubert.name == "Cubert" && !TimeManager.Singleton.IsNight)
-    //         {
-    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.25f)
-    //             {
-    //                 EnhanceCubert();
-    //             }
-    //         }
-    //         else if(cubert.name == "Xubert" && !TimeManager.Singleton.IsNight)
-    //         {
-    //             if(UnityEngine.Random.Range(0f, 1f) <= 0.34f)
-    //             {
-    //                 TurnLightsOff();
-    //             }
-    //         }
-    //     }
-    // }
 
     public void SetBedSprite(Sprite bed)
     {
@@ -215,6 +184,26 @@ public class CubertScreen : MonoBehaviour
         cubertTransform = _cubert.transform;
         cubert = _cubert.GetComponent<Cubert>();
         cubert.SetHome(this);
+
+        SetCubertHabits();
+    }
+
+    private void SetCubertHabits()
+    {
+        if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
+        {
+            CubertNeedsSO cubertNeeds = cubert.CubertNeeds;
+
+            foreach(var entry in cubertNeeds.cubertHabits)
+            {
+                if(entry.day == currentDay)
+                {
+                    habits = entry.habits;
+                    timeNeededBeforeHabit = entry.timeNeeded;
+                    break;
+                }
+            }
+        }
     }
 
     public bool PlaceCubert(GameObject _cubert)
@@ -237,6 +226,8 @@ public class CubertScreen : MonoBehaviour
                 cubert.SetHome(this);
 
                 DaycareScreen.Singleton.GetNextNPC();
+
+                SetCubertHabits();
             }
 
             GameObject dayFind = GameObject.Find("TuesdayStuff");
@@ -461,6 +452,39 @@ public class CubertScreen : MonoBehaviour
         currentNeed = null;
         UpdateNeedStatus();
         DaycareScreen.Singleton.NeedSatisfied();
+    }
+
+    private void PerformHabit(Habit habit)
+    {
+        switch(habit)
+        {
+            case Habit.UpClose:
+                {
+                    EnhanceCubert();
+                    break;        
+                }
+            case Habit.LightsOff:
+                {
+                    TurnLightsOff();
+                    break;
+                }
+            case Habit.HamsterSleep:
+                {
+                    ForceCubertInLitterBox();
+                    cubert.DisplaySleepParticles(true);
+                    ForceAddNeed(basicNeeds[1]);
+                    break;
+                }
+            case Habit.MubertLeave:
+                {
+                    break;
+                }
+            case Habit.HubertLeave:
+                {
+                    break;
+                }
+            
+        }
     }
 
     private void EnhanceCubert()
