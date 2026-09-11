@@ -47,6 +47,7 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private AudioClip[] eatingSounds;
     [SerializeField] private AudioClip fartSound;
     [SerializeField] private AudioSource lightSwitchSource;
+    [SerializeField] private AudioClip[] lubertSounds;
 
     [Header("Misc")]
     [SerializeField] private SpriteRenderer bedRenderer;
@@ -193,6 +194,7 @@ public class CubertScreen : MonoBehaviour
         if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
         {
             CubertNeedsSO cubertNeeds = cubert.CubertNeeds;
+            if(cubertNeeds.cubertHabits == null) return;
 
             foreach(var entry in cubertNeeds.cubertHabits)
             {
@@ -344,7 +346,7 @@ public class CubertScreen : MonoBehaviour
 
         if(transform == ScreenManager.Singleton.CurrentScreen)
         {
-            SoundManager.Singleton?.PlaySFX(eatingSounds[UnityEngine.Random.Range(0, eatingSounds.Length - 1)]);
+            SoundManager.Singleton?.PlaySFX(eatingSounds[UnityEngine.Random.Range(0, eatingSounds.Length)]);
         }
 
         if(currentNeed.needName == "Hungry")
@@ -500,5 +502,10 @@ public class CubertScreen : MonoBehaviour
     public void EnhancedScare()
     {
         Debug.Log("Enhanced Jumpscare SFX!");
+    }
+
+    public void PlayLubertSound()
+    {
+        SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
     }
 }

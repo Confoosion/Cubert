@@ -43,6 +43,11 @@ public class ScreenManager : MonoBehaviour
 
         CheckArrowUI();
         screenMap.SetSelectedRoom(screens.IndexOf(screen));
+
+        if(currentScreen.name == "Lubert")
+        {
+            currentScreen.GetComponent<CubertScreen>().PlayLubertSound();
+        }
     }
 
     public void SwitchScreenLeft()

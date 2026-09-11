@@ -544,6 +544,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 96fd9170a7bd20f4db5928f83eb7aa48, type: 3}
   fartSound: {fileID: 8300000, guid: 0e12065d3b342fa4d8aa278f2f8c28aa, type: 3}
   lightSwitchSource: {fileID: 5991295524048838202}
+  lubertSounds:
+  - {fileID: 8300000, guid: 61ab9bc00a0fd074e9676e448ae1f8fe, type: 3}
+  - {fileID: 8300000, guid: 9cb0ff683938c91489fe60a09a8f3c2b, type: 3}
+  - {fileID: 8300000, guid: 56fd9b1fc6b027b4bb9db4668b9c2073, type: 3}
   bedRenderer: {fileID: 1225274456209040458}
   currentNeed: {fileID: 0}
   basicNeeds:
@@ -5956,7 +5960,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -654422533
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 61880d737d73d5744b1182f0bf03870e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
