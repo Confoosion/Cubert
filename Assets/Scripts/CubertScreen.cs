@@ -149,7 +149,7 @@ public class CubertScreen : MonoBehaviour
 
         if(ScreenManager.Singleton.CurrentScreen != transform)
         {
-            if(habits == null) return;
+            if(habits == null || TimeManager.Singleton.IsNight) return;
             if(HoldCubert.Singleton.HoldingCubert && HoldCubert.Singleton.HeldCubert == cubert) return;
             if(cubert.gameObject.name == "Cubert" && transform.Find("Mubert")) return;
             if(habitPerformed) return;

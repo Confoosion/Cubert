@@ -8,16 +8,16 @@ public class LubertSounds : MonoBehaviour
 
     public void PlayBlandSound()
     {
-        SoundManager.Singleton.PlaySFX(bland);    
+        SoundManager.Singleton?.PlaySFX(bland);    
     }
 
     public void PlayStinkySound()
     {
-        SoundManager.Singleton.PlaySFX(stinky);
+        SoundManager.Singleton?.PlaySFX(stinky);
     }
 
     public void PlayChopChopSound()
     {
-        SoundManager.Singleton.PlaySFX(chopChop);
+        SoundManager.Singleton?.PlaySFX(chopChop);
     }
 }

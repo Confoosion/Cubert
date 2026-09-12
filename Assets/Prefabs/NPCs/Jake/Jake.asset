@@ -25,3 +25,7 @@ MonoBehaviour:
     introDialogue: {fileID: 11400000, guid: 9398802d879a1aa44883bc7ae802a670, type: 2}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}
+  - day: 2
+    introDialogue: {fileID: 0}
+    pickUpDialogue: {fileID: 11400000, guid: dc9a52df3c659e94f83372adc4f3cf5d, type: 2}
+    cubertDialogue: {fileID: 11400000, guid: 54f435c388548e24e84d99252dc82d3c, type: 2}

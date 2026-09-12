@@ -79,7 +79,7 @@ public class DaycareScreen : MonoBehaviour
         SoundManager.Singleton?.PlaySFX(NPCEnterSound);
         ScreenManager.Singleton.SetNPCScreen(true);
 
-        if(npc.Data.npcName == "Timothy" && SceneManager.GetActiveScene().name == "Wednesday")
+        if(npc.Data.npcName == "Timothy" && SceneManager.GetActiveScene().name == "Wednesday" && TimeManager.Singleton.IsNight)
         {
             GameObject.Find("WednesdayStuff").GetComponent<WednesdayStuff>().HubertLeave();
         }

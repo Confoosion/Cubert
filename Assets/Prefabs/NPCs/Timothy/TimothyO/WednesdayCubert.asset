@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: TuesdayIntro
+  m_Name: WednesdayCubert
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  dialogueType: 0
+  dialogueType: 2
   sentences:
-  - Hi again!
-  - Here's my Cubert.
-  - He really seemed to like this place. You must've done a great job yesterday!
-  - I'll be back tomorrow evening. See you later!
+  - ...
+  - She looks a little shaken up...
+  - ...
+  - Eh it's probably fine. Thanks for taking care of her.
