@@ -45,7 +45,6 @@ public class CubertScreen : MonoBehaviour
     private float needTimer = 0f;
 
     [Header("Sounds")]
-    [SerializeField] private AudioClip[] eatingSounds;
     [SerializeField] private AudioClip fartSound;
     [SerializeField] private AudioSource lightSwitchSource;
     [SerializeField] private AudioClip[] lubertSounds;
@@ -134,6 +133,16 @@ public class CubertScreen : MonoBehaviour
                         SoundManager.Singleton?.PlaySFX(fartSound);
                     }
                     SatisfyNeed();
+                }
+            }
+            else if(currentNeed.needName == "Scared")
+            {
+                if(cubert.gameObject.name is "Oubert" or "Tubert")
+                {
+                    if(!transform.Find("Hubert"))
+                    {
+                        SatisfyNeed();
+                    }
                 }
             }
         }
@@ -351,7 +360,7 @@ public class CubertScreen : MonoBehaviour
 
         if(transform == ScreenManager.Singleton.CurrentScreen)
         {
-            SoundManager.Singleton?.PlaySFX(eatingSounds[UnityEngine.Random.Range(0, eatingSounds.Length)]);
+            SoundManager.Singleton?.PlayEatSFX();
         }
 
         if(currentNeed.needName == "Hungry")
@@ -430,6 +439,11 @@ public class CubertScreen : MonoBehaviour
         UpdateNeedStatus();
     }
 
+    public void ForceAddScared()
+    {
+        ForceAddNeed(specialNeeds[1]);
+    }
+
     private void UpdateNeedStatus()
     {
         if(currentNeed == null)
@@ -462,6 +476,11 @@ public class CubertScreen : MonoBehaviour
                     }
                     break;
                 }
+            case "Scared":
+                {
+                    DisplayFeedButton(false);
+                    break;
+                }
         }
 
         ScreenManager.Singleton.SetNeedScreen(transform);
@@ -481,9 +500,14 @@ public class CubertScreen : MonoBehaviour
         UpdateNeedStatus();
         DaycareScreen.Singleton.NeedSatisfied();
         habitPerformed = false;
+
+        if(currentSpot == nest)
+        {
+            DisplayFeedButton(true);
+        }
     }
 
-    private void PerformHabit(Habit habit)
+    public void PerformHabit(Habit habit)
     {
         switch(habit)
         {
@@ -507,12 +531,14 @@ public class CubertScreen : MonoBehaviour
             case Habit.MubertLeave:
                 {
                     TurnLightsOff();
-                    cubert.GetComponent<MubertStuff>().HideInCubertsRoom(this);
-                    ForceAddNeed(specialNeeds[0]);
+                    if(cubert.GetComponent<MubertStuff>().HideInCubertsRoom(this))
+                        ForceAddNeed(specialNeeds[0]);
                     break;
                 }
             case Habit.HubertLeave:
                 {
+                    if(cubert.GetComponent<HubertStuff>().AttemptLeave(this))
+                        ForceAddNeed(specialNeeds[0]);
                     break;
                 }
             

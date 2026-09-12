@@ -2297,6 +2297,10 @@ MonoBehaviour:
   fridgeSource: {fileID: 1672032599}
   switchRoomSource: {fileID: 1672032600}
   musicSource: {fileID: 1672032597}
+  foodSounds:
+  - {fileID: 8300000, guid: 3b6ef45e5d361794aad0a05c863e1b57, type: 3}
+  - {fileID: 8300000, guid: 245c54866aa54fc45ab242f25899d8db, type: 3}
+  - {fileID: 8300000, guid: 96fd9170a7bd20f4db5928f83eb7aa48, type: 3}
 --- !u!4 &1672032596
 Transform:
   m_ObjectHideFlags: 0

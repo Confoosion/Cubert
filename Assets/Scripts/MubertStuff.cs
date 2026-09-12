@@ -7,10 +7,10 @@ public class MubertStuff : MonoBehaviour
     [SerializeField] Color normalColor;
     [SerializeField] Color hidingColor;
     
-    public void HideInCubertsRoom(CubertScreen mubertRoom)
+    public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Cubert");
-        if(ScreenManager.Singleton.CurrentScreen == cubertRoom) return;
+        if(ScreenManager.Singleton.CurrentScreen == cubertRoom) return false;
 
         mubertRoom.DisplayFeedButton(false);
 
@@ -27,6 +27,8 @@ public class MubertStuff : MonoBehaviour
         }
         
         GetComponent<Cubert>().SetLookTarget(cubertRoom.GetComponent<CubertScreen>().CubertTransform);
+        
+        return true;  
     }
 
     public void ChangeToNormalColor()

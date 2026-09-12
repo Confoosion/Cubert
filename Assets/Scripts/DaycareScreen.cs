@@ -78,6 +78,11 @@ public class DaycareScreen : MonoBehaviour
         npc.NPCEnter();
         SoundManager.Singleton?.PlaySFX(NPCEnterSound);
         ScreenManager.Singleton.SetNPCScreen(true);
+
+        if(npc.Data.npcName == "Timothy" && SceneManager.GetActiveScene().name == "Wednesday")
+        {
+            GameObject.Find("WednesdayStuff").GetComponent<WednesdayStuff>().HubertLeave();
+        }
     }
 
     public void NPCLeave()
@@ -167,6 +172,11 @@ public class DaycareScreen : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Tuesday")
         {
             GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
+        }
+        else if(SceneManager.GetActiveScene().name == "Wednesday")
+        {
+            // GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
+
         }
     }
 

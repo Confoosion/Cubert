@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Food : MonoBehaviour
 {
+    [SerializeField] private GameObject foodParticles;
     private bool isCollected = false;
 
     private void OnMouseDown()
@@ -55,6 +56,14 @@ public class Food : MonoBehaviour
         transform.localScale = startScale * 0.3f;
 
         FoodManager.Singleton.AddFood(1);
+        FoodManager.Singleton.RemoveFoodInKitchen(gameObject);
+        Destroy(gameObject);
+    }
+
+    public void Eat()
+    {
+        Instantiate(foodParticles, transform.position, Quaternion.identity);
+        FoodManager.Singleton.RemoveFoodInKitchen(gameObject);
         Destroy(gameObject);
     }
 }

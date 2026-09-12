@@ -27,23 +27,14 @@ public class HoldCubert : MonoBehaviour
         if(ScreenManager.Singleton.CurrentScreen == DaycareScreen.Singleton.transform
            && (DaycareScreen.Singleton.Npc.Interacted && DaycareScreen.Singleton.CurrentNPC != null)) return;
 
-        heldCubert = cubert;
-        cubert.GetComponent<BoxCollider2D>().enabled = false;
-        cubert.transform.SetParent(transform);
-        cubert.transform.localPosition = holdPosition;
-        cubert.transform.localScale = holdScale;
+        CubertScreen cubertScreen = ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>();
+        if(cubert == cubertScreen?._Cubert && cubertScreen?.CurrentNeed?.needName == "Scared") return;
 
-        if(cubert.gameObject.name == "Mubert")
+        // Debug.Log("Grabbing");
+
+        if(cubertScreen?._Cubert == cubert)
         {
-            cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
-            cubert.UnlockEyes();
-        }
-
-        cubert.DisplaySleepParticles(false);
-
-        if(ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?._Cubert == cubert)
-        {
-            ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>()?.DisplayFeedButton(false);
+            cubertScreen?.DisplayFeedButton(false);
         }
         else if(TimeManager.Singleton.IsNight)
         {
@@ -58,6 +49,20 @@ public class HoldCubert : MonoBehaviour
                 }
             }
         }
+
+        heldCubert = cubert;
+        cubert.GetComponent<BoxCollider2D>().enabled = false;
+        cubert.transform.SetParent(transform);
+        cubert.transform.localPosition = holdPosition;
+        cubert.transform.localScale = holdScale;
+
+        if(cubert.gameObject.name == "Mubert")
+        {
+            cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
+            cubert.UnlockEyes();
+        }
+
+        cubert.DisplaySleepParticles(false);
 
         SetSortingLayer("PickedUp");
 

@@ -21,5 +21,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
   cubertHabits:
   - day: 2
-    timeNeeded: 2
+    timeNeeded: 5
     habits: 04000000

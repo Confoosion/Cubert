@@ -4,13 +4,16 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Singleton;
 
-    [Header("SFX")]
+    [Header("SFX Sources")]
     [SerializeField] private AudioSource SFXSource;
     [SerializeField] private AudioSource fridgeSource;
     [SerializeField] private AudioSource switchRoomSource;
 
-    [Header("Music")]
+    [Header("Music Sources")]
     [SerializeField] private AudioSource musicSource;
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip[] foodSounds;
 
     void Awake()
     {
@@ -24,6 +27,11 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(AudioClip audio)
     {
         SFXSource.PlayOneShot(audio);
+    }
+
+    public void PlayEatSFX()
+    {
+        PlaySFX(foodSounds[Random.Range(0, foodSounds.Length)]);
     }
 
     public void PlayFridgeAmbience(bool play, AudioClip audio = null)

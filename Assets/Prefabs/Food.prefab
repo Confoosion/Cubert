@@ -169,3 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110b64ab9abd9144499343d23581e5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  foodParticles: {fileID: 5069234839064301390, guid: 8b1fd610cf57a314d828db13cf27e468, type: 3}

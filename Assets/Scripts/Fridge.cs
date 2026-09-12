@@ -11,6 +11,7 @@ public class Fridge : MonoBehaviour
     public void SpawnFood()
     {
         GameObject food = Instantiate(foodPrefab, transform.position, Quaternion.identity);
+        FoodManager.Singleton.AddFoodInKitchen(food);
 
         Rigidbody2D rb = food.GetComponent<Rigidbody2D>();
 

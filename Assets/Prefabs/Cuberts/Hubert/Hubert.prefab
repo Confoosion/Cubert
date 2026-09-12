@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 761800779217759851}
   - component: {fileID: 1014711263395244869}
   - component: {fileID: -1097530826424637958}
+  - component: {fileID: -7151114087390509163}
   - component: {fileID: 374120957395559455}
   m_Layer: 0
   m_Name: Hubert
@@ -438,6 +439,21 @@ MonoBehaviour:
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
+  eyes:
+  - {fileID: 5425960068998378541}
+  - {fileID: 5139098511028863699}
+--- !u!114 &-7151114087390509163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765617993210803279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce98e2cbcab79bc4b8797db3c6e32238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HubertStuff
 --- !u!61 &374120957395559455
 BoxCollider2D:
   m_ObjectHideFlags: 0
