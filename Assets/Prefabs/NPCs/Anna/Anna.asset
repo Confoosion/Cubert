@@ -19,13 +19,15 @@ MonoBehaviour:
   npcDialogue:
   - day: 2
     introDialogue: {fileID: 11400000, guid: 3af61b5897045504d8bf4dab9bae70d3, type: 2}
-    pickUpDialogue: {fileID: 11400000, guid: 3af61b5897045504d8bf4dab9bae70d3, type: 2}
+    pickUpDialogue: {fileID: 11400000, guid: e93699239fa7a414db3c0cc7f82dbbab, type: 2}
     cubertDialogue: {fileID: 11400000, guid: a85ca1c1b1d4b4f4791d78f4a515b270, type: 2}
-  - day: 2
-    introDialogue: {fileID: 0}
-    pickUpDialogue: {fileID: 0}
-    cubertDialogue: {fileID: 11400000, guid: d4f16eb95e3b19f43b3d5b5f96808921, type: 2}
   - day: 3
     introDialogue: {fileID: 0}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}
+  wrongCubertDialogue: {fileID: 11400000, guid: fd682158b27288b4eab7c182196de601, type: 2}
+  branchDialogue:
+  - day: 2
+    introDialogue: {fileID: 0}
+    pickUpDialogue: {fileID: 0}
+    cubertDialogue: {fileID: 11400000, guid: d4f16eb95e3b19f43b3d5b5f96808921, type: 2}

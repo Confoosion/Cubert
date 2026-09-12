@@ -20,4 +20,6 @@ public class NPCSO : ScriptableObject
     }
 
     public NPCDialogue[] npcDialogue;
+    public DialogueSO wrongCubertDialogue;
+    public NPCDialogue[] branchDialogue;
 }

@@ -538,7 +538,9 @@ public class CubertScreen : MonoBehaviour
             case Habit.HubertLeave:
                 {
                     if(cubert.GetComponent<HubertStuff>().AttemptLeave(this))
+                    {
                         ForceAddNeed(specialNeeds[0]);
+                    }
                     break;
                 }
             

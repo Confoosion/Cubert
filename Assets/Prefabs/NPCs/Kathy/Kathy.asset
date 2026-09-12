@@ -25,3 +25,5 @@ MonoBehaviour:
     introDialogue: {fileID: 0}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}
+  wrongCubertDialogue: {fileID: 11400000, guid: cdddb7622f60adb448d67c85ff0f0584, type: 2}
+  branchDialogue: []

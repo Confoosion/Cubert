@@ -31,6 +31,16 @@ public class NPC : MonoBehaviour
         return null;
     }
 
+    private NPCSO.NPCDialogue GetBranchDayDialogue()
+    {
+        if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
+        {
+            var entry = _data.branchDialogue.FirstOrDefault(d => d.day == currentDay);
+            return entry;
+        }
+        return null;
+    }
+
     private void DisplayDialogue()
     {
         if(_purpose is Purpose.DropOff)
@@ -57,8 +67,23 @@ public class NPC : MonoBehaviour
 
     public void StartCubertDialogue()
     {
-        var todaysDialogue = GetCurrentDayDialogue();
+        NPCSO.NPCDialogue todaysDialogue;
+
+        WednesdayStuff wednesday = GameObject.Find("WednesdayStuff")?.GetComponent<WednesdayStuff>();
+        if(wednesday != null && _data.npcName == "Anna" && !wednesday.IsAnnaHappy)
+        {
+            todaysDialogue = GetBranchDayDialogue();
+        }
+        else
+        {
+            todaysDialogue = GetCurrentDayDialogue();
+        }
         dialogue.StartDialogue(_data.npcName, todaysDialogue?.cubertDialogue);
+    }
+
+    public void StartWrongCubertDialogue()
+    {
+        dialogue.StartDialogue(_data.npcName, _data.wrongCubertDialogue);
     }
 
     void OnMouseDown()

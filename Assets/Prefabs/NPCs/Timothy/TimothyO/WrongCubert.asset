@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: WednesdayBadCubert
+  m_Name: WrongCubert
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  dialogueType: 2
+  dialogueType: 3
   sentences:
-  - FINALLY!
-  - HOW DARE YOU MAKE ME WAIT THIS LONG! I COULD HAVE BEEN HOME BY NOW, TEACHING
-    LUBERT MORE ENGLISH BUT INSTEAD YOU THINK I'M A FOOL.
-  - Come here, Lubert! We are never coming back ever again.
+  - Uhh...
+  - This guy isn't mine... You can take them back.

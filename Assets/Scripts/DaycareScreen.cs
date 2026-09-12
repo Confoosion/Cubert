@@ -135,7 +135,8 @@ public class DaycareScreen : MonoBehaviour
         currentNeedsCompleted++;
         if(currentNeedsCompleted == todaysNeeds)
         {
-            StartEvening();
+            if(!TimeManager.Singleton.IsNight)
+                StartEvening();
         }
     }
 
@@ -202,7 +203,11 @@ public class DaycareScreen : MonoBehaviour
             npc.StartCubertDialogue();
             return true;
         }
-        
+        else
+        {
+            npc.StartWrongCubertDialogue();    
+        }
+
         return false;
     }
 
