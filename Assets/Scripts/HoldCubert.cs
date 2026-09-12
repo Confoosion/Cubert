@@ -130,10 +130,10 @@ public class HoldCubert : MonoBehaviour
         }
         else
         {
-            WednesdayStuff wednesday = GameObject.Find("WednesdayStuff")?.GetComponent<WednesdayStuff>();
+            GameObject wednesday = GameObject.Find("WednesdayStuff");
             if(wednesday != null && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName == "Anna")
             {
-                wednesday.MakeAnnaMad();
+                GlobalEvents.Singleton.GotAnnaAngry();
             }
             SetSortingLayer("PickedUp");
         }

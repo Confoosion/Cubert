@@ -27,5 +27,5 @@ MonoBehaviour:
     timeNeeded: 5
     habits: 0100000002000000
   - day: 2
-    timeNeeded: 5.5
+    timeNeeded: 10
     habits: 0200000003000000

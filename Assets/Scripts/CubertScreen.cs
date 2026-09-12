@@ -363,10 +363,11 @@ public class CubertScreen : MonoBehaviour
             SoundManager.Singleton?.PlayEatSFX();
         }
 
-        if(currentNeed.needName == "Hungry")
+        if(currentNeed?.needName == "Hungry")
         {
             foodAte += 1;
         }
+        else yield return null;
         
         if(foodAte >= cubert.FeedAmount)
         {

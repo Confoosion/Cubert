@@ -1011,6 +1011,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &214385855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214385857}
+  - component: {fileID: 214385856}
+  m_Layer: 0
+  m_Name: GlobalEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &214385856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214385855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba930f55d757c54c9256ce404787abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlobalEvents
+  annaAngry: 0
+  oubertDead: 0
+  tubertDead: 0
+  jerryDead: 0
+--- !u!4 &214385857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214385855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.79868, y: -5.86344, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226199682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3709,6 +3757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3f02b5fcd24347a521f5dfdda9978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  isAnnaHappy: 1
 --- !u!1 &1527414823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5076,6 +5125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   foodHolder: {fileID: 1527414824}
   foodAmountText: {fileID: 2068370525}
+  foodInKitchen: []
 --- !u!114 &2053452465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5554,3 +5604,4 @@ SceneRoots:
   - {fileID: 573616437}
   - {fileID: 1052014038}
   - {fileID: 1453273423}
+  - {fileID: 214385857}

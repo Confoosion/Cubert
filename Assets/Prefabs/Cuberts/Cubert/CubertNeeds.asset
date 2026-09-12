@@ -28,8 +28,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 04264c10f6c55c9498bdc04cbe42809d, type: 2}
   cubertHabits:
   - day: 1
-    timeNeeded: 7.5
+    timeNeeded: 10
     habits: 00000000
   - day: 2
-    timeNeeded: 7.5
+    timeNeeded: 15
     habits: 00000000

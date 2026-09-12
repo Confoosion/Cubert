@@ -69,8 +69,8 @@ public class NPC : MonoBehaviour
     {
         NPCSO.NPCDialogue todaysDialogue;
 
-        WednesdayStuff wednesday = GameObject.Find("WednesdayStuff")?.GetComponent<WednesdayStuff>();
-        if(wednesday != null && _data.npcName == "Anna" && !wednesday.IsAnnaHappy)
+        GameObject wednesday = GameObject.Find("WednesdayStuff");
+        if(wednesday != null && _data.npcName == "Anna" && GlobalEvents.Singleton.AnnaAngry)
         {
             todaysDialogue = GetBranchDayDialogue();
         }
