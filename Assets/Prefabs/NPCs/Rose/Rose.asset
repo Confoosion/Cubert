@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Rose
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Rose
-  skinColor: {r: 0.8867924, g: 0.78693086, b: 0.53960484, a: 1}
-  shirtColor: {r: 0.8113208, g: 0.19517621, b: 0.19517621, a: 1}
+  npcFrontSprite: {fileID: 0}
+  npcBackSprite: {fileID: 0}
   cubert: {fileID: 5765617993210803279, guid: d3b6e7021bca5f840a47e67307572168, type: 3}
-  introDialogue: {fileID: 0}
-  pickUpDialogue: {fileID: 0}
-  cubertDialogue: {fileID: 0}
+  npcDialogue:
+  - day: 3
+    introDialogue: {fileID: 11400000, guid: fd41ff3ed71ce7a418057e5056ab4bcc, type: 2}
+    pickUpDialogue: {fileID: 0}
+    cubertDialogue: {fileID: 0}
+  wrongCubertDialogue: {fileID: 0}
+  branchDialogue: []

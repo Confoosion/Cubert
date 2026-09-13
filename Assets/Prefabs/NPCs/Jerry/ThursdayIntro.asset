@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: WednesdayIntro
+  m_Name: ThursdayIntro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueType: 0
   sentences:
-  - Hello!
-  - Here's my Hubert. He looks so cool, doesn't he?
-  - His hair is so stylish, I designed it myself and all the ladies love it.
-  - I'll be back Friday morning. Make sure he's comfortable while I'm gone.
+  - H-hi there.
+  - Umm.. this is Jerry- I mean Jubert. I'm Jerry.
+  - You're p-probably wondering why she looks like that..
+  - W-well... Jubert likes to move around a lot. So o-one time she went into the
+    microwave and... well...
+  - O-ok I should- uh- I should go to s-school now.. bye!

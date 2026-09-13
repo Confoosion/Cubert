@@ -22,8 +22,12 @@ MonoBehaviour:
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}
   - day: 3
-    introDialogue: {fileID: 0}
+    introDialogue: {fileID: 11400000, guid: de667dfcafc83b24f8a369c156b683d5, type: 2}
+    pickUpDialogue: {fileID: 11400000, guid: 7d7c83bdc770ec942836a6182a489c4c, type: 2}
+    cubertDialogue: {fileID: 11400000, guid: 9c64ad47b90d7d743aaefb2b6b61c774, type: 2}
+  wrongCubertDialogue: {fileID: 11400000, guid: cdddb7622f60adb448d67c85ff0f0584, type: 2}
+  branchDialogue:
+  - day: 3
+    introDialogue: {fileID: 11400000, guid: 5dd80e2508e13e4498a87b9debfc40fc, type: 2}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 0}
-  wrongCubertDialogue: {fileID: 11400000, guid: cdddb7622f60adb448d67c85ff0f0584, type: 2}
-  branchDialogue: []

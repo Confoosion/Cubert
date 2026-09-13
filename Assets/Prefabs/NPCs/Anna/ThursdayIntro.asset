@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: WednesdayIntro
+  m_Name: ThursdayIntro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueType: 0
   sentences:
-  - Hello!
-  - Here's my Hubert. He looks so cool, doesn't he?
-  - His hair is so stylish, I designed it myself and all the ladies love it.
-  - I'll be back Friday morning. Make sure he's comfortable while I'm gone.
+  - Greetings once again.
+  - I have returned to return my glorius Lubert. You of course know he speaks extraordinarily
+    well, but I actually taught him a couple new words!
+  - Anywho, I will be back Friday evening. I am a part of a major project, but I
+    can't tell you because I signed a special NDA.
+  - I just know you want me to tell you. So sorry! No details out of my mouth.
+  - Toodaloo~

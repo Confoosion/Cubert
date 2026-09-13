@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
   m_Name: WrongCubert
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  dialogueType: 0
+  dialogueType: 3
   sentences:
-  - Um this isn't mine. I own Hubert.
+  - This isn't my Hubert.
+  - Do you not want me to go on the date that badly?
+  - Please, bro!

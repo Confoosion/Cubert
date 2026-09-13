@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: WednesdayIntro
+  m_Name: ThursdayBranchCubert
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  dialogueType: 0
+  dialogueType: 2
   sentences:
-  - Hello!
-  - Here's my Hubert. He looks so cool, doesn't he?
-  - His hair is so stylish, I designed it myself and all the ladies love it.
-  - I'll be back Friday morning. Make sure he's comfortable while I'm gone.
+  - Thanks, let me see now...
+  - Tubert looks a little weird...
+  - She'll be fine tomorrow probably.
+  - Thanks! I'll be back tomorrow morning.
