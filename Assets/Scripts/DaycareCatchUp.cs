@@ -10,6 +10,7 @@ public class DaycareCatchUp : MonoBehaviour
         {
             foreach(GameObject cubert in cubertsOvernight)
             {
+                if(cubert.name == "Hubert" && GlobalEvents.Singleton.HubertDead) continue;
                 ScreenManager.Singleton.SetCubert(cubert);
             }
         }

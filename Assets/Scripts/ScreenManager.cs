@@ -89,6 +89,17 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
+    public void HideArrows()
+    {
+        rightButton.SetActive(false);
+        leftButton.SetActive(false);
+    }
+
+    public void EnableArrows()
+    {
+        CheckArrowUI();
+    }
+
     public void SetCubert(GameObject cubert)
     {
         GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);

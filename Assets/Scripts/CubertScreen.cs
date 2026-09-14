@@ -27,6 +27,7 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private Transform litterBox;
     [SerializeField] private Transform bed;
     private Transform currentSpot;
+    private BoxCollider2D nestCollider;
 
     private Transform cubertTransform;
     public Transform CubertTransform => cubertTransform;
@@ -76,6 +77,7 @@ public class CubertScreen : MonoBehaviour
         roomText.SetText(gameObject.name + "'s Room");
         statusText.SetText("");
         needTimer = needCooldown;
+        nestCollider = nest.GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -252,6 +254,8 @@ public class CubertScreen : MonoBehaviour
                 SatisfyNeed();
             }
 
+            nestCollider.enabled = false;
+
             return true;
         }
 
@@ -266,8 +270,9 @@ public class CubertScreen : MonoBehaviour
             timeInSpot = 0f;
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
-            _cubert.transform.localPosition = litterBox.localPosition;
-            _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
+            _cubert.transform.localPosition = litterBox.localPosition + new Vector3(-0.5f, 1.45f, 0f);
+            _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
+            _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
             
             currentSpot = litterBox;
 
@@ -281,8 +286,9 @@ public class CubertScreen : MonoBehaviour
     {
         timeInSpot = 0f;
         cubert.transform.SetParent(transform);
-        cubert.transform.localPosition = litterBox.localPosition;
-        cubert.transform.localScale = new Vector3(3f, 3f, 3f);
+        cubert.transform.localPosition = litterBox.localPosition + new Vector3(-0.5f, 1.45f, 0f);
+        cubert.transform.localScale = new Vector3(2f, 2f, 2f);
+        cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
 
         currentSpot = litterBox;
         DisplayFeedButton(false);
@@ -296,9 +302,10 @@ public class CubertScreen : MonoBehaviour
             timeInSpot = 0f;
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
-            _cubert.transform.localPosition = bed.localPosition;
-            _cubert.transform.localScale = new Vector3(3f, 3f, 3f);
-            
+            _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
+            _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
+            _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+
             currentSpot = bed;
 
             _cubert.GetComponent<Cubert>()?.DisplaySleepParticles(true);
@@ -495,6 +502,11 @@ public class CubertScreen : MonoBehaviour
             cubert.GetComponent<LubertSounds>().PlayBlandSound();
         }
 
+        if(currentNeed.needName is "Dirty" or "Tired")
+        {
+            PlaceCubert(cubert.gameObject);
+        }
+
         needList.RemoveFirst();
         timeInSpot = 0f;
         currentNeed = null;
@@ -571,5 +583,10 @@ public class CubertScreen : MonoBehaviour
     {
         if(cubert != null && HoldCubert.Singleton.HeldCubert != cubert)
             SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
+    }
+
+    public void EnableNestCollider()
+    {
+        nestCollider.enabled = true;
     }
 }

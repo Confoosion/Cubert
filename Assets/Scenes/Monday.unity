@@ -898,7 +898,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c580a30957972d843a2e191d70c74784, type: 3}
   m_Color: {r: 1, g: 0.9523531, b: 0.8066038, a: 1}
@@ -1144,6 +1144,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226199682}
   m_CullTransparentMesh: 1
+--- !u!1 &270713985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270713987}
+  - component: {fileID: 270713986}
+  m_Layer: 0
+  m_Name: GlobalEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &270713986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270713985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba930f55d757c54c9256ce404787abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlobalEvents
+  oubertUncomfortable: 0
+  annaAngry: 0
+  hubertDead: 0
+--- !u!4 &270713987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270713985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272869777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,7 +2143,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000e753541d
+  m_ApplyToSortingLayers: 00000000e753541dfb4dfed8
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3029,8 +3076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bf583c69bda7444af0f880fecf405b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  npcSkin: {fileID: 212438944}
-  npcShirt: {fileID: 0}
   npcsInMorning:
   - npcSO: {fileID: 11400000, guid: 897d560849997a24a84fa0c67120e75a, type: 2}
     purpose: 0
@@ -3046,6 +3091,8 @@ MonoBehaviour:
   npc: {fileID: 212438946}
   cubertHolder: {fileID: 717377487}
   NPCEnterSound: {fileID: 8300000, guid: 413675f65b9b0a3448231c7691c8d8ba, type: 3}
+  cubertLocationCollider: {fileID: 717377489}
+  customerCollider: {fileID: 212438945}
 --- !u!1 &1240737306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5002,6 +5049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   foodHolder: {fileID: 1527414824}
   foodAmountText: {fileID: 2068370525}
+  foodInKitchen: []
 --- !u!114 &2053452465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5016,6 +5064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   timeFrozen: 0
   isMorning: 1
+  isNight: 0
 --- !u!1 &2056386089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5478,3 +5527,4 @@ SceneRoots:
   - {fileID: 94010392}
   - {fileID: 573616437}
   - {fileID: 1052014038}
+  - {fileID: 270713987}

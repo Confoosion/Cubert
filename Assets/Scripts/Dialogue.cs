@@ -114,10 +114,12 @@ public class Dialogue : MonoBehaviour
     private void ShowDialogue()
     {
         dialogueObject.SetActive(true);
+        ScreenManager.Singleton.HideArrows();
     }
 
     private void HideDialogue()
     {
         dialogueObject.SetActive(false);
+        ScreenManager.Singleton.EnableArrows();
     }
 }

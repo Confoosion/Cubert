@@ -35,6 +35,7 @@ public class HoldCubert : MonoBehaviour
         if(cubertScreen?._Cubert == cubert)
         {
             cubertScreen?.DisplayFeedButton(false);
+            cubertScreen?.EnableNestCollider();
         }
         else if(TimeManager.Singleton.IsNight)
         {

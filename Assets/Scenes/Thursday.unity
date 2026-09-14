@@ -1042,6 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GlobalEvents
   oubertUncomfortable: 0
   annaAngry: 0
+  hubertDead: 0
 --- !u!4 &214385857
 Transform:
   m_ObjectHideFlags: 0
@@ -1051,7 +1052,7 @@ Transform:
   m_GameObject: {fileID: 214385855}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.79868, y: -5.86344, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

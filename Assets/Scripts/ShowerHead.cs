@@ -7,7 +7,7 @@ public class ShowerHead : MonoBehaviour
     [SerializeField] private ParticleSystem waterParticles;
 
     [Header("Wire Line")]
-    [SerializeField] private LineRenderer lineRenderer;
+    // [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Transform wireTransform;
     private Vector2 lineBasePos;
 
@@ -35,8 +35,8 @@ public class ShowerHead : MonoBehaviour
 
     void Start()
     {
-        lineRenderer.positionCount = 2;
-        lineBasePos = lineRenderer.transform.localPosition;
+        // lineRenderer.positionCount = 2;
+        // lineBasePos = lineRenderer.transform.localPosition;
     }
 
     private void OnMouseDown()

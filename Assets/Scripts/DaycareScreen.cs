@@ -76,6 +76,10 @@ public class DaycareScreen : MonoBehaviour
             {
                 currentNPC = new NPCPerson(GameObject.Find("ThursdayStuff").GetComponent<ThursdayStuff>().ChristinaNPC, Purpose.DropOff);
             }
+            else if(currentNPC.npcSO.npcName == "Calvin" && GlobalEvents.Singleton.HubertDead)
+            {
+                currentNPC = npcQueue.Dequeue();
+            }
 
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
             NPCEnter();

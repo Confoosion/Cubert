@@ -30,11 +30,11 @@ public class HubertStuff : MonoBehaviour
             transform.localScale = new Vector3(4f, 4f, 4f);
             transform.localPosition = new Vector2(-4f, -2.75f);
 
-            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            foreach(SpriteRenderer sr in renderers)
-            {
-                sr.sortingLayerName = "Background";
-            }
+            // SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+            // foreach(SpriteRenderer sr in renderers)
+            // {
+            //     sr.sortingLayerName = "Background";
+            // }
             
             CubertScreen cbrt = cubertRoom.GetComponent<CubertScreen>();
             GetComponent<Cubert>().SetLookTarget(cbrt.CubertTransform);
@@ -46,10 +46,14 @@ public class HubertStuff : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Food>())
+        if(collision.gameObject.GetComponent<Food>() != null && !GlobalEvents.Singleton.HubertDead)
         {
             SoundManager.Singleton?.PlayEatSFX();
             collision.gameObject.GetComponent<Food>().Eat();
+        }
+        if(collision.gameObject.GetComponent<Knife>())
+        {
+            GlobalEvents.Singleton.KillHubert();
         }
     }
 }
