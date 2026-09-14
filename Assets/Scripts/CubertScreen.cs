@@ -544,6 +544,11 @@ public class CubertScreen : MonoBehaviour
                     }
                     break;
                 }
+            case Habit.JubertMove:
+                {
+                    
+                    break;
+                }
             
         }
     }

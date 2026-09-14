@@ -5,5 +5,6 @@ public enum Habit
     HamsterSleep,
     MubertLeave,
     HubertLeave,
+    JubertMove,
     
 }

@@ -1040,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba930f55d757c54c9256ce404787abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalEvents
+  oubertUncomfortable: 0
   annaAngry: 0
 --- !u!4 &214385857
 Transform:
