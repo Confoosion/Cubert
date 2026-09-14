@@ -56,7 +56,7 @@ public class HoldCubert : MonoBehaviour
         cubert.transform.localPosition = holdPosition;
         cubert.transform.localScale = holdScale;
 
-        if(cubert.gameObject.name == "Mubert")
+        if(cubert.gameObject.name == "Mubert" || cubert.gameObject.name == "Hubert")
         {
             cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
             cubert.UnlockEyes();

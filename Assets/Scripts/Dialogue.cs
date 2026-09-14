@@ -99,6 +99,13 @@ public class Dialogue : MonoBehaviour
                 ScreenManager.Singleton.RemoveCubert();    
             }
         }
+        else if(currentDialogueType is DialogueType.PickUp)
+        {
+            if(TimeManager.Singleton.GetDay() == "Wednesday" && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName == "Anna")
+            {
+                TimeManager.Singleton.StartAnnaTimer();
+            }
+        }
     }
 
     private void ShowDialogue()

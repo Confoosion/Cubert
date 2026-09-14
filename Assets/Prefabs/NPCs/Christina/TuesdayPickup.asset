@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueType: 1
   sentences:
-  - Goodmorning
+  - Goodmorning.
   - I'm here to pick up my Kubert, please.

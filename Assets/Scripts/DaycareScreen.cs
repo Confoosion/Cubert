@@ -19,8 +19,6 @@ public class DaycareScreen : MonoBehaviour
 
     [SerializeField] private List<NPCPerson> npcsInMorning = new List<NPCPerson>();
     [SerializeField] private List<NPCPerson> npcsInEvening = new List<NPCPerson>();
-    // [SerializeField] private List<NPCSO> npcsInMorning = new List<NPCSO>();
-    // [SerializeField] private List<NPCSO> npcsInEvening = new List<NPCSO>();
 
     private Queue<NPCPerson> npcQueue = new Queue<NPCPerson>();
     private NPCPerson currentNPC;
@@ -39,7 +37,6 @@ public class DaycareScreen : MonoBehaviour
 
     void Start()
     {
-        TimeManager.Singleton.ResetTime();
         TimeManager.Singleton.FreezeTime(true);
         
         for(int i = 0; i < npcsInMorning.Count; i++)
@@ -66,7 +63,7 @@ public class DaycareScreen : MonoBehaviour
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
             NPCEnter();
         }
-        else if(TimeManager.Singleton.IsAM)
+        else if(!TimeManager.Singleton.IsNight)
         {
             StartDay();
         }

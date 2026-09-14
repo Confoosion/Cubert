@@ -67,18 +67,21 @@ public class NPC : MonoBehaviour
 
     public void StartCubertDialogue()
     {
-        NPCSO.NPCDialogue todaysDialogue;
+        NPCSO.NPCDialogue todaysDialogue = null;
 
-        GameObject wednesday = GameObject.Find("WednesdayStuff");
-        if(wednesday != null && _data.npcName == "Anna" && GlobalEvents.Singleton.AnnaAngry)
+        GameObject day = GameObject.Find("WednesdayStuff");
+        if(day != null)
         {
-            todaysDialogue = GetBranchDayDialogue();
+            if(_data.npcName == "Anna" && GlobalEvents.Singleton.AnnaAngry)
+                todaysDialogue = GetBranchDayDialogue();
+            else if(_data.npcName == "Timothy" && GlobalEvents.Singleton.OubertUncomfortable)
+                todaysDialogue = GetBranchDayDialogue();      
         }
-        else
-        {
+
+        if(todaysDialogue == null)
             todaysDialogue = GetCurrentDayDialogue();
-        }
-        dialogue.StartDialogue(_data.npcName, todaysDialogue?.cubertDialogue);
+
+        dialogue.StartDialogue(_data.npcName, todaysDialogue.cubertDialogue);
     }
 
     public void StartWrongCubertDialogue()

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueType: 0
   sentences:
-  - Hello!
+  - Hello! Kyle recommended this place to me.
   - Here's my Hubert. He looks so cool, doesn't he?
-  - His hair is so stylish, I designed it myself and all the ladies love it.
+  - His hair is so manly, I designed it myself and all the ladies love it.
+  - Also there's something I have to mention. Hubert's always hungry. If he says
+    he's not hungry, he's lying because he'll keep eating anyways.
   - I'll be back Friday morning. Make sure he's comfortable while I'm gone.

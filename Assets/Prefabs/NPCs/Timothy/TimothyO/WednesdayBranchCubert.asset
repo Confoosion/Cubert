@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: WednesdayIntro
+  m_Name: WednesdayBranchCubert
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  dialogueType: 0
+  dialogueType: 2
   sentences:
-  - Hello.
-  - I'm here to drop off my Oubert.
-  - She's very high maintenence and is really popular with male Cuberts, but she
-    hates them.
-  - Oubert gets pretty uncomfortable with those Cuberts, so keep her away from the
-    guys.
-  - I'll be back in the evening. See ya!
+  - ...
+  - She looks a little shaken up...
+  - Did you let any guys get close to her?
+  - I told you that she hates male Cuberts!
