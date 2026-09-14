@@ -898,7 +898,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1040,10 +1040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba930f55d757c54c9256ce404787abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalEvents
+  oubertUncomfortable: 0
   annaAngry: 0
-  oubertDead: 0
-  tubertDead: 0
-  jerryDead: 0
 --- !u!4 &214385857
 Transform:
   m_ObjectHideFlags: 0
@@ -2254,7 +2252,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 1
+  m_LayerOverridePriority: 5
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3671,7 +3669,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 6
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3757,7 +3755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3f02b5fcd24347a521f5dfdda9978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  isAnnaHappy: 1
 --- !u!1 &1527414823
 GameObject:
   m_ObjectHideFlags: 0

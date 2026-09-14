@@ -15,6 +15,12 @@ public class DaycareScreen : MonoBehaviour
     {
         public NPCSO npcSO;
         public Purpose purpose;
+
+        public NPCPerson(NPCSO _npcSO, Purpose _purpose)
+        {
+            npcSO = _npcSO;
+            purpose = _purpose;
+        }
     }
 
     [SerializeField] private List<NPCPerson> npcsInMorning = new List<NPCPerson>();
@@ -35,10 +41,16 @@ public class DaycareScreen : MonoBehaviour
     private int todaysNeeds = 0;
     private int currentNeedsCompleted = 0;
 
+    [Header("Misc")]
+    [SerializeField] private BoxCollider2D cubertLocationCollider;
+    [SerializeField] private BoxCollider2D customerCollider;
+
     void Start()
     {
         TimeManager.Singleton.FreezeTime(true);
         
+        DisableCubertDropOff();
+
         for(int i = 0; i < npcsInMorning.Count; i++)
         {
             npcQueue.Enqueue(npcsInMorning[i]);
@@ -59,6 +71,11 @@ public class DaycareScreen : MonoBehaviour
         if(npcQueue.Count > 0)
         {
             currentNPC = npcQueue.Dequeue();
+
+            if(currentNPC.npcSO.npcName == "Anna" && TimeManager.Singleton.GetDay() == "Thursday" && GlobalEvents.Singleton.AnnaAngry)
+            {
+                currentNPC = new NPCPerson(GameObject.Find("ThursdayStuff").GetComponent<ThursdayStuff>().ChristinaNPC, Purpose.DropOff);
+            }
 
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
             NPCEnter();
@@ -211,5 +228,17 @@ public class DaycareScreen : MonoBehaviour
     public GameObject GetCubertOnFrontDesk()
     {
         return(cubertHolder.transform.GetChild(0).gameObject);
+    }
+
+    public void EnableCubertDropOff()
+    {
+        cubertLocationCollider.enabled = true;
+        customerCollider.enabled = false;
+    }
+
+    public void DisableCubertDropOff()
+    {
+        cubertLocationCollider.enabled = false;
+        customerCollider.enabled = true;
     }
 }

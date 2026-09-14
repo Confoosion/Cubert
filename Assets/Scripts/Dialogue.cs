@@ -42,6 +42,7 @@ public class Dialogue : MonoBehaviour
         _nameText.SetText(npcName);
         ShowDialogue();
         DisplayNextSentence();
+        DaycareScreen.Singleton.DisableCubertDropOff();
     }
 
     public void DisplayNextSentence()
@@ -105,6 +106,8 @@ public class Dialogue : MonoBehaviour
             {
                 TimeManager.Singleton.StartAnnaTimer();
             }
+
+            DaycareScreen.Singleton.EnableCubertDropOff();
         }
     }
 
