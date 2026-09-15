@@ -582,7 +582,12 @@ public class CubertScreen : MonoBehaviour
     public void PlayLubertSound()
     {
         if(cubert != null && HoldCubert.Singleton.HeldCubert != cubert)
-            SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
+        {
+            if(TimeManager.Singleton.GetDay() == "Wednesday")
+                SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length - 1)]);
+            else
+                SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
+        }
     }
 
     public void EnableNestCollider()

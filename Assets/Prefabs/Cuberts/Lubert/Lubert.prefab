@@ -484,6 +484,7 @@ MonoBehaviour:
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
+  eyes: []
 --- !u!114 &-7108409034692244717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +500,8 @@ MonoBehaviour:
   bland: {fileID: 8300000, guid: ffcfee17d28843645875e00a49ccbf77, type: 3}
   stinky: {fileID: 8300000, guid: 703a7d8b22f11e44dbe50ef0512a288b, type: 3}
   chopChop: {fileID: 8300000, guid: 53801a1f596e33746bd97917bd1f5250, type: 3}
+  boring: {fileID: 8300000, guid: eb8bcb26864529e4ab2c8266b7e8740b, type: 3}
+  snoring: {fileID: 8300000, guid: 1a7dd0ceed1c19f4d9b22a3ec4241ba2, type: 3}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0

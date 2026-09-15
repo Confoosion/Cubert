@@ -635,6 +635,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61ab9bc00a0fd074e9676e448ae1f8fe, type: 3}
   - {fileID: 8300000, guid: 9cb0ff683938c91489fe60a09a8f3c2b, type: 3}
   - {fileID: 8300000, guid: 56fd9b1fc6b027b4bb9db4668b9c2073, type: 3}
+  - {fileID: 8300000, guid: 137d16f37be53e74db1a25130f08d7c2, type: 3}
   bedRenderer: {fileID: 1225274456209040458}
   currentNeed: {fileID: 0}
   basicNeeds:
