@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public enum Purpose { DropOff, PickUp }
 
@@ -97,7 +96,7 @@ public class DaycareScreen : MonoBehaviour
         SoundManager.Singleton?.PlaySFX(NPCEnterSound);
         ScreenManager.Singleton.SetNPCScreen(true);
 
-        if(npc.Data.npcName == "Timothy" && SceneManager.GetActiveScene().name == "Wednesday" && TimeManager.Singleton.IsNight)
+        if(npc.Data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)
         {
             GameObject.Find("WednesdayStuff").GetComponent<WednesdayStuff>().HubertLeave();
         }
@@ -188,22 +187,8 @@ public class DaycareScreen : MonoBehaviour
         }
         GetNextNPC();
 
-        switch(SceneManager.GetActiveScene().name)
-        {
-            case "Tuesday":
-                {
-                    GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
-                    break;
-                }
-            case "Thursday":
-                {
-                    if(GlobalEvents.Singleton.MubertGone)
-                    {
-                        ScreenManager.Singleton.GetCubertScreen("Mubert")?._Cubert.GetComponent<MubertStuff>().Appear();
-                    }
-                    break;
-                }
-        }
+        if(TimeManager.Singleton.GetDay() == "Tuesday")
+            GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
     }
 
     public bool PlaceCubertOnFrontDesk(GameObject cubert)

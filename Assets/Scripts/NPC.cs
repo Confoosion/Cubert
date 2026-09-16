@@ -57,12 +57,22 @@ public class NPC : MonoBehaviour
     {
         var todaysDialogue = GetCurrentDayDialogue();
         dialogue.StartDialogue(_data.npcName, todaysDialogue?.introDialogue);
+
+        if(_data.npcName == "Calvin" && TimeManager.Singleton.GetDay() == "Thursday" && GlobalEvents.Singleton.MubertGone)
+        {
+            ScreenManager.Singleton.GetCubertScreen("Mubert")?._Cubert.GetComponent<MubertStuff>().Appear();
+        }
     }
 
     public void StartPickUpDialogue()
     {
         var todaysDialogue = GetCurrentDayDialogue();
         dialogue.StartDialogue(_data.npcName, todaysDialogue?.pickUpDialogue);
+
+        if(_data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
+        {
+            ScreenManager.Singleton.GetCubertScreen("Hubert").PerformHabit(Habit.HubertLeave);
+        }
     }
 
     public void StartCubertDialogue()

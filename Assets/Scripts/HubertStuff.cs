@@ -4,6 +4,8 @@ using System.Linq;
 
 public class HubertStuff : MonoBehaviour
 {    
+    [SerializeField] private int timesVisited = 0;
+
     public bool AttemptLeave(CubertScreen hubertRoom)
     {
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Tubert");
@@ -36,6 +38,16 @@ public class HubertStuff : MonoBehaviour
             //     sr.sortingLayerName = "Background";
             // }
             
+            if(TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
+            {
+                timesVisited++;
+
+                if(timesVisited >= 4)
+                {
+                    GlobalEvents.Singleton.KillTubert();
+                }
+            }
+
             CubertScreen cbrt = cubertRoom.GetComponent<CubertScreen>();
             GetComponent<Cubert>().SetLookTarget(cbrt.CubertTransform);
             cbrt.ForceAddScared();

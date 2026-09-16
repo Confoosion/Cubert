@@ -48,6 +48,15 @@ public class ScreenManager : MonoBehaviour
         {
             currentScreen.GetComponent<CubertScreen>().PlayLubertSound();
         }
+        if(currentScreen.name == "Tubert" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
+        {
+            CubertScreen hubertScreen = GetCubertScreen("Hubert");
+            if(hubertScreen.CubertTransform.parent.name == "Hubert")
+            {
+                hubertScreen.PerformHabit(Habit.HubertLeave);
+            }
+        }
+
     }
 
     public void SwitchScreenLeft()
