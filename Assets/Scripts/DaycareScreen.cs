@@ -204,16 +204,6 @@ public class DaycareScreen : MonoBehaviour
                     break;
                 }
         }
-
-        // if(SceneManager.GetActiveScene().name == "Tuesday")
-        // {
-        //     GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
-        // }
-        // else if(SceneManager.GetActiveScene().name == "Thursday")
-        // {
-        //
-        // }
-
     }
 
     public bool PlaceCubertOnFrontDesk(GameObject cubert)

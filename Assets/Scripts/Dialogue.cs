@@ -109,6 +109,10 @@ public class Dialogue : MonoBehaviour
 
             DaycareScreen.Singleton.EnableCubertDropOff();
         }
+        else if(currentDialogueType is DialogueType.WrongCubert)
+        {
+            DaycareScreen.Singleton.EnableCubertDropOff();
+        }
     }
 
     private void ShowDialogue()

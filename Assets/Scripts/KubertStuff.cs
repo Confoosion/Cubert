@@ -6,17 +6,17 @@ public class KubertStuff : MonoBehaviour
     [SerializeField] private AudioClip kubertFart;
     [SerializeField] Sprite deadSprite;
 
-    public void DeathFart(GameObject cubertObj)
+    public void DeathFart(CubertScreen cubertScreen)
     {
-        StartCoroutine(KubertDeath(cubertObj));
+        StartCoroutine(KubertDeath(cubertScreen));
     }
 
-    IEnumerator KubertDeath(GameObject cubertObj)
+    IEnumerator KubertDeath(CubertScreen cubertScreen)
     {
         SoundManager.Singleton?.PlaySFX(kubertFart);
         yield return new WaitForSeconds(kubertFart.length);
 
-        SpriteRenderer[] renderers = cubertObj.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer[] renderers = cubertScreen._Cubert.gameObject.GetComponentsInChildren<SpriteRenderer>();
         for(int i = 0; i < renderers.Length; i++)
         {
             if(i != 0)
@@ -24,5 +24,7 @@ public class KubertStuff : MonoBehaviour
             else
                 renderers[i].sprite = deadSprite;
         }
+
+        cubertScreen.ForceAddNeed(cubertScreen.SpecialNeeds[2], false);
     }
 }

@@ -60,6 +60,7 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private NeedsSO currentNeed = null;
     [SerializeField] private NeedsSO[] basicNeeds;
     [SerializeField] private NeedsSO[] specialNeeds;
+    public NeedsSO[] SpecialNeeds => specialNeeds;
     private LinkedList<NeedsSO> needList = new LinkedList<NeedsSO>();
     public NeedsSO CurrentNeed => currentNeed;
     
@@ -204,6 +205,9 @@ public class CubertScreen : MonoBehaviour
         cubertTransform = _cubert.transform;
         cubert = _cubert.GetComponent<Cubert>();
         cubert.SetHome(this);
+        
+        if(nestCollider == null) nestCollider = nest.GetComponent<BoxCollider2D>();
+        nestCollider.enabled = false;
 
         SetCubertHabits();
     }
@@ -484,7 +488,7 @@ public class CubertScreen : MonoBehaviour
         return needs;
     }
 
-    private void ForceAddNeed(NeedsSO need, bool enforce = true)
+    public void ForceAddNeed(NeedsSO need, bool enforce = true)
     {
         if(enforce)
         {
@@ -569,7 +573,7 @@ public class CubertScreen : MonoBehaviour
         {
             if(cubert.gameObject.name == "Kubert" && TimeManager.Singleton.GetDay() == "Thursday")
             {
-                cubert.GetComponent<KubertStuff>().DeathFart(cubert.gameObject);
+                cubert.GetComponent<KubertStuff>().DeathFart(this);
                 return;
             }
             else
@@ -614,7 +618,10 @@ public class CubertScreen : MonoBehaviour
                 {
                     TurnLightsOff();
                     if(cubert.GetComponent<MubertStuff>().HideInCubertsRoom(this))
+                    {
                         ForceAddNeed(specialNeeds[0]);
+                        EnableNestCollider();
+                    }
                     break;
                 }
             case Habit.HubertLeave:
@@ -622,12 +629,18 @@ public class CubertScreen : MonoBehaviour
                     if(cubert.GetComponent<HubertStuff>().AttemptLeave(this))
                     {
                         ForceAddNeed(specialNeeds[0]);
+                        EnableNestCollider();
                     }
                     break;
                 }
             case Habit.JubertMove:
                 {
                     cubert.GetComponent<JubertStuff>().GoSomewhere(this);
+                    if(cubert.transform.parent != transform)
+                    {
+                        ForceAddNeed(specialNeeds[0]);
+                    }
+                    EnableNestCollider();
                     break;
                 }
             case Habit.MubertGone:
