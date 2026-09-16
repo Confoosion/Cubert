@@ -23,7 +23,8 @@ public class GlobalEvents : MonoBehaviour
     public bool AnnaAngry => annaAngry;
     [SerializeField] private bool hubertDead = false;
     public bool HubertDead => hubertDead;
-
+    [SerializeField] private bool mubertGone = false;
+    public bool MubertGone => mubertGone;
 
     // [SerializeField] private bool oubertDead = false;
     // [SerializeField] private bool tubertDead = false;
@@ -42,5 +43,10 @@ public class GlobalEvents : MonoBehaviour
     public void KillHubert()
     {
         hubertDead = true;
+    }
+
+    public void MubertDisappeared(bool gone)
+    {
+        mubertGone = gone;
     }
 }

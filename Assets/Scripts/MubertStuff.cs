@@ -31,6 +31,17 @@ public class MubertStuff : MonoBehaviour
         return true;  
     }
 
+    public void Disappear()
+    {
+        gameObject.SetActive(false);
+        GlobalEvents.Singleton.MubertDisappeared(true);
+    }
+
+    public void Appear()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void ChangeToNormalColor()
     {
         GetComponent<SpriteRenderer>().color = normalColor;

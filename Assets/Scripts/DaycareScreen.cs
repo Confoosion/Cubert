@@ -188,15 +188,32 @@ public class DaycareScreen : MonoBehaviour
         }
         GetNextNPC();
 
-        if(SceneManager.GetActiveScene().name == "Tuesday")
+        switch(SceneManager.GetActiveScene().name)
         {
-            GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
+            case "Tuesday":
+                {
+                    GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
+                    break;
+                }
+            case "Thursday":
+                {
+                    if(GlobalEvents.Singleton.MubertGone)
+                    {
+                        ScreenManager.Singleton.GetCubertScreen("Mubert")?._Cubert.GetComponent<MubertStuff>().Appear();
+                    }
+                    break;
+                }
         }
-        else if(SceneManager.GetActiveScene().name == "Wednesday")
-        {
-            // GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
 
-        }
+        // if(SceneManager.GetActiveScene().name == "Tuesday")
+        // {
+        //     GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
+        // }
+        // else if(SceneManager.GetActiveScene().name == "Thursday")
+        // {
+        //
+        // }
+
     }
 
     public bool PlaceCubertOnFrontDesk(GameObject cubert)

@@ -4,6 +4,7 @@ public enum Habit
     LightsOff,
     HamsterSleep,
     MubertLeave,
+    MubertGone,
     HubertLeave,
     JubertMove,
     

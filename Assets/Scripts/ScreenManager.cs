@@ -184,4 +184,33 @@ public class ScreenManager : MonoBehaviour
 
         return(cubertScreens);
     }
+
+    public CubertScreen GetCubertScreen(string name)
+    {
+        List<CubertScreen> cubertScreens = GetCubertScreens();
+        foreach(CubertScreen screen in cubertScreens)
+        {
+            if(screen.transform.name == name)
+            {
+                return(screen);
+            }
+        }
+
+        return null;
+    }
+
+    public CubertScreen GetRandomCubertScreen()
+    {
+        List<CubertScreen> cubertScreens = GetCubertScreens();
+        foreach(CubertScreen screen in cubertScreens)
+        {
+            if(currentScreen == screen.transform)
+            {
+                cubertScreens.Remove(screen);
+                break;
+            }
+        }
+
+        return(cubertScreens[Random.Range(0, cubertScreens.Count)]);
+    }
 }
