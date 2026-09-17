@@ -40,6 +40,9 @@ public class MubertStuff : MonoBehaviour
     public void Appear()
     {
         gameObject.SetActive(true);
+        CubertScreen mubertRoom = transform.parent.GetComponent<CubertScreen>();
+
+        mubertRoom.UpdateNeedStatus();
     }
 
     public void ChangeToNormalColor()

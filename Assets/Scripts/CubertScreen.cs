@@ -536,7 +536,7 @@ public class CubertScreen : MonoBehaviour
         ForceAddNeed(specialNeeds[1]);
     }
 
-    private void UpdateNeedStatus()
+    public void UpdateNeedStatus()
     {
         if(currentNeed == null)
         {
@@ -581,7 +581,6 @@ public class CubertScreen : MonoBehaviour
 
     private void UpdateNeedStatus(NeedsSO need)
     {
-        ScreenManager.Singleton.SetNeedScreen(transform);
         statusText.SetText(cubert.gameObject.name + " " + need.description);
     }
 
@@ -658,7 +657,10 @@ public class CubertScreen : MonoBehaviour
                 {
                     if(cubert.GetComponent<HubertStuff>().AttemptLeave(this))
                     {
-                        ForceAddNeed(specialNeeds[0]);
+                        if(TimeManager.Singleton.GetDay() == "Thursday")
+                            ForceAddNeed(specialNeeds[0], false);
+                        else
+                            ForceAddNeed(specialNeeds[0]);
                         EnableNestCollider();
                     }
                     break;
@@ -675,10 +677,11 @@ public class CubertScreen : MonoBehaviour
                 }
             case Habit.MubertGone:
                 {
-                    Debug.Log(needList.Count);
+                    if(needList.Count == 0 || GlobalEvents.Singleton.MubertGone) break;
+                    // Debug.Log(needList.Count);
                     while(needList.Count > 0)
                     {
-                        Debug.Log(needList.First.Value);
+                        // Debug.Log(needList.First.Value);
                         SatisfyNeed();
                     }
                     TurnLightsOff();

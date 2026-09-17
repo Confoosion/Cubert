@@ -48,15 +48,14 @@ public class ScreenManager : MonoBehaviour
         {
             currentScreen.GetComponent<CubertScreen>().PlayLubertSound();
         }
-        if(currentScreen.name == "Tubert" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
+        else if(currentScreen.name == "Tubert" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
         {
             CubertScreen hubertScreen = GetCubertScreen("Hubert");
-            if(hubertScreen._Cubert != null && hubertScreen.CubertTransform.parent.name == "Hubert")
+            if(hubertScreen?._Cubert != null && hubertScreen.CubertTransform.parent.name == "Hubert")
             {
                 hubertScreen.PerformHabit(Habit.HubertLeave);
             }
         }
-
     }
 
     public void SwitchScreenLeft()
@@ -126,7 +125,24 @@ public class ScreenManager : MonoBehaviour
 
     public void AddCubert(GameObject cubert)
     {
-        GameObject newCubert = Instantiate(cubertScreenPrefab, new Vector3(-17.8f, -cubertHeightSpacing * (screens.Count - 2), 0f), Quaternion.identity);
+        Vector3 newCubertPosition = new Vector3(-17.8f, 0f, 0f);
+        bool overlapFound;
+
+        do
+        {
+            overlapFound = false;
+            for(int index = 1; index < screens.Count - 1; index++)
+            {
+                if(screens[index].position == newCubertPosition)
+                {
+                    newCubertPosition += new Vector3(0f, -cubertHeightSpacing, 0f);   
+                    overlapFound = true;
+                    break;
+                }
+            }
+        } while(overlapFound);
+
+        GameObject newCubert = Instantiate(cubertScreenPrefab, newCubertPosition, Quaternion.identity);
         newCubert.name = cubert.name;
         screens.Insert((screens.Count > 1) ? screens.Count - 1 : 1, newCubert.transform);
         screenMap.AddScreenToMap();

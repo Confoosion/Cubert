@@ -11,7 +11,7 @@ public class HubertStuff : MonoBehaviour
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Tubert");
         if(cubertRoom == null) cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Oubert");
 
-        if(ScreenManager.Singleton.CurrentScreen == cubertRoom) return false;
+        if(ScreenManager.Singleton.CurrentScreen == cubertRoom && TimeManager.Singleton.GetDay() != "Thursday") return false;
 
         hubertRoom.DisplayFeedButton(false);
 

@@ -87,6 +87,10 @@ public class DaycareScreen : MonoBehaviour
         {
             StartDay();
         }
+        else
+        {
+            Debug.Log("Day is fully completed!");
+        }
     }
 
     public void NPCEnter()
@@ -107,7 +111,7 @@ public class DaycareScreen : MonoBehaviour
         npc.NPCLeave();
         ScreenManager.Singleton.SetNPCScreen(false);
 
-        if(!TimeManager.Singleton.IsMorning)
+        if(TimeManager.Singleton.IsNight && currentNPC.purpose is not Purpose.DropOff)
         {
             StartCoroutine(SpawnNightNPC());
         }

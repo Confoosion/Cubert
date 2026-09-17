@@ -53,6 +53,8 @@ public class GlobalEvents : MonoBehaviour
 
     public void KillTubert()
     {
+        if(tubertDead) return;
         tubertDead = true;
+        DaycareScreen.Singleton.NPCLeave();
     }
 }
