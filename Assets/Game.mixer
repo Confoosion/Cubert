@@ -42,6 +42,7 @@ AudioMixerGroupController:
   - {fileID: -1805971035051644297}
   - {fileID: -1659222280661278578}
   - {fileID: -1111726084571929903}
+  - {fileID: 201891938782464306}
   m_Volume: 6f3483a15c85b6645a9feefe7bdd08ad
   m_Pitch: 833745df6544a814882e56a04f2d2ea2
   m_Send: 00000000000000000000000000000000
@@ -170,6 +171,7 @@ AudioMixerController:
     - 3de689420e79eec428200c4fb50f167e
     - 8ab1723e21da83a419dd91b8fdd1ddfa
     - 678a82bc6e509504d879939fe293c239
+    - 7cb9c9fcdb02eec46a743fd67f41723b
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -223,6 +225,25 @@ AudioMixerSnapshotController:
     19fc8d87c1aceda4a9d5b4ced97c1d49: 0
     09bc936de6a57234a9e52844b4b9b835: 0.72
   m_TransitionOverrides: {}
+--- !u!243 &201891938782464306
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Lubert
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 7cb9c9fcdb02eec46a743fd67f41723b
+  m_Children: []
+  m_Volume: 95ad415e6d4c7ca4dbed2789ff53174b
+  m_Pitch: ed8269702b4716745a5d26dd09becf49
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 7045907934900856851}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &1097357959853162977
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -280,6 +301,20 @@ AudioMixerEffectController:
   m_EffectID: f0fe53ee8c189164c968350bfc3fa896
   m_EffectName: Attenuation
   m_MixLevel: 738e11901b68a7447a8d67068ef97df6
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &7045907934900856851
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 338872a9cedc9b44fa1f53c43ee4eea9
+  m_EffectName: Attenuation
+  m_MixLevel: f85785311e2602b46877686bc48c6602
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

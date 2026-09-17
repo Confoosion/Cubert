@@ -62,6 +62,10 @@ public class HoldCubert : MonoBehaviour
             cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
             cubert.UnlockEyes();
         }
+        else if(cubert.gameObject.name == "Lubert")
+        {
+            cubert.GetComponent<LubertSounds>().StopLubertSound();
+        }
 
         cubert.DisplaySleepParticles(false);
 

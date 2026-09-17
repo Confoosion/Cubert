@@ -51,7 +51,7 @@ public class ScreenManager : MonoBehaviour
         if(currentScreen.name == "Tubert" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
         {
             CubertScreen hubertScreen = GetCubertScreen("Hubert");
-            if(hubertScreen.CubertTransform.parent.name == "Hubert")
+            if(hubertScreen._Cubert != null && hubertScreen.CubertTransform.parent.name == "Hubert")
             {
                 hubertScreen.PerformHabit(Habit.HubertLeave);
             }

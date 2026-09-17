@@ -1748,7 +1748,7 @@ MonoBehaviour:
   cubertHeightSpacing: 15
   leftButton: {fileID: 336460866}
   rightButton: {fileID: 226199682}
-  switchRoomAudio: {fileID: 8300000, guid: 15eb3b1d41352e24dbc158ccce1069e6, type: 3}
+  switchRoomAudio: {fileID: 8300000, guid: 33014f9855e581c45bc75ae4ea18380c, type: 3}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ MonoBehaviour:
     purpose: 1
   npc: {fileID: 212438946}
   cubertHolder: {fileID: 717377487}
-  NPCEnterSound: {fileID: 8300000, guid: 413675f65b9b0a3448231c7691c8d8ba, type: 3}
+  NPCEnterSound: {fileID: 8300000, guid: c5169486d18afd648b834c6ebcd39c64, type: 3}
   cubertLocationCollider: {fileID: 717377489}
   customerCollider: {fileID: 212438945}
 --- !u!114 &1052014040
@@ -4329,6 +4329,8 @@ MonoBehaviour:
   oubertUncomfortable: 0
   annaAngry: 0
   hubertDead: 0
+  mubertGone: 0
+  tubertDead: 0
 --- !u!4 &1721437210
 Transform:
   m_ObjectHideFlags: 0

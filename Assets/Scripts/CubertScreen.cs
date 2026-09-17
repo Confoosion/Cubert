@@ -239,7 +239,12 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = nest.localPosition;
             _cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-            _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Default"; 
+            // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Default"; 
+            SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
+            foreach(SpriteRenderer sr in renderers)
+            {
+                sr.sortingLayerName = "Default";
+            }
 
             currentSpot = nest;
 
@@ -280,7 +285,12 @@ public class CubertScreen : MonoBehaviour
         _cubert.transform.SetParent(transform);
         _cubert.transform.localPosition = nest.localPosition;
         _cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-        _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Default";   
+        // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Default"; 
+        SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sr in renderers)
+        {
+            sr.sortingLayerName = "Default";
+        }  
     }
 
     public bool PlaceCubertInLitterBox(GameObject _cubert)
@@ -293,7 +303,12 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = litterBox.localPosition + new Vector3(-0.5f, 1.45f, 0f);
             _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-            _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+            // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+            SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
+            foreach(SpriteRenderer sr in renderers)
+            {
+                sr.sortingLayerName = "Background";
+            }
             
             currentSpot = litterBox;
 
@@ -308,7 +323,12 @@ public class CubertScreen : MonoBehaviour
         _cubert.transform.SetParent(transform);
         _cubert.transform.localPosition = litterBox.localPosition + new Vector3(-0.5f, 1.45f, 0f);
         _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-        _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sr in renderers)
+        {
+            sr.sortingLayerName = "Background";
+        }
 
         if(cubert.gameObject == _cubert)
         {
@@ -328,7 +348,12 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
             _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-            _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+            // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+            SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
+            foreach(SpriteRenderer sr in renderers)
+            {
+                sr.sortingLayerName = "Background";
+            }
 
             currentSpot = bed;
 
@@ -350,7 +375,12 @@ public class CubertScreen : MonoBehaviour
         _cubert.transform.SetParent(transform);
         _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
         _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-        _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sr in renderers)
+        {
+            sr.sortingLayerName = "Background";
+        }
 
         if(cubert.gameObject == _cubert)
         {   
@@ -565,11 +595,11 @@ public class CubertScreen : MonoBehaviour
                 cubert.GetComponent<LubertSounds>().PlayBoringSound();
         }
 
-        if(currentNeed.needName == "Tired")
+        if(currentNeed?.needName == "Tired")
         {
             PlaceCubert(cubert.gameObject);
         }
-        else if(currentNeed.needName == "Potty")
+        else if(currentNeed?.needName == "Potty")
         {
             if(cubert.gameObject.name == "Kubert" && TimeManager.Singleton.GetDay() == "Thursday")
             {
@@ -645,6 +675,12 @@ public class CubertScreen : MonoBehaviour
                 }
             case Habit.MubertGone:
                 {
+                    Debug.Log(needList.Count);
+                    while(needList.Count > 0)
+                    {
+                        Debug.Log(needList.First.Value);
+                        SatisfyNeed();
+                    }
                     TurnLightsOff();
                     cubert.GetComponent<MubertStuff>().Disappear();
                     ForceAddNeed(specialNeeds[0], false);
@@ -671,10 +707,11 @@ public class CubertScreen : MonoBehaviour
     {
         if(cubert != null && HoldCubert.Singleton.HeldCubert != cubert)
         {
+            LubertSounds lubertSFX = cubert.GetComponent<LubertSounds>();
             if(TimeManager.Singleton.GetDay() == "Wednesday")
-                SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length - 1)]);
+                lubertSFX.PlayLubertSound(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length - 1)]);
             else
-                SoundManager.Singleton?.PlaySFX(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
+                lubertSFX.PlayLubertSound(lubertSounds[UnityEngine.Random.Range(0, lubertSounds.Length)]);
         }
     }
 
