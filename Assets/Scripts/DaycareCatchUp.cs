@@ -1,12 +1,27 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DaycareCatchUp : MonoBehaviour
 {
-    [SerializeField] private GameObject[] cubertsOvernight;
+    // [SerializeField] private GameObject[] cubertsOvernight;
+    [SerializeField] private List<GameObject> cubertsOvernight = new List<GameObject>();
 
     void Start()
     {
-        if(cubertsOvernight.Length > 0)
+        if(TimeManager.Singleton.GetDay() == "Friday")
+        {
+            FridayStuff fridayStuff = GameObject.Find("FridayStuff").GetComponent<FridayStuff>();
+            if(!GlobalEvents.Singleton.AnnaAngry)
+            {
+                cubertsOvernight.Insert(1, fridayStuff.LubertObj);
+            }
+            if(!GlobalEvents.Singleton.HubertDead)
+            {
+                cubertsOvernight.Add(fridayStuff.HubertObj);
+            }
+        }
+
+        if(cubertsOvernight.Count > 0)
         {
             foreach(GameObject cubert in cubertsOvernight)
             {
@@ -14,11 +29,5 @@ public class DaycareCatchUp : MonoBehaviour
                 ScreenManager.Singleton.SetCubert(cubert);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
