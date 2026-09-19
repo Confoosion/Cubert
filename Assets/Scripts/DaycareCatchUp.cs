@@ -15,6 +15,11 @@ public class DaycareCatchUp : MonoBehaviour
             {
                 cubertsOvernight.Insert(1, fridayStuff.LubertObj);
             }
+            else
+            {
+                cubertsOvernight.Insert(1, fridayStuff.KubertObj);    
+            }
+
             if(!GlobalEvents.Singleton.HubertDead)
             {
                 cubertsOvernight.Add(fridayStuff.HubertObj);

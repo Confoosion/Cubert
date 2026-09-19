@@ -55,6 +55,11 @@ public class DaycareScreen : MonoBehaviour
             npcQueue.Enqueue(npcsInMorning[i]);
         }
 
+        if(TimeManager.Singleton.GetDay() == "Friday" && GlobalEvents.Singleton.AnnaAngry)
+        {
+            npcQueue.Enqueue(new NPCPerson(GameObject.Find("FridayStuff").GetComponent<FridayStuff>().ChristinaNPC, Purpose.PickUp));
+        }
+
         GetNextNPC();
     }
 
@@ -76,6 +81,10 @@ public class DaycareScreen : MonoBehaviour
                 currentNPC = new NPCPerson(GameObject.Find("ThursdayStuff").GetComponent<ThursdayStuff>().ChristinaNPC, Purpose.DropOff);
             }
             else if(currentNPC.npcSO.npcName == "Calvin" && GlobalEvents.Singleton.HubertDead)
+            {
+                currentNPC = npcQueue.Dequeue();
+            }
+            else if(currentNPC.npcSO.cubert.name == "Tubert" && GlobalEvents.Singleton.TubertDead)
             {
                 currentNPC = npcQueue.Dequeue();
             }

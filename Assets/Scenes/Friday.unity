@@ -3910,7 +3910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   lubertObj: {fileID: 5765617993210803279, guid: 38f1a5da11c188d49ba7ff85f6a8292f, type: 3}
+  kubertObj: {fileID: 5765617993210803279, guid: b1dcaa427c5c03641bcc854bcb29a46b, type: 3}
   hubertObj: {fileID: 5765617993210803279, guid: a79000947d2389642bdf1b7ed214cda7, type: 3}
+  christinaNPC: {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
 --- !u!1 &1527414823
 GameObject:
   m_ObjectHideFlags: 0
