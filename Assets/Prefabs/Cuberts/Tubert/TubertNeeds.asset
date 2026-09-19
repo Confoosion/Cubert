@@ -26,4 +26,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
     - {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}
     - {fileID: 11400000, guid: 0ab03603dec40464683b3e9ffd088a51, type: 2}
+  - day: 4
+    needs:
+    - {fileID: 11400000, guid: b2309262bfd9028488e3ba8fd3120e49, type: 2}
+    - {fileID: 11400000, guid: 2f9737949a6174e4082f2c75a86ebddb, type: 2}
+    - {fileID: 11400000, guid: fb5eb47db1b3e3148a22f63e62da87c7, type: 2}
   cubertHabits: []
