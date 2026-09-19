@@ -1045,6 +1045,7 @@ MonoBehaviour:
   hubertDead: 0
   mubertGone: 0
   tubertDead: 0
+  fubertMakeupRuined: 0
 --- !u!4 &214385857
 Transform:
   m_ObjectHideFlags: 0

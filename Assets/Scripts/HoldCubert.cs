@@ -25,7 +25,8 @@ public class HoldCubert : MonoBehaviour
         if(heldCubert != null || heldBall != null) return;
 
         if(ScreenManager.Singleton.CurrentScreen == DaycareScreen.Singleton.transform
-           && (DaycareScreen.Singleton.Npc.Interacted && DaycareScreen.Singleton.CurrentNPC != null)) return;
+           && (DaycareScreen.Singleton.Npc.Interacted && DaycareScreen.Singleton.CurrentNPC != null)
+           && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName != "Rose") return;
 
         CubertScreen cubertScreen = ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>();
         if(cubert == cubertScreen?._Cubert && cubertScreen?.CurrentNeed?.needName == "Scared") return;

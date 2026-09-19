@@ -63,6 +63,11 @@ public class DaycareScreen : MonoBehaviour
         GetNextNPC();
     }
 
+    public void DayOver()
+    {
+        Debug.Log("Day is fully completed!");
+    }
+
     public void SpawnCubert()
     {
         GameObject cubert = Instantiate(npc.Data.cubert, cubertHolder.position, Quaternion.identity);
@@ -88,6 +93,12 @@ public class DaycareScreen : MonoBehaviour
             {
                 currentNPC = npcQueue.Dequeue();
             }
+            else if(currentNPC.npcSO.npcName == "Rose" && TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight && GlobalEvents.Singleton.FubertMakeupRuined)
+            {
+                currentNPC = null;
+                DayOver();
+                return;
+            }
 
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
             NPCEnter();
@@ -98,7 +109,7 @@ public class DaycareScreen : MonoBehaviour
         }
         else
         {
-            Debug.Log("Day is fully completed!");
+            DayOver();
         }
     }
 
@@ -120,7 +131,12 @@ public class DaycareScreen : MonoBehaviour
         npc.NPCLeave();
         ScreenManager.Singleton.SetNPCScreen(false);
 
-        if(TimeManager.Singleton.IsNight && currentNPC.purpose is not Purpose.DropOff)
+        if(TimeManager.Singleton.GetDay() == "Friday" && currentNPC.npcSO.npcName == "Rose" && !TimeManager.Singleton.IsNight)
+        {
+            return;
+        }
+
+        if(TimeManager.Singleton.IsNight && currentNPC.purpose is Purpose.PickUp)
         {
             StartCoroutine(SpawnNightNPC());
         }

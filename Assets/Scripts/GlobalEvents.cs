@@ -27,6 +27,8 @@ public class GlobalEvents : MonoBehaviour
     public bool MubertGone => mubertGone;
     [SerializeField] private bool tubertDead = false;
     public bool TubertDead => tubertDead;
+    [SerializeField] private bool fubertMakeupRuined = false;
+    public bool FubertMakeupRuined => fubertMakeupRuined;
 
     // [SerializeField] private bool oubertDead = false;
     // [SerializeField] private bool jerryDead = false;
@@ -56,5 +58,10 @@ public class GlobalEvents : MonoBehaviour
         if(tubertDead) return;
         tubertDead = true;
         DaycareScreen.Singleton.NPCLeave();
+    }
+
+    public void RuinFubertMakeup()
+    {
+        fubertMakeupRuined = true;
     }
 }

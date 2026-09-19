@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class NPC : MonoBehaviour
 
     private NPCSO.NPCDialogue GetCurrentDayDialogue()
     {
-        if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
+        if(Enum.TryParse(TimeManager.Singleton.GetDay(), out Day currentDay))
         {
             var entry = _data.npcDialogue.FirstOrDefault(d => d.day == currentDay);
             return entry;
@@ -33,10 +32,13 @@ public class NPC : MonoBehaviour
 
     private NPCSO.NPCDialogue GetBranchDayDialogue()
     {
-        if(Enum.TryParse(SceneManager.GetActiveScene().name, out Day currentDay))
+        if(Enum.TryParse(TimeManager.Singleton.GetDay(), out Day currentDay))
         {
-            var entry = _data.branchDialogue.FirstOrDefault(d => d.day == currentDay);
-            return entry;
+            var matches = _data.branchDialogue.Where(d => d.day == currentDay);
+
+            if(currentDay == Day.Friday && _data.npcName == "Rose" && TimeManager.Singleton.IsNight)
+                return matches.Skip(1).FirstOrDefault();
+            return matches.FirstOrDefault();
         }
         return null;
     }
@@ -66,7 +68,13 @@ public class NPC : MonoBehaviour
 
     public void StartPickUpDialogue()
     {
-        var todaysDialogue = GetCurrentDayDialogue();
+        NPCSO.NPCDialogue todaysDialogue = null;
+
+        if(TimeManager.Singleton.GetDay() == "Friday" && _data.npcName == "Rose" && TimeManager.Singleton.IsNight)
+            todaysDialogue = GetBranchDayDialogue();
+        else
+            todaysDialogue = GetCurrentDayDialogue();
+
         dialogue.StartDialogue(_data.npcName, todaysDialogue?.pickUpDialogue);
 
         if(_data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
@@ -79,13 +87,20 @@ public class NPC : MonoBehaviour
     {
         NPCSO.NPCDialogue todaysDialogue = null;
 
-        GameObject day = GameObject.Find("WednesdayStuff");
-        if(day != null)
+        string day = TimeManager.Singleton.GetDay();
+        if(day == "Wednesday")
         {
             if(_data.npcName == "Anna" && GlobalEvents.Singleton.AnnaAngry)
                 todaysDialogue = GetBranchDayDialogue();
             else if(_data.npcName == "Timothy" && GlobalEvents.Singleton.OubertUncomfortable)
                 todaysDialogue = GetBranchDayDialogue();      
+        }
+        else if(day == "Friday")
+        {
+            if(_data.npcName == "Rose" && (GlobalEvents.Singleton.FubertMakeupRuined || TimeManager.Singleton.IsNight))
+            {
+                todaysDialogue = GetBranchDayDialogue();
+            }
         }
 
         if(todaysDialogue == null)

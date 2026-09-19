@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
-  m_Name: FridayIntro
+  m_Name: FridayCubert
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  dialogueType: 0
+  dialogueType: 2
   sentences:
-  - Hello!
-  - Here's my Cubert!
-  - He kept telling me to bring him back here. I guess he missed you a lot.
-  - Have fun now, Cubert.
-  - I'll get going now. Bye!
+  - Hmm...
+  - ...
+  - Absolutely fabulous!~
+  - You did a great job Fubert! I'll keep you here for one more day.
+  - I'll be back in the evening. Bye bye!~

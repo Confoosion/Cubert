@@ -95,10 +95,11 @@ public class Dialogue : MonoBehaviour
         {
             DaycareScreen.Singleton.NPCLeave();
             
+            if(TimeManager.Singleton.GetDay() == "Friday" && DaycareScreen.Singleton.CurrentNPC?.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
+                return;
+            
             if(currentDialogueType is DialogueType.Cubert)
-            {
-                ScreenManager.Singleton.RemoveCubert();    
-            }
+                ScreenManager.Singleton.RemoveCubert();
         }
         else if(currentDialogueType is DialogueType.PickUp)
         {
