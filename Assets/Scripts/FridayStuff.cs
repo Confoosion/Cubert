@@ -11,4 +11,7 @@ public class FridayStuff : MonoBehaviour
 
     [SerializeField] private NPCSO christinaNPC;
     public NPCSO ChristinaNPC => christinaNPC;
+
+    [SerializeField] private NPC timT;
+    [SerializeField] private NPC timO;
 }

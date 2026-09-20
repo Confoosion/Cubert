@@ -260,7 +260,7 @@ public class CubertScreen : MonoBehaviour
 
                 SetCubertHabits();
             }
-            else if(TimeManager.Singleton.GetDay() == "Friday" && cubert.name == "Fubert" && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
+            else if(TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsMorning && cubert.name == "Fubert" && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
             {
                 DaycareScreen.Singleton.GetNextNPC();
             }

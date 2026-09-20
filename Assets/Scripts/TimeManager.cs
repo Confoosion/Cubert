@@ -46,8 +46,12 @@ public class TimeManager : MonoBehaviour
 
     public void SetNight()
     {
-        isMorning = false;
         isNight = true;
+    }
+
+    public void SetDay()
+    {
+        isMorning = false;
     }
 
     public string GetDay()

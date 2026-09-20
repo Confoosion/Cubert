@@ -198,6 +198,7 @@ public class DaycareScreen : MonoBehaviour
 
         // TimeManager.Singleton.CalculateTimeInterval(todaysNeeds);
         TimeManager.Singleton.FreezeTime(false);
+        TimeManager.Singleton.SetDay();
     }
 
     public void AddNeed()

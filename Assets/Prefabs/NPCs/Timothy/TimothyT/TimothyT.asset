@@ -27,7 +27,7 @@ MonoBehaviour:
     cubertDialogue: {fileID: 11400000, guid: deaf814aee1348b4ba95cebbad6f81f3, type: 2}
   - day: 4
     introDialogue: {fileID: 11400000, guid: a78517d9f213feb42b46c6b1a645940e, type: 2}
-    pickUpDialogue: {fileID: 0}
+    pickUpDialogue: {fileID: 11400000, guid: bc803dec70a819e48bd92fadb91a6863, type: 2}
     cubertDialogue: {fileID: 0}
   wrongCubertDialogue: {fileID: 11400000, guid: 3218d254811f03a4289e3f5a0aa15466, type: 2}
   branchDialogue:
