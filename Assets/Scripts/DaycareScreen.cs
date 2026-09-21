@@ -34,6 +34,8 @@ public class DaycareScreen : MonoBehaviour
 
     [SerializeField] private Transform cubertHolder;
 
+    [SerializeField] private List<Paper> papersToRead = new List<Paper>();
+
     [Header("Sounds")]
     [SerializeField] private AudioClip NPCEnterSound;
 
@@ -60,7 +62,9 @@ public class DaycareScreen : MonoBehaviour
             npcQueue.Enqueue(new NPCPerson(GameObject.Find("FridayStuff").GetComponent<FridayStuff>().ChristinaNPC, Purpose.PickUp));
         }
 
-        GetNextNPC();
+        TaskManager.Singleton.SetTask(Task.Papers);
+
+        // GetNextNPC();
     }
 
     public void DayOver()
@@ -271,5 +275,24 @@ public class DaycareScreen : MonoBehaviour
     {
         cubertLocationCollider.enabled = false;
         customerCollider.enabled = true;
+    }
+
+    public void PaperRead(Paper paper)
+    {
+        if(papersToRead.Count == 0) return;
+        
+        foreach(Paper prx in papersToRead)
+        {
+            if(paper == prx)
+            {
+                papersToRead.Remove(prx);
+                break;
+            }
+        }
+
+        if(papersToRead.Count == 0)
+        {
+            TaskManager.Singleton.SetTask(Task.Open);
+        }
     }
 }

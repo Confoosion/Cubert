@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77423623d7c52b44b47722de72aa504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
+  isMale: 1
   cubertNeeds: {fileID: 11400000, guid: a897755145a59644da2593f7692b8ee3, type: 2}
   preferredBed: {fileID: 21300000, guid: 5bdb6b0e861d1224fb0de9435cc6bf3b, type: 3}
   feedAmount: 3
@@ -454,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce98e2cbcab79bc4b8797db3c6e32238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HubertStuff
+  timesVisited: 0
 --- !u!61 &374120957395559455
 BoxCollider2D:
   m_ObjectHideFlags: 0

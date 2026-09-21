@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Cubert : MonoBehaviour
 {
+    [SerializeField] private bool isMale;
+    public bool IsMale => isMale;
     [SerializeField] private CubertNeedsSO cubertNeeds;
     [SerializeField] private Sprite preferredBed;
     [SerializeField] private int feedAmount = 3;

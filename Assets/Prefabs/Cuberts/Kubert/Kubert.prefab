@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77423623d7c52b44b47722de72aa504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
+  isMale: 1
   cubertNeeds: {fileID: 11400000, guid: ee0ecab3ada3f5a41ac02948e2001a97, type: 2}
   preferredBed: {fileID: 21300000, guid: 553b6b014d840c243adc2c2e28d7e9c1, type: 3}
   feedAmount: 3

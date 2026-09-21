@@ -6,7 +6,7 @@ public class Paper : MonoBehaviour
 
     void Awake()
     {
-        ClosePaper();
+        paperObj.SetActive(false);
     }
 
     void OnMouseDown()
@@ -19,6 +19,7 @@ public class Paper : MonoBehaviour
 
     public void ClosePaper()
     {
+        DaycareScreen.Singleton?.PaperRead(this);
         paperObj.SetActive(false);
     }
 }
