@@ -99,6 +99,11 @@ public class DaycareScreen : MonoBehaviour
                 DayOver();
                 return;
             }
+            else if(currentNPC.npcSO.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight && !GlobalEvents.Singleton.TubertDead && !GlobalEvents.Singleton.OubertDead)
+            {
+                GameObject.Find("FridayStuff").GetComponent<FridayStuff>().EnterTims();
+                return;
+            }
 
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
             NPCEnter();

@@ -985,7 +985,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: c3d60deadeca9a54e8f6d31b267bbf4f, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
@@ -1046,6 +1046,7 @@ MonoBehaviour:
   mubertGone: 0
   tubertDead: 0
   fubertMakeupRuined: 0
+  oubertDead: 0
 --- !u!4 &214385857
 Transform:
   m_ObjectHideFlags: 0
@@ -3581,7 +3582,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: c3d60deadeca9a54e8f6d31b267bbf4f, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
@@ -3595,7 +3596,7 @@ Animator:
   m_GameObject: {fileID: 1284448615}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 558cf6289316adf488d7a6dcbfe03ed8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 923917c87e8009d48812c1940a5e0661, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3620,8 +3621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   dialogue: {fileID: 1662512812}
-  _data: {fileID: 0}
-  _purpose: 0
+  _data: {fileID: 11400000, guid: 351ca5357ba3b0446893f894f89860d8, type: 2}
+  _purpose: 1
   npcRenderer: {fileID: 1284448621}
   npcAnimator: {fileID: 1284448618}
 --- !u!61 &1284448620
@@ -3662,7 +3663,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 8.93455, y: 21.939999}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3719,7 +3720,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94752b1635f4d324bb50d86c33d9164e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4113,7 +4114,9 @@ MonoBehaviour:
   hubertObj: {fileID: 5765617993210803279, guid: a79000947d2389642bdf1b7ed214cda7, type: 3}
   christinaNPC: {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
   timT: {fileID: 1284448619}
+  timT_SO: {fileID: 11400000, guid: 351ca5357ba3b0446893f894f89860d8, type: 2}
   timO: {fileID: 2070795701}
+  timO_SO: {fileID: 11400000, guid: 248a988b811e06147bebe5c6eb1ce9f4, type: 2}
 --- !u!1 &1527414823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,7 +5898,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: c3d60deadeca9a54e8f6d31b267bbf4f, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
@@ -5909,7 +5912,7 @@ Animator:
   m_GameObject: {fileID: 2070795697}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 558cf6289316adf488d7a6dcbfe03ed8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94b36b38dd4e27f43afb94d41cedcd82, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5934,8 +5937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   dialogue: {fileID: 1662512812}
-  _data: {fileID: 0}
-  _purpose: 0
+  _data: {fileID: 11400000, guid: 248a988b811e06147bebe5c6eb1ce9f4, type: 2}
+  _purpose: 1
   npcRenderer: {fileID: 2070795703}
   npcAnimator: {fileID: 2070795700}
 --- !u!61 &2070795702
@@ -5976,7 +5979,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 8.93455, y: 21.939999}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6033,7 +6036,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94752b1635f4d324bb50d86c33d9164e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -19,6 +19,11 @@ public class NPC : MonoBehaviour
 
     [SerializeField] private Animator npcAnimator;
 
+    void Awake()
+    {
+        npcAnimator.enabled = false;
+    }
+
     private NPCSO.NPCDialogue GetCurrentDayDialogue()
     {
         if(Enum.TryParse(TimeManager.Singleton.GetDay(), out Day currentDay))
@@ -135,6 +140,7 @@ public class NPC : MonoBehaviour
 
     public void NPCEnter()
     {
+        npcAnimator.enabled = true;
         npcAnimator.SetBool("Enter", true);
         npcRenderer.sprite = _data.npcFrontSprite;
     }
