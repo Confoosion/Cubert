@@ -3,6 +3,7 @@ using UnityEngine;
 public class Paper : MonoBehaviour
 {
     [SerializeField] private GameObject paperObj;
+    [SerializeField] private AudioClip paperSFX;
 
     void Awake()
     {
@@ -14,6 +15,7 @@ public class Paper : MonoBehaviour
         if(!paperObj.activeSelf)
         {
             paperObj.SetActive(true);
+            SoundManager.Singleton?.PlaySFX(paperSFX);
         }
     }
 

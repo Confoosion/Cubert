@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Thursday.unity
     guid: 50f4df1c8eee67342ae4f82536b4d2b3
+  - enabled: 1
+    path: Assets/Scenes/Friday.unity
+    guid: cd3cf9f340a025e4caab2349e9b910e1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -2911,6 +2911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   paperObj: {fileID: 1544039108}
+  paperSFX: {fileID: 8300000, guid: 17ebaafe41bc39945bda9f774db00210, type: 3}
 --- !u!212 &961136424
 SpriteRenderer:
   serializedVersion: 2
@@ -4258,6 +4259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   paperObj: {fileID: 1779279694}
+  paperSFX: {fileID: 8300000, guid: 17ebaafe41bc39945bda9f774db00210, type: 3}
 --- !u!212 &1439515424
 SpriteRenderer:
   serializedVersion: 2
@@ -6149,6 +6151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   taskText: {fileID: 1184707728}
+  taskCompleteSFX: {fileID: 8300000, guid: 4d774151900aa4047ae02f5b004122da, type: 3}
 --- !u!1 &2056386089
 GameObject:
   m_ObjectHideFlags: 0

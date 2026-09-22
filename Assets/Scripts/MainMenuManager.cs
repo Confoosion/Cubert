@@ -37,7 +37,7 @@ public class MainMenuManager : MonoBehaviour
 
         startRoutine = null;
 
-        SceneManager.LoadScene("Thursday");
+        SceneManager.LoadScene("Friday");
         yield return null;
     }
 }

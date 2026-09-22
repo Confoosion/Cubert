@@ -15,6 +15,7 @@ public class TaskManager : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI taskText;
+    [SerializeField] private AudioClip taskCompleteSFX;
 
     private string PapersTask = "Read the papers on the desk";
     private string TalkTask = "Talk to ";
@@ -65,6 +66,9 @@ public class TaskManager : MonoBehaviour
                     break;
                 }
         }
+
+        if(task != Task.Papers)
+            SoundManager.Singleton?.PlaySFX(taskCompleteSFX);
     }
 
     private void SetPaperTask()
