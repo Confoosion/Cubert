@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5bdb6b0e861d1224fb0de9435cc6bf3b
+guid: 30db58fa98cdf2e4a89fc3abacbd95cf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2228333773643223189
-    second: Layer 25_0
+      213: 5446676055737386415
+    second: jim_front_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Layer 25_0
+      name: jim_front_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 407
-        height: 228
+        width: 712
+        height: 1615
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6f6df43d3e5311e0800000000000000
-      internalID: -2228333773643223189
+      spriteID: fa54ad4d30b769b40800000000000000
+      internalID: 5446676055737386415
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Layer 25_0: -2228333773643223189
+      jim_front_0: 5446676055737386415
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Jerry
   m_EditorClassIdentifier: Assembly-CSharp::NPCSO
   npcName: Jerry
-  npcFrontSprite: {fileID: 0}
-  npcBackSprite: {fileID: 0}
+  npcFrontSprite: {fileID: 21300000, guid: 30db58fa98cdf2e4a89fc3abacbd95cf, type: 3}
+  npcBackSprite: {fileID: 21300000, guid: cb089d1e499c68741aeea86465b2ac93, type: 3}
   cubert: {fileID: 5765617993210803279, guid: 06cdc9d2a2d6920448a48bd4af2e769f, type: 3}
   npcDialogue:
   - day: 3
