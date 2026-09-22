@@ -140,14 +140,25 @@ public class NPC : MonoBehaviour
 
     public void NPCEnter()
     {
+        npcRenderer.enabled = true;
+        npcRenderer.sprite = _data.npcFrontSprite;
+
         npcAnimator.enabled = true;
         npcAnimator.SetBool("Enter", true);
-        npcRenderer.sprite = _data.npcFrontSprite;
     }
 
     public void NPCLeave()
     {
         npcAnimator.SetBool("Enter", false);
         npcRenderer.sprite = _data.npcBackSprite;
+        StartCoroutine(Leaving());
+    }
+
+    IEnumerator Leaving()
+    {
+        AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(animInfo.length + 0.5f);
+
+        npcRenderer.enabled = false;
     }
 }

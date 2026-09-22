@@ -92,9 +92,13 @@ public class Dialogue : MonoBehaviour
         HideDialogue();
 
         if(currentDialogueType is DialogueType.Intro or DialogueType.Cubert)
-        {
+        { 
+            TaskManager.Singleton.CompleteTask();
+            if(currentDialogueType == DialogueType.Intro)
+                TaskManager.Singleton.SetTask(Task.CubertRoom);
+
             DaycareScreen.Singleton.NPCLeave();
-            
+
             if(TimeManager.Singleton.GetDay() == "Friday" && DaycareScreen.Singleton.CurrentNPC?.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
                 return;
             

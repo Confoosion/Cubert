@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
-public enum Task { Papers, Open, Close, Talk, CubertRoom, ReturnCubert, Care }
+public enum Task { None, Papers, Open, Close, Talk, CubertRoom, ReturnCubert, Care }
 
 public class TaskManager : MonoBehaviour
 {
@@ -66,9 +66,6 @@ public class TaskManager : MonoBehaviour
                     break;
                 }
         }
-
-        if(task != Task.Papers)
-            SoundManager.Singleton?.PlaySFX(taskCompleteSFX);
     }
 
     private void SetPaperTask()
@@ -119,5 +116,17 @@ public class TaskManager : MonoBehaviour
     {
         taskText.SetText(CareTask);
         currentTask = Task.Care;
+    }
+
+    public void CompleteTask()
+    {
+        if(currentTask == Task.Open)
+        {
+            DaycareScreen.Singleton.StartMorning();
+        }
+        
+        taskText.SetText("");
+        currentTask = Task.None;
+        SoundManager.Singleton?.PlaySFX(taskCompleteSFX);
     }
 }

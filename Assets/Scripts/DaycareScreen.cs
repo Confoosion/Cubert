@@ -31,6 +31,7 @@ public class DaycareScreen : MonoBehaviour
 
     [SerializeField] private NPC npc;
     public NPC Npc => npc;
+    private Coroutine spawnRoutine;
 
     [SerializeField] private Transform cubertHolder;
 
@@ -45,6 +46,7 @@ public class DaycareScreen : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private BoxCollider2D cubertLocationCollider;
     [SerializeField] private BoxCollider2D customerCollider;
+    private float npcSpawnDelay = 1.65f;
 
     void Start()
     {
@@ -63,8 +65,6 @@ public class DaycareScreen : MonoBehaviour
         }
 
         TaskManager.Singleton.SetTask(Task.Papers);
-
-        // GetNextNPC();
     }
 
     public void DayOver()
@@ -110,7 +110,8 @@ public class DaycareScreen : MonoBehaviour
             }
 
             npc.SetData(currentNPC.npcSO, currentNPC.purpose);
-            NPCEnter();
+            // NPCEnter();
+            StartCoroutine(DelayedNPCEnter(npcSpawnDelay));
         }
         else if(!TimeManager.Singleton.IsNight)
         {
@@ -122,12 +123,19 @@ public class DaycareScreen : MonoBehaviour
         }
     }
 
+    IEnumerator DelayedNPCEnter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        NPCEnter();
+    }
+
     public void NPCEnter()
     {
         npc.SetInteracted(false);
         npc.NPCEnter();
         SoundManager.Singleton?.PlaySFX(NPCEnterSound);
         ScreenManager.Singleton.SetNPCScreen(true);
+        TaskManager.Singleton.SetTask(Task.Talk);
 
         if(npc.Data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)
         {
@@ -159,7 +167,7 @@ public class DaycareScreen : MonoBehaviour
 
     IEnumerator SpawnMorningNPC()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
 
         if(npcQueue.Count > 0)
         {
@@ -173,7 +181,7 @@ public class DaycareScreen : MonoBehaviour
 
     IEnumerator SpawnNightNPC()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
         
         if(npcQueue.Count > 0)
         {
@@ -191,13 +199,23 @@ public class DaycareScreen : MonoBehaviour
         if(currentNeedsCompleted == todaysNeeds)
         {
             if(!TimeManager.Singleton.IsNight)
+            {
+                TaskManager.Singleton.CompleteTask();
                 StartEvening();
+            }
         }
+    }
+
+    public void StartMorning()
+    {
+        Debug.Log("Morning Starting!");
+        StartCoroutine(SpawnMorningNPC());
     }
 
     public void StartDay()
     {
         Debug.Log("Day Starting!");
+        TaskManager.Singleton.SetTask(Task.Care);
         List<CubertScreen> cubertScreens = ScreenManager.Singleton.GetCubertScreens();
 
         foreach(CubertScreen screen in cubertScreens)
@@ -224,7 +242,7 @@ public class DaycareScreen : MonoBehaviour
         {
             npcQueue.Enqueue(npcsInEvening[i]);
         }
-        GetNextNPC();
+        SpawnNightNPC();
 
         if(TimeManager.Singleton.GetDay() == "Tuesday")
             GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();

@@ -239,7 +239,7 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = nest.localPosition;
             _cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-            // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Default"; 
+
             SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
             foreach(SpriteRenderer sr in renderers)
             {
@@ -259,6 +259,11 @@ public class CubertScreen : MonoBehaviour
                 DaycareScreen.Singleton.GetNextNPC();
 
                 SetCubertHabits();
+
+                if(TaskManager.Singleton.CurrentTask == Task.CubertRoom)
+                {
+                    TaskManager.Singleton.CompleteTask();
+                }
             }
             else if(TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsMorning && cubert.name == "Fubert" && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
             {
