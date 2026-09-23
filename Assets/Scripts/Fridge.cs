@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Fridge : MonoBehaviour
 {
+    [SerializeField] private Transform hole;
     [SerializeField] private GameObject foodPrefab;
     [SerializeField] private float minForce = 2f;
     [SerializeField] private float maxForce = 4f;
@@ -10,7 +11,7 @@ public class Fridge : MonoBehaviour
 
     public void SpawnFood()
     {
-        GameObject food = Instantiate(foodPrefab, transform.position, Quaternion.identity);
+        GameObject food = Instantiate(foodPrefab, hole.position, Quaternion.identity);
         FoodManager.Singleton.AddFoodInKitchen(food);
 
         Rigidbody2D rb = food.GetComponent<Rigidbody2D>();
