@@ -47,5 +47,8 @@ TagManager:
   - name: PickedUp
     uniqueID: 492065767
     locked: 0
+  - name: Dialogue
+    uniqueID: 3098205419
+    locked: 0
   m_RenderingLayers:
   - Default

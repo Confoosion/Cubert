@@ -53,7 +53,7 @@ public class DaycareScreen : MonoBehaviour
         TimeManager.Singleton.FreezeTime(true);
         
         DisableCubertDropOff();
-
+        npcQueue.Clear();
         for(int i = 0; i < npcsInMorning.Count; i++)
         {
             npcQueue.Enqueue(npcsInMorning[i]);
@@ -238,11 +238,12 @@ public class DaycareScreen : MonoBehaviour
         Debug.Log("Evening Starting!");
         TimeManager.Singleton.SetNight();
 
+        npcQueue.Clear();
         for(int i = 0; i < npcsInEvening.Count; i++)
         {
             npcQueue.Enqueue(npcsInEvening[i]);
         }
-        SpawnNightNPC();
+        StartCoroutine(SpawnNightNPC());
 
         if(TimeManager.Singleton.GetDay() == "Tuesday")
             GameObject.Find("TuesdayStuff").GetComponent<TuesdayStuff>().SpawnHiddenMuberts();
