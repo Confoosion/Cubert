@@ -17,13 +17,13 @@ public class OpenCloseSign : MonoBehaviour
     private void FlipToOpen()
     {        
         isOpen = true;
-        signRenderer.sprite = openSprite;
+        signRenderer.sprite = closedSprite;
     }
 
     private void FlipToClosed()
     {
         isOpen = false;
-        signRenderer.sprite = closedSprite;
+        signRenderer.sprite = openSprite;
     }
 
     void OnMouseDown()
