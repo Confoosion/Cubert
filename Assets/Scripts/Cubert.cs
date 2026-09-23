@@ -5,7 +5,7 @@ public class Cubert : MonoBehaviour
     [SerializeField] private bool isMale;
     public bool IsMale => isMale;
     [SerializeField] private CubertNeedsSO cubertNeeds;
-    [SerializeField] private Sprite preferredBed;
+    [SerializeField] private Sprite[] preferredBed;
     [SerializeField] private int feedAmount = 3;
     [SerializeField] private int hitAmount = 3;
     [SerializeField] private int showerAmount = 20;
@@ -14,7 +14,7 @@ public class Cubert : MonoBehaviour
     [SerializeField] private EyeLook[] eyes;
 
     public CubertNeedsSO CubertNeeds => cubertNeeds;
-    public Sprite PreferredBed => preferredBed;
+    public Sprite[] PreferredBed => preferredBed;
     public int FeedAmount => feedAmount;
     public int HitAmount => hitAmount;
     public int ShowerAmount => showerAmount;

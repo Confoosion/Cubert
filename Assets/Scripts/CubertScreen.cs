@@ -56,6 +56,7 @@ public class CubertScreen : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private SpriteRenderer bedRenderer;
+    [SerializeField] private SpriteRenderer frontBedRenderer;
 
     [SerializeField] private NeedsSO currentNeed = null;
     [SerializeField] private NeedsSO[] basicNeeds;
@@ -186,9 +187,13 @@ public class CubertScreen : MonoBehaviour
         }
     }
 
-    public void SetBedSprite(Sprite bed)
+    public void SetBedSprite(Sprite[] bed)
     {
-        bedRenderer.sprite = bed;
+        bedRenderer.sprite = bed[0];
+        if(bed.Length > 1)
+            frontBedRenderer.sprite = bed[1];
+        else
+            frontBedRenderer.sprite = null;
     }
 
     public void SetCubert(GameObject _cubert)

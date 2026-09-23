@@ -481,7 +481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
   isMale: 1
   cubertNeeds: {fileID: 11400000, guid: 9b403015f0ffaa04081bb504b2e883bd, type: 2}
-  preferredBed: {fileID: 21300000, guid: 553b6b014d840c243adc2c2e28d7e9c1, type: 3}
+  preferredBed:
+  - {fileID: 21300000, guid: 553b6b014d840c243adc2c2e28d7e9c1, type: 3}
   feedAmount: 3
   hitAmount: 3
   showerAmount: 20
