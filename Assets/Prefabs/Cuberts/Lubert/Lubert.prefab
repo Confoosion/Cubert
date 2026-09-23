@@ -487,7 +487,9 @@ MonoBehaviour:
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
-  eyes: []
+  eyes:
+  - {fileID: 5425960068998378541}
+  - {fileID: 5139098511028863699}
 --- !u!114 &-7108409034692244717
 MonoBehaviour:
   m_ObjectHideFlags: 0
