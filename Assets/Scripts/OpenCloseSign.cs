@@ -6,24 +6,30 @@ public class OpenCloseSign : MonoBehaviour
     [SerializeField] private Sprite closedSprite;
     [SerializeField] private SpriteRenderer signRenderer;
 
-    [SerializeField] private bool isOpen;
+    [SerializeField] private AudioClip openSFX;
+    [SerializeField] private AudioClip closeSFX;
+
+    private bool isOpen;
     public bool IsOpen => isOpen;
 
     void Awake()
     {
-        FlipToClosed();
+        isOpen = false;
+        signRenderer.sprite = openSprite;
     }
 
     private void FlipToOpen()
     {        
         isOpen = true;
         signRenderer.sprite = closedSprite;
+        SoundManager.Singleton?.PlaySFX(openSFX);
     }
 
     private void FlipToClosed()
     {
         isOpen = false;
         signRenderer.sprite = openSprite;
+        SoundManager.Singleton?.PlaySFX(closeSFX);
     }
 
     void OnMouseDown()

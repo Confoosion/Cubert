@@ -11,6 +11,11 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _sentenceText;
     [SerializeField] private GameObject dialogueObject;
+    
+    [Header("Sounds")]
+    [SerializeField] private AudioSource dialogueSource;
+    [SerializeField] private AudioClip talkClip;
+    private int talkFrequency = 3;
 
     private DialogueType currentDialogueType;
     private Queue<string> sentences = new Queue<string>();
@@ -77,6 +82,11 @@ public class Dialogue : MonoBehaviour
         _sentenceText.text = "";
         foreach(char c in currentSentence.ToCharArray())
         {
+            if(_sentenceText.text.Length % talkFrequency == 0)
+            {
+                dialogueSource.Stop();
+                dialogueSource.PlayOneShot(talkClip);
+            }
             _sentenceText.text += c;
             yield return new WaitForSeconds(typingInterval);
         }

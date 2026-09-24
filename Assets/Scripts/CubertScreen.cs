@@ -53,6 +53,7 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private AudioClip fartSound;
     [SerializeField] private AudioSource lightSwitchSource;
     [SerializeField] private AudioClip[] lubertSounds;
+    [SerializeField] private AudioClip cubertNo;
 
     [Header("Misc")]
     [SerializeField] private SpriteRenderer bedRenderer;
@@ -291,6 +292,7 @@ public class CubertScreen : MonoBehaviour
             return true;
         }
 
+        SoundManager.Singleton?.PlaySFX(cubertNo);
         return false;
     }
 
@@ -329,6 +331,7 @@ public class CubertScreen : MonoBehaviour
             return true;
         }
         
+        SoundManager.Singleton?.PlaySFX(cubertNo);
         return false;
     }
 
@@ -381,6 +384,7 @@ public class CubertScreen : MonoBehaviour
             return true;
         }
         
+        SoundManager.Singleton?.PlaySFX(cubertNo);
         return false;
     }
 

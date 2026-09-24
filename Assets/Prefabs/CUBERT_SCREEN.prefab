@@ -636,6 +636,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9cb0ff683938c91489fe60a09a8f3c2b, type: 3}
   - {fileID: 8300000, guid: 56fd9b1fc6b027b4bb9db4668b9c2073, type: 3}
   - {fileID: 8300000, guid: 137d16f37be53e74db1a25130f08d7c2, type: 3}
+  cubertNo: {fileID: 8300000, guid: 5180501069305c440a30e56159361eac, type: 3}
   bedRenderer: {fileID: 1225274456209040458}
   frontBedRenderer: {fileID: 1423008484052770452}
   currentNeed: {fileID: 0}

@@ -75,6 +75,7 @@ public class DaycareScreen : MonoBehaviour
     public void SpawnCubert()
     {
         GameObject cubert = Instantiate(npc.Data.cubert, cubertHolder.position, Quaternion.identity);
+        cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
         cubert.name = npc.Data.cubert.name;
         ScreenManager.Singleton.AddCubert(npc.Data.cubert);
     }
@@ -257,7 +258,7 @@ public class DaycareScreen : MonoBehaviour
             cubert.GetComponent<BoxCollider2D>().enabled = true;
             cubert.transform.SetParent(cubertHolder);
             cubert.transform.localPosition = Vector3.zero;
-            cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+            cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
             return true;    
         }
 
@@ -266,7 +267,7 @@ public class DaycareScreen : MonoBehaviour
             cubert.GetComponent<BoxCollider2D>().enabled = true;
             cubert.transform.SetParent(cubertHolder);
             cubert.transform.localPosition = Vector3.zero;
-            cubert.transform.localScale = new Vector3(4f, 4f, 4f);
+            cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
 
             npc.StartCubertDialogue();
             return true;
