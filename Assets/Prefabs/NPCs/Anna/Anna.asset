@@ -31,3 +31,5 @@ MonoBehaviour:
     introDialogue: {fileID: 0}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 11400000, guid: d4f16eb95e3b19f43b3d5b5f96808921, type: 2}
+  voicePitch: 1.75
+  voiceFrequency: 4
