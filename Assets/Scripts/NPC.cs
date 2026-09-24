@@ -63,7 +63,7 @@ public class NPC : MonoBehaviour
     public void StartIntroDialogue()
     {
         var todaysDialogue = GetCurrentDayDialogue();
-        dialogue.StartDialogue(_data.npcName, todaysDialogue?.introDialogue);
+        dialogue.StartDialogue(_data, todaysDialogue?.introDialogue);
 
         if(_data.npcName == "Calvin" && TimeManager.Singleton.GetDay() == "Thursday" && GlobalEvents.Singleton.MubertGone)
         {
@@ -80,7 +80,7 @@ public class NPC : MonoBehaviour
         else
             todaysDialogue = GetCurrentDayDialogue();
 
-        dialogue.StartDialogue(_data.npcName, todaysDialogue?.pickUpDialogue);
+        dialogue.StartDialogue(_data, todaysDialogue?.pickUpDialogue);
 
         if(_data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
         {
@@ -111,12 +111,12 @@ public class NPC : MonoBehaviour
         if(todaysDialogue == null)
             todaysDialogue = GetCurrentDayDialogue();
 
-        dialogue.StartDialogue(_data.npcName, todaysDialogue.cubertDialogue);
+        dialogue.StartDialogue(_data, todaysDialogue.cubertDialogue);
     }
 
     public void StartWrongCubertDialogue()
     {
-        dialogue.StartDialogue(_data.npcName, _data.wrongCubertDialogue);
+        dialogue.StartDialogue(_data, _data.wrongCubertDialogue);
     }
 
     void OnMouseDown()

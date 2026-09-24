@@ -22,4 +22,8 @@ public class NPCSO : ScriptableObject
     public NPCDialogue[] npcDialogue;
     public DialogueSO wrongCubertDialogue;
     public NPCDialogue[] branchDialogue;
+    
+    [Range(0.5f, 2f)]
+    public float voicePitch = 1f;
+    public int voiceFrequency = 3;
 }

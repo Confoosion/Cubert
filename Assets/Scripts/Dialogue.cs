@@ -15,7 +15,7 @@ public class Dialogue : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioSource dialogueSource;
     [SerializeField] private AudioClip talkClip;
-    private int talkFrequency = 3;
+    [SerializeField] private int talkFrequency = 3;
 
     private DialogueType currentDialogueType;
     private Queue<string> sentences = new Queue<string>();
@@ -32,7 +32,7 @@ public class Dialogue : MonoBehaviour
         HideDialogue();
     }
 
-    public void StartDialogue(string npcName, DialogueSO dialogue)
+    public void StartDialogue(NPCSO npc, DialogueSO dialogue)
     {
         sentences.Clear();
 
@@ -44,7 +44,11 @@ public class Dialogue : MonoBehaviour
         currentDialogueType = dialogue.dialogueType;
         sentenceIndex = 0;
 
-        _nameText.SetText(npcName);
+        _nameText.SetText(npc.npcName);
+
+        talkFrequency = npc.voiceFrequency;
+        dialogueSource.pitch = npc.voicePitch;
+
         ShowDialogue();
         DisplayNextSentence();
         DaycareScreen.Singleton.DisableCubertDropOff();

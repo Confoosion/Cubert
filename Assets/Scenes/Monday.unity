@@ -5624,7 +5624,8 @@ MonoBehaviour:
   _sentenceText: {fileID: 1624278593}
   dialogueObject: {fileID: 1662512810}
   dialogueSource: {fileID: 212438949}
-  talkClip: {fileID: 8300000, guid: 2110bc4dd55905640a29561d5db992ec, type: 3}
+  talkClip: {fileID: 8300000, guid: ab7153109939a9a4daa9952c7458596c, type: 3}
+  talkFrequency: 3
 --- !u!1 &1773194868
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,3 +23,5 @@ MonoBehaviour:
     cubertDialogue: {fileID: 11400000, guid: df2b353a308d69c42bea46b2f08cdd4b, type: 2}
   wrongCubertDialogue: {fileID: 11400000, guid: 85677c52287228b4c8afdae3042749ff, type: 2}
   branchDialogue: []
+  voicePitch: 1.2
+  voiceFrequency: 4
