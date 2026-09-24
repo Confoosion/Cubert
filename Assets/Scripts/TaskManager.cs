@@ -127,6 +127,6 @@ public class TaskManager : MonoBehaviour
         
         taskText.SetText("");
         currentTask = Task.None;
-        SoundManager.Singleton?.PlaySFX(taskCompleteSFX);
+        // SoundManager.Singleton?.PlaySFX(taskCompleteSFX);
     }
 }

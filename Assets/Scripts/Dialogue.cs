@@ -113,6 +113,8 @@ public class Dialogue : MonoBehaviour
             }
 
             DaycareScreen.Singleton.EnableCubertDropOff();
+            TaskManager.Singleton.CompleteTask();
+            TaskManager.Singleton.SetTask(Task.ReturnCubert);
         }
         else if(currentDialogueType is DialogueType.WrongCubert)
         {
