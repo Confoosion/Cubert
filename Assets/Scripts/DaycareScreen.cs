@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum Purpose { DropOff, PickUp }
 
@@ -47,6 +49,7 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private BoxCollider2D cubertLocationCollider;
     [SerializeField] private BoxCollider2D customerCollider;
     private float npcSpawnDelay = 1.65f;
+    [SerializeField] private GameObject dimBG;
 
     void Start()
     {
@@ -70,6 +73,52 @@ public class DaycareScreen : MonoBehaviour
     public void DayOver()
     {
         Debug.Log("Day is fully completed!");
+        StartCoroutine(DarkenScreen());
+    }
+
+    IEnumerator DarkenScreen()
+    {
+        dimBG.SetActive(true);
+        Image image = dimBG.GetComponent<Image>();
+        Color currentColor = image.color;
+        float currentAlpha = currentColor.a;
+
+        while(currentAlpha < 1f)
+        {
+            currentAlpha += Time.deltaTime * 1.5f;
+            currentColor.a = currentAlpha;
+
+            image.color = currentColor;
+            yield return null;
+        }
+
+        NextDayScene();
+        yield return null;
+    }
+
+    private void NextDayScene()
+    {
+        string day = TimeManager.Singleton.GetDay();
+
+        switch(day)
+        {
+            case "Monday":
+                SceneManager.LoadScene("Tuesday");
+                break;
+            case "Tuesday":
+                SceneManager.LoadScene("Wednesday");
+                break;
+            case "Wednesday":
+                SceneManager.LoadScene("Thursday");
+                break;
+            case "Thursday":
+                SceneManager.LoadScene("Friday");
+                break;
+            case "Friday":
+                Debug.Log("Bad ending");
+                break;
+
+        }
     }
 
     public void SpawnCubert()
@@ -190,7 +239,7 @@ public class DaycareScreen : MonoBehaviour
         }
         else
         {
-            Debug.Log("Day is fully completed!");
+            TaskManager.Singleton.SetTask(Task.Close);
         }
     }
 

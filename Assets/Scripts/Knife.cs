@@ -8,29 +8,29 @@ public class Knife : MonoBehaviour
     private Rigidbody2D rb;
     private Camera cam;
 
+    private Vector2 homePosition;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
 
-        rb.bodyType = RigidbodyType2D.Static;
+        homePosition = transform.localPosition;
     }
 
 
     private void OnMouseDown()
     {
         isHolding = true;
-        
         Cursor.visible = false;
-
-        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void OnMouseUp()
     {
         isHolding = false;
-
         Cursor.visible = true;
+
+        transform.localPosition = homePosition;
     }
 
     void FixedUpdate()

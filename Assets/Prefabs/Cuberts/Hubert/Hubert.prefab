@@ -356,6 +356,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 954818986813063141}
   - {fileID: 4518135845187022705}
   - {fileID: 8774067055429708737}
   - {fileID: 3973108724289125869}
@@ -434,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubert
   isMale: 1
+  mouth: {fileID: 954818986813063141}
   cubertNeeds: {fileID: 11400000, guid: a897755145a59644da2593f7692b8ee3, type: 2}
   preferredBed:
   - {fileID: 21300000, guid: 87103471ee8dfc447b7fe940e7d692d5, type: 3}
@@ -645,3 +647,34 @@ MonoBehaviour:
   xRadius: 0.05
   yRadius: 0.075
   inverseEyes: 0
+--- !u!1 &9054963104228951032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954818986813063141}
+  m_Layer: 0
+  m_Name: Mouth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &954818986813063141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054963104228951032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.018, y: -0.261, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 761800779217759851}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

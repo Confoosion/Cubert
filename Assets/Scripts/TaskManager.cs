@@ -128,6 +128,10 @@ public class TaskManager : MonoBehaviour
         {
             DaycareScreen.Singleton.StartMorning();
         }
+        else if(currentTask == Task.Close)
+        {
+            DaycareScreen.Singleton.DayOver();
+        }
         
         taskText.SetText("");
         currentTask = Task.None;

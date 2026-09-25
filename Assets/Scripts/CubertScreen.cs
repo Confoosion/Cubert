@@ -431,7 +431,7 @@ public class CubertScreen : MonoBehaviour
         food.GetComponent<Rigidbody2D>().simulated = false;
         food.GetComponent<CircleCollider2D>().enabled = false;
 
-        Transform target = cubertTransform;
+        Transform target = cubert.Mouth;
         
         Vector3 startPos = food.transform.position;
         Vector3 startScale = food.transform.localScale;
@@ -455,7 +455,7 @@ public class CubertScreen : MonoBehaviour
         food.transform.localScale = startScale * 0.3f;
 
         Destroy(food.gameObject);
-        Instantiate(foodParticle, new Vector3(cubertTransform.position.x, cubertTransform.position.y, -2f), Quaternion.identity);
+        Instantiate(foodParticle, new Vector3(target.position.x, target.position.y, -2f), Quaternion.identity);
 
         if(transform == ScreenManager.Singleton.CurrentScreen)
         {

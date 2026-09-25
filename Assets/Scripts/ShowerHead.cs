@@ -15,8 +15,6 @@ public class ShowerHead : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip showerSound;
 
-    private Vector2 previousPosition;
-
     private bool isHolding = false;
     private Vector2 homePosition;
 
@@ -71,8 +69,6 @@ public class ShowerHead : MonoBehaviour
 
         Vector2 targetPos = GetMouseWorldPosition();
         Vector2 newPos = Vector2.Lerp(rb.position, targetPos, followSpeed * Time.fixedDeltaTime);
-
-        previousPosition = newPos;
 
         rb.MovePosition(newPos);
     }
