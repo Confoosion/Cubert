@@ -15,6 +15,7 @@ public class TaskManager : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI taskText;
+    [SerializeField] private GameObject taskBG;
     [SerializeField] private AudioClip taskCompleteSFX;
 
     private string PapersTask = "Read the papers on the desk";
@@ -68,6 +69,7 @@ public class TaskManager : MonoBehaviour
         }
 
         // taskAnim.Play("TaskIntro", 0, 0f);
+        taskBG.SetActive(true);
     }
 
     private void SetPaperTask()
@@ -129,6 +131,7 @@ public class TaskManager : MonoBehaviour
         
         taskText.SetText("");
         currentTask = Task.None;
+        taskBG.SetActive(false);
         // SoundManager.Singleton?.PlaySFX(taskCompleteSFX);
     }
 }
