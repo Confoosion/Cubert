@@ -19,6 +19,13 @@ public class NPC : MonoBehaviour
 
     [SerializeField] private Animator npcAnimator;
 
+    private bool isBouncing;
+    private float bounceElapsed;
+    private float bounceDuration = 0.25f;
+    private float bounceHeight = 0.5f;
+    private Vector3 originalPosition;
+    private bool hasOriginalPosition;
+
     void Awake()
     {
         npcAnimator.enabled = false;
@@ -160,5 +167,39 @@ public class NPC : MonoBehaviour
         yield return new WaitForSeconds(animInfo.length + 0.5f);
 
         npcRenderer.enabled = false;
+    }
+
+    public void LilBounce()
+    {
+        AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
+        if(animInfo.normalizedTime < 1f) return;
+
+        Debug.Log("DO LIL BOUNCE");
+        if(!hasOriginalPosition)
+        {
+            originalPosition = transform.localPosition;
+            hasOriginalPosition = true;
+        }
+
+        bounceElapsed = 0f;
+        isBouncing = true;
+    }
+
+    void LateUpdate()
+    {
+        if(!isBouncing) return;
+
+        bounceElapsed += Time.deltaTime;
+        float t = bounceElapsed / bounceDuration;
+
+        if(t >= 1f)
+        {
+            transform.localPosition = originalPosition;
+            isBouncing = false;
+            return;
+        }
+
+        float heightOffset = Mathf.Sin(t * Mathf.PI) * bounceHeight;
+        transform.localPosition = originalPosition + new Vector3(0f, heightOffset, 0f);
     }
 }

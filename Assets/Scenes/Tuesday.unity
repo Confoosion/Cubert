@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 920405968}
         m_TargetAssemblyTypeName: Paper, Assembly-CSharp
         m_MethodName: ClosePaper
         m_Mode: 1

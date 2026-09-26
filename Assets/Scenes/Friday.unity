@@ -1511,6 +1511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DAYCARE
       objectReference: {fileID: 0}
+    - target: {fileID: 5666615541031518308, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+      propertyPath: paperObj
+      value: 
+      objectReference: {fileID: 1544039108}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

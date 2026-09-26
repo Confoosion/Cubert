@@ -72,6 +72,7 @@ public class Dialogue : MonoBehaviour
 
         currentSentence = sentences.Dequeue();
 
+        DaycareScreen.Singleton.Npc.LilBounce();
         typeRoutine = StartCoroutine(TypeSentence());
 
         if(currentDialogueType == DialogueType.Intro && sentenceIndex == INTRO_CUBERT_INDEX)
@@ -145,6 +146,6 @@ public class Dialogue : MonoBehaviour
     private void HideDialogue()
     {
         dialogueObject.SetActive(false);
-        ScreenManager.Singleton.EnableArrows();
+        ScreenManager.Singleton?.EnableArrows();
     }
 }
