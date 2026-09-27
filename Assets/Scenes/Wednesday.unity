@@ -879,6 +879,11 @@ RectTransform:
   m_AnchoredPosition: {x: 132, y: -245}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &329532227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3717025306596974863, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+  m_PrefabInstance: {fileID: 1182340652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &336460866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,6 +1089,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 270773342251986171, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
   m_PrefabInstance: {fileID: 1182340652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &420629798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329532227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42c8696aee76946a1e4553ee4c5a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DaycareCatchUp
+  cubertsOvernight:
+  - {fileID: 5765617993210803279, guid: 9b5a4ecf1c3c2bc4f95de4e86167f00b, type: 3}
+  - {fileID: 5765617993210803279, guid: c8997b87562a0a04ba630a1caed8d756, type: 3}
+  - {fileID: 5765617993210803279, guid: 35ca8856d6872f14ba023ca33847b733, type: 3}
 --- !u!1 &501176018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +2009,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3717025306596974863, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 420629798}
   m_SourcePrefab: {fileID: 100100000, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
 --- !u!61 &1182340653 stripped
 BoxCollider2D:
@@ -2109,7 +2133,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1182340655}
         m_TargetAssemblyTypeName: Paper, Assembly-CSharp
         m_MethodName: ClosePaper
         m_Mode: 1

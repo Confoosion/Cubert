@@ -30,7 +30,12 @@ public class ScreenManager : MonoBehaviour
 
     void Awake()
     {
-        if(Singleton == null) Singleton = this;
+        if(Singleton != null && Singleton != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Singleton = this;
 
         currentScreen = screens[currentScreenIndex];
         SetScreen(currentScreen);
@@ -80,6 +85,8 @@ public class ScreenManager : MonoBehaviour
 
     private void CheckArrowUI()
     {
+        if(leftButton == null || rightButton == null) return;
+        
         if(currentScreenIndex - 1 < 0)
         {
             leftButton.SetActive(false);
@@ -237,5 +244,10 @@ public class ScreenManager : MonoBehaviour
         }
 
         return(cubertScreens[Random.Range(0, cubertScreens.Count)]);
+    }
+
+    void OnDestroy()
+    {
+        if(Singleton == this) Singleton = null;
     }
 }

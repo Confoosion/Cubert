@@ -1652,7 +1652,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3717025306596974863, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1259191159}
   m_SourcePrefab: {fileID: 100100000, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
 --- !u!4 &920405965 stripped
 Transform:
@@ -1930,6 +1933,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1259191158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3717025306596974863, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+  m_PrefabInstance: {fileID: 920405964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259191159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259191158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42c8696aee76946a1e4553ee4c5a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DaycareCatchUp
+  cubertsOvernight:
+  - {fileID: 5765617993210803279, guid: b1dcaa427c5c03641bcc854bcb29a46b, type: 3}
 --- !u!1 &1281909579
 GameObject:
   m_ObjectHideFlags: 0
