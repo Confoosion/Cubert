@@ -1838,6 +1838,7 @@ MonoBehaviour:
   _purpose: 0
   npcRenderer: {fileID: 80895270152616877}
   npcAnimator: {fileID: 7717306688051151656}
+  NPCLeaveSFX: {fileID: 8300000, guid: 1e44553bceef23b439d60c5f3ae5c576, type: 3}
 --- !u!95 &7717306688051151656
 Animator:
   serializedVersion: 7

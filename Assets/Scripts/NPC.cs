@@ -18,6 +18,7 @@ public class NPC : MonoBehaviour
     public void SetInteracted(bool interact) { interacted = interact; }
 
     [SerializeField] private Animator npcAnimator;
+    [SerializeField] private AudioClip NPCLeaveSFX;
 
     private bool isBouncing;
     private float bounceElapsed;
@@ -166,6 +167,7 @@ public class NPC : MonoBehaviour
         AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(animInfo.length + 0.5f);
 
+        SoundManager.Singleton?.PlaySFX(NPCLeaveSFX);
         npcRenderer.enabled = false;
     }
 
@@ -174,7 +176,7 @@ public class NPC : MonoBehaviour
         AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
         if(animInfo.normalizedTime < 1f) return;
 
-        Debug.Log("DO LIL BOUNCE");
+        // Debug.Log("DO LIL BOUNCE");
         if(!hasOriginalPosition)
         {
             originalPosition = transform.localPosition;
