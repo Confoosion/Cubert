@@ -29,6 +29,7 @@ public class TuesdayStuff : MonoBehaviour
     {
         foreach(GameObject mubert in hiddenMuberts)
         {
+            if(mubert == null) continue;
             mubert.SetActive(show);
         }
     }
