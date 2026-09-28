@@ -32,6 +32,8 @@ public class CubertScreen : MonoBehaviour
     private Transform currentSpot;
     public Transform CurrentSpot => currentSpot;
     private BoxCollider2D nestCollider;
+    private BoxCollider2D litterBoxCollider;
+    private BoxCollider2D bedCollider;
 
     private Transform cubertTransform;
     public Transform CubertTransform => cubertTransform;
@@ -85,6 +87,8 @@ public class CubertScreen : MonoBehaviour
         statusText.SetText("");
         needTimer = needCooldown;
         nestCollider = nest.GetComponent<BoxCollider2D>();
+        litterBoxCollider = litterBox.GetComponent<BoxCollider2D>();
+        bedCollider = bed.GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -306,7 +310,10 @@ public class CubertScreen : MonoBehaviour
         foreach(SpriteRenderer sr in renderers)
         {
             sr.sortingLayerName = "Default";
-        }  
+        }
+
+        currentSpot = nest;
+        nestCollider.enabled = false;
     }
 
     public bool PlaceCubertInLitterBox(GameObject _cubert)
@@ -319,7 +326,7 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = litterBox.localPosition + new Vector3(-0.5f, 1.45f, 0f);
             _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-            // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+            
             SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
             foreach(SpriteRenderer sr in renderers)
             {
@@ -327,6 +334,7 @@ public class CubertScreen : MonoBehaviour
             }
             
             currentSpot = litterBox;
+            litterBoxCollider.enabled = false;
 
             return true;
         }
@@ -340,7 +348,7 @@ public class CubertScreen : MonoBehaviour
         _cubert.transform.SetParent(transform);
         _cubert.transform.localPosition = litterBox.localPosition + new Vector3(-0.5f, 1.45f, 0f);
         _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-        // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        
         SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sr in renderers)
         {
@@ -352,7 +360,9 @@ public class CubertScreen : MonoBehaviour
             timeInSpot = 0f;
             currentSpot = litterBox;
             DisplayFeedButton(false);
-        }    
+        } 
+    
+        litterBoxCollider.enabled = false;
     }
 
     public bool PlaceCubertInBed(GameObject _cubert)
@@ -365,7 +375,7 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
             _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-            // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+    
             SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
             foreach(SpriteRenderer sr in renderers)
             {
@@ -373,6 +383,7 @@ public class CubertScreen : MonoBehaviour
             }
 
             currentSpot = bed;
+            bedCollider.enabled = false;
 
             _cubert.GetComponent<Cubert>()?.DisplaySleepParticles(true);
 
@@ -393,7 +404,7 @@ public class CubertScreen : MonoBehaviour
         _cubert.transform.SetParent(transform);
         _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
         _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-        // _cubert.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        
         SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sr in renderers)
         {
@@ -406,6 +417,8 @@ public class CubertScreen : MonoBehaviour
             currentSpot = bed;
             DisplayFeedButton(false);
         }
+
+        bedCollider.enabled = false;
     }
 
     public void DisplayFeedButton(bool show)
@@ -667,7 +680,7 @@ public class CubertScreen : MonoBehaviour
                     if(cubert.GetComponent<MubertStuff>().HideInCubertsRoom(this))
                     {
                         ForceAddNeed(specialNeeds[0]);
-                        EnableNestCollider();
+                        EnableColliders();
                     }
                     break;
                 }
@@ -679,7 +692,7 @@ public class CubertScreen : MonoBehaviour
                             ForceAddNeed(specialNeeds[0], false);
                         else
                             ForceAddNeed(specialNeeds[0]);
-                        EnableNestCollider();
+                        EnableColliders();
                     }
                     break;
                 }
@@ -690,7 +703,7 @@ public class CubertScreen : MonoBehaviour
                     {
                         ForceAddNeed(specialNeeds[0]);
                     }
-                    EnableNestCollider();
+                    EnableColliders();
                     break;
                 }
             case Habit.MubertGone:
@@ -736,8 +749,10 @@ public class CubertScreen : MonoBehaviour
         }
     }
 
-    public void EnableNestCollider()
+    public void EnableColliders()
     {
         nestCollider.enabled = true;
+        litterBoxCollider.enabled = true;
+        bedCollider.enabled = true;
     }
 }
