@@ -12,12 +12,10 @@ public class FridayStuff : MonoBehaviour
     [SerializeField] private NPCSO christinaNPC;
     public NPCSO ChristinaNPC => christinaNPC;
 
-    [SerializeField] private NPC timT;
-    [SerializeField] private NPCSO timT_SO;
-    public NPC TimT => timT;
-    [SerializeField] private NPC timO;
-    [SerializeField] private NPCSO timO_SO;
-    public NPC TimO => timO;
+    [SerializeField] private NPC_Tim timT;
+    public NPC_Tim TimT => timT;
+    [SerializeField] private NPC_Tim timO;
+    public NPC_Tim TimO => timO;
 
     public void EnterTims()
     {
@@ -26,4 +24,6 @@ public class FridayStuff : MonoBehaviour
         // timO.SetData(timO_SO, Purpose.PickUp);
         timO.NPCEnter();
     }
+
+    // public void LeaveTim()
 }

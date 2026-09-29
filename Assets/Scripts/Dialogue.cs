@@ -43,7 +43,7 @@ public class Dialogue : MonoBehaviour
 
         currentDialogueType = dialogue.dialogueType;
         sentenceIndex = 0;
-
+        
         _nameText.SetText(npc.npcName);
 
         talkFrequency = npc.voiceFrequency;

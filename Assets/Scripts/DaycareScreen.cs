@@ -36,6 +36,7 @@ public class DaycareScreen : MonoBehaviour
     private Coroutine spawnRoutine;
 
     [SerializeField] private Transform cubertHolder;
+    public Transform CubertHolder => cubertHolder;
 
     [SerializeField] private List<Paper> papersToRead = new List<Paper>();
 
@@ -125,6 +126,7 @@ public class DaycareScreen : MonoBehaviour
     {
         GameObject cubert = Instantiate(npc.Data.cubert, cubertHolder.position, Quaternion.identity);
         cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        cubert.transform.SetParent(cubertHolder);
         cubert.name = npc.Data.cubert.name;
         ScreenManager.Singleton.AddCubert(npc.Data.cubert);
     }
@@ -155,6 +157,7 @@ public class DaycareScreen : MonoBehaviour
             }
             else if(currentNPC.npcSO.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight && !GlobalEvents.Singleton.TubertDead && !GlobalEvents.Singleton.OubertDead)
             {
+                currentNPC = npcQueue.Dequeue();
                 GameObject.Find("FridayStuff").GetComponent<FridayStuff>().EnterTims();
                 return;
             }
@@ -302,7 +305,7 @@ public class DaycareScreen : MonoBehaviour
     public bool PlaceCubertOnFrontDesk(GameObject cubert)
     {
         Debug.Log("Front Desk");
-        if(currentNPC == null)
+        if(currentNPC == null && cubertHolder.childCount == 0)
         {
             cubert.GetComponent<BoxCollider2D>().enabled = true;
             cubert.transform.SetParent(cubertHolder);
@@ -337,7 +340,7 @@ public class DaycareScreen : MonoBehaviour
     public void EnableCubertDropOff()
     {
         cubertLocationCollider.enabled = true;
-        customerCollider.enabled = false;
+        customerCollider.enabled = true;
     }
 
     public void DisableCubertDropOff()
