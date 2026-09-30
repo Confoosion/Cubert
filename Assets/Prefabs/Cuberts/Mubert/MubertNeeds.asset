@@ -40,3 +40,6 @@ MonoBehaviour:
   - day: 3
     timeNeeded: 10
     habits: 04000000
+  - day: 4
+    timeNeeded: 20
+    habits: 07000000

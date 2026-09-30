@@ -31,6 +31,12 @@ public class MubertStuff : MonoBehaviour
         return true;  
     }
 
+    public bool HideInRandomRoom(CubertScreen mubertRoom)
+    {
+        // Transform cubertRoom = 
+        return true;
+    }
+
     public void Disappear()
     {
         gameObject.SetActive(false);

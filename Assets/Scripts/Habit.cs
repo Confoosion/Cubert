@@ -7,5 +7,8 @@ public enum Habit
     MubertGone,
     HubertLeave,
     JubertMove,
-    
+    MubertEat,
+    HubertEat,
+    FubertScare,
+    LubertScream,
 }

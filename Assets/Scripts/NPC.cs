@@ -24,7 +24,7 @@ public class NPC : MonoBehaviour
     private bool isBouncing;
     private float bounceElapsed;
     private float bounceDuration = 0.15f;
-    private float bounceHeight = 0.5f;
+    private float bounceHeight = 0.35f;
     private Vector3 originalPosition;
     private bool hasOriginalPosition;
 

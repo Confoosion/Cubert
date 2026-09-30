@@ -1,13 +1,17 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using System.Collections;
 
 public class HubertStuff : MonoBehaviour
 {    
     [SerializeField] private int timesVisited = 0;
+    private Transform roomIn;
 
     public bool AttemptLeave(CubertScreen hubertRoom)
     {
+        if(roomIn != null) return false;
+
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Tubert");
         if(cubertRoom == null) cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Oubert");
 
@@ -42,10 +46,15 @@ public class HubertStuff : MonoBehaviour
             {
                 timesVisited++;
 
-                if(timesVisited >= 4)
+                if(timesVisited >= 3)
                 {
                     GlobalEvents.Singleton.KillTubert();
                 }
+            }
+            else if(!TimeManager.Singleton.IsNight && !TimeManager.Singleton.IsMorning)
+            {
+                roomIn = cubertRoom;
+                StartCoroutine(KillDelay());
             }
 
             CubertScreen cbrt = cubertRoom.GetComponent<CubertScreen>();
@@ -54,6 +63,24 @@ public class HubertStuff : MonoBehaviour
         }
 
         return true;
+    }
+
+    IEnumerator KillDelay()
+    {
+        yield return new WaitForSeconds(9f);
+        while(ScreenManager.Singleton.CurrentScreen == roomIn)
+        {
+            yield return new WaitForSeconds(2.7f);
+        }
+        
+        if(roomIn.name == "Tubert")
+        {
+            GlobalEvents.Singleton.KillTubert();
+        }
+        else if(roomIn.name == "Oubert")
+        {
+            GlobalEvents.Singleton.KillOubert();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -30,6 +30,11 @@ public class HoldCubert : MonoBehaviour
 
         CubertScreen cubertScreen = ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>();
         if(cubert == cubertScreen?._Cubert && cubertScreen?.CurrentNeed?.needName == "Scared") return;
+        else if(cubert.GetComponent<KubertStuff>() != null)
+        {
+            if(cubert.GetComponent<KubertStuff>().IsStuck) return;
+        } 
+        
 
         // Debug.Log("Grabbing");
 

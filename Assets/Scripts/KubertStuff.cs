@@ -4,10 +4,15 @@ using System.Collections;
 public class KubertStuff : MonoBehaviour
 {
     [SerializeField] private AudioClip kubertFart;
-    [SerializeField] Sprite deadSprite;
+    [SerializeField] private SpriteRenderer face;
+    [SerializeField] private SpriteRenderer deadFace;
+    [SerializeField] private SpriteRenderer[] eyes;
+    private bool stuck = false;
+    public bool IsStuck => stuck;
 
     public void DeathFart(CubertScreen cubertScreen)
     {
+        stuck = true;
         StartCoroutine(KubertDeath(cubertScreen));
     }
 
@@ -16,14 +21,12 @@ public class KubertStuff : MonoBehaviour
         SoundManager.Singleton?.PlaySFX(kubertFart);
         yield return new WaitForSeconds(kubertFart.length);
 
-        SpriteRenderer[] renderers = cubertScreen._Cubert.gameObject.GetComponentsInChildren<SpriteRenderer>();
-        for(int i = 0; i < renderers.Length; i++)
+        foreach(SpriteRenderer eye in eyes)
         {
-            if(i != 0)
-                renderers[i].enabled = false;
-            else
-                renderers[i].sprite = deadSprite;
+            eye.enabled = false;
         }
+        face.enabled = false;
+        deadFace.enabled = true;
 
         cubertScreen.ForceAddNeed(cubertScreen.SpecialNeeds[2], false);
     }

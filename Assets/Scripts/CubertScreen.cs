@@ -143,7 +143,10 @@ public class CubertScreen : MonoBehaviour
                 {
                     if(transform == ScreenManager.Singleton.CurrentScreen)
                     {
-                        SoundManager.Singleton?.PlaySFX(fartSound);
+                        if(cubert.gameObject.name != "Kubert" || TimeManager.Singleton.GetDay() != "Thursday")
+                        {
+                            SoundManager.Singleton?.PlaySFX(fartSound);
+                        }
                     }
                     SatisfyNeed();
                 }
@@ -375,7 +378,16 @@ public class CubertScreen : MonoBehaviour
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
             _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
-    
+
+            if(cubert.PreferredBed[0].name == "Bed_2")
+            {
+                _cubert.transform.localPosition = new Vector3(_cubert.transform.localPosition.x, 0.4f, _cubert.transform.localPosition.z);
+            }
+            else if(cubert.PreferredBed[0].name == "Bed_5")
+            {
+                _cubert.transform.localPosition = new Vector3(_cubert.transform.localPosition.x, 0f, _cubert.transform.localPosition.z);
+            }
+
             SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
             foreach(SpriteRenderer sr in renderers)
             {
@@ -405,6 +417,15 @@ public class CubertScreen : MonoBehaviour
         _cubert.transform.localPosition = bed.localPosition + new Vector3(0f, 0.8f, 0f);
         _cubert.transform.localScale = new Vector3(2f, 2f, 2f);
         
+        if(cubert.PreferredBed[0].name == "Bed_2")
+        {
+            _cubert.transform.localPosition = new Vector3(_cubert.transform.localPosition.x, 0.4f, _cubert.transform.localPosition.z);
+        }
+        else if(cubert.PreferredBed[0].name == "Bed_5")
+        {
+            _cubert.transform.localPosition = new Vector3(_cubert.transform.localPosition.x, 0f, _cubert.transform.localPosition.z);
+        }
+
         SpriteRenderer[] renderers = _cubert.GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sr in renderers)
         {
@@ -634,7 +655,6 @@ public class CubertScreen : MonoBehaviour
             if(cubert.gameObject.name == "Kubert" && TimeManager.Singleton.GetDay() == "Thursday")
             {
                 cubert.GetComponent<KubertStuff>().DeathFart(this);
-                return;
             }
             else
                 PlaceCubert(cubert.gameObject);
@@ -718,6 +738,16 @@ public class CubertScreen : MonoBehaviour
                     TurnLightsOff();
                     cubert.GetComponent<MubertStuff>().Disappear();
                     ForceAddNeed(specialNeeds[0], false);
+                    break;
+                }
+            case Habit.MubertEat:
+                {
+                    TurnLightsOff();
+                    // if(cubert.GetComponent<MubertStuff>().HideInRandomRoom(this))
+                    // {
+                    //     ForceAddNeed(specialNeeds[0]);
+                    //     EnableColliders();
+                    // }
                     break;
                 }
         }
