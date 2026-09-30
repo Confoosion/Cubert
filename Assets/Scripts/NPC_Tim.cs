@@ -16,14 +16,18 @@ public class NPC_Tim : MonoBehaviour
     public void SetInteracted(bool interact) { interacted = interact; }
 
     [SerializeField] private Animator npcAnimator;
+    private bool isAnimPlaying = false;
     [SerializeField] private AudioClip NPCLeaveSFX;
 
     private bool isBouncing;
     private float bounceElapsed;
-    private float bounceDuration = 0.25f;
+    private float bounceDuration = 0.15f;
     private float bounceHeight = 0.5f;
     private Vector3 originalPosition;
     private bool hasOriginalPosition;
+
+    private bool isInDaycare = false;
+    public bool InDaycare => isInDaycare;
 
     void Awake()
     {
@@ -93,19 +97,18 @@ public class NPC_Tim : MonoBehaviour
 
     void OnMouseDown()
     {
-        AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
-
-        if(!interacted && !dialogue.IsDialogueOpen && animInfo.normalizedTime >= 1.0f)
+        if(!interacted && !dialogue.IsDialogueOpen && !isAnimPlaying)
         {
             interacted = true;
             DisplayDialogue();
         }
         else if(dialogue.IsDialogueOpen)
             dialogue.DisplayNextSentence();
-        else if(HoldCubert.Singleton.HoldingCubert)
+        else if(HoldCubert.Singleton.HoldingCubert && !isAnimPlaying)
         {
+            // Check if the cubert is the correct one for the right Tim
             GameObject cube = HoldCubert.Singleton.HeldCubert.gameObject;
-            DaycareScreen.Singleton.CubertHolder.GetComponent<CubertRoomSpot>().PutCubertInSpot(cube);
+            DaycareScreen.Singleton.PlaceTimCubertOnDesk(cube, _data);
         }
     }
 
@@ -116,6 +119,8 @@ public class NPC_Tim : MonoBehaviour
 
         npcAnimator.enabled = true;
         npcAnimator.SetBool("Enter", true);
+
+        isInDaycare = true;
     }
 
     public void NPCLeave()
@@ -132,6 +137,10 @@ public class NPC_Tim : MonoBehaviour
 
         SoundManager.Singleton?.PlaySFX(NPCLeaveSFX);
         npcRenderer.enabled = false;
+
+        isInDaycare = false;
+
+        DaycareScreen.Singleton.CheckTims();
     }
 
     public void LilBounce()
@@ -166,5 +175,10 @@ public class NPC_Tim : MonoBehaviour
 
         float heightOffset = Mathf.Sin(t * Mathf.PI) * bounceHeight;
         transform.localPosition = originalPosition + new Vector3(0f, heightOffset, 0f);
+    }
+
+    public void OnAnimationFinished()
+    {
+        isAnimPlaying = false;
     }
 }

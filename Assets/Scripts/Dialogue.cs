@@ -27,6 +27,8 @@ public class Dialogue : MonoBehaviour
 
     public bool IsDialogueOpen => dialogueObject.activeSelf;
 
+    private NPCSO currentNPC;
+
     void Awake()
     {
         HideDialogue();
@@ -43,8 +45,9 @@ public class Dialogue : MonoBehaviour
 
         currentDialogueType = dialogue.dialogueType;
         sentenceIndex = 0;
-        
+
         _nameText.SetText(npc.npcName);
+        currentNPC = npc;
 
         talkFrequency = npc.voiceFrequency;
         dialogueSource.pitch = npc.voicePitch;
@@ -72,7 +75,22 @@ public class Dialogue : MonoBehaviour
 
         currentSentence = sentences.Dequeue();
 
-        DaycareScreen.Singleton.Npc.LilBounce();
+        if(TimeManager.Singleton.GetDay() == "Friday" && currentNPC.npcName == "Timothy" && TimeManager.Singleton.IsNight)
+        {
+            if(currentNPC.name == "TimothyT")
+            {
+                GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>().LilBounce();
+            }
+            else
+            {
+                GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>().LilBounce();
+            }
+        }
+        else
+        {
+            DaycareScreen.Singleton.Npc.LilBounce();
+        }
+
         typeRoutine = StartCoroutine(TypeSentence());
 
         if(currentDialogueType == DialogueType.Intro && sentenceIndex == INTRO_CUBERT_INDEX)
@@ -107,12 +125,23 @@ public class Dialogue : MonoBehaviour
         HideDialogue();
 
         if(currentDialogueType is DialogueType.Intro or DialogueType.Cubert)
-        { 
+        {
             TaskManager.Singleton.CompleteTask();
             if(currentDialogueType == DialogueType.Intro)
                 TaskManager.Singleton.SetTask(Task.CubertRoom);
-
-            DaycareScreen.Singleton.NPCLeave();
+            if(TimeManager.Singleton.GetDay() == "Friday" && currentNPC.npcName == "Timothy" && TimeManager.Singleton.IsNight)
+            {
+                if(currentNPC.name == "TimothyT")
+                {
+                    DaycareScreen.Singleton.TimTLeave();
+                }
+                else
+                {
+                    DaycareScreen.Singleton.TimOLeave();
+                }
+            }
+            else
+                DaycareScreen.Singleton.NPCLeave();
 
             if(TimeManager.Singleton.GetDay() == "Friday" && DaycareScreen.Singleton.CurrentNPC?.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
                 return;
@@ -135,6 +164,8 @@ public class Dialogue : MonoBehaviour
         {
             DaycareScreen.Singleton.EnableCubertDropOff();
         }
+
+        currentNPC = null;
     }
 
     private void ShowDialogue()

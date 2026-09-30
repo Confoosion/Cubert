@@ -145,6 +145,11 @@ public class HoldCubert : MonoBehaviour
         }
     }
 
+    public void ForceDrop()
+    {
+        SetSortingLayer("Default");
+    }
+
     public void GrabBall(GameObject ball)
     {
         if(heldCubert != null || heldBall != null) return;

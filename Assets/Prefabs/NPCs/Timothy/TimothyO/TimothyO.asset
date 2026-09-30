@@ -24,12 +24,16 @@ MonoBehaviour:
   - day: 4
     introDialogue: {fileID: 11400000, guid: 819ea896d2e62f247b7db5bbf92bec16, type: 2}
     pickUpDialogue: {fileID: 11400000, guid: 0163a0b8b9089b740ada12d694762300, type: 2}
-    cubertDialogue: {fileID: 0}
+    cubertDialogue: {fileID: 11400000, guid: bb4994051f53ffb4f96b005bf546ff82, type: 2}
   wrongCubertDialogue: {fileID: 11400000, guid: bb239827f902d7b48867abaab579d9ab, type: 2}
   branchDialogue:
   - day: 2
     introDialogue: {fileID: 0}
     pickUpDialogue: {fileID: 0}
     cubertDialogue: {fileID: 11400000, guid: 3a6851e4bdaeba84197aba69d861178a, type: 2}
+  - day: 4
+    introDialogue: {fileID: 0}
+    pickUpDialogue: {fileID: 0}
+    cubertDialogue: {fileID: 11400000, guid: 90082da7be0b36740ab8fde6870ba416, type: 2}
   voicePitch: 1.2
   voiceFrequency: 3

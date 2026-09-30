@@ -218,6 +218,28 @@ public class DaycareScreen : MonoBehaviour
         currentNPC = null;
     }
 
+    public void TimTLeave()
+    {
+        NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
+        timT.NPCLeave();
+        ScreenManager.Singleton.SetNPCScreen(false);
+    }
+
+    public void TimOLeave()
+    {
+        NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
+        timO.NPCLeave();
+        ScreenManager.Singleton.SetNPCScreen(false);
+    }
+
+    public void CheckTims()
+    {
+        if(GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>().InDaycare || GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>().InDaycare)
+            return;
+
+        StartCoroutine(SpawnNightNPC());
+    }
+
     IEnumerator SpawnMorningNPC()
     {
         yield return new WaitForSeconds(1f);
@@ -321,15 +343,83 @@ public class DaycareScreen : MonoBehaviour
             cubert.transform.localPosition = Vector3.zero;
             cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
 
-            npc.StartCubertDialogue();
+            if(TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight)
+            {
+                NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
+                NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
+                
+                if(cubert.name == "Tubert" && timT.InDaycare)
+                {
+                    timT.StartCubertDialogue();
+                }
+                else if(cubert.name == "Oubert" && timO.InDaycare)
+                {
+                    timO.StartCubertDialogue();
+                }
+            }
+            else
+                npc.StartCubertDialogue();
             return true;
         }
         else
         {
-            npc.StartWrongCubertDialogue();    
+            if(TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight)
+            {
+                NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
+                NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
+
+                if(cubert.name == "Tubert" && timO.InDaycare)
+                {
+                    timO.StartWrongCubertDialogue();
+                }
+                else if(cubert.name == "Oubert" && timT.InDaycare)
+                {
+                    timT.StartWrongCubertDialogue();
+                }
+            }
+            else
+                npc.StartWrongCubertDialogue();    
         }
 
         return false;
+    }
+
+    public void PlaceTimCubertOnDesk(GameObject cubert, NPCSO timNPC)
+    {
+        cubert.GetComponent<BoxCollider2D>().enabled = true;
+        cubert.transform.SetParent(cubertHolder);
+        cubert.transform.localPosition = Vector3.zero;
+        cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        HoldCubert.Singleton.ForceDrop();
+
+        NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
+        NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
+
+        if(cubert.name == "Tubert" && timNPC.name == "TimothyT")
+        {
+            Debug.Log("Correct");
+            timT.StartCubertDialogue();
+        }
+        else if(cubert.name == "Oubert" && timNPC.name == "TimothyO")
+        {
+            Debug.Log("Correct");
+            timO.StartCubertDialogue();
+        }
+        else
+        {
+            Debug.Log("Wrong");
+
+            if(timNPC.name == "TimothyT")
+            {
+                timT.StartWrongCubertDialogue();
+            }
+            else if(timNPC.name == "TimothyO")
+            {
+                timO.StartWrongCubertDialogue();
+            }
+
+            HoldCubert.Singleton.GrabCubert(cubert.GetComponent<Cubert>());
+        }
     }
 
     public GameObject GetCubertOnFrontDesk()
