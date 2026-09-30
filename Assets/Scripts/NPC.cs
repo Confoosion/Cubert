@@ -99,6 +99,7 @@ public class NPC : MonoBehaviour
 
     public void StartCubertDialogue()
     {
+        Debug.Log("Beginning dialogue");
         NPCSO.NPCDialogue todaysDialogue = null;
 
         string day = TimeManager.Singleton.GetDay();

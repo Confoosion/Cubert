@@ -116,7 +116,7 @@ public class DaycareScreen : MonoBehaviour
                 SceneManager.LoadScene("Friday");
                 break;
             case "Friday":
-                Debug.Log("Bad ending");
+                Debug.Log("Canon Ending");
                 break;
 
         }
@@ -132,7 +132,8 @@ public class DaycareScreen : MonoBehaviour
     }
 
     public void GetNextNPC()
-    {
+    {   
+        Debug.Log(npcQueue.Count);
         if(npcQueue.Count > 0)
         {
             currentNPC = npcQueue.Dequeue();
@@ -347,18 +348,22 @@ public class DaycareScreen : MonoBehaviour
             {
                 NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
                 NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
-                
-                if(cubert.name == "Tubert" && timT.InDaycare)
+                if(timT != null && timO != null)
                 {
-                    timT.StartCubertDialogue();
-                }
-                else if(cubert.name == "Oubert" && timO.InDaycare)
-                {
-                    timO.StartCubertDialogue();
+                    if(cubert.name == "Tubert" && timT.InDaycare)
+                    {
+                        timT.StartCubertDialogue();
+                        return true;
+                    }
+                    else if(cubert.name == "Oubert" && timO.InDaycare)
+                    {
+                        timO.StartCubertDialogue();
+                        return true;
+                    }
                 }
             }
-            else
-                npc.StartCubertDialogue();
+    
+            npc.StartCubertDialogue();
             return true;
         }
         else
@@ -367,18 +372,21 @@ public class DaycareScreen : MonoBehaviour
             {
                 NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
                 NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
-
-                if(cubert.name == "Tubert" && timO.InDaycare)
+                if(timT != null && timO != null)
                 {
-                    timO.StartWrongCubertDialogue();
-                }
-                else if(cubert.name == "Oubert" && timT.InDaycare)
-                {
-                    timT.StartWrongCubertDialogue();
+                    if(cubert.name == "Tubert" && timO.InDaycare)
+                    {
+                        timO.StartWrongCubertDialogue();
+                        return false;
+                    }
+                    else if(cubert.name == "Oubert" && timT.InDaycare)
+                    {
+                        timT.StartWrongCubertDialogue();
+                        return false;
+                    }
                 }
             }
-            else
-                npc.StartWrongCubertDialogue();    
+            npc.StartWrongCubertDialogue();    
         }
 
         return false;
