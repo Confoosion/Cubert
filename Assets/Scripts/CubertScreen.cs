@@ -528,6 +528,7 @@ public class CubertScreen : MonoBehaviour
         if(reachedEnding && cubert.gameObject.name == "Hubert")
         {
             cubertTransform.localScale *= 1.1f;
+            cubertTransform.localPosition += new Vector3(0f, 0.1f, 0f);
         }
         else if(foodAte >= cubert.FeedAmount)
         {

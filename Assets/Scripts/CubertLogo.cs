@@ -8,6 +8,8 @@ public class CubertLogo : MonoBehaviour
     private int colorIndex = 0;
     private Rigidbody2D rb;
     private Vector2 direction;
+    private int lastHitStep = -1;
+    Vector2 lastNormal;
 
     void Awake()
     {
@@ -32,23 +34,17 @@ public class CubertLogo : MonoBehaviour
             normal += collision.GetContact(i).normal;
         }
 
-        if(contactCount == 2)
+        if(normal.sqrMagnitude < 0.0001f) return;
+        normal.Normalize();
+
+        int step = Mathf.RoundToInt(Time.fixedTime / Time.fixedDeltaTime);
+        if(step == lastHitStep && Vector2.Dot(normal, lastNormal) < 0.5f)
         {
             colorIndex = (colorIndex + 1) % monitorColors.Length;
             monitor.color = monitorColors[colorIndex];
         }
-
-        if(contactCount > 0)
-        {
-            normal /= contactCount;
-        }
-
-        if(normal.sqrMagnitude < 0.0001f)
-        {
-            return;
-        }
-
-        normal.Normalize();
+        lastHitStep = step;
+        lastNormal = normal;
 
         direction = Vector2.Reflect(direction, normal);
         rb.linearVelocity = direction * speed;
