@@ -59,6 +59,12 @@ public class GlobalEvents : MonoBehaviour
         tubertDead = true;
         if(TimeManager.Singleton.IsNight)
             DaycareScreen.Singleton.NPCLeave();
+        else
+        {
+            CubertScreen tubertScreen = ScreenManager.Singleton.GetCubertScreen("Tubert");
+            tubertScreen.SatisfyALLNeeds();
+            tubertScreen.ForceAddNeed(tubertScreen.SpecialNeeds[2], false);
+        }
     }
 
     public void RuinFubertMakeup()
@@ -70,5 +76,9 @@ public class GlobalEvents : MonoBehaviour
     {
         if(oubertDead) return;
         oubertDead = true;
+
+        CubertScreen oubertScreen = ScreenManager.Singleton.GetCubertScreen("Oubert");
+        oubertScreen.SatisfyALLNeeds();
+        oubertScreen.ForceAddNeed(oubertScreen.SpecialNeeds[2], false);
     }
 }

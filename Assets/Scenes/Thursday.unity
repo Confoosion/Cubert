@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalEvents
   oubertUncomfortable: 0
-  annaAngry: 1
+  annaAngry: 0
   hubertDead: 0
   mubertGone: 0
   tubertDead: 0

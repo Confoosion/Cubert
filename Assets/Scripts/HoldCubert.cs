@@ -33,8 +33,11 @@ public class HoldCubert : MonoBehaviour
         else if(cubert.GetComponent<KubertStuff>() != null)
         {
             if(cubert.GetComponent<KubertStuff>().IsStuck) return;
-        } 
-        
+        }
+        else if(cubert.GetComponent<HubertStuff>() != null)
+        {
+            if(cubert.GetComponent<HubertStuff>().IsStuck) return;
+        }
 
         // Debug.Log("Grabbing");
 

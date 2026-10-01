@@ -28,6 +28,7 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private List<NPCPerson> npcsInEvening = new List<NPCPerson>();
 
     private Queue<NPCPerson> npcQueue = new Queue<NPCPerson>();
+    public int NPCCount => npcQueue.Count;
     private NPCPerson currentNPC;
     public NPCPerson CurrentNPC => currentNPC;
 

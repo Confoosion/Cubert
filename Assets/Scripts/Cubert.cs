@@ -14,6 +14,9 @@ public class Cubert : MonoBehaviour
 
     [SerializeField] private GameObject sleepParticles;
     [SerializeField] private EyeLook[] eyes;
+    
+    [Header("Optional")]
+    [SerializeField] private SpriteRenderer deadFace;
 
     public CubertNeedsSO CubertNeeds => cubertNeeds;
     public Sprite[] PreferredBed => preferredBed;
@@ -120,6 +123,18 @@ public class Cubert : MonoBehaviour
         foreach(EyeLook eye in eyes)
         {
             eye.LookAtMouse();
+        }
+    }
+
+    public void SwitchToDeadFace()
+    {
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sr in renderers)
+        {
+            if(sr != deadFace)
+                sr.enabled = false;
+            else
+                sr.enabled = true;
         }
     }
 }

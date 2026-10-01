@@ -79,6 +79,7 @@ public class CubertScreen : MonoBehaviour
     private int foodAte = 0;
 
     private bool isEnhanced = false;
+    private bool reachedEnding = false;
 
     void Start()
     {
@@ -104,11 +105,28 @@ public class CubertScreen : MonoBehaviour
 
     private void TickTime()
     {
-        if(TimeManager.Singleton.IsTimeFrozen) return;
-
         if(feedTimer > 0f)
         {
             feedTimer -= Time.deltaTime;
+        }
+
+        if(TimeManager.Singleton.IsTimeFrozen) return;
+
+        if(GlobalEvents.Singleton.TubertDead && GlobalEvents.Singleton.OubertDead && !reachedEnding)
+        {
+            reachedEnding = true;
+            if(needList.Count > 0)
+            {
+                SatisfyALLNeeds();
+            }
+            
+            if(cubert.gameObject.name == "Hubert")
+            {
+                cubert.GetComponent<HubertStuff>().GetStuck();
+                PlaceCubert(cubert.gameObject);
+                ForceAddNeed(basicNeeds[2]);
+            }
+            return;
         }
 
         if(currentNeed == null && cubert != null && needList.Count > 0)
@@ -269,7 +287,12 @@ public class CubertScreen : MonoBehaviour
                 cubert = _cubert.GetComponent<Cubert>();
                 cubert.SetHome(this);
 
-                DaycareScreen.Singleton.GetNextNPC();
+                if(TimeManager.Singleton.IsNight && DaycareScreen.Singleton.NPCCount == 0)
+                {
+                    DaycareScreen.Singleton.DayOver();
+                }
+                else
+                    DaycareScreen.Singleton.GetNextNPC();
 
                 SetCubertHabits();
 
@@ -502,7 +525,11 @@ public class CubertScreen : MonoBehaviour
         }
         else yield return null;
         
-        if(foodAte >= cubert.FeedAmount)
+        if(reachedEnding && cubert.gameObject.name == "Hubert")
+        {
+            cubertTransform.localScale *= 1.1f;
+        }
+        else if(foodAte >= cubert.FeedAmount)
         {
             SatisfyNeed();
             foodAte = 0;
@@ -636,6 +663,14 @@ public class CubertScreen : MonoBehaviour
         statusText.SetText(cubert.gameObject.name + " " + need.description);
     }
 
+    public void SatisfyALLNeeds()
+    {
+        while(needList.Count > 0)
+        {
+            SatisfyNeed();
+        }
+    }
+
     public void SatisfyNeed()
     {
         if(cubert.gameObject.name == "Lubert")
@@ -730,11 +765,7 @@ public class CubertScreen : MonoBehaviour
                 {
                     if(needList.Count == 0 || GlobalEvents.Singleton.MubertGone) break;
                     // Debug.Log(needList.Count);
-                    while(needList.Count > 0)
-                    {
-                        // Debug.Log(needList.First.Value);
-                        SatisfyNeed();
-                    }
+                    SatisfyALLNeeds();
                     TurnLightsOff();
                     cubert.GetComponent<MubertStuff>().Disappear();
                     ForceAddNeed(specialNeeds[0], false);
@@ -784,5 +815,11 @@ public class CubertScreen : MonoBehaviour
         nestCollider.enabled = true;
         litterBoxCollider.enabled = true;
         bedCollider.enabled = true;
+    }
+
+    public void Kill()
+    {
+        ForceAddNeed(specialNeeds[2], false);
+        cubert.SwitchToDeadFace();
     }
 }

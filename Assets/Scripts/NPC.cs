@@ -95,6 +95,10 @@ public class NPC : MonoBehaviour
         {
             ScreenManager.Singleton.GetCubertScreen("Hubert").PerformHabit(Habit.HubertLeave);
         }
+        else if(_data.npcName == "Jake" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)
+        {
+            GameObject.Find("WednesdayStuff").GetComponent<WednesdayStuff>().KillCubert();
+        }
     }
 
     public void StartCubertDialogue()

@@ -7,6 +7,8 @@ public class HubertStuff : MonoBehaviour
 {    
     [SerializeField] private int timesVisited = 0;
     private Transform roomIn;
+    private bool stuck = false;
+    public bool IsStuck => stuck;
 
     public bool AttemptLeave(CubertScreen hubertRoom)
     {
@@ -75,10 +77,12 @@ public class HubertStuff : MonoBehaviour
         
         if(roomIn.name == "Tubert")
         {
+            Debug.Log("Tubert killed by Hubert!");
             GlobalEvents.Singleton.KillTubert();
         }
         else if(roomIn.name == "Oubert")
         {
+            Debug.Log("Oubert killed by Hubert!");
             GlobalEvents.Singleton.KillOubert();
         }
     }
@@ -94,5 +98,10 @@ public class HubertStuff : MonoBehaviour
         {
             GlobalEvents.Singleton.KillHubert();
         }
+    }
+
+    public void GetStuck()
+    {
+        stuck = true;
     }
 }
