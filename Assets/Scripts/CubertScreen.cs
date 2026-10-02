@@ -546,6 +546,7 @@ public class CubertScreen : MonoBehaviour
             {
                 cubert.GetComponent<HubertStuff>().KillHubert();
                 Kill();
+                GameObject.Find("FridayStuff").GetComponent<FridayStuff>().HubertEnding();
             }
         }
         else if(foodAte >= cubert.FeedAmount)

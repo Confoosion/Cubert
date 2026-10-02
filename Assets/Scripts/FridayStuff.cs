@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FridayStuff : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class FridayStuff : MonoBehaviour
         yield return new WaitForSeconds(1);
         
         yield return DarkenScreen();
-        
+
     }
 
     IEnumerator DarkenScreen()
@@ -58,6 +59,7 @@ public class FridayStuff : MonoBehaviour
             yield return null;
         }
 
+        SceneManager.LoadScene("HubertEnding");
         yield return null;
     }
 }
