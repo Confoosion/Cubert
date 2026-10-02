@@ -10,14 +10,22 @@ public class HubertStuff : MonoBehaviour
     private bool stuck = false;
     public bool IsStuck => stuck;
 
+    [SerializeField] private GameObject deadHubert;
+
+    private CubertScreen hubertsRoom;
+    private Coroutine killRoutine;
+
     public bool AttemptLeave(CubertScreen hubertRoom)
     {
+        hubertsRoom = hubertRoom;
+
         if(roomIn != null) return false;
 
-        Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Tubert");
-        if(cubertRoom == null) cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Oubert");
+        CubertScreen cubertRoom = ScreenManager.Singleton.GetCubertScreen("Tubert");
+        if(cubertRoom == null || cubertRoom.Dead) cubertRoom = ScreenManager.Singleton.GetCubertScreen("Oubert");
 
-        if(ScreenManager.Singleton.CurrentScreen == cubertRoom && TimeManager.Singleton.GetDay() != "Thursday") return false;
+        if(ScreenManager.Singleton.CurrentScreen == cubertRoom.transform && TimeManager.Singleton.GetDay() != "Thursday" || cubertRoom.Dead)
+            return false;
 
         hubertRoom.DisplayFeedButton(false);
 
@@ -34,7 +42,7 @@ public class HubertStuff : MonoBehaviour
         }
         else
         {
-            transform.parent = cubertRoom;
+            transform.parent = cubertRoom.transform;
             transform.localScale = new Vector3(4f, 4f, 4f);
             transform.localPosition = new Vector2(-4f, -2.75f);
 
@@ -55,8 +63,8 @@ public class HubertStuff : MonoBehaviour
             }
             else if(!TimeManager.Singleton.IsNight && !TimeManager.Singleton.IsMorning)
             {
-                roomIn = cubertRoom;
-                StartCoroutine(KillDelay());
+                roomIn = cubertRoom.transform;
+                killRoutine = StartCoroutine(KillDelay());
             }
 
             CubertScreen cbrt = cubertRoom.GetComponent<CubertScreen>();
@@ -78,13 +86,26 @@ public class HubertStuff : MonoBehaviour
         if(roomIn.name == "Tubert")
         {
             Debug.Log("Tubert killed by Hubert!");
+            hubertsRoom.PlaceCubert(hubertsRoom._Cubert.gameObject);
+            ResetKill();
             GlobalEvents.Singleton.KillTubert();
+            hubertsRoom._Cubert.UnlockEyes();
         }
         else if(roomIn.name == "Oubert")
         {
             Debug.Log("Oubert killed by Hubert!");
+            hubertsRoom.PlaceCubert(hubertsRoom._Cubert.gameObject);
+            ResetKill();
             GlobalEvents.Singleton.KillOubert();
+            hubertsRoom._Cubert.UnlockEyes();
         }
+    }
+
+    public void ResetKill()
+    {
+        roomIn = null;
+        if(killRoutine != null)
+            StopCoroutine(killRoutine);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -96,12 +117,22 @@ public class HubertStuff : MonoBehaviour
         }
         if(collision.gameObject.GetComponent<Knife>())
         {
-            GlobalEvents.Singleton.KillHubert();
+            KillHubert();
         }
     }
 
     public void GetStuck()
     {
         stuck = true;
+    }
+
+    public void KillHubert()
+    {
+        gameObject.SetActive(false);
+        GameObject dead = Instantiate(deadHubert, transform.position, Quaternion.identity);
+        dead.transform.localScale = transform.localScale;
+
+        ScreenManager.Singleton.GetCubertScreen("Hubert").Kill();
+        GlobalEvents.Singleton.KillHubert();
     }
 }

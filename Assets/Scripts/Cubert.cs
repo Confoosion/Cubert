@@ -128,6 +128,8 @@ public class Cubert : MonoBehaviour
 
     public void SwitchToDeadFace()
     {
+        if(deadFace == null) return;
+        
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sr in renderers)
         {

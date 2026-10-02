@@ -62,8 +62,7 @@ public class GlobalEvents : MonoBehaviour
         else
         {
             CubertScreen tubertScreen = ScreenManager.Singleton.GetCubertScreen("Tubert");
-            tubertScreen.SatisfyALLNeeds();
-            tubertScreen.ForceAddNeed(tubertScreen.SpecialNeeds[2], false);
+            tubertScreen.Kill();
         }
     }
 
@@ -78,7 +77,6 @@ public class GlobalEvents : MonoBehaviour
         oubertDead = true;
 
         CubertScreen oubertScreen = ScreenManager.Singleton.GetCubertScreen("Oubert");
-        oubertScreen.SatisfyALLNeeds();
-        oubertScreen.ForceAddNeed(oubertScreen.SpecialNeeds[2], false);
+        oubertScreen.Kill();
     }
 }

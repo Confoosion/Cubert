@@ -38,6 +38,7 @@ public class HoldCubert : MonoBehaviour
         {
             if(cubert.GetComponent<HubertStuff>().IsStuck) return;
         }
+        else if(cubertScreen?.name == cubertScreen?._Cubert.name && cubertScreen != null && cubertScreen.Dead) return;
 
         // Debug.Log("Grabbing");
 
@@ -70,6 +71,7 @@ public class HoldCubert : MonoBehaviour
         {
             cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
             cubert.UnlockEyes();
+            cubert.GetComponent<HubertStuff>()?.ResetKill();
         }
         else if(cubert.gameObject.name == "Lubert")
         {

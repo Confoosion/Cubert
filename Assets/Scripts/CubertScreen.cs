@@ -81,6 +81,9 @@ public class CubertScreen : MonoBehaviour
     private bool isEnhanced = false;
     private bool reachedEnding = false;
 
+    private bool isDead = false;
+    public bool Dead => isDead;
+
     void Start()
     {
         lightsOn = true;
@@ -105,6 +108,8 @@ public class CubertScreen : MonoBehaviour
 
     private void TickTime()
     {
+        if(isDead) return;
+
         if(feedTimer > 0f)
         {
             feedTimer -= Time.deltaTime;
@@ -528,7 +533,12 @@ public class CubertScreen : MonoBehaviour
         if(reachedEnding && cubert.gameObject.name == "Hubert")
         {
             cubertTransform.localScale *= 1.1f;
-            cubertTransform.localPosition += new Vector3(0f, 0.1f, 0f);
+            cubertTransform.localPosition += new Vector3(0f, 0.15f, 0f);
+            if(foodAte >= 5)
+            {
+                cubert.GetComponent<HubertStuff>().KillHubert();
+                Kill();
+            }
         }
         else if(foodAte >= cubert.FeedAmount)
         {
@@ -674,7 +684,7 @@ public class CubertScreen : MonoBehaviour
 
     public void SatisfyNeed()
     {
-        if(cubert.gameObject.name == "Lubert")
+        if(cubert.gameObject.name == "Lubert" && !reachedEnding)
         {
             if(currentNeed.name == "Hungry")
                 cubert.GetComponent<LubertSounds>().PlayBlandSound();
@@ -820,7 +830,10 @@ public class CubertScreen : MonoBehaviour
 
     public void Kill()
     {
+        isDead = true;
+        SatisfyALLNeeds();
         ForceAddNeed(specialNeeds[2], false);
+        DisplayFeedButton(false);
         cubert.SwitchToDeadFace();
     }
 }

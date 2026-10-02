@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1fde2202b1d5bfd40af8a08c310351da
+guid: 5adbd3a6c24382a46a3a82f4f281e8e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5698937814805858833
-    second: Layer 63_0
+      213: 8289163556845090339
+    second: HubertEyes Copy 5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Layer 63_0
+      name: HubertEyes Copy 5_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 790
-        height: 264
+        width: 254
+        height: 293
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe5b47f604e49e0b0800000000000000
-      internalID: -5698937814805858833
+      spriteID: 3267dda4656090370800000000000000
+      internalID: 8289163556845090339
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Layer 63_0: -5698937814805858833
+      HubertEyes Copy 5_0: 8289163556845090339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
