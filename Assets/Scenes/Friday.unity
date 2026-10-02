@@ -2178,18 +2178,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7748286125779289927, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7748286125779289927, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9089629723039819605, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2685,6 +2673,7 @@ MonoBehaviour:
   christinaNPC: {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
   timT: {fileID: 1341880403}
   timO: {fileID: 1630466652}
+  dimBG: {fileID: 1261611564}
 --- !u!1 &1544039108
 GameObject:
   m_ObjectHideFlags: 0

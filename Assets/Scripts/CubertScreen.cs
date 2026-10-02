@@ -64,6 +64,7 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private NeedsSO currentNeed = null;
     [SerializeField] private NeedsSO[] basicNeeds;
     [SerializeField] private NeedsSO[] specialNeeds;
+    public NeedsSO[] BasicNeeds => basicNeeds;
     public NeedsSO[] SpecialNeeds => specialNeeds;
     private LinkedList<NeedsSO> needList = new LinkedList<NeedsSO>();
     public NeedsSO CurrentNeed => currentNeed;
@@ -72,6 +73,13 @@ public class CubertScreen : MonoBehaviour
     private int maxNeeds = 3;
     public int MinNeeds => minNeeds;
     public int MaxNeeds => maxNeeds;
+
+    [SerializeField] private SpriteRenderer cubertRoomRenderer;
+    [SerializeField] private SpriteRenderer plantRenderer;
+    [SerializeField] private SpriteRenderer litterboxRenderer;
+    [SerializeField] private Sprite bloodyCubertRoom;
+    [SerializeField] private Sprite bloodyLitterbox;
+    [SerializeField] private Sprite bloodyPlant;
 
     private Habit[] habits;
     private bool habitPerformed;
@@ -532,8 +540,8 @@ public class CubertScreen : MonoBehaviour
         
         if(reachedEnding && cubert.gameObject.name == "Hubert")
         {
-            cubertTransform.localScale *= 1.1f;
-            cubertTransform.localPosition += new Vector3(0f, 0.15f, 0f);
+            cubertTransform.localScale *= 1.2f;
+            cubertTransform.localPosition += new Vector3(0f, 0.4f, 0f);
             if(foodAte >= 5)
             {
                 cubert.GetComponent<HubertStuff>().KillHubert();
@@ -705,6 +713,10 @@ public class CubertScreen : MonoBehaviour
             else
                 PlaceCubert(cubert.gameObject);
         }
+        else if(currentNeed?.needName == "Dirty" && cubert.name == "Mubert" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)
+        {
+            cubert.GetComponent<MubertStuff>().ShowBlood(false);
+        }
 
         needList.RemoveFirst();
         timeInSpot = 0f;
@@ -835,5 +847,13 @@ public class CubertScreen : MonoBehaviour
         ForceAddNeed(specialNeeds[2], false);
         DisplayFeedButton(false);
         cubert.SwitchToDeadFace();
+        MakeRoomBloody();
+    }
+
+    public void MakeRoomBloody()
+    {
+        cubertRoomRenderer.sprite = bloodyCubertRoom;
+        plantRenderer.sprite = bloodyPlant;
+        litterboxRenderer.sprite = bloodyLitterbox;
     }
 }

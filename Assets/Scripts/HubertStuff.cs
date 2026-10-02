@@ -45,12 +45,6 @@ public class HubertStuff : MonoBehaviour
             transform.parent = cubertRoom.transform;
             transform.localScale = new Vector3(4f, 4f, 4f);
             transform.localPosition = new Vector2(-4f, -2.75f);
-
-            // SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            // foreach(SpriteRenderer sr in renderers)
-            // {
-            //     sr.sortingLayerName = "Background";
-            // }
             
             if(TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
             {
@@ -61,7 +55,7 @@ public class HubertStuff : MonoBehaviour
                     GlobalEvents.Singleton.KillTubert();
                 }
             }
-            else if(!TimeManager.Singleton.IsNight && !TimeManager.Singleton.IsMorning)
+            else if(!TimeManager.Singleton.IsNight && !TimeManager.Singleton.IsMorning && TimeManager.Singleton.GetDay() == "Friday")
             {
                 roomIn = cubertRoom.transform;
                 killRoutine = StartCoroutine(KillDelay());

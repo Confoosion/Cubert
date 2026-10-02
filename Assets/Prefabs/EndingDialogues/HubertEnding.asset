@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea107d3d0fbef947af73792cc9f28a0, type: 3}
+  m_Name: HubertEnding
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  dialogueType: 0
+  sentences:
+  - On today's Breaking News!
+  - There has been reports of a massive explosion occurring at Cubert Daycare.
+  - Nobody knows how this explosion happened, or who did it as there were no survivors.
+  - Actually, I'm hearing now that there was one survivor in the explosion...
+  - A cubert named Vubert was supposedly the only survivor in the incident.
+  - Also, a citizen named Calvin says that there are chunks of his cubert, Hubert,
+    all over the city.
+  - He is now suing Cubert Daycare for the death of Hubert. This has started a trend
+    of lawsuits against Cubert Daycare.
+  - Some of the citizens who are suing the daycare never even owned a cubert... If
+    you are one of these citizens, please stop suing them.
+  - That's all for today's Breaking News! Thanks for watching.

@@ -25,5 +25,6 @@ public class WednesdayStuff : MonoBehaviour
         mubertScreen.PerformHabit(Habit.MubertLeave);
 
         // Also make Mubert bloody
+        mubertScreen._Cubert.GetComponent<MubertStuff>().ShowBlood(true);
     }
 }

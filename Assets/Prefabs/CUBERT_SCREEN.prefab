@@ -650,6 +650,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6fa188d221b76134a835cfd87304ca05, type: 2}
   - {fileID: 11400000, guid: a935873977fb8fc46a1d165ff90368fb, type: 2}
   - {fileID: 11400000, guid: 15f7629ac83beef47899e9b65137dfec, type: 2}
+  cubertRoomRenderer: {fileID: 7126451317701698687}
+  plantRenderer: {fileID: 8967223917108144596}
+  litterboxRenderer: {fileID: 2157809877890654879}
+  bloodyCubertRoom: {fileID: 21300000, guid: a7b824eb4dc116f40bdea9cd1973657d, type: 3}
+  bloodyLitterbox: {fileID: 21300000, guid: 615bc48a91a975d48a7992e935af4586, type: 3}
+  bloodyPlant: {fileID: 21300000, guid: 2d0592070f3fc5f4e91501b5184fed81, type: 3}
 --- !u!1 &2176227764573786321
 GameObject:
   m_ObjectHideFlags: 0

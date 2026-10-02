@@ -7,6 +7,8 @@ public class MubertStuff : MonoBehaviour
     [SerializeField] Color normalColor;
     [SerializeField] Color hidingColor;
     
+    [SerializeField] private SpriteRenderer bloodRenderer;
+
     public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Cubert");
@@ -15,8 +17,8 @@ public class MubertStuff : MonoBehaviour
         mubertRoom.DisplayFeedButton(false);
 
         transform.parent = cubertRoom;
-        transform.localScale = new Vector3(2f, 2f, 2f);
-        transform.localPosition = new Vector2(3.25f, 0.3f);
+        transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        transform.localPosition = new Vector2(3.9f, -0.75f);
 
         GetComponent<SpriteRenderer>().color = hidingColor;
 
@@ -54,5 +56,16 @@ public class MubertStuff : MonoBehaviour
     public void ChangeToNormalColor()
     {
         GetComponent<SpriteRenderer>().color = normalColor;
+    }
+
+    public void ShowBlood(bool show)
+    {
+        bloodRenderer.enabled = show;
+
+        if(show)
+        {
+            CubertScreen mubertScreen = ScreenManager.Singleton.GetCubertScreen("Mubert");
+            mubertScreen.ForceAddNeed(mubertScreen.BasicNeeds[1]);
+        }
     }
 }

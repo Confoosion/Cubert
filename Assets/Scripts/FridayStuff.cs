@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class FridayStuff : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class FridayStuff : MonoBehaviour
     [SerializeField] private NPC_Tim timO;
     public NPC_Tim TimO => timO;
 
+    [SerializeField] private GameObject dimBG;
+
     public void EnterTims()
     {
         // timT.SetData(timT_SO, Purpose.PickUp);
@@ -25,5 +29,35 @@ public class FridayStuff : MonoBehaviour
         timO.NPCEnter();
     }
 
-    // public void LeaveTim()
+    public void HubertEnding()
+    {
+        StartCoroutine(HubertEnd());
+    }
+
+    IEnumerator HubertEnd()
+    {
+        yield return new WaitForSeconds(1);
+        
+        yield return DarkenScreen();
+        
+    }
+
+    IEnumerator DarkenScreen()
+    {
+        dimBG.SetActive(true);
+        Image image = dimBG.GetComponent<Image>();
+        Color currentColor = image.color;
+        float currentAlpha = currentColor.a;
+
+        while(currentAlpha < 1f)
+        {
+            currentAlpha += Time.deltaTime * 1.5f;
+            currentColor.a = currentAlpha;
+
+            image.color = currentColor;
+            yield return null;
+        }
+
+        yield return null;
+    }
 }

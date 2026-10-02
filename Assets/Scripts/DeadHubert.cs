@@ -11,7 +11,7 @@ public class DeadHubert : MonoBehaviour
         hubertSource.PlayOneShot(explosion);
         foreach(HubertPiece piece in hubertPieces)
         {
-            piece.Launch(hubertSource);
+            piece.Launch();
         }
     }
 }
