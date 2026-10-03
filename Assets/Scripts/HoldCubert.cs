@@ -38,7 +38,8 @@ public class HoldCubert : MonoBehaviour
         {
             if(cubert.GetComponent<HubertStuff>().IsStuck) return;
         }
-        else if(cubertScreen?.name == cubert.gameObject.name && cubert.gameObject.name != "Cubert" && cubertScreen != null && cubertScreen.Dead) return;
+        else if(cubertScreen != null && cubertScreen.name == cubert.gameObject.name && cubert.gameObject.name != "Cubert" && cubertScreen.Dead) return;
+        else if(cubertScreen != null && cubertScreen.IsEnhancing) return;
 
         // Debug.Log("Grabbing");
 

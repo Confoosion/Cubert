@@ -56,6 +56,8 @@ public class CubertScreen : MonoBehaviour
     [SerializeField] private AudioSource lightSwitchSource;
     [SerializeField] private AudioClip[] lubertSounds;
     [SerializeField] private AudioClip cubertNo;
+    [SerializeField] private AudioClip normalJumpscare;
+    [SerializeField] private AudioClip scaryJumpscare;
 
     [Header("Misc")]
     [SerializeField] private SpriteRenderer bedRenderer;
@@ -87,6 +89,9 @@ public class CubertScreen : MonoBehaviour
     private int foodAte = 0;
 
     private bool isEnhanced = false;
+    private Coroutine enhanceRoutine;
+    public bool IsEnhancing => enhanceRoutine != null;
+
     private bool reachedEnding = false;
 
     private bool isDead = false;
@@ -107,11 +112,11 @@ public class CubertScreen : MonoBehaviour
     {
         TickTime();
 
-        if(isEnhanced && ScreenManager.Singleton.CurrentScreen == transform)
-        {
-            isEnhanced = false;
-            EnhancedScare();
-        }
+        // if(isEnhanced && ScreenManager.Singleton.CurrentScreen == transform)
+        // {
+        //     isEnhanced = false;
+        //     EnhancedScare();
+        // }
     }
 
     private void TickTime()
@@ -577,6 +582,10 @@ public class CubertScreen : MonoBehaviour
             else
             {
                 cubert.ShowCubert();
+                if(cubert.gameObject.name == "Cubert" && isEnhanced)
+                {
+                    EnhanceCubert();
+                }
             }
         }
     }
@@ -738,7 +747,9 @@ public class CubertScreen : MonoBehaviour
         {
             case Habit.UpClose:
                 {
-                    EnhanceCubert();
+                    TurnLightsOff();
+                    isEnhanced = true;
+                    // EnhanceCubert();
                     break;        
                 }
             case Habit.LightsOff:
@@ -808,18 +819,43 @@ public class CubertScreen : MonoBehaviour
         }
     }
 
-    private void EnhanceCubert()
+    public void EnhanceCubert()
     {
         currentSpot = null;
         timeInSpot = 0f;
         cubertTransform.localPosition = nest.localPosition;
-        isEnhanced = true;
-        cubertTransform.localScale = new Vector3(17f, 17f, 17f);
+        isEnhanced = false;
+        enhanceRoutine = StartCoroutine(EnhanceAnim());
     }
 
-    public void EnhancedScare()
+    IEnumerator EnhanceAnim()
     {
-        Debug.Log("Enhanced Jumpscare SFX!");
+        Vector3 startScale = cubertTransform.localScale;
+        Vector3 targetScale = new Vector3(17f, 17f, 17f);
+        float elapsed = 0f;
+        float duration = 0.1f;
+
+        if(cubert.gameObject.name == "Cubert")
+        {
+            if(isDead)
+            {
+                SoundManager.Singleton?.PlaySFX(scaryJumpscare);
+            }
+            else
+            {
+                SoundManager.Singleton?.PlaySFX(normalJumpscare);
+            }
+        }
+
+        while(elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            cubertTransform.localScale = Vector3.Lerp(startScale, targetScale, elapsed / duration);
+            yield return null;
+        }
+
+        cubertTransform.localScale = targetScale;
+        enhanceRoutine = null;
     }
 
     public void PlayLubertSound()
