@@ -130,15 +130,41 @@ public class CubertScreen : MonoBehaviour
 
         if(TimeManager.Singleton.IsTimeFrozen) return;
 
-        if(GlobalEvents.Singleton.TubertDead && GlobalEvents.Singleton.OubertDead && !reachedEnding)
+        if(GlobalEvents.Singleton.MubertCrazy && !reachedEnding)
         {
             reachedEnding = true;
+            // Debug.Log("Mubert ending achieved!");
+            if(!DaycareScreen.Singleton.EndingReached)
+            {
+                DaycareScreen.Singleton.ReachEnding();    
+            }
+
+            if(needList.Count > 0)
+            {
+                SatisfyALLNeeds();
+            }
+
+            if(transform.name == "Mubert")
+            {
+                cubert.GetComponent<MubertStuff>().GoToDaycare(this);
+            }
+            TurnLightsOff();
+        }
+        else if(GlobalEvents.Singleton.TubertDead && GlobalEvents.Singleton.OubertDead && !reachedEnding)
+        {
+            reachedEnding = true;
+            // Debug.Log("Hubert ending achieved!");
+            if(!DaycareScreen.Singleton.EndingReached)
+            {
+                DaycareScreen.Singleton.ReachEnding();    
+            }
+
             if(needList.Count > 0)
             {
                 SatisfyALLNeeds();
             }
             
-            if(cubert.gameObject.name == "Hubert")
+            if(transform.name == "Hubert")
             {
                 cubert.GetComponent<HubertStuff>().GetStuck();
                 PlaceCubert(cubert.gameObject);
@@ -575,7 +601,7 @@ public class CubertScreen : MonoBehaviour
                 return;
             }
 
-            if(!lightsOn)
+            if(!lightsOn && cubert.transform.parent == transform)
             {
                 cubert.HideCubert();
             }
@@ -882,6 +908,11 @@ public class CubertScreen : MonoBehaviour
         DisplayFeedButton(false);
         cubert.SwitchToDeadFace();
         MakeRoomBloody();
+
+        if(cubertTransform.name == "Cubert" && TimeManager.Singleton.GetDay() == "Wednesday")
+        {
+            isEnhanced = true;
+        }
     }
 
     public void MakeRoomBloody()

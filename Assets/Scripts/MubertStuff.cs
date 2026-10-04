@@ -9,7 +9,10 @@ public class MubertStuff : MonoBehaviour
     
     [SerializeField] private SpriteRenderer bloodRenderer;
     
-    [SerializeField] private AudioClip biteSound; 
+    [SerializeField] private AudioClip biteSound;
+    
+    private bool isStuck = false;
+    public bool IsStuck => isStuck;
 
     public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {
@@ -35,10 +38,23 @@ public class MubertStuff : MonoBehaviour
         return true;  
     }
 
+    public void GoToDaycare(CubertScreen mubertRoom)
+    {
+        Transform daycareScreen = ScreenManager.Singleton.Screens[0];
+        transform.parent = daycareScreen;
+        transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        transform.localPosition = new Vector2(0f, 0f);
+
+        GetComponent<Cubert>().SetLookTarget(null);
+        isStuck = true;
+
+    }
+
     public void EatRandomCubert()
     {
         CubertScreen eatenCubert = ScreenManager.Singleton.GetRandomAliveCubert();
         eatenCubert.Kill();
+        GlobalEvents.Singleton.AddMubertKill(eatenCubert);
         
         SoundManager.Singleton?.PlaySFX(biteSound);
         ShowBlood(true);

@@ -31,7 +31,9 @@ public class GlobalEvents : MonoBehaviour
     public bool FubertMakeupRuined => fubertMakeupRuined;
     [SerializeField] private bool oubertDead = false;
     public bool OubertDead => oubertDead;
-    // [SerializeField] private bool jerryDead = false;
+    
+    [SerializeField] private int fridayMubertKills = 0;
+    public bool MubertCrazy => fridayMubertKills >= 4;
 
     public void GotOubertUncomfortable()
     {
@@ -78,5 +80,11 @@ public class GlobalEvents : MonoBehaviour
 
         CubertScreen oubertScreen = ScreenManager.Singleton.GetCubertScreen("Oubert");
         oubertScreen.Kill();
+    }
+
+    public void AddMubertKill(CubertScreen cubertScreen)
+    {
+        fridayMubertKills++;
+        cubertScreen.Kill();
     }
 }

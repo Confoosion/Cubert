@@ -630,6 +630,7 @@ MonoBehaviour:
   normalColor: {r: 0.9960785, g: 0.80392164, b: 0.93725497, a: 1}
   hidingColor: {r: 0.6132076, g: 0.47147563, b: 0.5689163, a: 1}
   bloodRenderer: {fileID: 8956414208285637293}
+  biteSound: {fileID: 8300000, guid: 50d3cac7d544d184a90bea2eb11c9753, type: 3}
 --- !u!1 &7676113761510381703
 GameObject:
   m_ObjectHideFlags: 0

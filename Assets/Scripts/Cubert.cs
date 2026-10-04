@@ -114,7 +114,10 @@ public class Cubert : MonoBehaviour
     {
         foreach(EyeLook eye in eyes)
         {
-            eye.LookAtTarget(target);
+            if(target == null)
+                eye.BlankStare();
+            else
+                eye.LookAtTarget(target);
         }
     }
 

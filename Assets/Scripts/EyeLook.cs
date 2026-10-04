@@ -79,4 +79,10 @@ public class EyeLook : MonoBehaviour
     {
         lookAtMouse = true;
     }
+
+    public void BlankStare()
+    {
+        lookAtTarget = transform;
+        lookAtMouse = false;
+    }
 }
