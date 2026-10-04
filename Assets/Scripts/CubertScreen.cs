@@ -704,9 +704,9 @@ public class CubertScreen : MonoBehaviour
     {
         if(cubert.gameObject.name == "Lubert" && !reachedEnding)
         {
-            if(currentNeed.name == "Hungry")
+            if(currentNeed?.name == "Hungry")
                 cubert.GetComponent<LubertSounds>().PlayBlandSound();
-            else if(currentNeed.name == "Bored")
+            else if(currentNeed?.name == "Bored")
                 cubert.GetComponent<LubertSounds>().PlayBoringSound();
         }
 
@@ -723,7 +723,7 @@ public class CubertScreen : MonoBehaviour
             else
                 PlaceCubert(cubert.gameObject);
         }
-        else if(currentNeed?.needName == "Dirty" && cubert.name == "Mubert" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)
+        else if(currentNeed?.needName == "Dirty" && cubert.name == "Mubert")
         {
             cubert.GetComponent<MubertStuff>().ShowBlood(false);
         }
@@ -809,11 +809,8 @@ public class CubertScreen : MonoBehaviour
             case Habit.MubertEat:
                 {
                     TurnLightsOff();
-                    // if(cubert.GetComponent<MubertStuff>().HideInRandomRoom(this))
-                    // {
-                    //     ForceAddNeed(specialNeeds[0]);
-                    //     EnableColliders();
-                    // }
+                    MubertStuff mubertStuff = cubert.GetComponent<MubertStuff>();
+                    mubertStuff.EatRandomCubert();
                     break;
                 }
         }

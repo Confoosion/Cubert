@@ -8,6 +8,8 @@ public class MubertStuff : MonoBehaviour
     [SerializeField] Color hidingColor;
     
     [SerializeField] private SpriteRenderer bloodRenderer;
+    
+    [SerializeField] private AudioClip biteSound; 
 
     public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {
@@ -33,10 +35,13 @@ public class MubertStuff : MonoBehaviour
         return true;  
     }
 
-    public bool HideInRandomRoom(CubertScreen mubertRoom)
+    public void EatRandomCubert()
     {
-        // Transform cubertRoom = 
-        return true;
+        CubertScreen eatenCubert = ScreenManager.Singleton.GetRandomAliveCubert();
+        eatenCubert.Kill();
+        
+        SoundManager.Singleton?.PlaySFX(biteSound);
+        ShowBlood(true);
     }
 
     public void Disappear()

@@ -246,6 +246,22 @@ public class ScreenManager : MonoBehaviour
         return(cubertScreens[Random.Range(0, cubertScreens.Count)]);
     }
 
+    public CubertScreen GetRandomAliveCubert()
+    {
+        List<CubertScreen> cubertScreens = GetCubertScreens();
+        List<CubertScreen> newCubertScreen = new List<CubertScreen>();
+        foreach(CubertScreen screen in cubertScreens)
+        {
+            if(currentScreen == screen.transform || screen.Dead || screen.gameObject.name == "Mubert")
+            {
+                continue;
+            }
+            newCubertScreen.Add(screen);
+        }
+
+        return(newCubertScreen[Random.Range(0, newCubertScreen.Count)]);
+    }
+
     void OnDestroy()
     {
         if(Singleton == this) Singleton = null;
