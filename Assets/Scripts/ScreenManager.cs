@@ -46,8 +46,13 @@ public class ScreenManager : MonoBehaviour
         cameraTransform.position = new Vector3(screen.position.x, screen.position.y, -10f);
         currentScreen = screen;
 
-        CheckArrowUI();
         screenMap.SetSelectedRoom(screens.IndexOf(screen));
+        if(screen == screens[0] && TimeManager.Singleton?.GetDay() == "Friday" && DaycareScreen.Singleton.MubertEndingReached)
+        {
+            return;
+        }
+        
+        CheckArrowUI();
 
         if(currentScreen.name == "Lubert")
         {

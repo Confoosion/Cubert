@@ -33,7 +33,7 @@ public class GlobalEvents : MonoBehaviour
     public bool OubertDead => oubertDead;
     
     [SerializeField] private int fridayMubertKills = 0;
-    public bool MubertCrazy => fridayMubertKills >= 4;
+    public bool MubertCrazy => fridayMubertKills > 3;
 
     public void GotOubertUncomfortable()
     {

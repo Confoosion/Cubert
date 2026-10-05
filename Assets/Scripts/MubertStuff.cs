@@ -1,16 +1,20 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using System.Collections;
 
 public class MubertStuff : MonoBehaviour
 {
     [SerializeField] Color normalColor;
     [SerializeField] Color hidingColor;
-    
     [SerializeField] private SpriteRenderer bloodRenderer;
-    
     [SerializeField] private AudioClip biteSound;
     
+    [Space]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] giggles;
+    [SerializeField] private AudioClip crazyLaugh;
+
     private bool isStuck = false;
     public bool IsStuck => isStuck;
 
@@ -88,5 +92,28 @@ public class MubertStuff : MonoBehaviour
             CubertScreen mubertScreen = ScreenManager.Singleton.GetCubertScreen("Mubert");
             mubertScreen.ForceAddNeed(mubertScreen.BasicNeeds[1]);
         }
+    }
+
+    public void GoCrazy()
+    {
+        StartCoroutine(Crazy());
+    }
+
+    IEnumerator Crazy()
+    {
+        AudioClip mubertGiggle;
+        while(ScreenManager.Singleton.CurrentScreen.name != "DAYCARE")
+        {
+            mubertGiggle = giggles[UnityEngine.Random.Range(0, giggles.Length)];
+
+            audioSource.PlayOneShot(mubertGiggle);
+
+            yield return new WaitForSeconds(mubertGiggle.length);
+        }
+
+        audioSource.PlayOneShot(crazyLaugh);
+        yield return new WaitForSeconds(5.4f);
+
+        Debug.Log("Attack");
     }
 }

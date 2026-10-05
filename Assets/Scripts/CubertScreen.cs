@@ -134,9 +134,9 @@ public class CubertScreen : MonoBehaviour
         {
             reachedEnding = true;
             // Debug.Log("Mubert ending achieved!");
-            if(!DaycareScreen.Singleton.EndingReached)
+            if(!DaycareScreen.Singleton.MubertEndingReached)
             {
-                DaycareScreen.Singleton.ReachEnding();    
+                DaycareScreen.Singleton.ReachEnding(true);    
             }
 
             if(needList.Count > 0)
@@ -146,7 +146,9 @@ public class CubertScreen : MonoBehaviour
 
             if(transform.name == "Mubert")
             {
-                cubert.GetComponent<MubertStuff>().GoToDaycare(this);
+                MubertStuff mubertStuff = cubert.GetComponent<MubertStuff>();
+                mubertStuff.GoToDaycare(this);
+                mubertStuff.GoCrazy();
             }
             TurnLightsOff();
         }
@@ -154,9 +156,9 @@ public class CubertScreen : MonoBehaviour
         {
             reachedEnding = true;
             // Debug.Log("Hubert ending achieved!");
-            if(!DaycareScreen.Singleton.EndingReached)
+            if(!DaycareScreen.Singleton.HubertEndingReached)
             {
-                DaycareScreen.Singleton.ReachEnding();    
+                DaycareScreen.Singleton.ReachEnding(false);    
             }
 
             if(needList.Count > 0)
@@ -596,7 +598,7 @@ public class CubertScreen : MonoBehaviour
 
         if(cubert != null)
         {
-            if(cubert.gameObject.name == "Mubert" && GlobalEvents.Singleton.MubertGone)
+            if(cubert.gameObject.name == "Mubert" && (GlobalEvents.Singleton.MubertGone || DaycareScreen.Singleton.MubertEndingReached))
             {
                 return;
             }
@@ -834,9 +836,11 @@ public class CubertScreen : MonoBehaviour
                 }
             case Habit.MubertEat:
                 {
-                    TurnLightsOff();
                     MubertStuff mubertStuff = cubert.GetComponent<MubertStuff>();
                     mubertStuff.EatRandomCubert();
+
+                    if(!GlobalEvents.Singleton.MubertCrazy)
+                        TurnLightsOff();
                     break;
                 }
         }

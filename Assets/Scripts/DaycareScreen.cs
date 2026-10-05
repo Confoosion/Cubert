@@ -52,9 +52,11 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private BoxCollider2D customerCollider;
     private float npcSpawnDelay = 1.65f;
     [SerializeField] private GameObject dimBG;
-    private bool endingReached = false;
-    public bool EndingReached => endingReached;
-    public bool ReachEnding() => endingReached = true;
+    private bool mubertEndingReached = false;
+    public bool MubertEndingReached => mubertEndingReached;
+    private bool hubertEndingReached = false;
+    public bool HubertEndingReached => hubertEndingReached;
+    public void ReachEnding(bool mubertEnd) { if(mubertEnd) mubertEndingReached = true; else hubertEndingReached = true; }
 
     void Start()
     {
@@ -282,7 +284,7 @@ public class DaycareScreen : MonoBehaviour
             if(!TimeManager.Singleton.IsNight)
             {
                 TaskManager.Singleton.CompleteTask();
-                if(!endingReached)
+                if(!hubertEndingReached && !mubertEndingReached)
                     StartEvening();
             }
         }
