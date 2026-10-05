@@ -484,6 +484,7 @@ MonoBehaviour:
   tubertDead: 0
   fubertMakeupRuined: 0
   oubertDead: 0
+  fridayMubertKills: 0
 --- !u!4 &214385857
 Transform:
   m_ObjectHideFlags: 0
@@ -2138,6 +2139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KITCHEN
       objectReference: {fileID: 0}
+    - target: {fileID: 4128949585112909171, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
+      propertyPath: foodPrefab
+      value: 
+      objectReference: {fileID: 1934265701119099975, guid: e6ad243b3f21ae546b4e598973d51567, type: 3}
     - target: {fileID: 6065400660054647527, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
