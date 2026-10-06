@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 1486712285}
   - component: {fileID: 1486712286}
   m_Layer: 0
-  m_Name: MubertEnding
+  m_Name: SafeEnding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1009,12 +1009,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1486712283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee3634d466966948a4cf7afc2de75e4, type: 3}
+  m_Script: {fileID: 11500000, guid: a062a9c80ec4d0c48958a7e81c1ff14d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  dimBG: {fileID: 1438016088}
-  endingDialogue: {fileID: 1827637736}
-  dialogue: {fileID: 11400000, guid: 35fd9b6f592c02340872f06bb8af8547, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::SafeEnding
+  dimBG: {fileID: 0}
+  endingDialogue: {fileID: 0}
+  dialogue: {fileID: 0}
 --- !u!1 &1667757436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,8 +1265,8 @@ MonoBehaviour:
   endEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HubertEnding, Assembly-CSharp
+      - m_Target: {fileID: 1486712286}
+        m_TargetAssemblyTypeName: SafeEnding, Assembly-CSharp
         m_MethodName: EndScreen
         m_Mode: 1
         m_Arguments:

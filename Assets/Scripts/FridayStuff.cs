@@ -20,6 +20,8 @@ public class FridayStuff : MonoBehaviour
     [SerializeField] private NPC_Tim timO;
     public NPC_Tim TimO => timO;
 
+    [SerializeField] private Sprite scaryTim;
+
     [SerializeField] private GameObject dimBG;
 
     public void EnterTims()
