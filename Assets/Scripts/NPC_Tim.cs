@@ -175,4 +175,9 @@ public class NPC_Tim : MonoBehaviour
     {
         isAnimPlaying = false;
     }
+
+    public void DisableCollider()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
 }

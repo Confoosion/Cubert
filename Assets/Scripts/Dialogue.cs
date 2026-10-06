@@ -163,7 +163,8 @@ public class Dialogue : MonoBehaviour
         }
         else if(currentDialogueType is DialogueType.WrongCubert)
         {
-            DaycareScreen.Singleton.EnableCubertDropOff();
+            if(TimeManager.Singleton.GetDay() != "Friday" || currentNPC.npcName != "Timothy" || !TimeManager.Singleton.IsNight)
+                DaycareScreen.Singleton.EnableCubertDropOff();
         }
 
         currentNPC = null;

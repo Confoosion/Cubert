@@ -24,7 +24,7 @@ public class CubertRoomSpot : MonoBehaviour
 
     void OnMouseDown()
     {
-        if(HoldCubert.Singleton.HoldingCubert)
+        if(HoldCubert.Singleton.HoldingCubert && GetComponent<BoxCollider2D>().enabled)
         {
             PutCubertInSpot(HoldCubert.Singleton.HeldCubert.gameObject);
         }
