@@ -54,7 +54,7 @@ public class Dialogue : MonoBehaviour
 
         ShowDialogue();
         DisplayNextSentence();
-        DaycareScreen.Singleton.DisableCubertDropOff();
+        DaycareScreen.Singleton.DisableCubertDropOff(false);
     }
 
     public void DisplayNextSentence()
@@ -156,7 +156,8 @@ public class Dialogue : MonoBehaviour
                 TimeManager.Singleton.StartAnnaTimer();
             }
 
-            DaycareScreen.Singleton.EnableCubertDropOff();
+            if(TimeManager.Singleton.GetDay() != "Friday" || currentNPC.npcName != "Timothy" || !TimeManager.Singleton.IsNight)
+                DaycareScreen.Singleton.EnableCubertDropOff();
             TaskManager.Singleton.CompleteTask();
             TaskManager.Singleton.SetTask(Task.ReturnCubert);
         }

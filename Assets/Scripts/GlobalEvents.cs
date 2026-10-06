@@ -35,6 +35,11 @@ public class GlobalEvents : MonoBehaviour
     [SerializeField] private int fridayMubertKills = 0;
     public bool MubertCrazy => fridayMubertKills > 3;
 
+    [SerializeField] private bool timOScary = false;
+    public bool TimOScary => timOScary;
+    [SerializeField] private bool timTScary = false;
+    public bool TimTScary => timTScary;
+
     public void GotOubertUncomfortable()
     {
         oubertUncomfortable = true;
@@ -86,5 +91,15 @@ public class GlobalEvents : MonoBehaviour
     {
         fridayMubertKills++;
         cubertScreen.Kill();
+    }
+
+    public void TimT_IsScary()
+    {
+        timTScary = true;
+    }
+
+    public void TimO_IsScary()
+    {
+        timOScary = true;
     }
 }

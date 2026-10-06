@@ -24,9 +24,9 @@ public class HoldCubert : MonoBehaviour
     {
         if(heldCubert != null || heldBall != null) return;
 
-        if(ScreenManager.Singleton.CurrentScreen == DaycareScreen.Singleton.transform
-           && (DaycareScreen.Singleton.Npc.Interacted && DaycareScreen.Singleton.CurrentNPC != null)
-           && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName != "Rose") return;
+        // if(ScreenManager.Singleton.CurrentScreen == DaycareScreen.Singleton.transform
+        //    && (DaycareScreen.Singleton.Npc.Interacted && DaycareScreen.Singleton.CurrentNPC != null)
+        //    && DaycareScreen.Singleton.CurrentNPC.npcSO.npcName != "Rose") return;
 
         CubertScreen cubertScreen = ScreenManager.Singleton.CurrentScreen.GetComponent<CubertScreen>();
         if(cubert == cubertScreen?._Cubert && cubertScreen?.CurrentNeed?.needName == "Scared") return;
@@ -45,7 +45,7 @@ public class HoldCubert : MonoBehaviour
         else if(cubertScreen != null && cubertScreen.name == cubert.gameObject.name && cubert.gameObject.name != "Cubert" && cubertScreen.Dead) return;
         else if(cubertScreen != null && cubertScreen.IsEnhancing) return;
 
-        // Debug.Log("Grabbing");
+        Debug.Log("Grabbing");
 
         if(cubertScreen?._Cubert == cubert)
         {
@@ -162,6 +162,7 @@ public class HoldCubert : MonoBehaviour
 
     public void ForceDrop()
     {
+        heldCubert = null;
         SetSortingLayer("Default");
     }
 

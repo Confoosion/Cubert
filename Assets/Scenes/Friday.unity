@@ -485,6 +485,8 @@ MonoBehaviour:
   fubertMakeupRuined: 0
   oubertDead: 0
   fridayMubertKills: 0
+  timOScary: 0
+  timTScary: 0
 --- !u!4 &214385857
 Transform:
   m_ObjectHideFlags: 0
@@ -1545,12 +1547,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1544039108}
     - target: {fileID: 6201444039486234784, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201444039486234784, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 8.93455
+      value: 8.19
       objectReference: {fileID: 0}
     - target: {fileID: 6201444039486234784, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 21.939999
+      value: 19.19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2475,6 +2481,7 @@ MonoBehaviour:
   npcRenderer: {fileID: 1341880402}
   npcAnimator: {fileID: 1341880399}
   NPCLeaveSFX: {fileID: 8300000, guid: 1e44553bceef23b439d60c5f3ae5c576, type: 3}
+  scaryTimSprite: {fileID: 21300000, guid: ba1addc0cda0c4944a71ef7e64957ed5, type: 3}
 --- !u!1 &1439515420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,8 +2685,8 @@ MonoBehaviour:
   christinaNPC: {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
   timT: {fileID: 1341880403}
   timO: {fileID: 1630466652}
-  scaryTim: {fileID: 21300000, guid: ba1addc0cda0c4944a71ef7e64957ed5, type: 3}
   dimBG: {fileID: 1261611564}
+  NPCEnterSound: {fileID: 8300000, guid: c5169486d18afd648b834c6ebcd39c64, type: 3}
 --- !u!1 &1544039108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3308,6 +3315,7 @@ MonoBehaviour:
   npcRenderer: {fileID: 1630466651}
   npcAnimator: {fileID: 1630466648}
   NPCLeaveSFX: {fileID: 8300000, guid: 1e44553bceef23b439d60c5f3ae5c576, type: 3}
+  scaryTimSprite: {fileID: 21300000, guid: ba1addc0cda0c4944a71ef7e64957ed5, type: 3}
 --- !u!1 &1691153226
 GameObject:
   m_ObjectHideFlags: 0

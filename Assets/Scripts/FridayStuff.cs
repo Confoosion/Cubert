@@ -20,9 +20,9 @@ public class FridayStuff : MonoBehaviour
     [SerializeField] private NPC_Tim timO;
     public NPC_Tim TimO => timO;
 
-    [SerializeField] private Sprite scaryTim;
-
     [SerializeField] private GameObject dimBG;
+
+    [SerializeField] private AudioClip NPCEnterSound;
 
     public void EnterTims()
     {
@@ -30,6 +30,9 @@ public class FridayStuff : MonoBehaviour
         timT.NPCEnter();
         // timO.SetData(timO_SO, Purpose.PickUp);
         timO.NPCEnter();
+        ScreenManager.Singleton.SetNPCScreen(true);
+        SoundManager.Singleton?.PlaySFX(NPCEnterSound);
+        DaycareScreen.Singleton.DisableCubertDropOff(false);
     }
 
     public void HubertEnding()

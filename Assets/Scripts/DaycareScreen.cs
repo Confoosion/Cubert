@@ -198,6 +198,8 @@ public class DaycareScreen : MonoBehaviour
         ScreenManager.Singleton.SetNPCScreen(true);
         TaskManager.Singleton.SetTask(Task.Talk);
 
+        DisableCubertDropOff();
+
         if(npc.Data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)
         {
             GameObject.Find("WednesdayStuff").GetComponent<WednesdayStuff>().HubertLeave();
@@ -230,14 +232,16 @@ public class DaycareScreen : MonoBehaviour
     {
         NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
         timT.NPCLeave();
-        ScreenManager.Singleton.SetNPCScreen(false);
+        if(!GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>().InDaycare)
+            ScreenManager.Singleton.SetNPCScreen(false);
     }
 
     public void TimOLeave()
     {
         NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
         timO.NPCLeave();
-        ScreenManager.Singleton.SetNPCScreen(false);
+        if(!GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>().InDaycare)
+            ScreenManager.Singleton.SetNPCScreen(false);
     }
 
     public void CheckTims()
@@ -351,49 +355,12 @@ public class DaycareScreen : MonoBehaviour
             cubert.transform.SetParent(cubertHolder);
             cubert.transform.localPosition = Vector3.zero;
             cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-
-            if(TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight)
-            {
-                NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
-                NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
-                if(timT != null && timO != null)
-                {
-                    if(cubert.name == "Tubert" && timT.InDaycare)
-                    {
-                        timT.StartCubertDialogue();
-                        return true;
-                    }
-                    else if(cubert.name == "Oubert" && timO.InDaycare)
-                    {
-                        timO.StartCubertDialogue();
-                        return true;
-                    }
-                }
-            }
     
             npc.StartCubertDialogue();
             return true;
         }
         else
         {
-            if(TimeManager.Singleton.GetDay() == "Friday" && TimeManager.Singleton.IsNight)
-            {
-                NPC_Tim timT = GameObject.Find("DAYCARE/TimT").GetComponent<NPC_Tim>();
-                NPC_Tim timO = GameObject.Find("DAYCARE/TimO").GetComponent<NPC_Tim>();
-                if(timT != null && timO != null)
-                {
-                    if(cubert.name == "Tubert" && timO.InDaycare)
-                    {
-                        timO.StartWrongCubertDialogue();
-                        return false;
-                    }
-                    else if(cubert.name == "Oubert" && timT.InDaycare)
-                    {
-                        timT.StartWrongCubertDialogue();
-                        return false;
-                    }
-                }
-            }
             npc.StartWrongCubertDialogue();    
         }
 
@@ -414,12 +381,24 @@ public class DaycareScreen : MonoBehaviour
         if(cubert.name == "Tubert" && timNPC.name == "TimothyT")
         {
             Debug.Log("Correct");
-            timT.StartCubertDialogue();
+            if(GlobalEvents.Singleton.TimTScary)
+            {
+                TimTLeave();
+                ScreenManager.Singleton.RemoveCubert();
+            }
+            else
+                timT.StartCubertDialogue();
         }
         else if(cubert.name == "Oubert" && timNPC.name == "TimothyO")
         {
             Debug.Log("Correct");
-            timO.StartCubertDialogue();
+            if(GlobalEvents.Singleton.TimOScary)
+            {
+                TimOLeave();
+                ScreenManager.Singleton.RemoveCubert();
+            }
+            else
+                timO.StartCubertDialogue();
         }
         else
         {
@@ -427,13 +406,22 @@ public class DaycareScreen : MonoBehaviour
 
             if(timNPC.name == "TimothyT")
             {
-                timT.StartWrongCubertDialogue();
+                if(!GlobalEvents.Singleton.TimTScary)
+                {
+                    GlobalEvents.Singleton.TimT_IsScary();
+                    timT.StartBranchWrongCubertDialogue();
+                }
             }
             else if(timNPC.name == "TimothyO")
             {
-                timO.StartWrongCubertDialogue();
+                if(!GlobalEvents.Singleton.TimOScary)
+                {
+                    GlobalEvents.Singleton.TimO_IsScary();
+                    timO.StartBranchWrongCubertDialogue();
+                }
             }
-
+            
+            Debug.Log("Regrabbing the cubert");
             HoldCubert.Singleton.GrabCubert(cubert.GetComponent<Cubert>());
         }
     }
@@ -449,10 +437,10 @@ public class DaycareScreen : MonoBehaviour
         customerCollider.enabled = true;
     }
 
-    public void DisableCubertDropOff()
+    public void DisableCubertDropOff(bool enableCustomerCollider = true)
     {
         cubertLocationCollider.enabled = false;
-        customerCollider.enabled = true;
+        customerCollider.enabled = enableCustomerCollider;
     }
 
     public void PaperRead(Paper paper)

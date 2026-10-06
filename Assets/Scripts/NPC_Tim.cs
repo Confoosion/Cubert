@@ -19,6 +19,8 @@ public class NPC_Tim : MonoBehaviour
     private bool isAnimPlaying = false;
     [SerializeField] private AudioClip NPCLeaveSFX;
 
+    [SerializeField] private Sprite scaryTimSprite;
+
     private bool isBouncing;
     private float bounceElapsed;
     private float bounceDuration = 0.15f;
@@ -50,9 +52,6 @@ public class NPC_Tim : MonoBehaviour
         if(Enum.TryParse(TimeManager.Singleton.GetDay(), out Day currentDay))
         {
             var matches = _data.branchDialogue.Where(d => d.day == currentDay);
-
-            if(currentDay == Day.Friday && _data.npcName == "Rose" && TimeManager.Singleton.IsNight)
-                return matches.Skip(1).FirstOrDefault();
             return matches.FirstOrDefault();
         }
         return null;
@@ -67,25 +66,14 @@ public class NPC_Tim : MonoBehaviour
     {
         NPCSO.NPCDialogue todaysDialogue = null;
 
-        if(TimeManager.Singleton.GetDay() == "Friday" && _data.npcName == "Rose" && TimeManager.Singleton.IsNight)
-            todaysDialogue = GetBranchDayDialogue();
-        else
-            todaysDialogue = GetCurrentDayDialogue();
+        todaysDialogue = GetCurrentDayDialogue();
 
         dialogue.StartDialogue(_data, todaysDialogue?.pickUpDialogue);
-
-        if(_data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
-        {
-            ScreenManager.Singleton.GetCubertScreen("Hubert").PerformHabit(Habit.HubertLeave);
-        }
     }
 
     public void StartCubertDialogue()
     {
-        NPCSO.NPCDialogue todaysDialogue = null;
-
-        if(todaysDialogue == null)
-            todaysDialogue = GetCurrentDayDialogue();
+        NPCSO.NPCDialogue todaysDialogue = GetCurrentDayDialogue();
 
         dialogue.StartDialogue(_data, todaysDialogue.cubertDialogue);
     }
@@ -93,6 +81,12 @@ public class NPC_Tim : MonoBehaviour
     public void StartWrongCubertDialogue()
     {
         dialogue.StartDialogue(_data, _data.wrongCubertDialogue);
+    }
+
+    public void StartBranchWrongCubertDialogue()
+    {
+        GetComponent<SpriteRenderer>().sprite = scaryTimSprite;
+        dialogue.StartDialogue(_data, GetBranchDayDialogue().cubertDialogue);
     }
 
     void OnMouseDown()
