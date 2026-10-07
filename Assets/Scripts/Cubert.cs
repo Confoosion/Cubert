@@ -14,6 +14,7 @@ public class Cubert : MonoBehaviour
 
     [SerializeField] private GameObject sleepParticles;
     [SerializeField] private EyeLook[] eyes;
+    public EyeLook[] Eyes => eyes;
     
     [Header("Optional")]
     [SerializeField] private SpriteRenderer deadFace;

@@ -40,6 +40,8 @@ public class GlobalEvents : MonoBehaviour
     [SerializeField] private bool timTScary = false;
     public bool TimTScary => timTScary;
 
+    public bool ObtainedTrueEnd => fridayMubertKills == 0 && !tubertDead && !oubertDead && !annaAngry && !mubertGone && !oubertUncomfortable && !fubertMakeupRuined;
+
     public void GotOubertUncomfortable()
     {
         oubertUncomfortable = true;

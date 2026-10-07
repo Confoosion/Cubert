@@ -8,6 +8,7 @@ public class SafeEnding : MonoBehaviour
     [SerializeField] private GameObject dimBG;
     [SerializeField] private EndingDialogue endingDialogue;
     [SerializeField] private DialogueSO dialogue;
+    [SerializeField] private DialogueSO trueDialogue;
 
     void Awake()
     {
@@ -43,6 +44,23 @@ public class SafeEnding : MonoBehaviour
     }
 
     public void EndScreen()
+    {
+        StartCoroutine(EndPause());
+    }
+
+    IEnumerator EndPause()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        if(GlobalEvents.Singleton.ObtainedTrueEnd)
+        {
+            endingDialogue.StartDialogue(trueDialogue);
+        }
+        else
+            FadeOut();
+    }
+
+    public void FadeOut()
     {
         StartCoroutine(FadeOutScreen());
     }

@@ -24,12 +24,21 @@ public class FridayStuff : MonoBehaviour
 
     [SerializeField] private AudioClip NPCEnterSound;
 
+    [Space]
+    [SerializeField] private SpriteRenderer[] normalDaycareParts;
+    [SerializeField] private SpriteRenderer[] bloodyDaycareParts;
+    [SerializeField] private SpriteRenderer daycareBG;
+    [SerializeField] private SpriteRenderer daycareDesk;
+    [SerializeField] private Sprite normalDaycareBG;
+    [SerializeField] private Sprite normalDesk;
+    [SerializeField] private Sprite bloodyDaycareBG;
+    [SerializeField] private Sprite bloodyDesk;
+
     public void EnterTims()
     {
-        // timT.SetData(timT_SO, Purpose.PickUp);
         timT.NPCEnter();
-        // timO.SetData(timO_SO, Purpose.PickUp);
         timO.NPCEnter();
+        
         ScreenManager.Singleton.SetNPCScreen(true);
         SoundManager.Singleton?.PlaySFX(NPCEnterSound);
         DaycareScreen.Singleton.DisableCubertDropOff(false);
@@ -66,5 +75,33 @@ public class FridayStuff : MonoBehaviour
 
         SceneManager.LoadScene("HubertEnding");
         yield return null;
+    }
+
+    public void MubertEnding()
+    {
+        StartCoroutine(MubertEnd());
+    }
+
+    IEnumerator MubertEnd()
+    {
+        bool isScary = true;
+        SwitchDaycareBG(isScary);
+        
+        yield return null;
+    }
+
+    private void SwitchDaycareBG(bool scary)
+    {
+        foreach(SpriteRenderer part in normalDaycareParts)
+        {
+            part.enabled = !scary;
+        }
+        foreach(SpriteRenderer part in bloodyDaycareParts)
+        {
+            part.enabled = scary;
+        }
+
+        daycareBG.sprite = scary ? bloodyDaycareBG : normalDaycareBG;
+        daycareDesk.sprite = scary ? bloodyDesk : normalDesk;
     }
 }

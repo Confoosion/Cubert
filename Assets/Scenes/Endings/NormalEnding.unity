@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 1486712285}
   - component: {fileID: 1486712286}
   m_Layer: 0
-  m_Name: SafeEnding
+  m_Name: NormalEnding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,9 +1012,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a062a9c80ec4d0c48958a7e81c1ff14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafeEnding
-  dimBG: {fileID: 0}
-  endingDialogue: {fileID: 0}
-  dialogue: {fileID: 0}
+  dimBG: {fileID: 1438016088}
+  endingDialogue: {fileID: 1827637736}
+  dialogue: {fileID: 11400000, guid: a36ebfe4eb0ae044a93bf5c66ffc0e1d, type: 2}
+  trueDialogue: {fileID: 11400000, guid: 4eea52359f9546846826023a741177c0, type: 2}
 --- !u!1 &1667757436
 GameObject:
   m_ObjectHideFlags: 0

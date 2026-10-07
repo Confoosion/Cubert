@@ -122,8 +122,7 @@ public class DaycareScreen : MonoBehaviour
                 SceneManager.LoadScene("Friday");
                 break;
             case "Friday":
-                // Debug.Log("Canon Ending");
-                SceneManager.LoadScene("SafeEnding");
+                SceneManager.LoadScene("NormalEnding");
                 break;
 
         }

@@ -111,12 +111,6 @@ public class CubertScreen : MonoBehaviour
     void Update()
     {
         TickTime();
-
-        // if(isEnhanced && ScreenManager.Singleton.CurrentScreen == transform)
-        // {
-        //     isEnhanced = false;
-        //     EnhancedScare();
-        // }
     }
 
     private void TickTime()

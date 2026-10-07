@@ -24,13 +24,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Friday.unity
     guid: cd3cf9f340a025e4caab2349e9b910e1
   - enabled: 1
-    path: Assets/Scenes/HubertEnding.unity
+    path: Assets/Scenes/Endings/HubertEnding.unity
     guid: 94e7712e3eb1f9c4c93608a6b087d1cb
   - enabled: 1
-    path: Assets/Scenes/MubertEnding.unity
+    path: Assets/Scenes/Endings/MubertEnding.unity
     guid: c07cb84ed7107eb4cb742a1ac933ffd9
   - enabled: 1
-    path: Assets/Scenes/SafeEnding.unity
+    path: Assets/Scenes/Endings/NormalEnding.unity
     guid: 8ec8e152698fd884abcc0fd6a61d9d94
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

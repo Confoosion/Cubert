@@ -8,9 +8,11 @@ public class MubertStuff : MonoBehaviour
     [SerializeField] Color normalColor;
     [SerializeField] Color hidingColor;
     [SerializeField] private SpriteRenderer bloodRenderer;
-    [SerializeField] private AudioClip biteSound;
-    
+    [SerializeField] private SpriteRenderer scaryRenderer;
+    [SerializeField] private SpriteRenderer[] faceParts;
+
     [Space]
+    [SerializeField] private AudioClip biteSound;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] giggles;
     [SerializeField] private AudioClip crazyLaugh;
@@ -47,7 +49,7 @@ public class MubertStuff : MonoBehaviour
         Transform daycareScreen = ScreenManager.Singleton.Screens[0];
         transform.parent = daycareScreen;
         transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-        transform.localPosition = new Vector2(0f, 0f);
+        transform.localPosition = new Vector2(0f, -2f);
 
         GetComponent<Cubert>().SetLookTarget(null);
         isStuck = true;
@@ -96,6 +98,7 @@ public class MubertStuff : MonoBehaviour
 
     public void GoCrazy()
     {
+        GameObject.Find("FridayStuff").GetComponent<FridayStuff>().MubertEnding();
         StartCoroutine(Crazy());
     }
 
@@ -115,5 +118,27 @@ public class MubertStuff : MonoBehaviour
         yield return new WaitForSeconds(5.4f);
 
         Debug.Log("Attack");
+    }
+
+    public void ShowScary(bool show)
+    {
+        if(show)
+        {
+            scaryRenderer.enabled = true;
+            
+            foreach(SpriteRenderer part in faceParts)
+            {
+                part.enabled = false;
+            }
+        }
+        else
+        {
+            scaryRenderer.enabled = false;
+
+            foreach(SpriteRenderer part in faceParts)
+            {
+                part.enabled = true;
+            }
+        }
     }
 }
