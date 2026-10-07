@@ -13,4 +13,12 @@ MonoBehaviour:
   m_Name: TrueEnding
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueType: 0
-  sentences: []
+  sentences:
+  - The next day...
+  - You receive a letter at the front door.
+  - The letter reads that the Cubert Daycare will be shutting down.
+  - 'The reason for the shutdown is due to a small sample size and insufficient evidence. '
+  - 'Cubert Daycare will be renovated for an unknown amount of time, but they give
+    you an ofer to work for them again once the renovations are finished. '
+  - Unsure of what to do about this offer, you stare at your Cubert...
+  - ...
