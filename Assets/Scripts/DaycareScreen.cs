@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public enum Purpose { DropOff, PickUp }
 
@@ -52,6 +53,7 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private BoxCollider2D customerCollider;
     private float npcSpawnDelay = 1.65f;
     [SerializeField] private GameObject dimBG;
+    [SerializeField] private TextMeshProUGUI dayText;
     private bool mubertEndingReached = false;
     public bool MubertEndingReached => mubertEndingReached;
     private bool hubertEndingReached = false;
@@ -60,6 +62,9 @@ public class DaycareScreen : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(IntroTransition());
+        
+
         TimeManager.Singleton.FreezeTime(true);
         
         DisableCubertDropOff();
@@ -100,6 +105,37 @@ public class DaycareScreen : MonoBehaviour
         }
 
         NextDayScene();
+        yield return null;
+    }
+
+    IEnumerator IntroTransition()
+    {
+        dimBG.SetActive(true);
+        Image image = dimBG.GetComponent<Image>();
+        image.color = new Color(0f, 0f, 0f, 1f);
+
+        yield return new WaitForSeconds(1f);
+
+        dayText.enabled = true;        
+        dayText.SetText(TimeManager.Singleton.GetDay().ToUpper());
+
+        yield return new WaitForSeconds(3f);
+
+        Color currentColor = image.color;
+        float currentAlpha = currentColor.a;
+
+        while(currentAlpha > 0f)
+        {
+            currentAlpha -= Time.deltaTime * 1.5f;
+            currentColor.a = currentAlpha;
+            dayText.alpha = currentAlpha;
+
+            image.color = currentColor;
+            yield return null;
+        }
+
+        dayText.enabled = false;
+        dimBG.SetActive(false);
         yield return null;
     }
 

@@ -33,7 +33,8 @@ public class EndingDialogue : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        _nameText.SetText("News Reporter");
+        if(dialogue.name != "NormalEnding" && dialogue.name != "TrueEnding")
+            _nameText.SetText("News Reporter");
 
         ShowDialogue();
         DisplayNextSentence();
