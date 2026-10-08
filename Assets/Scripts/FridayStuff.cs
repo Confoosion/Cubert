@@ -34,6 +34,10 @@ public class FridayStuff : MonoBehaviour
     [SerializeField] private Sprite bloodyDaycareBG;
     [SerializeField] private Sprite bloodyDesk;
 
+    private bool flickering = false;
+    private Coroutine flickerRoutine;
+    private bool isScaryBG = false;
+
     public void EnterTims()
     {
         timT.NPCEnter();
@@ -83,11 +87,43 @@ public class FridayStuff : MonoBehaviour
     }
 
     IEnumerator MubertEnd()
-    {
-        bool isScary = true;
-        SwitchDaycareBG(isScary);
-        
+    {   
         yield return null;
+    }
+
+    public void DoScaryFlickering(bool flicker)
+    {
+        flickering = flicker;
+        if(flickering)
+        {
+            flickerRoutine = StartCoroutine(DaycareFlicker());
+        }
+        else
+        {
+            if(flickerRoutine != null)
+                StopCoroutine(flickerRoutine);
+        }
+    }
+
+    IEnumerator DaycareFlicker()
+    {
+        ToggleDaycareBG();
+        yield return new WaitForSeconds(2f);
+        while(flickering)
+        {
+            ToggleDaycareBG();
+            yield return new WaitForSeconds(Random.Range(0.05f, 0.1f));
+            ToggleDaycareBG();
+            yield return new WaitForSeconds(Random.Range(0.7f, 4f));
+        }
+
+        yield return null;
+    }
+
+    private void ToggleDaycareBG()
+    {
+        isScaryBG = !isScaryBG;
+        SwitchDaycareBG(isScaryBG);
     }
 
     private void SwitchDaycareBG(bool scary)

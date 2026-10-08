@@ -20,6 +20,19 @@ public class MubertStuff : MonoBehaviour
     private bool isStuck = false;
     public bool IsStuck => isStuck;
 
+    void Start()
+    {
+        StartCoroutine(pause());
+    }
+
+    IEnumerator pause()
+    {
+        yield return new WaitForSeconds(6f);
+
+        GoCrazy();
+        yield return null;
+    }
+
     public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Cubert");
@@ -98,7 +111,7 @@ public class MubertStuff : MonoBehaviour
 
     public void GoCrazy()
     {
-        GameObject.Find("FridayStuff").GetComponent<FridayStuff>().MubertEnding();
+        GameObject.Find("FridayStuff").GetComponent<FridayStuff>().DoScaryFlickering(true);
         StartCoroutine(Crazy());
     }
 
@@ -111,7 +124,7 @@ public class MubertStuff : MonoBehaviour
 
             audioSource.PlayOneShot(mubertGiggle);
 
-            yield return new WaitForSeconds(mubertGiggle.length);
+            yield return new WaitForSeconds(mubertGiggle.length + 1.5f);
         }
 
         audioSource.PlayOneShot(crazyLaugh);
