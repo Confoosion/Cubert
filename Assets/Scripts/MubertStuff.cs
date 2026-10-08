@@ -20,18 +20,18 @@ public class MubertStuff : MonoBehaviour
     private bool isStuck = false;
     public bool IsStuck => isStuck;
 
-    void Start()
-    {
-        StartCoroutine(pause());
-    }
+    // void Start()
+    // {
+    //     StartCoroutine(pause());
+    // }
 
-    IEnumerator pause()
-    {
-        yield return new WaitForSeconds(6f);
+    // IEnumerator pause()
+    // {
+    //     yield return new WaitForSeconds(6f);
 
-        GoCrazy();
-        yield return null;
-    }
+    //     GoCrazy();
+    //     yield return null;
+    // }
 
     public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {

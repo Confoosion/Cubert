@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
@@ -20,6 +21,10 @@ public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     [Header("Sounds")]
     [SerializeField] private AudioClip vendingSound;
+
+    [Header("Minigame Override")]
+    [SerializeField] private bool hasMinigame;
+    [SerializeField] private UnityEvent buttonPressed;
 
     void Awake()
     {
@@ -41,6 +46,12 @@ public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(hasMinigame)
+        {
+            buttonPressed?.Invoke();
+            return;    
+        }
+
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             ButtonHeld();
@@ -49,6 +60,11 @@ public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if(hasMinigame)
+        {
+            return;    
+        }
+
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             if(isClicked)
@@ -58,6 +74,11 @@ public class FoodButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(hasMinigame)
+        {
+            return;    
+        }
+
         if(isClicked)
             ButtonLetGo();
     }
