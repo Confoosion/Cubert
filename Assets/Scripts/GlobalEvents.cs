@@ -17,6 +17,10 @@ public class GlobalEvents : MonoBehaviour
         }
     }
 
+    private bool inMinigame = false;
+    public bool InMinigame => inMinigame;
+    public void PlayMinigame(bool play) => inMinigame = play;
+
     [SerializeField] private bool oubertUncomfortable = false;
     public bool OubertUncomfortable => oubertUncomfortable;
     [SerializeField] private bool annaAngry = false;

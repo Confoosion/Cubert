@@ -9,6 +9,8 @@ public class Food : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if(CheckMinigame()) return;
+
         if(!isCollected)
         {
             isCollected = true;
@@ -21,6 +23,8 @@ public class Food : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && !isCollected)
         {
+            if(CheckMinigame()) return;
+
             isCollected = true;
 
             StartCoroutine(Collecting());            
@@ -65,5 +69,10 @@ public class Food : MonoBehaviour
         Instantiate(foodParticles, transform.position, Quaternion.identity);
         FoodManager.Singleton.RemoveFoodInKitchen(gameObject);
         Destroy(gameObject);
+    }
+
+    private bool CheckMinigame()
+    {
+        return(GlobalEvents.Singleton.InMinigame);
     }
 }

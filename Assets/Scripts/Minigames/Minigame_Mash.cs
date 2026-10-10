@@ -27,6 +27,7 @@ public class Minigame_Mash : MonoBehaviour
     {
         if(minigameObj.activeSelf) return;
 
+        GlobalEvents.Singleton.PlayMinigame(true);
         minigameObj.SetActive(true);
         stopMinigameButton.SetActive(true);
         slider.gameObject.SetActive(true);
@@ -34,6 +35,7 @@ public class Minigame_Mash : MonoBehaviour
 
     public void StopGame()
     {
+        GlobalEvents.Singleton.PlayMinigame(false);
         minigameObj.SetActive(false);
         stopMinigameButton.SetActive(false);
         slider.gameObject.SetActive(false);

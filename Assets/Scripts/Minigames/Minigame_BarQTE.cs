@@ -67,6 +67,7 @@ public class Minigame_BarQTE : MonoBehaviour
 
     public void StartGame()
     {
+        GlobalEvents.Singleton.PlayMinigame(true);
         minigameObj.SetActive(true);
         stopMinigameButton.SetActive(true);
         roundsCompleted = 0;
@@ -301,6 +302,7 @@ public class Minigame_BarQTE : MonoBehaviour
 
     public void StopGame()
     {
+        GlobalEvents.Singleton.PlayMinigame(false);
         running = false;
         minigameObj.SetActive(false);
         stopMinigameButton.SetActive(false);

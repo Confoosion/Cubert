@@ -34,6 +34,7 @@ public class Minigame_Arrows : MonoBehaviour
     {
         if(minigameObj.activeSelf) return;
 
+        GlobalEvents.Singleton.PlayMinigame(true);
         currentScore = 0;
         minigameObj.SetActive(true);
         stopMinigameButton.SetActive(true);
@@ -92,6 +93,7 @@ public class Minigame_Arrows : MonoBehaviour
 
     public void StopGame()
     {
+        GlobalEvents.Singleton.PlayMinigame(false);
         minigameObj.SetActive(false);
         stopMinigameButton.SetActive(false);
     }
