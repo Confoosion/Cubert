@@ -7,7 +7,16 @@ public class NextDialogue : MonoBehaviour
 
     void OnMouseDown()
     {
-        dialogue?.DisplayNextSentence();
-        endDialogue?.DisplayNextSentence();
+        if(dialogue != null)
+        {
+            dialogue.DisplayNextSentence();
+            return;
+        }
+
+        if(endDialogue != null)
+        {
+            endDialogue.DisplayNextSentence();
+            return;
+        }
     }
 }

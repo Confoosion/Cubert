@@ -62,8 +62,41 @@ public class DaycareScreen : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(IntroTransition());
+        GameObject monday = GameObject.Find("MondayStuff");
+        if(monday != null)
+        {
+            dimBG.SetActive(true);
+            Image image = dimBG.GetComponent<Image>();
+            image.color = new Color(0f, 0f, 0f, 1f);
+            
+            monday.GetComponent<MondayStuff>().DisplayIntroText();
+            return;
+        }
+
+        PlayIntroTransition();
+        // StartCoroutine(IntroTransition());
         
+
+        // TimeManager.Singleton.FreezeTime(true);
+        
+        // DisableCubertDropOff();
+        // npcQueue.Clear();
+        // for(int i = 0; i < npcsInMorning.Count; i++)
+        // {
+        //     npcQueue.Enqueue(npcsInMorning[i]);
+        // }
+
+        // if(TimeManager.Singleton.GetDay() == "Friday" && GlobalEvents.Singleton.AnnaAngry)
+        // {
+        //     npcQueue.Enqueue(new NPCPerson(GameObject.Find("FridayStuff").GetComponent<FridayStuff>().ChristinaNPC, Purpose.PickUp));
+        // }
+
+        // TaskManager.Singleton.SetTask(Task.Papers);
+    }
+
+    public void PlayIntroTransition()
+    {
+        StartCoroutine(IntroTransition());
 
         TimeManager.Singleton.FreezeTime(true);
         

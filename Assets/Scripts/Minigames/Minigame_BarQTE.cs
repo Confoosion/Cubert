@@ -82,8 +82,8 @@ public class Minigame_BarQTE : MonoBehaviour
 
     private int BarsForRound()
     {
-        if(roundsCompleted >= roundsBeforeThirdBar) return 3;
-        if(roundsCompleted >= roundsBeforeSecondBar) return 2;
+        if(roundsCompleted >= roundsBeforeThirdBar) return Random.Range(1, 4);
+        if(roundsCompleted >= roundsBeforeSecondBar) return Random.Range(1, 3);
         return 1;
     }
 
