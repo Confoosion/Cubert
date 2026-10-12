@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource SFXSource;
     [SerializeField] private AudioSource fridgeSource;
     [SerializeField] private AudioSource switchRoomSource;
+    [SerializeField] private AudioSource dialogueSource;
 
     [Header("Music Sources")]
     [SerializeField] private AudioSource musicSource;
