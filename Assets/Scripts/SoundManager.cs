@@ -1,20 +1,31 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Singleton;
 
+    [Header("Audio Mixer")]
+    [SerializeField] private AudioMixer audioMixer;
+
     [Header("SFX Sources")]
     [SerializeField] private AudioSource SFXSource;
     [SerializeField] private AudioSource fridgeSource;
     [SerializeField] private AudioSource switchRoomSource;
-    [SerializeField] private AudioSource dialogueSource;
 
     [Header("Music Sources")]
     [SerializeField] private AudioSource musicSource;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] foodSounds;
+
+    // PlayerPrefs
+    private const string SFXKey = "SFXVolume";
+    private const string DialogueKey = "DialogueVolume";
+
+    public float SFX_Volume => PlayerPrefs.GetFloat(SFXKey, 0.75f);
+    public float Dialogue_Volume => PlayerPrefs.GetFloat(DialogueKey, 0.75f);
+
 
     void Awake()
     {
@@ -23,6 +34,15 @@ public class SoundManager : MonoBehaviour
             Singleton = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    void Start()
+    {
+        float savedSFXVolume = PlayerPrefs.GetFloat(SFXKey, 0.75f);
+        float savedDialogueVolume = PlayerPrefs.GetFloat(DialogueKey, 0.75f);
+
+        ApplySFXVolume(savedSFXVolume);
+        ApplyDialogueVolume(savedDialogueVolume);
     }
 
     public void PlaySFX(AudioClip audio)
@@ -57,5 +77,29 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic(AudioClip audio)
     {
         musicSource.Play();
+    }
+
+    public void SetSFXVolume(float value)
+    {
+        ApplySFXVolume(value);
+        PlayerPrefs.SetFloat(SFXKey, value);
+        PlayerPrefs.Save();
+    }
+
+    public void SetDialogueVolume(float value)
+    {
+        ApplyDialogueVolume(value);
+        PlayerPrefs.SetFloat(DialogueKey, value);
+        PlayerPrefs.Save();
+    }
+
+    private void ApplySFXVolume(float value)
+    {
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20);
+    }
+
+    private void ApplyDialogueVolume(float value)
+    {
+        audioMixer.SetFloat("DialogueVolume", Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20);
     }
 }

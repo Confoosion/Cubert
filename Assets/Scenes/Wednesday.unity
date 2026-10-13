@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 68627237}
   - component: {fileID: 68627239}
   - component: {fileID: 68627238}
+  - component: {fileID: 68627240}
   m_Layer: 5
   m_Name: SFXVolume
   m_TagString: Untagged
@@ -469,6 +470,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68627236}
   m_CullTransparentMesh: 1
+--- !u!114 &68627240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68627236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d037240d41068f4092b3bbf0c4c2ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeSlider
+  slider: {fileID: 316192190}
+  volumeParam: 0
 --- !u!1001 &84299318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1320,7 +1335,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 68627240}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &329532227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3717025306596974863, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
@@ -4860,7 +4887,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2010830326}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1453273421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,6 +6110,7 @@ GameObject:
   - component: {fileID: 2010830323}
   - component: {fileID: 2010830325}
   - component: {fileID: 2010830324}
+  - component: {fileID: 2010830326}
   m_Layer: 5
   m_Name: DialogueVolume
   m_TagString: Untagged
@@ -6198,6 +6238,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010830322}
   m_CullTransparentMesh: 1
+--- !u!114 &2010830326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010830322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d037240d41068f4092b3bbf0c4c2ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeSlider
+  slider: {fileID: 1321368597}
+  volumeParam: 1
 --- !u!1 &2048232455
 GameObject:
   m_ObjectHideFlags: 0
