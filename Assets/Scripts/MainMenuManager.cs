@@ -77,4 +77,10 @@ public class MainMenuManager : MonoBehaviour
         creditsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+
+    public void CloseGame()
+    {
+        Debug.Log("Quitting game");
+        Application.Quit();
+    }
 }
