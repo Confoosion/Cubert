@@ -331,7 +331,8 @@ public class CubertScreen : MonoBehaviour
 
                 if(TimeManager.Singleton.IsNight && DaycareScreen.Singleton.NPCCount == 0)
                 {
-                    DaycareScreen.Singleton.DayOver();
+                    TaskManager.Singleton.CompleteTask();
+                    TaskManager.Singleton.SetTask(Task.Close);
                 }
                 else
                     DaycareScreen.Singleton.GetNextNPC();
@@ -799,9 +800,11 @@ public class CubertScreen : MonoBehaviour
             case Habit.MubertLeave:
                 {
                     TurnLightsOff();
+                    cubert.ShowCubert();
                     if(cubert.GetComponent<MubertStuff>().HideInCubertsRoom(this))
                     {
-                        ForceAddNeed(specialNeeds[0]);
+                        if(TimeManager.Singleton.GetDay() != "Wednesday" || !TimeManager.Singleton.IsNight)
+                            ForceAddNeed(specialNeeds[0]);
                         EnableColliders();
                     }
                     break;
@@ -917,10 +920,10 @@ public class CubertScreen : MonoBehaviour
         cubert.SwitchToDeadFace();
         MakeRoomBloody();
 
-        if(cubertTransform.name == "Cubert" && TimeManager.Singleton.GetDay() == "Wednesday")
-        {
-            isEnhanced = true;
-        }
+        // if(cubertTransform.name == "Cubert" && TimeManager.Singleton.GetDay() == "Wednesday")
+        // {
+        //     isEnhanced = true;
+        // }
     }
 
     public void MakeRoomBloody()

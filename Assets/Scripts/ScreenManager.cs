@@ -180,6 +180,13 @@ public class ScreenManager : MonoBehaviour
         {
             if(t.name == cbrt.name)
             {
+                BouncyBall ball = t.GetComponentInChildren<BouncyBall>();
+                if(ball != null)
+                {
+                    ball.transform.parent = screens[screens.Count - 1];
+                    ball.transform.localPosition = Vector2.zero;
+                }
+
                 screenMap.RemoveScreenFromMap();
                 GameObject toRemove = t.gameObject;
                 screens.Remove(t);

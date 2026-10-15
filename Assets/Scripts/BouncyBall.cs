@@ -9,6 +9,9 @@ public class BouncyBall : MonoBehaviour
     [SerializeField] private float launchMultiplier = 1f;
     [SerializeField] private float maxLaunchSpeed = 15f;
 
+    private Vector2 xLimits = new Vector2(-8.2f, 8.2f);
+    private Vector2 yLimits = new Vector2(-4.2f, 4.2f);
+
     private bool isPressed = false;
     private bool isDragging = false;
     public bool IsDragging => isDragging;
@@ -71,13 +74,28 @@ public class BouncyBall : MonoBehaviour
     {
         if(!isDragging) return;
 
-        Vector2 targetPos = GetMouseWorldPosition();
-        Vector2 newPos = Vector2.Lerp(rb.position, targetPos, followSpeed * Time.fixedDeltaTime);
+        Transform parent = transform.parent;
 
-        currentVelocityEstimate = (newPos - previousPosition) / Time.fixedDeltaTime;
-        previousPosition = newPos;
+        Vector2 targetWorldPos = GetMouseWorldPosition();
+        Vector2 newWorldPos = Vector2.Lerp(rb.position, targetWorldPos, followSpeed * Time.fixedDeltaTime);
 
-        rb.MovePosition(newPos);
+        Vector2 newLocalPos = parent != null ? (Vector2)parent.InverseTransformPoint(newWorldPos) : newWorldPos;
+
+        newLocalPos.x = Mathf.Clamp(newLocalPos.x, xLimits.x, xLimits.y);
+        newLocalPos.y = Mathf.Clamp(newLocalPos.y, yLimits.x, yLimits.y);
+
+        newWorldPos = parent != null ? (Vector2)parent.TransformPoint(newLocalPos) : newLocalPos;
+
+        // Vector2 targetPos = GetMouseWorldPosition();
+        // Vector2 newPos = Vector2.Lerp(rb.position, targetPos, followSpeed * Time.fixedDeltaTime);
+
+        // newPos.x = Mathf.Clamp(newPos.x, xLimits.x, xLimits.y);
+        // newPos.y = Mathf.Clamp(newPos.y, yLimits.x, yLimits.y);
+
+        currentVelocityEstimate = (newWorldPos - previousPosition) / Time.fixedDeltaTime;
+        previousPosition = newWorldPos;
+
+        rb.MovePosition(newWorldPos);
     }
 
     private void BeginDrag()
