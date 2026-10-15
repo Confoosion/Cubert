@@ -72,6 +72,7 @@ public class HiddenMubert : MonoBehaviour
 
             if(cubert.gameObject.name == "Mubert")
             {
+                cubert.ShowCubert();
                 mubert = cubert;
                 cbrtScreen.EnableColliders();
                 break;

@@ -66,6 +66,18 @@ public class ScreenManager : MonoBehaviour
                 hubertScreen.PerformHabit(Habit.HubertLeave);
             }
         }
+        else if(TimeManager.Singleton?.GetDay() == "Tuesday" && TimeManager.Singleton.IsNight && currentScreen.name != "Mubert")
+        {
+            if(!HoldCubert.Singleton.HoldingCubert || HoldCubert.Singleton.HeldCubert.gameObject.name != "Mubert")
+            {
+                CubertScreen mubertScreen = GetCubertScreen("Mubert");
+                if(mubertScreen?._Cubert != null && mubertScreen._Cubert.gameObject.activeSelf)
+                {
+                    mubertScreen._Cubert.HideCubert();
+                    mubertScreen.ForceAddNeed(mubertScreen.SpecialNeeds[0], false);
+                }       
+            }
+        }
     }
 
     public void SwitchScreenLeft()

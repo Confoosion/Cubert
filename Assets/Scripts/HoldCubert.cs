@@ -15,6 +15,8 @@ public class HoldCubert : MonoBehaviour
     [SerializeField] private Vector3 holdPosition;
     [SerializeField] private Vector3 holdScale;
 
+    [SerializeField] private AudioClip pickupSFX;
+
     void Awake()
     {
         if (Singleton == null) Singleton = this;
@@ -72,6 +74,8 @@ public class HoldCubert : MonoBehaviour
         cubert.transform.localPosition = holdPosition;
         cubert.transform.localScale = holdScale;
 
+        SoundManager.Singleton?.PlaySFX(pickupSFX);
+
         if(cubert.gameObject.name == "Mubert" || cubert.gameObject.name == "Hubert")
         {
             cubert.GetComponent<MubertStuff>()?.ChangeToNormalColor();
@@ -87,11 +91,11 @@ public class HoldCubert : MonoBehaviour
 
         SetSortingLayer("PickedUp");
 
-        GameObject dayFind = GameObject.Find("TuesdayStuff");
-        if(cubert.gameObject.name == "Mubert" && dayFind != null)
-        {
-            dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(false);
-        }
+        // GameObject dayFind = GameObject.Find("TuesdayStuff");
+        // if(cubert.gameObject.name == "Mubert" && dayFind != null)
+        // {
+        //     dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(false);
+        // }
     }
 
     private void SetSortingLayer(string sortingName)

@@ -1940,6 +1940,7 @@ MonoBehaviour:
   heldBall: {fileID: 0}
   holdPosition: {x: -3.5, y: -4, z: 10}
   holdScale: {x: 7, y: 7, z: 7}
+  pickupSFX: {fileID: 8300000, guid: 8eea19e6cad2904488ca9db04410519a, type: 3}
 --- !u!1 &529908475
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,13 +15,24 @@ public class TuesdayStuff : MonoBehaviour
 
         foreach(Transform room in cubertScreens)
         {
-            if(room.name == "KITCHEN" || room.name == "DAYCARE" || room.name == "Mubert") continue;
+            if(room.name == "KITCHEN" || room.name == "DAYCARE" ) continue;
 
-            GameObject mubert = Instantiate(mubertPrefab, room);
-            mubert.GetComponent<HiddenMubert>().SetRoom(room);
-            mubert.transform.localScale = mubertHiddenScale;
-            mubert.transform.localPosition = mubertHiddenPosition;
-            hiddenMuberts.Add(mubert);
+            if(room.name == "Cubert")
+            {
+                GameObject mubert = Instantiate(mubertPrefab, room);
+                mubert.GetComponent<HiddenMubert>().SetRoom(room);
+                mubert.transform.localScale = mubertHiddenScale;
+                mubert.transform.localPosition = mubertHiddenPosition;
+                hiddenMuberts.Add(mubert);
+            }
+
+            if(room.name == "Mubert")
+            {
+                CubertScreen mubertRoom = room.GetComponent<CubertScreen>();
+                mubertRoom.TurnLightsOff();
+                mubertRoom.ForceAddNeed(mubertRoom.SpecialNeeds[0], false);
+                mubertRoom._Cubert.HideCubert();
+            }
         }
     }
 

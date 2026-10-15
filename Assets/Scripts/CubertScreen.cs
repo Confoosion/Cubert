@@ -97,6 +97,8 @@ public class CubertScreen : MonoBehaviour
     private bool isDead = false;
     public bool Dead => isDead;
 
+    public bool fakeMissing = false;
+
     void Start()
     {
         lightsOn = true;
@@ -350,6 +352,7 @@ public class CubertScreen : MonoBehaviour
             if(cubert.gameObject.name == "Mubert" && dayFind != null && TimeManager.Singleton.IsNight)
             {
                 dayFind.GetComponent<TuesdayStuff>().DisplayHiddenMuberts(true);
+                UpdateNeedStatus();
             }
 
             if(currentNeed?.name == "Missing")
@@ -603,6 +606,9 @@ public class CubertScreen : MonoBehaviour
             }
             else
             {
+                if(cubert.gameObject.name == "Mubert" && fakeMissing)
+                    return;
+
                 cubert.ShowCubert();
                 if(cubert.gameObject.name == "Cubert" && isEnhanced)
                 {
@@ -658,7 +664,11 @@ public class CubertScreen : MonoBehaviour
             UpdateNeedStatus();
         }
         else
+        {
             UpdateNeedStatus(need);
+            if(need == specialNeeds[0])
+                fakeMissing = true;
+        }
     }
 
     public void ForceAddScared()

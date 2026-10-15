@@ -403,11 +403,11 @@ public class DaycareScreen : MonoBehaviour
 
         if(currentNPC.npcSO.cubert.name == cubert.name)
         {
-            cubert.GetComponent<BoxCollider2D>().enabled = true;
+            // cubert.GetComponent<BoxCollider2D>().enabled = false;
             cubert.transform.SetParent(cubertHolder);
             cubert.transform.localPosition = Vector3.zero;
             cubert.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-    
+
             npc.StartCubertDialogue();
             return true;
         }
