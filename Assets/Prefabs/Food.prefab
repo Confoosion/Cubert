@@ -170,3 +170,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   foodParticles: {fileID: 5069234839064301390, guid: 8b1fd610cf57a314d828db13cf27e468, type: 3}
+  collectSFX: {fileID: 8300000, guid: 4880fdb547d63a046a16c96f49ce1f3e, type: 3}

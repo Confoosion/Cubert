@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Food : MonoBehaviour
 {
     [SerializeField] private GameObject foodParticles;
+    [SerializeField] private AudioClip collectSFX;
     private bool isCollected = false;
 
     private void OnMouseDown()
@@ -33,6 +34,7 @@ public class Food : MonoBehaviour
 
     IEnumerator Collecting()
     {
+        SoundManager.Singleton?.PlaySFX(collectSFX);
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<CircleCollider2D>().enabled = false;
 

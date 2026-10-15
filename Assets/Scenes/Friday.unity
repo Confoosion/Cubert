@@ -5179,6 +5179,7 @@ MonoBehaviour:
   friction: 1
   maxSpinSpeed: 360
   velocitySmoothing: 20
+  goodSFX: {fileID: 8300000, guid: 5720cf85bd60a8044b8748ff7dbb4cb0, type: 3}
   onFullRotation:
     m_PersistentCalls:
       m_Calls:

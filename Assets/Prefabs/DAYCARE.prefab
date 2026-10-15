@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   dialogue: {fileID: 4477594964231259844}
+  endDialogue: {fileID: 0}
 --- !u!1 &645938070588187273
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,9 +760,11 @@ MonoBehaviour:
   papersToRead:
   - {fileID: 5666615541031518308}
   NPCEnterSound: {fileID: 8300000, guid: c5169486d18afd648b834c6ebcd39c64, type: 3}
+  dayBoomSFX: {fileID: 8300000, guid: 127759cb496b27c4aaa553197c290f3a, type: 3}
   cubertLocationCollider: {fileID: 5999949433883893553}
   customerCollider: {fileID: 6201444039486234784}
   dimBG: {fileID: 0}
+  dayText: {fileID: 0}
 --- !u!1 &4542492854332745803
 GameObject:
   m_ObjectHideFlags: 0

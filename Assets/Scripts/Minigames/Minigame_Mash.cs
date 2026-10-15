@@ -11,6 +11,8 @@ public class Minigame_Mash : MonoBehaviour
 
     [SerializeField] private UnityEvent onCompleteBar;
 
+    [SerializeField] private AudioClip goodSFX;
+
     private float decreaseAmount = 0.001f;
     private float increaseAmount = 0.2f;
 
@@ -54,6 +56,7 @@ public class Minigame_Mash : MonoBehaviour
         {
             slider.value = 0f;
             onCompleteBar?.Invoke();
+            SoundManager.Singleton?.PlaySFX(goodSFX);
         }
     }
 

@@ -13,6 +13,9 @@ public class Minigame_Arrows : MonoBehaviour
     [SerializeField] private Transform redArrow;
     [SerializeField] private ArrowButton[] arrowButtons;
 
+    [SerializeField] private AudioClip goodSFX;
+    [SerializeField] private AudioClip badSFX;
+
     private ArrowDirections currentDirection;
     public ArrowDirections CurrentDirection => currentDirection;
 
@@ -96,5 +99,15 @@ public class Minigame_Arrows : MonoBehaviour
         GlobalEvents.Singleton.PlayMinigame(false);
         minigameObj.SetActive(false);
         stopMinigameButton.SetActive(false);
+    }
+
+    public void PlayGoodSFX()
+    {
+        SoundManager.Singleton?.PlaySFX(goodSFX);
+    }
+
+    public void PlayBadSFX()
+    {
+        SoundManager.Singleton?.PlaySFX(badSFX);
     }
 }

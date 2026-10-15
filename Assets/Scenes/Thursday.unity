@@ -5918,6 +5918,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  goodSFX: {fileID: 8300000, guid: 5720cf85bd60a8044b8748ff7dbb4cb0, type: 3}
 --- !u!1 &1658636132
 GameObject:
   m_ObjectHideFlags: 0

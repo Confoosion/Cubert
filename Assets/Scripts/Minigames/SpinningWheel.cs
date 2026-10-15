@@ -9,6 +9,7 @@ public class SpinningWheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [SerializeField] private float friction = 2.5f;
     [SerializeField] private float maxSpinSpeed = 360f;
     [SerializeField] private float velocitySmoothing = 15f;
+    [SerializeField] private AudioClip goodSFX;
 
     public UnityEvent onFullRotation;
 
@@ -91,6 +92,7 @@ public class SpinningWheel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             rotationAccumulator -= 360f;
             onFullRotation?.Invoke();
+            SoundManager.Singleton?.PlaySFX(goodSFX);
         }
     }
 

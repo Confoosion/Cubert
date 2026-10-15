@@ -672,7 +672,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 7, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 112207257}
@@ -1145,6 +1145,8 @@ MonoBehaviour:
   extraGap: 0.0001
   minLeadDistance: 0.01
   hitColor: {r: 0.19215688, g: 0.65882355, b: 0.11764707, a: 0.4}
+  goodSFX: {fileID: 8300000, guid: 5720cf85bd60a8044b8748ff7dbb4cb0, type: 3}
+  badSFX: {fileID: 8300000, guid: a5598b57d54c7b447b5b076fba57da29, type: 3}
   onBarHit:
     m_PersistentCalls:
       m_Calls: []

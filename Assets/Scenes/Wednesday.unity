@@ -2725,6 +2725,8 @@ MonoBehaviour:
   - {fileID: 944254000}
   - {fileID: 1316472690}
   - {fileID: 1666352383}
+  goodSFX: {fileID: 8300000, guid: 5720cf85bd60a8044b8748ff7dbb4cb0, type: 3}
+  badSFX: {fileID: 8300000, guid: a5598b57d54c7b447b5b076fba57da29, type: 3}
 --- !u!1 &841220819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,12 +3279,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayGoodSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onWrong:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 834759053}
         m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
         m_MethodName: ChangeArrows
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayBadSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3483,12 +3509,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayGoodSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onWrong:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 834759053}
         m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
         m_MethodName: ChangeArrows
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayBadSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4737,12 +4787,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayGoodSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onWrong:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 834759053}
         m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
         m_MethodName: ChangeArrows
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayBadSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5606,12 +5680,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayGoodSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onWrong:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 834759053}
         m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
         m_MethodName: ChangeArrows
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 834759053}
+        m_TargetAssemblyTypeName: Minigame_Arrows, Assembly-CSharp
+        m_MethodName: PlayBadSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

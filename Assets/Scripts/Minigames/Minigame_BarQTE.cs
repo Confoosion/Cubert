@@ -32,6 +32,9 @@ public class Minigame_BarQTE : MonoBehaviour
     [SerializeField] private float minLeadDistance = 1f;
     [SerializeField] private Color hitColor = new Color(1f, 1f, 1f, 0.3f);
 
+    [SerializeField] private AudioClip goodSFX;
+    [SerializeField] private AudioClip badSFX;
+
     public UnityEvent onBarHit;
     public UnityEvent onRoundComplete;
     
@@ -101,8 +104,14 @@ public class Minigame_BarQTE : MonoBehaviour
 
     private void ResetBars()
     {
+        bool soundPlayed = false;
         for(int i = 0; i < activeCount; i++)
         {
+            if(slots[i].hit && !soundPlayed)
+            {
+                soundPlayed = true;
+                SoundManager.Singleton?.PlaySFX(badSFX);   
+            }
             slots[i].hit = false;
             slots[i].sr.color = slots[i].baseColor;
         }
@@ -279,6 +288,7 @@ public class Minigame_BarQTE : MonoBehaviour
     {
         roundsCompleted++;
         onRoundComplete?.Invoke();
+        SoundManager.Singleton?.PlaySFX(goodSFX);
 
         BeginRound();
     }

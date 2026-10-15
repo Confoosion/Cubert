@@ -44,6 +44,7 @@ public class DaycareScreen : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioClip NPCEnterSound;
+    [SerializeField] private AudioClip dayBoomSFX;
 
     private int todaysNeeds = 0;
     private int currentNeedsCompleted = 0;
@@ -74,24 +75,6 @@ public class DaycareScreen : MonoBehaviour
         }
 
         PlayIntroTransition();
-        // StartCoroutine(IntroTransition());
-        
-
-        // TimeManager.Singleton.FreezeTime(true);
-        
-        // DisableCubertDropOff();
-        // npcQueue.Clear();
-        // for(int i = 0; i < npcsInMorning.Count; i++)
-        // {
-        //     npcQueue.Enqueue(npcsInMorning[i]);
-        // }
-
-        // if(TimeManager.Singleton.GetDay() == "Friday" && GlobalEvents.Singleton.AnnaAngry)
-        // {
-        //     npcQueue.Enqueue(new NPCPerson(GameObject.Find("FridayStuff").GetComponent<FridayStuff>().ChristinaNPC, Purpose.PickUp));
-        // }
-
-        // TaskManager.Singleton.SetTask(Task.Papers);
     }
 
     public void PlayIntroTransition()
@@ -147,12 +130,13 @@ public class DaycareScreen : MonoBehaviour
         Image image = dimBG.GetComponent<Image>();
         image.color = new Color(0f, 0f, 0f, 1f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         dayText.enabled = true;        
         dayText.SetText(TimeManager.Singleton.GetDay().ToUpper());
+        SoundManager.Singleton?.PlaySFX(dayBoomSFX);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         Color currentColor = image.color;
         float currentAlpha = currentColor.a;
