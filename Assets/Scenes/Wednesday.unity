@@ -5933,18 +5933,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hi again, it''s the owner. I will be out again today due to some unfortunate
-    situation back home. Sorry to leave you all alone again, but you did great yesterday!
+  m_text: 'I took care of Cubert and Mubert while you were away. It seems like they''re
+    getting along pretty well!
 
 
-    I
-    got more calls about some Cuberts coming in, so go and get ready.
+    Dubert slept the whole time so I wouldn''t worry
+    about her so much.
 
 
-    Thanks,
+    P.S. One of our advertisements went viral and got more
+    customers today! Don''t cause too much trouble while I''m gone.
 
-    The
-    Owner'
+
+    - The Owner'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

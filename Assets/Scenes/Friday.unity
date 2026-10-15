@@ -6301,7 +6301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -62.5}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: -100, y: -225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773194870
@@ -6324,18 +6324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hi again, it''s the owner. I will be out again today due to some unfortunate
-    situation back home. Sorry to leave you all alone again, but you did great yesterday!
-
-
-    I
-    got more calls about some Cuberts coming in, so go and get ready.
-
-
-    Thanks,
-
-    The
-    Owner'
+  m_text: It's our last day! Keep taking care of those cuberts and let's finish strong!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

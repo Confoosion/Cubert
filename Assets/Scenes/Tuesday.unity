@@ -5896,18 +5896,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hi again, it''s the owner. I will be out again today due to some unfortunate
-    situation back home. Sorry to leave you all alone again, but you did great yesterday!
+  m_text: 'Hey, it''s the owner.
 
 
-    I
-    got more calls about some Cuberts coming in, so go and get ready.
+    Nice job on your first day! I will be out
+    again, but it seems like you don''t really need me haha!
 
 
-    Thanks,
+    I got a call for
+    more cuberts today. They''re going to be more needy this time around, so stay
+    focused.
 
-    The
-    Owner'
+
+    Good luck!
+
+    The Owner'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

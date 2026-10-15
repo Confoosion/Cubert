@@ -6180,8 +6180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -62.5}
-  m_SizeDelta: {x: -100, y: -225}
+  m_AnchoredPosition: {x: 0, y: -14}
+  m_SizeDelta: {x: -100, y: -127.2986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773194870
 MonoBehaviour:
@@ -6203,18 +6203,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hi again, it''s the owner. I will be out again today due to some unfortunate
-    situation back home. Sorry to leave you all alone again, but you did great yesterday!
+  m_text: 'Hey, so I saw that Dubert is still here... wasn''t she supposed to be
+    picked up yesterday? Where is her owner?! She''s so irresponsible!
 
 
-    I
-    got more calls about some Cuberts coming in, so go and get ready.
+    Mubert
+    didn''t eat anything, but did you leave some food in the kitchen? When I was
+    taking care of them, Hubert was in the kitchen eating our food. Please clean
+    up before you end your shift.
 
 
-    Thanks,
+    P.S. If Dubert is still here at night, kick
+    her out!
 
-    The
-    Owner'
+
+    - The Owner
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
