@@ -40,11 +40,14 @@ public class DaycareScreen : MonoBehaviour
     [SerializeField] private Transform cubertHolder;
     public Transform CubertHolder => cubertHolder;
 
+    [SerializeField] private MoneyJar moneyJar;
+
     [SerializeField] private List<Paper> papersToRead = new List<Paper>();
 
     [Header("Sounds")]
     [SerializeField] private AudioClip NPCEnterSound;
     [SerializeField] private AudioClip dayBoomSFX;
+    [SerializeField] private AudioClip coinSFX;
 
     private int todaysNeeds = 0;
     private int currentNeedsCompleted = 0;
@@ -74,6 +77,7 @@ public class DaycareScreen : MonoBehaviour
             return;
         }
 
+        moneyJar.UpdateJar(GlobalEvents.Singleton.TipsReceived);
         PlayIntroTransition();
     }
 
@@ -512,5 +516,12 @@ public class DaycareScreen : MonoBehaviour
         {
             TaskManager.Singleton.SetTask(Task.Open);
         }
+    }
+
+    public void AddToMoneyJar()
+    {
+        GlobalEvents.Singleton.AddTip();
+        moneyJar.UpdateJar(GlobalEvents.Singleton.TipsReceived);
+        SoundManager.Singleton?.PlaySFX(coinSFX);
     }
 }

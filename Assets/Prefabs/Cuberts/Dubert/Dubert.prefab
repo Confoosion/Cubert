@@ -484,13 +484,14 @@ MonoBehaviour:
   cubertNeeds: {fileID: 11400000, guid: 8d6b13440e6913f47926df5e6d50207c, type: 2}
   preferredBed:
   - {fileID: 21300000, guid: 0ed015ea04913ae4f931b34ec1a44c12, type: 3}
-  feedAmount: 3
+  feedAmount: 2
   hitAmount: 3
   showerAmount: 20
   sleepParticles: {fileID: 504626174986166358, guid: 233618d5937cd714cb47470aa7fe58aa, type: 3}
   eyes:
   - {fileID: 5425960068998378541}
   - {fileID: 5139098511028863699}
+  deadFace: {fileID: 0}
 --- !u!1 &5923444696031282259
 GameObject:
   m_ObjectHideFlags: 0

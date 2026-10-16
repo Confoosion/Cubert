@@ -148,6 +148,18 @@ public class Dialogue : MonoBehaviour
             
             if(currentDialogueType is DialogueType.Cubert)
                 ScreenManager.Singleton.RemoveCubert();
+
+            if(currentDialogueType == DialogueType.Cubert)
+            {
+                if((currentNPC.npcName == "Anna" && GlobalEvents.Singleton.AnnaAngry) ||
+                   (currentNPC.npcName == "Rose" && GlobalEvents.Singleton.FubertMakeupRuined))
+                {
+                    currentNPC = null;
+                    return;
+                }
+
+                DaycareScreen.Singleton.AddToMoneyJar();
+            }
         }
         else if(currentDialogueType is DialogueType.PickUp)
         {

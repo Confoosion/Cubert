@@ -46,6 +46,10 @@ public class GlobalEvents : MonoBehaviour
 
     public bool ObtainedTrueEnd => fridayMubertKills == 0 && !tubertDead && !oubertDead && !annaAngry && !mubertGone && !oubertUncomfortable && !fubertMakeupRuined;
 
+    private int tipsReceived = 0;
+    public int TipsReceived => tipsReceived;
+    public void AddTip() => tipsReceived++;
+
     public void GotOubertUncomfortable()
     {
         oubertUncomfortable = true;
