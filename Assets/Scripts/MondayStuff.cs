@@ -9,6 +9,7 @@ public class MondayStuff : MonoBehaviour
     [SerializeField] private TextMeshProUGUI introText;
     [SerializeField] private DialogueSO introDialogue;
     [SerializeField] private GameObject nextSentenceHitbox;
+    [SerializeField] private GameObject clickAnywhereText;
 
     private Queue<string> sentences = new Queue<string>();
     private int sentenceIndex = 0;
@@ -32,6 +33,8 @@ public class MondayStuff : MonoBehaviour
         sentenceIndex = 0;
         DisplayNextSentence();
         nextSentenceHitbox.SetActive(true);
+
+        clickAnywhereText.SetActive(true);
     }
 
     IEnumerator FadeInText(string dialogueText)
@@ -64,6 +67,9 @@ public class MondayStuff : MonoBehaviour
 
     IEnumerator FadeOutText()
     {
+        if(clickAnywhereText.activeSelf)
+            clickAnywhereText.SetActive(false);
+
         Color c = introText.color;
         float alpha = c.a;
 

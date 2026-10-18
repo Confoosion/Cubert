@@ -308,6 +308,9 @@ public class CubertScreen : MonoBehaviour
     {
         if(_cubert.name == gameObject.name)
         {
+            if(!lightsOn)
+                return false;
+                
             _cubert.GetComponent<BoxCollider2D>().enabled = true;
             _cubert.transform.SetParent(transform);
             _cubert.transform.localPosition = nest.localPosition;
