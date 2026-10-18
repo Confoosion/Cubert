@@ -5981,6 +5981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KITCHEN
       objectReference: {fileID: 0}
+    - target: {fileID: 3508067904760349124, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6065400660054647527, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -6025,6 +6029,10 @@ PrefabInstance:
       propertyPath: paperObj
       value: 
       objectReference: {fileID: 1457698645}
+    - target: {fileID: 7748286125779289927, guid: 0f2a0ad8e8fc03d4d9b5013dfe147936, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4,6 +4,9 @@ public class OutlineRender : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer outline;
 
+    private bool disableOutline = false;
+    private bool clicked = false;
+
     void Awake()
     {
         outline.enabled = false;
@@ -11,11 +14,27 @@ public class OutlineRender : MonoBehaviour
 
     private void OnMouseOver()
     {
-        outline.enabled = true;
+        if(!disableOutline)
+            outline.enabled = true;
+    }
+
+    private void OnMouseDown()
+    {
+        clicked = true;
+        disableOutline = true;
+        outline.enabled = false;
+    }
+
+    private void OnMouseUp()
+    {
+        clicked = false;
+        disableOutline = false;
     }
 
     private void OnMouseExit()
     {
+        if(!clicked)
+            disableOutline = false;
         outline.enabled = false;
     }
 }
