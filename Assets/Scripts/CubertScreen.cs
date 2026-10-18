@@ -911,14 +911,15 @@ public class CubertScreen : MonoBehaviour
         bedCollider.enabled = true;
     }
 
-    public void Kill()
+    public void Kill(bool showBlood = true)
     {
         isDead = true;
         SatisfyALLNeeds();
         ForceAddNeed(specialNeeds[2], false);
         DisplayFeedButton(false);
         cubert.SwitchToDeadFace();
-        MakeRoomBloody();
+        if(showBlood)
+            MakeRoomBloody();
 
         // if(cubertTransform.name == "Cubert" && TimeManager.Singleton.GetDay() == "Wednesday")
         // {

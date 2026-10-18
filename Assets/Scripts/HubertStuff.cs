@@ -126,7 +126,7 @@ public class HubertStuff : MonoBehaviour
         GameObject dead = Instantiate(deadHubert, transform.position, Quaternion.identity);
         dead.transform.localScale = transform.localScale;
 
-        ScreenManager.Singleton.GetCubertScreen("Hubert").Kill();
+        ScreenManager.Singleton.GetCubertScreen("Hubert").Kill(false);
         GlobalEvents.Singleton.KillHubert();
     }
 }

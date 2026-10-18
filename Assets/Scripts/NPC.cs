@@ -93,6 +93,7 @@ public class NPC : MonoBehaviour
 
         if(_data.npcName == "Timothy" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
         {
+            GameObject.Find("ThursdayStuff").GetComponent<ThursdayStuff>().InteractWithTim();
             ScreenManager.Singleton.GetCubertScreen("Hubert").PerformHabit(Habit.HubertLeave);
         }
         else if(_data.npcName == "Jake" && TimeManager.Singleton.GetDay() == "Wednesday" && TimeManager.Singleton.IsNight)

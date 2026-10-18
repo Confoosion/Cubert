@@ -1441,6 +1441,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DAYCARE
       objectReference: {fileID: 0}
+    - target: {fileID: 3717025306596974863, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563421506854664139, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5666615541031518308, guid: c499ff4a41dc0e348a677c76de50b150, type: 3}
       propertyPath: paperObj
       value: 

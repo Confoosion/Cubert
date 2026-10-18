@@ -53,6 +53,7 @@ public class DaycareScreen : MonoBehaviour
     private int currentNeedsCompleted = 0;
 
     [Header("Misc")]
+    [SerializeField] private GameObject bg;
     [SerializeField] private BoxCollider2D cubertLocationCollider;
     [SerializeField] private BoxCollider2D customerCollider;
     private float npcSpawnDelay = 1.65f;
@@ -66,6 +67,8 @@ public class DaycareScreen : MonoBehaviour
 
     void Start()
     {
+        bg.SetActive(false);
+
         GameObject monday = GameObject.Find("MondayStuff");
         if(monday != null)
         {
@@ -141,6 +144,8 @@ public class DaycareScreen : MonoBehaviour
         SoundManager.Singleton?.PlaySFX(dayBoomSFX);
 
         yield return new WaitForSeconds(5f);
+
+        bg.SetActive(true);
 
         Color currentColor = image.color;
         float currentAlpha = currentColor.a;

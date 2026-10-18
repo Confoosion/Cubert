@@ -60,6 +60,9 @@ public class ScreenManager : MonoBehaviour
         }
         else if(currentScreen.name == "Tubert" && TimeManager.Singleton.GetDay() == "Thursday" && TimeManager.Singleton.IsNight)
         {
+            if(!GameObject.Find("ThursdayStuff").GetComponent<ThursdayStuff>().InteractedWithTim)
+                return;
+
             CubertScreen hubertScreen = GetCubertScreen("Hubert");
             if(hubertScreen?._Cubert != null && hubertScreen.CubertTransform.parent.name == "Hubert")
             {
