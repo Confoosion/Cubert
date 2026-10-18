@@ -54,6 +54,7 @@ public class DaycareScreen : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private GameObject bg;
+    [SerializeField] private DeskBell deskBell;
     [SerializeField] private BoxCollider2D cubertLocationCollider;
     [SerializeField] private BoxCollider2D customerCollider;
     private float npcSpawnDelay = 1.65f;
@@ -528,5 +529,10 @@ public class DaycareScreen : MonoBehaviour
         GlobalEvents.Singleton.AddTip();
         moneyJar.UpdateJar(GlobalEvents.Singleton.TipsReceived);
         SoundManager.Singleton?.PlaySFX(coinSFX);
+    }
+
+    public void PlayDeskBell()
+    {
+        deskBell.PlaySFX();
     }
 }

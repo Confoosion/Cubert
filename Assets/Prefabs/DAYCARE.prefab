@@ -854,10 +854,11 @@ MonoBehaviour:
   moneyJar: {fileID: 3850091524082936282}
   papersToRead:
   - {fileID: 5666615541031518308}
-  NPCEnterSound: {fileID: 8300000, guid: c5169486d18afd648b834c6ebcd39c64, type: 3}
+  NPCEnterSound: {fileID: 8300000, guid: 1e44553bceef23b439d60c5f3ae5c576, type: 3}
   dayBoomSFX: {fileID: 8300000, guid: 127759cb496b27c4aaa553197c290f3a, type: 3}
   coinSFX: {fileID: 8300000, guid: 29dc5f5c2d2f93b4eba5ffb9db3d671b, type: 3}
   bg: {fileID: 5563421506854664139}
+  deskBell: {fileID: 4532856111327536252}
   cubertLocationCollider: {fileID: 5999949433883893553}
   customerCollider: {fileID: 6201444039486234784}
   dimBG: {fileID: 0}
@@ -1485,7 +1486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5415293865579783124
 Transform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,11 @@ public class DeskBell : MonoBehaviour
 
     void OnMouseDown()
     {
+        PlaySFX();
+    }
+
+    public void PlaySFX()
+    {
         audioSource.PlayOneShot(bellSFX);
     }
 }

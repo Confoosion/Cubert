@@ -164,6 +164,19 @@ public class NPC : MonoBehaviour
 
         npcAnimator.enabled = true;
         npcAnimator.SetBool("Enter", true);
+        StartCoroutine(Entering());
+    }
+
+    IEnumerator Entering()
+    {
+        AnimatorStateInfo animInfo = npcAnimator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(animInfo.length + 1f);
+
+        while(!interacted)
+        {
+            DaycareScreen.Singleton.PlayDeskBell();
+            yield return new WaitForSeconds(2f);
+        }
     }
 
     public void NPCLeave()
