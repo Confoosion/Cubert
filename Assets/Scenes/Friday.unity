@@ -752,6 +752,7 @@ MonoBehaviour:
   tubertDead: 0
   fubertMakeupRuined: 0
   oubertDead: 0
+  cubertAte: 0
   fridayMubertKills: 0
   timOScary: 0
   timTScary: 0
@@ -4935,9 +4936,13 @@ MonoBehaviour:
   daycareBG: {fileID: 935540511}
   daycareDesk: {fileID: 935540510}
   normalDaycareBG: {fileID: 21300000, guid: 70a722ca215c6ba4cb3b62318a55b1f7, type: 3}
-  normalDesk: {fileID: 21300000, guid: 4d7554ce4ee7b2e4581784e252a0be8e, type: 3}
+  normalDesk: {fileID: 21300000, guid: 51485657f7dd5254bac7ae64166bf511, type: 3}
   bloodyDaycareBG: {fileID: 21300000, guid: 3bd01ca8faeec1e438aab8fd74f6cc34, type: 3}
   bloodyDesk: {fileID: 21300000, guid: 661f9a10ed972994dbb39450c456642c, type: 3}
+  clipboardText: {fileID: 1773194870}
+  hubertDeadNote: {fileID: 11400000, guid: c8e41040bc5489f4184a61bf6af6c385, type: 2}
+  annaAppearanceNote: {fileID: 11400000, guid: ca980c8e4d5c0934c84f273353489b3b, type: 2}
+  annaAngryNote: {fileID: 11400000, guid: a92a5ce475190bd4fa6e8f145459e489, type: 2}
 --- !u!1 &1525636899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,12 +5446,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 3ada2085ec4ffb449b3f617bba27bc9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4cfc4ac32bc72747b59ce5879e842ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8.89, y: 8.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6485,7 +6490,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: It's our last day! Keep taking care of those cuberts and let's finish strong!
+  m_text: 'It''s our last day! Keep taking care of those cuberts and let''s finish
+    strong!
+
+
+    Jubert went missing last night as well... I hope she''s ok.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6515,9 +6524,9 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256

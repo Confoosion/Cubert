@@ -20,6 +20,7 @@ public class WednesdayStuff : MonoBehaviour
             return;
         cubertScreen.Kill();
         cubertScreen.TurnLightsOff();
+        GlobalEvents.Singleton.EatCubert();
 
         // Make the room look bloody too.
 

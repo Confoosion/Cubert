@@ -273,7 +273,7 @@ public class DaycareScreen : MonoBehaviour
         npc.NPCLeave();
         ScreenManager.Singleton.SetNPCScreen(false);
 
-        if(TimeManager.Singleton.GetDay() == "Friday" && currentNPC.npcSO.npcName == "Rose" && !TimeManager.Singleton.IsNight)
+        if(TimeManager.Singleton.GetDay() == "Friday" && currentNPC.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined && !TimeManager.Singleton.IsNight)
         {
             return;
         }

@@ -765,16 +765,22 @@ public class CubertScreen : MonoBehaviour
             else
                 PlaceCubert(cubert.gameObject);
         }
-        else if(currentNeed?.needName == "Dirty" && cubert.name == "Mubert")
+        else if(currentNeed?.needName == "Dirty")
         {
-            cubert.GetComponent<MubertStuff>().ShowBlood(false);
+            if(cubert.name == "Mubert")
+                cubert.GetComponent<MubertStuff>().ShowBlood(false);
+            else if(cubert.name == "Fubert" && cubertTransform.parent.name != "CubertLocation")
+            {
+                cubert.GetComponent<FubertStuff>().SwitchToNoMakeup();
+            }
         }
 
         needList.RemoveFirst();
         timeInSpot = 0f;
         currentNeed = null;
         UpdateNeedStatus();
-        DaycareScreen.Singleton.NeedSatisfied();
+        if(!TimeManager.Singleton.IsMorning && !TimeManager.Singleton.IsNight)
+            DaycareScreen.Singleton.NeedSatisfied();
         habitPerformed = false;
 
         if(currentSpot == nest)

@@ -144,8 +144,17 @@ public class Dialogue : MonoBehaviour
                 DaycareScreen.Singleton.NPCLeave();
 
             if(TimeManager.Singleton.GetDay() == "Friday" && DaycareScreen.Singleton.CurrentNPC?.npcSO.npcName == "Rose" && !GlobalEvents.Singleton.FubertMakeupRuined)
+            {
+                GameObject fubert = GameObject.Find("DAYCARE/CubertLocation/Fubert");
+                GameObject fubertScreen = GameObject.Find("Fubert");
+                if(fubert != null)
+                    fubert.GetComponent<BoxCollider2D>().enabled = true;
+                if(fubertScreen != null)
+                    fubertScreen.GetComponent<CubertScreen>().SatisfyALLNeeds();
+                DaycareScreen.Singleton.AddToMoneyJar();
                 return;
-            
+            }
+
             if(currentDialogueType is DialogueType.Cubert)
                 ScreenManager.Singleton.RemoveCubert();
 

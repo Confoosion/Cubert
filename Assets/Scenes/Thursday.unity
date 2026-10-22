@@ -771,6 +771,7 @@ MonoBehaviour:
   tubertDead: 0
   fubertMakeupRuined: 0
   oubertDead: 0
+  cubertAte: 0
   fridayMubertKills: 0
   timOScary: 0
   timTScary: 0
@@ -5185,6 +5186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   christinaNPC: {fileID: 11400000, guid: c94f5d9368583174dbfa8b0d27aaa0de, type: 2}
+  clipboardText: {fileID: 1773194870}
+  cubertDeadNote: {fileID: 11400000, guid: 88474178d95bff34bbc5828bfc7b93d7, type: 2}
+  cubertAliveNote: {fileID: 11400000, guid: ef0230ddc54c4314080611479698f537, type: 2}
 --- !u!1 &1454045225
 GameObject:
   m_ObjectHideFlags: 0

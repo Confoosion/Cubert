@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ThursdayStuff : MonoBehaviour
 {
@@ -8,4 +10,26 @@ public class ThursdayStuff : MonoBehaviour
     private bool interactedWithTim = false;
     public bool InteractedWithTim => interactedWithTim;
     public void InteractWithTim() => interactedWithTim = true;
+
+    [Space]
+    [SerializeField] TextMeshProUGUI clipboardText;
+    [SerializeField] private NoteWritings cubertDeadNote;
+    [SerializeField] private NoteWritings cubertAliveNote;
+
+    void Start()
+    {
+        SetClipboardNote();
+    }
+
+    private void SetClipboardNote()
+    {
+        if(GlobalEvents.Singleton.CubertAte)
+        {
+            clipboardText.SetText(cubertDeadNote.writing);
+        }
+        else
+        {
+            clipboardText.SetText(cubertAliveNote.writing);
+        }
+    }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class FridayStuff : MonoBehaviour
 {
@@ -34,9 +35,41 @@ public class FridayStuff : MonoBehaviour
     [SerializeField] private Sprite bloodyDaycareBG;
     [SerializeField] private Sprite bloodyDesk;
 
+    [Space]
+    [SerializeField] private TextMeshProUGUI clipboardText;
+    [SerializeField] private NoteWritings hubertDeadNote;
+    [SerializeField] private NoteWritings annaAppearanceNote;
+    [SerializeField] private NoteWritings annaAngryNote; 
+
     private bool flickering = false;
     private Coroutine flickerRoutine;
     private bool isScaryBG = false;
+
+    void Start()
+    {
+        SetClipboardNote();
+    }
+
+    private void SetClipboardNote()
+    {
+        bool hubertDead = GlobalEvents.Singleton.HubertDead;
+        bool annaAngry = GlobalEvents.Singleton.AnnaAngry;
+
+        if(hubertDead)
+        {
+            clipboardText.text += "\n\n" + hubertDeadNote.writing;
+        }
+        if(annaAngry)
+        {
+            clipboardText.text += "\n\n" + annaAngryNote.writing;
+        }
+        else
+        {
+            clipboardText.text += "\n\n" + annaAppearanceNote.writing;
+        }
+
+        clipboardText.text += "\n\nHave a great shift!\n- The Owner";
+    }
 
     public void EnterTims()
     {

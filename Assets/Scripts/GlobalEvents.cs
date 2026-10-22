@@ -35,6 +35,8 @@ public class GlobalEvents : MonoBehaviour
     public bool FubertMakeupRuined => fubertMakeupRuined;
     [SerializeField] private bool oubertDead = false;
     public bool OubertDead => oubertDead;
+    [SerializeField] private bool cubertAte = false;
+    public bool CubertAte => cubertAte;
     
     [SerializeField] private int fridayMubertKills = 0;
     public bool MubertCrazy => fridayMubertKills > 3;
@@ -111,5 +113,10 @@ public class GlobalEvents : MonoBehaviour
     public void TimO_IsScary()
     {
         timOScary = true;
+    }
+
+    public void EatCubert()
+    {
+        cubertAte = true;
     }
 }
