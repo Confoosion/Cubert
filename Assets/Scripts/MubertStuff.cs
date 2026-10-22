@@ -36,7 +36,7 @@ public class MubertStuff : MonoBehaviour
     public bool HideInCubertsRoom(CubertScreen mubertRoom)
     {
         Transform cubertRoom = ScreenManager.Singleton.Screens.Find(room => room.name == "Cubert");
-        if(ScreenManager.Singleton.CurrentScreen == cubertRoom) return false;
+        if(ScreenManager.Singleton.CurrentScreen == cubertRoom || cubertRoom.GetComponent<CubertScreen>().Enhanced) return false;
 
         mubertRoom.DisplayFeedButton(false);
 

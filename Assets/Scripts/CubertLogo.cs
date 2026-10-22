@@ -19,7 +19,12 @@ public class CubertLogo : MonoBehaviour
         direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
     }
 
-    void Start()
+    // void Start()
+    // {
+    //     rb.linearVelocity = direction * speed;
+    // }
+
+    void FixedUpdate()
     {
         rb.linearVelocity = direction * speed;
     }

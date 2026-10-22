@@ -89,6 +89,7 @@ public class CubertScreen : MonoBehaviour
     private int foodAte = 0;
 
     private bool isEnhanced = false;
+    public bool Enhanced => isEnhanced;
     private Coroutine enhanceRoutine;
     public bool IsEnhancing => enhanceRoutine != null;
 
@@ -98,6 +99,7 @@ public class CubertScreen : MonoBehaviour
     public bool Dead => isDead;
 
     public bool fakeMissing = false;
+    private int cubertScares = 0; 
 
     void Start()
     {
@@ -227,7 +229,7 @@ public class CubertScreen : MonoBehaviour
         {
             if(habits == null || TimeManager.Singleton.IsNight) return;
             if(HoldCubert.Singleton.HoldingCubert && HoldCubert.Singleton.HeldCubert == cubert) return;
-            if(cubert.gameObject.name == "Cubert" && transform.Find("Mubert")) return;
+            // if(cubert.gameObject.name == "Cubert" && transform.Find("Mubert")) return;
             if(habitPerformed) return;
 
             timeAway += Time.deltaTime;
@@ -614,9 +616,13 @@ public class CubertScreen : MonoBehaviour
                     return;
 
                 cubert.ShowCubert();
-                if(cubert.gameObject.name == "Cubert" && isEnhanced)
+                if(cubert.gameObject.name == "Cubert")
                 {
-                    EnhanceCubert();
+                    if(isEnhanced)
+                    {
+                        EnhanceCubert();
+                    }
+                    habitPerformed = false;
                 }
             }
         }
@@ -784,7 +790,16 @@ public class CubertScreen : MonoBehaviour
             case Habit.UpClose:
                 {
                     TurnLightsOff();
-                    isEnhanced = true;
+                    if(transform.Find("Mubert") != null)
+                    {
+                        break;
+                    }
+
+                    if(cubertScares == 0 && UnityEngine.Random.value < 0.6f)
+                    {
+                        cubertScares++;
+                        isEnhanced = true;
+                    }
                     // EnhanceCubert();
                     break;        
                 }

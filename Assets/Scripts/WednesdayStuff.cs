@@ -16,6 +16,8 @@ public class WednesdayStuff : MonoBehaviour
     public void KillCubert()
     {
         CubertScreen cubertScreen = ScreenManager.Singleton.GetCubertScreen("Cubert");
+        if(HoldCubert.Singleton.HeldCubert == cubertScreen._Cubert)
+            return;
         cubertScreen.Kill();
         cubertScreen.TurnLightsOff();
 
