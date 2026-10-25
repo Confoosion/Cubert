@@ -493,7 +493,7 @@ MonoBehaviour:
   eyes:
   - {fileID: 5425960068998378541}
   - {fileID: 5139098511028863699}
-  deadFace: {fileID: 0}
+  deadFace: {fileID: 6730194203379099280}
 --- !u!114 &-802666244908212458
 MonoBehaviour:
   m_ObjectHideFlags: 0

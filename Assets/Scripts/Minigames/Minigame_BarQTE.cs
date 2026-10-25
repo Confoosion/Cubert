@@ -99,10 +99,10 @@ public class Minigame_BarQTE : MonoBehaviour
         }
 
         PlaceBars();
-        ResetBars();
+        ResetBars(true);
     }
 
-    private void ResetBars()
+    private void ResetBars(bool newRound = false)
     {
         bool soundPlayed = false;
         for(int i = 0; i < activeCount; i++)
@@ -110,7 +110,8 @@ public class Minigame_BarQTE : MonoBehaviour
             if(slots[i].hit && !soundPlayed)
             {
                 soundPlayed = true;
-                SoundManager.Singleton?.PlaySFX(badSFX);   
+                if(!newRound)
+                    SoundManager.Singleton?.PlaySFX(badSFX);   
             }
             slots[i].hit = false;
             slots[i].sr.color = slots[i].baseColor;

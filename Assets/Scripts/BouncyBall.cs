@@ -147,7 +147,7 @@ public class BouncyBall : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Transform parent = transform.parent;
-        if(ScreenManager.Singleton?.CurrentScreen == parent)
+        if(ScreenManager.Singleton?.CurrentScreen == parent && collision.gameObject.GetComponent<Cubert>() != null)
             SoundManager.Singleton?.PlaySFX(bounceSound);
     }
 }
